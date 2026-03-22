@@ -394,7 +394,7 @@ z-index:50;transition:all .3s;
 <div class="topbar-title"><a href="../">Prompt Engineering Meistern</a> &middot; Band {band_nr}</div>
 </div>
 <div class="topbar-actions">
-<a href="../../output/Band_01_{config['titel']}.pdf" class="btn-sm" download>
+<a href="../output/Band_01_{config['titel']}.pdf" class="btn-sm" download>
 <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
 PDF
 </a>
@@ -473,7 +473,7 @@ def main():
     script_dir = Path(__file__).parent.resolve()
 
     for band_nr, config in BAND_CONFIG.items():
-        out_dir = script_dir / "docs" / f"band-{band_nr:02d}"
+        out_dir = script_dir / f"band-{band_nr:02d}"
         out_dir.mkdir(parents=True, exist_ok=True)
 
         html = build_band_page(band_nr, config)

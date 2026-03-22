@@ -696,7 +696,6 @@ def generate_pdf(band_nr, draft=False):
 
     suffix = "_ENTWURF" if draft else ""
     output_pdf = output_dir / f"Band_{band_nr:02d}_{config['titel']}{suffix}.pdf"
-    output_html = output_dir / f"Band_{band_nr:02d}_{config['titel']}{suffix}.html"
 
     print(f"\n{'='*60}")
     print(f"  PDF-Buchgenerator v2.0 | {REIHE}")
@@ -708,11 +707,7 @@ def generate_pdf(band_nr, draft=False):
     print("Kapitel werden verarbeitet:")
     full_html = build_full_html(band_nr, config, str(band_ordner), draft)
 
-    with open(output_html, "w", encoding="utf-8") as f:
-        f.write(full_html)
-    print(f"\n  HTML gespeichert: {output_html}")
-
-    print(f"  PDF wird generiert...")
+    print(f"\n  PDF wird generiert...")
     HTML(string=full_html, base_url=str(script_dir)).write_pdf(str(output_pdf))
 
     size_mb = os.path.getsize(output_pdf) / (1024 * 1024)
