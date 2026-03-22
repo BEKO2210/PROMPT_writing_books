@@ -139,7 +139,10 @@ text-decoration:none;border-left:2px solid transparent;transition:all .2s;line-h
 .chapter li{margin-bottom:8px}.chapter li>ul,.chapter li>ol{margin-top:6px}
 
 /* Code */
-.chapter pre{background:var(--code-bg);border:1px solid var(--border);border-radius:10px;padding:18px 20px;margin:20px 0;overflow-x:auto;font-family:var(--font-mono);font-size:14px;line-height:1.55;max-width:100%;white-space:pre-wrap;word-wrap:break-word}
+.chapter pre{background:var(--code-bg);border:1px solid var(--border);border-radius:10px;padding:18px 20px;margin:20px 0;overflow-x:auto;font-family:var(--font-mono);font-size:14px;line-height:1.55;max-width:100%;white-space:pre-wrap;word-wrap:break-word;position:relative}
+.copy-btn{position:absolute;top:8px;right:8px;background:var(--accent);color:#fff;border:none;border-radius:6px;padding:4px 12px;font-size:12px;cursor:pointer;opacity:0;transition:opacity .2s;font-family:var(--font-sans);z-index:2}
+.chapter pre:hover .copy-btn{opacity:1}
+.copy-btn.copied{background:#4ecdc4}
 .chapter code{font-family:var(--font-mono);font-size:15px;background:var(--code-bg);padding:2px 6px;border-radius:5px;color:var(--accent)}
 .chapter pre code{background:none;padding:0;color:var(--text);font-size:14px}
 
@@ -2489,6 +2492,20 @@ document.getElementById('toastClose').addEventListener('click',function(){toast.
 });
 }
 })();
+// Copy buttons for code blocks
+document.querySelectorAll('.chapter pre').forEach(function(pre){
+  var btn=document.createElement('button');
+  btn.className='copy-btn';btn.textContent='Kopieren';
+  btn.addEventListener('click',function(){
+    var code=pre.querySelector('code')||pre;
+    var text=code.textContent||code.innerText;
+    navigator.clipboard.writeText(text).then(function(){
+      btn.textContent='Kopiert!';btn.classList.add('copied');
+      setTimeout(function(){btn.textContent='Kopieren';btn.classList.remove('copied')},2000);
+    });
+  });
+  pre.style.position='relative';pre.appendChild(btn);
+});
 </script>
 </body>
 </html>

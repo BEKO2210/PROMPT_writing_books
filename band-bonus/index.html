@@ -1,0 +1,2969 @@
+<!DOCTYPE html>
+<html lang="de" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Band 11: Prompt-Sammlung &ndash; Prompt Engineering Meistern</title>
+<meta name="description" content="200+ sofort einsetzbare Prompts &ndash; Band 11 der Buchreihe Prompt Engineering Meistern von Belkis Aslani. Kostenlos online lesen.">
+<meta name="author" content="Belkis Aslani">
+<meta name="theme-color" content="#0a1628" media="(prefers-color-scheme:dark)">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme:light)">
+<meta name="color-scheme" content="light dark">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://beko2210.github.io/PROMPT_writing_books/band-bonus/">
+<link rel="manifest" href="../manifest.json">
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../icon-192.png">
+<meta property="og:type" content="book">
+<meta property="og:title" content="Band 11: Prompt-Sammlung &ndash; Prompt Engineering Meistern">
+<meta property="og:description" content="200+ sofort einsetzbare Prompts. Kostenlos online lesen.">
+<meta property="og:url" content="https://beko2210.github.io/PROMPT_writing_books/band-bonus/">
+<meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="Prompt Engineering Meistern">
+<meta property="og:image" content="https://beko2210.github.io/PROMPT_writing_books/icon-512.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Band 11: Prompt-Sammlung">
+<meta name="twitter:description" content="200+ sofort einsetzbare Prompts">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Book","name":"Prompt Engineering Meistern – Band 11: Prompt-Sammlung","author":{"@type":"Person","name":"Belkis Aslani"},"bookEdition":"1. Auflage","inLanguage":"de","url":"https://beko2210.github.io/PROMPT_writing_books/band-bonus/","isPartOf":{"@type":"BookSeries","name":"Prompt Engineering Meistern"}}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+--bg:#fff;--bg2:#f8f9fb;--card:#fff;
+--text:#1a1a1a;--text2:#555;--text3:#888;
+--accent:#2d4a7a;--accent-light:#8ab4f8;
+--border:#e5e7eb;--code-bg:#f5f7fa;
+--sidebar-bg:#fafbfc;--max-w:680px;
+--font:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+--font-reading:'Georgia','Liberation Serif',serif;
+--font-mono:'SF Mono','Liberation Mono','Cascadia Code',monospace;
+}
+[data-theme="dark"]{
+--bg:#0d1117;--bg2:#161b22;--card:#1c2333;
+--text:#e4e8ef;--text2:#8899aa;--text3:#556677;
+--accent:#8ab4f8;--accent-light:#8ab4f8;
+--border:#2a3444;--code-bg:#161b22;--sidebar-bg:#0d1117;
+}
+html{scroll-behavior:smooth;scroll-padding-top:70px;overflow-x:hidden}
+body{font-family:var(--font);background:var(--bg);color:var(--text);transition:background .3s,color .3s;overflow-x:hidden}
+
+/* Progress */
+.progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent-light));z-index:1000;width:0;transition:width .15s}
+
+/* Topbar */
+.topbar{
+position:fixed;top:0;left:0;right:0;height:56px;
+border-bottom:1px solid var(--border);display:flex;align-items:center;
+padding:0 16px;z-index:100;transition:background .3s,border-color .3s;
+backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+background:color-mix(in srgb,var(--bg) 85%,transparent);
+}
+.topbar-left{display:flex;align-items:center;gap:12px;flex:1;min-width:0}
+.menu-btn{background:none;border:none;cursor:pointer;padding:8px;color:var(--text);display:none}
+@media(max-width:900px){.menu-btn{display:block}}
+.topbar-title{font-size:14px;font-weight:600;color:var(--text2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.topbar-title a{color:inherit;text-decoration:none}
+.topbar-title a:hover{color:var(--accent)}
+.topbar-actions{display:flex;align-items:center;gap:8px}
+.btn-sm{
+font-size:12px;font-weight:600;padding:7px 14px;border-radius:8px;
+border:1px solid var(--border);background:var(--bg2);color:var(--text);
+cursor:pointer;text-decoration:none;transition:all .2s;
+display:inline-flex;align-items:center;gap:6px;
+}
+.btn-sm:hover{border-color:var(--accent);color:var(--accent)}
+.btn-sm svg{width:14px;height:14px;fill:currentColor}
+
+/* Sun/Moon Toggle */
+.switch{position:relative;display:inline-block;width:54px;height:30px}
+.switch input{opacity:0;width:0;height:0;position:absolute}
+.tm-slider{position:absolute;cursor:pointer;inset:0;background:#2196f3;transition:.4s;overflow:hidden;border-radius:30px}
+.sun-moon{position:absolute;height:22px;width:22px;left:4px;bottom:4px;background:yellow;transition:.4s;border-radius:50%}
+.switch input:checked+.tm-slider{background:#111827}
+.switch input:checked+.tm-slider .sun-moon{transform:translateX(24px);background:#e2e8f0;animation:smRotate .6s ease-in-out both}
+@keyframes smRotate{0%{transform:translateX(24px) rotate(0)}100%{transform:translateX(24px) rotate(360deg)}}
+.moon-dot{opacity:0;transition:.4s;fill:#94a3b8;position:absolute;z-index:4}
+.switch input:checked+.tm-slider .moon-dot{opacity:1}
+.md1{left:9px;top:3px;width:5px;height:5px}.md2{left:2px;top:9px;width:8px;height:8px}.md3{left:14px;top:16px;width:3px;height:3px}
+.light-ray{position:absolute;z-index:-1;fill:white;opacity:.1}
+.lr1{left:-7px;top:-7px;width:36px;height:36px}.lr2{left:-50%;top:-50%;width:44px;height:44px}.lr3{left:-14px;top:-14px;width:50px;height:50px}
+.cloud-l,.cloud-d{position:absolute;animation:cMv 6s infinite}
+.cloud-l{fill:#eee}.cloud-d{fill:#ccc;animation-delay:1s}
+.c1{left:26px;top:13px;width:34px}.c2{left:38px;top:8px;width:17px}.c3{left:15px;top:20px;width:26px}
+.c4{left:30px;top:15px;width:34px}.c5{left:42px;top:11px;width:17px}.c6{left:18px;top:22px;width:26px}
+@keyframes cMv{0%,100%{transform:translateX(0)}40%{transform:translateX(3px)}80%{transform:translateX(-3px)}}
+.stars{transform:translateY(-28px);opacity:0;transition:.4s}
+.star{fill:white;position:absolute;transition:.4s;animation:stTw 2s infinite}
+.switch input:checked+.tm-slider .stars{transform:translateY(0);opacity:1}
+.s1{width:16px;top:2px;left:3px;animation-delay:.3s}.s2{width:5px;top:14px;left:3px}
+.s3{width:10px;top:17px;left:9px;animation-delay:.6s}.s4{width:14px;top:0;left:15px;animation-delay:1.3s}
+@keyframes stTw{0%,100%{transform:scale(1)}40%{transform:scale(1.2)}80%{transform:scale(.8)}}
+
+/* Sidebar */
+.sidebar{
+position:fixed;top:56px;left:0;bottom:0;width:280px;
+background:var(--sidebar-bg);border-right:1px solid var(--border);
+overflow-y:auto;padding:20px 0;z-index:90;
+transition:transform .3s,background .3s,border-color .3s;
+}
+@media(max-width:900px){
+.sidebar{transform:translateX(-100%);width:300px;z-index:200;box-shadow:4px 0 30px rgba(0,0,0,.2)}
+.sidebar.open{transform:translateX(0)}
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:150}
+.overlay.show{display:block}
+}
+.sidebar-header{padding:0 20px 16px;font-size:12px;text-transform:uppercase;letter-spacing:2px;color:var(--text3);font-weight:600}
+.toc-link{
+display:block;padding:8px 20px 8px 24px;font-size:14px;color:var(--text2);
+text-decoration:none;border-left:2px solid transparent;transition:all .2s;line-height:1.4;
+}
+.toc-link:hover{color:var(--accent);background:var(--bg2)}
+.toc-link.active{color:var(--accent);border-left-color:var(--accent);background:var(--bg2);font-weight:600}
+
+/* Main */
+.main{margin-left:280px;padding:80px 24px 100px;transition:margin .3s}
+@media(max-width:900px){.main{margin-left:0}}
+.content{max-width:var(--max-w);margin:0 auto;overflow-x:hidden}
+
+/* Typography */
+.chapter{padding-bottom:60px;margin-bottom:40px;border-bottom:1px solid var(--border)}
+.chapter:last-child{border-bottom:none}
+.chapter h1{font-family:var(--font);font-size:clamp(1.6rem,4vw,2.2rem);font-weight:800;color:var(--text);margin:0 0 24px;line-height:1.15;letter-spacing:-.02em}
+.chapter h2{font-family:var(--font);font-size:clamp(1.2rem,3vw,1.5rem);font-weight:700;color:var(--text);margin:40px 0 16px;line-height:1.2}
+.chapter h3{font-family:var(--font);font-size:1.1rem;font-weight:600;color:var(--text);margin:32px 0 12px}
+.chapter h4{font-size:1rem;font-weight:600;color:var(--text2);margin:24px 0 8px}
+.chapter p{font-family:var(--font-reading);font-size:17px;line-height:1.75;margin-bottom:18px;color:var(--text)}
+.chapter strong{font-weight:700}.chapter em{font-style:italic}
+.chapter ul,.chapter ol{font-family:var(--font-reading);font-size:17px;line-height:1.7;margin:12px 0 18px;padding-left:28px}
+.chapter li{margin-bottom:8px}.chapter li>ul,.chapter li>ol{margin-top:6px}
+
+/* Code */
+.chapter pre{background:var(--code-bg);border:1px solid var(--border);border-radius:10px;padding:18px 20px;margin:20px 0;overflow-x:auto;font-family:var(--font-mono);font-size:14px;line-height:1.55;max-width:100%;white-space:pre-wrap;word-wrap:break-word;position:relative}
+.copy-btn{position:absolute;top:8px;right:8px;background:var(--accent);color:#fff;border:none;border-radius:6px;padding:4px 12px;font-size:12px;cursor:pointer;opacity:0;transition:opacity .2s;font-family:var(--font-sans);z-index:2}
+.chapter pre:hover .copy-btn{opacity:1}
+.copy-btn.copied{background:#4ecdc4}
+.chapter code{font-family:var(--font-mono);font-size:15px;background:var(--code-bg);padding:2px 6px;border-radius:5px;color:var(--accent)}
+.chapter pre code{background:none;padding:0;color:var(--text);font-size:14px}
+
+/* Table wrapper for scroll */
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:20px 0;border-radius:8px;max-width:100%}
+/* Tables */
+.chapter table{width:100%;border-collapse:collapse;font-size:15px;border-radius:8px;min-width:320px;margin:0}
+.chapter thead{background:var(--accent);color:#fff}
+.chapter th{padding:10px 14px;text-align:left;font-size:13px;font-weight:600;white-space:nowrap}
+.chapter td{padding:10px 14px;border-bottom:1px solid var(--border);font-family:var(--font-reading)}
+.chapter tr:nth-child(even){background:var(--bg2)}
+
+/* Blockquote */
+.chapter blockquote{border-left:3px solid var(--accent-light);background:var(--bg2);padding:16px 20px;margin:20px 0;border-radius:0 8px 8px 0;font-style:italic}
+.chapter blockquote p{margin-bottom:8px;font-size:16px}
+
+/* HR */
+.chapter hr{border:none;border-top:2px solid var(--border);margin:40px 60px}
+
+/* Scroll to top */
+.scroll-top{
+position:fixed;bottom:24px;right:24px;width:44px;height:44px;border-radius:12px;
+background:var(--accent);color:#fff;border:none;cursor:pointer;
+display:none;align-items:center;justify-content:center;
+box-shadow:0 4px 20px rgba(0,0,0,.2);z-index:50;transition:all .3s;
+}
+.scroll-top:hover{transform:translateY(-2px)}
+.scroll-top.show{display:flex}
+.scroll-top svg{width:20px;height:20px;fill:currentColor}
+
+/* Fullscreen / Focus Mode */
+.focus-btn{
+background:none;border:1px solid var(--border);width:34px;height:34px;
+border-radius:8px;cursor:pointer;color:var(--text);
+display:inline-flex;align-items:center;justify-content:center;transition:all .2s;
+}
+.focus-btn:hover{border-color:var(--accent);color:var(--accent)}
+.focus-btn svg{width:16px;height:16px;fill:currentColor}
+body.focus-mode .topbar{transform:translateY(-100%)}
+body.focus-mode .sidebar{transform:translateX(-100%)}
+body.focus-mode .main{margin-left:0;padding-top:40px}
+body.focus-mode .scroll-top,.body.focus-mode .resume-banner{display:none!important}
+body.focus-mode .progress{opacity:0}
+body.focus-mode .focus-exit{display:flex}
+.focus-exit{
+display:none;position:fixed;top:16px;right:16px;z-index:200;
+background:var(--bg);border:1px solid var(--border);border-radius:10px;
+padding:8px 16px;font-size:13px;font-weight:600;color:var(--text2);
+cursor:pointer;align-items:center;gap:6px;
+box-shadow:0 4px 20px rgba(0,0,0,.15);transition:all .2s;
+}
+.focus-exit:hover{color:var(--accent);border-color:var(--accent)}
+.focus-exit kbd{
+background:var(--bg2);border:1px solid var(--border);border-radius:4px;
+padding:1px 6px;font-size:11px;font-family:var(--font-mono);
+}
+
+/* Resume banner (mobile-first popup) */
+.resume-banner{
+display:none;position:fixed;bottom:16px;left:16px;right:16px;
+background:var(--card);border:1px solid var(--border);border-radius:16px;
+padding:16px;z-index:60;
+box-shadow:0 8px 32px rgba(0,0,0,.25);
+transition:all .3s;
+max-width:420px;margin:0 auto;
+}
+.resume-banner.show{display:block;animation:resumeIn .4s ease}
+@keyframes resumeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.resume-top{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.resume-icon{width:36px;height:36px;border-radius:10px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.resume-icon svg{width:18px;height:18px;fill:currentColor}
+.resume-info{flex:1;min-width:0}
+.resume-label{font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:var(--text3);font-weight:600;margin-bottom:2px}
+.resume-chapter{font-size:14px;font-weight:700;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.resume-close{background:none;border:none;color:var(--text3);cursor:pointer;padding:4px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:color .2s}
+.resume-close:hover{color:var(--text)}
+.resume-close svg{width:16px;height:16px;fill:currentColor}
+.resume-progress{height:4px;background:var(--border);border-radius:2px;margin-bottom:12px;overflow:hidden}
+.resume-progress-bar{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-light));border-radius:2px;transition:width .3s}
+.resume-btn{
+width:100%;padding:10px;border:none;border-radius:10px;
+background:var(--accent);color:#fff;font-size:14px;font-weight:600;
+cursor:pointer;transition:opacity .2s;display:flex;align-items:center;justify-content:center;gap:8px;
+}
+.resume-btn:hover{opacity:.9}
+.resume-btn svg{width:16px;height:16px;fill:currentColor}
+
+/* Update toast */
+.update-toast{
+display:none;position:fixed;bottom:24px;left:50%;transform:translateX(-50%);
+background:var(--card);border:1px solid var(--border);border-radius:16px;
+padding:20px 24px;z-index:999;max-width:420px;width:calc(100% - 32px);
+box-shadow:0 12px 40px rgba(0,0,0,.4);
+}
+.update-toast.show{display:block;animation:toastIn .4s ease}
+@keyframes toastIn{from{opacity:0;transform:translateX(-50%) translateY(20px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+.update-toast h3{font-size:15px;color:var(--text);margin-bottom:8px}
+.update-toast ul{padding-left:18px;margin:8px 0 14px;font-size:13px;color:var(--text2);line-height:1.6}
+.update-toast .ver{font-size:12px;color:var(--accent);margin-bottom:6px;letter-spacing:1px}
+.update-toast button{background:var(--accent);color:#fff;border:none;border-radius:8px;padding:8px 20px;font-size:13px;font-weight:600;cursor:pointer;width:100%}
+.update-toast button:hover{opacity:.9}
+
+/* Responsive */
+@media(max-width:600px){
+.chapter table{font-size:13px}.chapter th,.chapter td{padding:8px 10px}
+.chapter p{font-size:16px}.chapter pre{font-size:13px;padding:14px 12px}
+.chapter ul,.chapter ol{padding-left:20px}
+.topbar-actions .btn-sm span{display:none}
+.main{padding:70px 14px 80px}
+}
+</style>
+</head>
+<body>
+<div class="progress" id="progress" role="progressbar" aria-label="Lesefortschritt"></div>
+<div class="overlay" id="overlay"></div>
+
+<header class="topbar">
+<div class="topbar-left">
+<button class="menu-btn" id="menuBtn" type="button" aria-label="Inhaltsverzeichnis &ouml;ffnen" aria-expanded="false" aria-controls="sidebar">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+</button>
+<div class="topbar-title"><a href="../">Prompt Engineering Meistern</a> &middot; Band 11</div>
+</div>
+<div class="topbar-actions">
+<a href="../output/Band_11_Prompt-Sammlung.pdf" class="btn-sm" download aria-label="PDF herunterladen">
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+<span>PDF</span>
+</a>
+<button class="focus-btn" id="focusBtn" type="button" aria-label="Vollbild-Lesemodus">
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
+</button>
+<label class="switch" aria-label="Farbmodus umschalten">
+<input id="themeInput" type="checkbox" role="switch" aria-label="Dark Mode">
+<div class="tm-slider">
+<div class="sun-moon">
+<svg class="moon-dot md1" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="50"/></svg>
+<svg class="moon-dot md2" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="50"/></svg>
+<svg class="moon-dot md3" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="50"/></svg>
+<svg class="light-ray lr1" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="50"/></svg>
+<svg class="light-ray lr2" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="50"/></svg>
+<svg class="light-ray lr3" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="50"/></svg>
+<svg class="cloud-d c1" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="50"/></svg>
+<svg class="cloud-d c2" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="50"/></svg>
+<svg class="cloud-d c3" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="50"/></svg>
+<svg class="cloud-l c4" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="50"/></svg>
+<svg class="cloud-l c5" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="50"/></svg>
+<svg class="cloud-l c6" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="50"/></svg>
+</div>
+<div class="stars">
+<svg class="star s1" viewBox="0 0 20 20" aria-hidden="true"><path d="M0 10C10 10 10 10 0 10 10 10 10 10 10 20 10 10 10 10 20 10 10 10 10 10 10 0 10 10 10 10 0 10Z"/></svg>
+<svg class="star s2" viewBox="0 0 20 20" aria-hidden="true"><path d="M0 10C10 10 10 10 0 10 10 10 10 10 10 20 10 10 10 10 20 10 10 10 10 10 10 0 10 10 10 10 0 10Z"/></svg>
+<svg class="star s3" viewBox="0 0 20 20" aria-hidden="true"><path d="M0 10C10 10 10 10 0 10 10 10 10 10 10 20 10 10 10 10 20 10 10 10 10 10 10 0 10 10 10 10 0 10Z"/></svg>
+<svg class="star s4" viewBox="0 0 20 20" aria-hidden="true"><path d="M0 10C10 10 10 10 0 10 10 10 10 10 10 20 10 10 10 10 20 10 10 10 10 10 10 0 10 10 10 10 0 10Z"/></svg>
+</div>
+</div>
+</label>
+</div>
+</header>
+
+<nav class="sidebar" id="sidebar" aria-label="Inhaltsverzeichnis">
+<div class="sidebar-header">Kapitel</div>
+<a href="#ch-0" class="toc-link" data-target="ch-0">Die ultimative Prompt-Sammlung</a>
+<a href="#ch-1" class="toc-link" data-target="ch-1">Alltag & Grundlagen</a>
+<a href="#ch-2" class="toc-link" data-target="ch-2">E-Mail & Kommunikation</a>
+<a href="#ch-3" class="toc-link" data-target="ch-3">Business & Berichte</a>
+<a href="#ch-4" class="toc-link" data-target="ch-4">Marketing & Social Media</a>
+<a href="#ch-5" class="toc-link" data-target="ch-5">Bildung & E-Learning</a>
+<a href="#ch-6" class="toc-link" data-target="ch-6">Schreiben & Kreativ</a>
+<a href="#ch-7" class="toc-link" data-target="ch-7">Datenanalyse & Finanzen</a>
+<a href="#ch-8" class="toc-link" data-target="ch-8">Recht, Medizin & HR</a>
+<a href="#ch-9" class="toc-link" data-target="ch-9">Code & Entwicklung</a>
+<a href="#ch-10" class="toc-link" data-target="ch-10">Strategie & Entscheidungen</a>
+</nav>
+
+<main class="main" id="main">
+<article class="content">
+<section class="chapter" id="ch-0">
+<h1 id="die-ultimative-prompt-sammlung">Die ultimative Prompt-Sammlung</h1>
+<p>200+ fertige Prompts für jeden Bereich deines Lebens. Kopieren, Platzhalter ausfüllen, loslegen.</p>
+<p><strong>So nutzt du dieses Buch:</strong> Jeder Prompt hat einen Titel und eine Kategorie. Die Platzhalter in [ECKIGEN KLAMMERN] füllst du mit deinen Angaben aus. Die Prompts funktionieren mit Claude, ChatGPT, Gemini und jedem anderen modernen LLM.</p>
+<p><strong>Tipp:</strong> Nutze diese Prompts als Startpunkt. Passe sie an deinen Kontext an. Kombiniere sie. Baue dir deine eigene Bibliothek.</p>
+</section>
+<section class="chapter" id="ch-1">
+<h1 id="alltag-grundlagen">Alltag &amp; Grundlagen</h1>
+<h2 id="komplexes-thema-einfach-erklart">Komplexes Thema einfach erklärt</h2>
+<div class="highlight"><pre><span></span><code>Erkläre [THEMA] so, dass ein 12-Jähriger es versteht.
+Nutze eine Alltagsanalogie. Maximal 5 Sätze.
+Am Ende: Eine Frage, die zum Weiterdenken anregt.
+</code></pre></div>
+
+<h2 id="pro-und-contra-liste">Pro- und Contra-Liste</h2>
+<div class="highlight"><pre><span></span><code>Erstelle eine Pro/Contra-Liste für [ENTSCHEIDUNG].
+Für jedes Argument: Gewicht (1-5) und kurze Begründung.
+Am Ende: Deine Empfehlung basierend auf den Gewichtungen.
+</code></pre></div>
+
+<h2 id="text-zusammenfassen">Text zusammenfassen</h2>
+<div class="highlight"><pre><span></span><code>Fasse folgenden Text zusammen:
+&quot;&quot;&quot;[TEXT EINFÜGEN]&quot;&quot;&quot;
+
+Drei Versionen:
+1. Ein Satz (die Kernaussage)
+2. Ein Absatz (5 Sätze)
+3. Bullet Points (5-7 Punkte)
+</code></pre></div>
+
+<h2 id="brainstorming-partner">Brainstorming-Partner</h2>
+<div class="highlight"><pre><span></span><code>Ich brauche Ideen für [THEMA/PROBLEM].
+Generiere 10 Ideen – davon:
+- 5 naheliegende/sichere
+- 3 kreative/ungewöhnliche
+- 2 provokante/verrückte
+Für jede Idee: Ein Satz Beschreibung.
+</code></pre></div>
+
+<h2 id="text-ubersetzen-und-anpassen">Text übersetzen und anpassen</h2>
+<div class="highlight"><pre><span></span><code>Übersetze folgenden Text von [SPRACHE] nach [ZIELSPRACHE]:
+&quot;&quot;&quot;[TEXT]&quot;&quot;&quot;
+
+Nicht wörtlich übersetzen, sondern den Sinn und Ton
+beibehalten. Kulturelle Referenzen anpassen.
+Fachbegriffe in Klammern im Original belassen.
+</code></pre></div>
+
+<h2 id="feedback-zu-meinem-text">Feedback zu meinem Text</h2>
+<div class="highlight"><pre><span></span><code>Hier ist mein Text:
+&quot;&quot;&quot;[TEXT EINFÜGEN]&quot;&quot;&quot;
+
+Gib konstruktives Feedback:
+1. Stärken (2-3 Punkte)
+2. Schwächen (2-3 Punkte)
+3. Konkrete Verbesserungsvorschläge (mit Beispielen)
+4. Gesamteindruck (1 Satz)
+Ton: Ehrlich aber ermutigend.
+</code></pre></div>
+
+<h2 id="alltags-recherche">Alltags-Recherche</h2>
+<div class="highlight"><pre><span></span><code>Ich muss mich schnell in [THEMA] einarbeiten.
+Mein Vorwissen: [NIVEAU – keins/grundlegend/fortgeschritten]
+Verfügbare Zeit: [ZEIT]
+
+Erstelle einen Lernplan:
+1. Das Wichtigste zuerst (Grundkonzepte)
+2. Vertiefung (Details)
+3. Nice-to-know (kann warten)
+Für jeden Block: 3-5 Kernpunkte.
+</code></pre></div>
+
+<h2 id="vergleich-erstellen">Vergleich erstellen</h2>
+<div class="highlight"><pre><span></span><code>Vergleiche [OPTION A] und [OPTION B].
+
+Kriterien: [KRITERIUM 1, 2, 3, 4, 5]
+Format: Vergleichstabelle mit Bewertung (1-10 pro Kriterium)
+Am Ende: Empfehlung mit Begründung.
+Für wen ist A besser? Für wen B?
+</code></pre></div>
+
+<h2 id="schwieriges-gesprach-vorbereiten">Schwieriges Gespräch vorbereiten</h2>
+<div class="highlight"><pre><span></span><code>Ich muss ein schwieriges Gespräch führen.
+Situation: [WAS IST PASSIERT]
+Mit wem: [PERSON UND BEZIEHUNG]
+Mein Ziel: [WAS WILL ICH ERREICHEN]
+
+Erstelle einen Gesprächsleitfaden:
+1. Eröffnung (wie anfangen?)
+2. Kernbotschaft (was sagen?)
+3. Wenn die Person [REAKTION] zeigt: Wie reagieren?
+4. Abschluss (wie beenden?)
+</code></pre></div>
+
+<h2 id="tagesplan-erstellen">Tagesplan erstellen</h2>
+<div class="highlight"><pre><span></span><code>Hier sind meine Aufgaben für heute: [LISTE]
+Meetings: [ZEITEN]
+Mein Tag: [START] bis [ENDE]
+Energielevel: Morgens am höchsten
+
+Erstelle einen Tagesplan:
+- Schwierigste Aufgabe in die produktivste Zeit
+- Leichtes um Meetings herum
+- Puffer einplanen
+- Top 3 &quot;Muss heute fertig&quot; markieren
+</code></pre></div>
+
+<h2 id="brief-oder-beschwerde-schreiben">Brief oder Beschwerde schreiben</h2>
+<div class="highlight"><pre><span></span><code>Schreibe einen [Brief/Beschwerde/Antrag] an [EMPFÄNGER].
+
+Anlass: [WARUM]
+Mein Anliegen: [WAS WILL ICH]
+Bisherige Schritte: [WAS HABE ICH SCHON VERSUCHT]
+
+Ton: [Sachlich/Bestimmt/Höflich aber klar]
+Länge: Max. 1 Seite.
+Inklusive: Frist für Antwort, Konsequenz bei Nicht-Reaktion.
+</code></pre></div>
+
+<h2 id="rezept-assistent">Rezept-Assistent</h2>
+<div class="highlight"><pre><span></span><code>Ich habe folgende Zutaten: [ZUTATEN]
+Ernährung: [EINSCHRÄNKUNGEN, z.B. vegetarisch, glutenfrei]
+Zeit: [MINUTEN]
+Kochkenntnisse: [Anfänger/Fortgeschritten]
+
+Schlage 3 Rezepte vor. Für jedes:
+- Name und Beschreibung (1 Satz)
+- Zutaten (was ich habe + was ich brauche)
+- Schritte (nummeriert, einfach)
+- Zeitangabe pro Schritt
+</code></pre></div>
+
+<h2 id="reise-planen">Reise planen</h2>
+<div class="highlight"><pre><span></span><code>Plane eine Reise für mich.
+Ziel: [WOHIN]
+Dauer: [TAGE]
+Budget: [BETRAG]
+Interessen: [WAS INTERESSIERT MICH]
+Reiseart: [Entspannung/Abenteuer/Kultur/Mix]
+
+Erstelle einen Tages-für-Tages-Plan mit:
+- Aktivitäten (mit ungefähren Kosten)
+- Restaurant-Empfehlungen
+- Insider-Tipps
+- Was man vermeiden sollte
+</code></pre></div>
+
+<h2 id="geschenkideen">Geschenkideen</h2>
+<div class="highlight"><pre><span></span><code>Ich brauche ein Geschenk für [PERSON].
+Anlass: [ANLASS]
+Budget: [BETRAG]
+Die Person mag: [INTERESSEN]
+Die Person hat schon: [WAS NICHT NOCHMAL]
+
+Generiere 7 Geschenkideen:
+- 3 materielle Geschenke
+- 2 Erlebnis-Geschenke
+- 2 selbstgemachte/persönliche
+Für jede Idee: Warum es passt, wo kaufen, ungefährer Preis.
+</code></pre></div>
+
+<h2 id="gewohnheit-aufbauen">Gewohnheit aufbauen</h2>
+<div class="highlight"><pre><span></span><code>Ich möchte die Gewohnheit [GEWOHNHEIT] aufbauen.
+Bisher gescheitert weil: [GRUND]
+Mein Alltag: [KURZE BESCHREIBUNG]
+
+Erstelle einen 30-Tage-Plan:
+Woche 1: Mini-Version (so klein, dass ich nicht scheitern kann)
+Woche 2: Leichte Steigerung
+Woche 3: Ziel-Niveau
+Woche 4: Festigung + Backup-Plan für schlechte Tage
+Trigger: Wann genau im Tagesablauf?
+</code></pre></div>
+
+<h2 id="verhandlung-vorbereiten">Verhandlung vorbereiten</h2>
+<div class="highlight"><pre><span></span><code>Ich muss über [THEMA] verhandeln.
+Meine Position: [WAS WILL ICH]
+Gegenseite: [WER, WAS WOLLEN SIE VERMUTLICH]
+Mein BATNA (beste Alternative): [PLAN B]
+
+Bereite mich vor:
+1. Meine 3 stärksten Argumente
+2. Die 3 wahrscheinlichsten Gegenargumente + meine Antworten
+3. Eröffnungsstrategie
+4. Mein Maximal-/Minimal-Ziel
+5. Wann stehe ich auf und gehe?
+</code></pre></div>
+
+<h2 id="entschuldigung-formulieren">Entschuldigung formulieren</h2>
+<div class="highlight"><pre><span></span><code>Ich muss mich bei [PERSON] für [WAS] entschuldigen.
+Kontext: [WAS IST PASSIERT]
+Unsere Beziehung: [BERUFLICH/PRIVAT/FREUNDSCHAFT]
+
+Formuliere eine ehrliche Entschuldigung:
+1. Anerkennung (was ich falsch gemacht habe)
+2. Keine Ausreden (kein &quot;aber&quot;)
+3. Verständnis (warum es die Person verletzt hat)
+4. Wiedergutmachung (was ich konkret tue)
+5. Zukunft (wie ich es beim nächsten Mal besser mache)
+</code></pre></div>
+
+<h2 id="text-in-anderen-stil-umschreiben">Text in anderen Stil umschreiben</h2>
+<div class="highlight"><pre><span></span><code>Schreibe folgenden Text um:
+&quot;&quot;&quot;[TEXT]&quot;&quot;&quot;
+
+Neuer Stil: [WÄHLE]
+- Formell → Locker
+- Locker → Formell
+- Lang → Kurz (50% kürzen)
+- Passiv → Aktiv
+- Kompliziert → Einfach (B1-Niveau)
+- Sachlich → Emotional / Storytelling
+
+Zeige Vorher/Nachher für die 3 wichtigsten Änderungen.
+</code></pre></div>
+
+<h2 id="kundigungvertrag-verstehen">Kündigung/Vertrag verstehen</h2>
+<div class="highlight"><pre><span></span><code>Hier ist ein Dokument (Vertrag/Kündigung/AGB):
+&quot;&quot;&quot;[TEXT EINFÜGEN]&quot;&quot;&quot;
+
+Erkläre in einfacher Sprache:
+1. Worum geht es? (3 Sätze)
+2. Was sind meine Rechte?
+3. Was sind meine Pflichten?
+4. Gibt es Fristen, die ich beachten muss?
+5. Gibt es problematische Klauseln?
+6. Was sollte ich einen Anwalt fragen?
+</code></pre></div>
+
+<h2 id="morgenroutine-optimieren">Morgenroutine optimieren</h2>
+<div class="highlight"><pre><span></span><code>Meine aktuelle Morgenroutine: [BESCHREIBUNG]
+Aufstehzeit: [UHRZEIT]
+Muss das Haus verlassen um: [UHRZEIT]
+Meine Ziele: [z.B. produktiver, sportlicher, ruhiger]
+
+Optimiere meine Routine:
+- Was streichen?
+- Was hinzufügen?
+- Bessere Reihenfolge?
+- Zeitpuffer wo nötig
+Format: Minutengenaue Timeline
+</code></pre></div>
+</section>
+<section class="chapter" id="ch-2">
+<h1 id="e-mail-kommunikation">E-Mail &amp; Kommunikation</h1>
+<h2 id="professionelle-e-mail-universaltemplate">Professionelle E-Mail (Universaltemplate)</h2>
+<div class="highlight"><pre><span></span><code>Schreibe eine E-Mail.
+AN: [EMPFÄNGER + BEZIEHUNG]
+ZIEL: [Was soll der Empfänger tun/wissen?]
+TON: [Formell/Locker/Diplomatisch]
+KONTEXT: [Hintergrund in 2-3 Sätzen]
+MAX. LÄNGE: [Kurz (3-5 Sätze) / Mittel / Lang]
+</code></pre></div>
+
+<h2 id="follow-up-nach-angebot">Follow-up nach Angebot</h2>
+<div class="highlight"><pre><span></span><code>Schreibe eine Follow-up-Mail an [KUNDENNAME].
+Angebot gesendet am: [DATUM]
+Angebotssumme: [BETRAG]
+Noch keine Antwort seit [X] Tagen.
+
+Ton: Freundlich, nicht aufdringlich.
+Erinnere an den Mehrwert, nicht an die offene Antwort.
+Biete konkreten nächsten Schritt an (15-Min-Call).
+Max. 5 Sätze.
+</code></pre></div>
+
+<h2 id="professionelle-absage">Professionelle Absage</h2>
+<div class="highlight"><pre><span></span><code>Schreibe eine Absage an [EMPFÄNGER].
+Situation: [Bewerbung/Angebot/Einladung/Zusammenarbeit]
+Grund: [Ehrlicher Grund, kurz]
+
+Ton: Wertschätzend, direkt, nicht drumherum reden.
+Tür offen lassen: [Ja, ehrlich / Nein]
+Max. 4 Sätze nach der Begrüßung.
+</code></pre></div>
+
+<h2 id="eskalations-mail">Eskalations-Mail</h2>
+<div class="highlight"><pre><span></span><code>Schreibe eine E-Mail an meinen Vorgesetzten.
+Problem: [WAS IST DAS PROBLEM]
+Seit wann: [ZEITRAUM]
+Was ich versucht habe: [BISHERIGE MASSNAHMEN]
+Was ich brauche: [KONKRETE UNTERSTÜTZUNG]
+
+Ton: Sachlich, lösungsorientiert, keine Schuldzuweisung.
+Struktur: Problem → Bisherige Schritte → Benötigte Hilfe.
+Max. 8 Sätze.
+</code></pre></div>
+
+<h2 id="kaltakquise-mail">Kaltakquise-Mail</h2>
+<div class="highlight"><pre><span></span><code>Schreibe eine Kaltakquise-Mail.
+Empfänger: [ROLLE] bei [UNTERNEHMEN]
+Mein Angebot: [WAS ICH ANBIETE]
+Relevanz: [WARUM IST DAS FÜR DEN EMPFÄNGER RELEVANT]
+
+Betreffzeile: Neugier wecken, keine leeren Versprechen.
+Erster Satz: Konkreter Bezug zum Empfänger (NICHT &quot;Ich bin...&quot;).
+Max. 6 Sätze. CTA: Konkreter Vorschlag (15-Min-Call).
+</code></pre></div>
+
+<h2 id="e-mail-hoflich-beantworten">E-Mail höflich beantworten</h2>
+<div class="highlight"><pre><span></span><code>Hier ist eine E-Mail, die ich erhalten habe:
+&quot;&quot;&quot;[EMAIL EINFÜGEN]&quot;&quot;&quot;
+
+Schreibe eine Antwort.
+Meine Position: [WER BIN ICH]
+Mein Ziel: [WAS WILL ICH]
+Besonderheit: [z.B. &quot;Lehne höflich ab&quot; / &quot;Stimme zu,
+aber mit Bedingung&quot; / &quot;Bitte um mehr Zeit&quot;]
+Ton: [Formell/Locker/Diplomatisch]
+</code></pre></div>
+
+<h2 id="schwierige-e-mail-3-varianten">Schwierige E-Mail – 3 Varianten</h2>
+<div class="highlight"><pre><span></span><code>Ich habe diese E-Mail erhalten und bin [verärgert/unsicher/überfordert]:
+&quot;&quot;&quot;[EMAIL EINFÜGEN]&quot;&quot;&quot;
+
+Schreibe 3 Antwort-Varianten:
+1. Diplomatisch – deeskalierend, lösungsorientiert
+2. Direkt – klar in der Sache, respektvoll
+3. Minimal – so kurz wie möglich, nur das Nötigste
+
+Ich wähle morgen früh die Version, die dann noch richtig klingt.
+</code></pre></div>
+
+<h2 id="meeting-einladung">Meeting-Einladung</h2>
+<div class="highlight"><pre><span></span><code>Schreibe eine Meeting-Einladung.
+Thema: [THEMA]
+Teilnehmer: [WER]
+Dauer: [MINUTEN]
+Ziel: [Was soll am Ende entschieden/geklärt sein?]
+Vorbereitung: [Was sollten Teilnehmer vorher lesen/tun?]
+
+Format: Betreff, kurze Beschreibung, Agenda (3-5 Punkte
+mit Zeitangabe), Vorbereitungshinweis.
+</code></pre></div>
+
+<h2 id="terminvorschlag">Terminvorschlag</h2>
+<div class="highlight"><pre><span></span><code>Schreibe eine E-Mail mit Terminvorschlag.
+Anlass: [WARUM TREFFEN WIR UNS]
+Empfänger: [WER]
+Dauer: [MINUTEN]
+
+Biete 3 konkrete Zeitslots an:
+- [OPTION 1]
+- [OPTION 2]
+- [OPTION 3]
+Ton: Professionell, flexibel.
+&quot;Falls keiner passt, schlage gerne andere Zeiten vor.&quot;
+</code></pre></div>
+
+<h2 id="dankes-mail">Dankes-Mail</h2>
+<div class="highlight"><pre><span></span><code>Schreibe eine Dankes-Mail an [PERSON].
+Anlass: [WOFÜR DANKE ICH]
+Beziehung: [Kunde/Kollege/Chef/Partner]
+
+Sei konkret – nicht &quot;Danke für alles&quot; sondern
+&quot;Danke für [SPEZIFISCHE SACHE], das hat [KONKRETER EFFEKT].&quot;
+Optional: Ausblick auf nächste Zusammenarbeit.
+Max. 4 Sätze.
+</code></pre></div>
+
+<h2 id="statusbericht-per-mail">Statusbericht per Mail</h2>
+<div class="highlight"><pre><span></span><code>Schreibe ein wöchentliches Status-Update per E-Mail.
+Projekt: [PROJEKTNAME]
+Empfänger: [WER]
+
+Inhalt:
+- Erledigt diese Woche: [STICHPUNKTE]
+- Geplant nächste Woche: [STICHPUNKTE]
+- Blocker: [FALLS VORHANDEN]
+- Entscheidungsbedarf: [FALLS VORHANDEN]
+
+Format: Bullet Points, max. 10 Zeilen. Ampelfarbe oben
+(🟢 alles gut / 🟡 Aufmerksamkeit nötig / 🔴 Problem).
+</code></pre></div>
+
+<h2 id="urlaubsabwesenheit">Urlaubsabwesenheit</h2>
+<div class="highlight"><pre><span></span><code>Schreibe eine Abwesenheitsnotiz.
+Zeitraum: [VON] bis [BIS]
+Vertretung: [NAME + EMAIL]
+Erreichbarkeit: [Gar nicht / Nur Notfälle / Eingeschränkt]
+Sprache: [Deutsch / Englisch / Beides]
+
+Ton: Professionell, freundlich, klar.
+Informationen: Wann ich zurück bin, wer vertritt,
+wie dringend = an wen wenden.
+</code></pre></div>
+
+<h2 id="einfuhrung-vorstellung">Einführung / Vorstellung</h2>
+<div class="highlight"><pre><span></span><code>Schreibe eine E-Mail, in der ich [PERSON A] und [PERSON B]
+einander vorstelle.
+
+Person A: [Name, Rolle, warum relevant]
+Person B: [Name, Rolle, warum relevant]
+Gemeinsamer Nenner: [WARUM SOLLTEN SIE SICH KENNEN]
+
+Ton: Warm, professionell. Kurze Vorstellung beider,
+dann den gemeinsamen Nutzen hervorheben.
+CTA: &quot;Ich überlasse es euch, einen Termin zu finden.&quot;
+</code></pre></div>
+
+<h2 id="reklamation-schreiben">Reklamation schreiben</h2>
+<div class="highlight"><pre><span></span><code>Schreibe eine Reklamation an [UNTERNEHMEN].
+Produkt/Service: [WAS]
+Problem: [WAS IST PASSIERT]
+Kaufdatum: [DATUM]
+Bestellnummer: [NUMMER]
+
+Was ich will: [Erstattung/Umtausch/Reparatur/Gutschein]
+Ton: Bestimmt, sachlich, nicht aggressiv.
+Frist: [X] Tage für Antwort.
+Hinweis auf Verbraucherrechte.
+</code></pre></div>
+
+<h2 id="newsletter-text">Newsletter-Text</h2>
+<div class="highlight"><pre><span></span><code>Schreibe einen Newsletter.
+Zielgruppe: [WER]
+Thema: [WAS]
+Ziel: [Informieren/Verkaufen/Engagieren]
+
+Betreffzeile: 3 Varianten zum A/B-Testen
+Preheader: 40-90 Zeichen
+Hook: Erster Absatz (warum weiterlesen?)
+Hauptteil: Max. 300 Wörter
+CTA: Ein einziger, klar, prominent
+P.S.: Für zweites Angebot oder persönliche Note
+</code></pre></div>
+
+<h2 id="gehalts-mail">Gehalts-Mail</h2>
+<div class="highlight"><pre><span></span><code>Schreibe eine E-Mail an meinen Vorgesetzten,
+in der ich um ein Gespräch über meine Vergütung bitte.
+
+Meine Argumente: [LEISTUNGEN, MARKTVERGLEICH, NEUE AUFGABEN]
+Seit wann keine Anpassung: [ZEITRAUM]
+Ton: Selbstbewusst, sachlich, wertschätzend.
+
+NICHT: Ultimatum oder Drohung.
+SONDERN: Bitte um Gesprächstermin mit konkretem Thema.
+Max. 5 Sätze.
+</code></pre></div>
+
+<h2 id="empfehlungsschreiben-anfragen">Empfehlungsschreiben anfragen</h2>
+<div class="highlight"><pre><span></span><code>Schreibe eine E-Mail an [PERSON], in der ich um ein
+Empfehlungsschreiben bitte.
+
+Kontext: [WOFÜR BRAUCHE ICH ES]
+Unsere Zusammenarbeit: [WAS HABEN WIR ZUSAMMEN GEMACHT]
+Deadline: [BIS WANN]
+
+Ton: Höflich, dankbar, konkret.
+Hilf der Person: Nenne 2-3 Punkte, die sie
+erwähnen könnte (macht ihr die Arbeit leichter).
+</code></pre></div>
+
+<h2 id="absage-einer-einladung">Absage einer Einladung</h2>
+<div class="highlight"><pre><span></span><code>Schreibe eine höfliche Absage.
+Einladung zu: [EVENT/MEETING/FEIER]
+Von: [WER HAT EINGELADEN]
+Grund für Absage: [EHRLICHER GRUND]
+
+Ton: Wertschätzend, bedauernd (wenn ehrlich), kurz.
+Zeige, dass die Einladung dir wichtig ist.
+Optional: Alternative vorschlagen (anderer Termin/Kanal).
+Max. 4 Sätze.
+</code></pre></div>
+
+<h2 id="erinnerung-ohne-nervig-zu-sein">Erinnerung (ohne nervig zu sein)</h2>
+<div class="highlight"><pre><span></span><code>Schreibe eine Erinnerungs-Mail an [PERSON].
+Worum geht es: [OFFENER PUNKT]
+Seit wann offen: [ZEITRAUM]
+Welche Erinnerung ist das: [Erste/Zweite/Dritte]
+
+Ton: Freundlich, verständnisvoll, aber klar.
+Nicht: &quot;Ich wollte nur nachfragen...&quot;
+Sondern: Konkreter Bezug + konkreter nächster Schritt.
+Bei dritter Erinnerung: Sanfter Hinweis auf Konsequenz.
+</code></pre></div>
+
+<h2 id="feedback-anfrage">Feedback-Anfrage</h2>
+<div class="highlight"><pre><span></span><code>Schreibe eine E-Mail, in der ich um Feedback bitte.
+Wofür: [PROJEKT/PRÄSENTATION/DOKUMENT/ZUSAMMENARBEIT]
+An wen: [PERSON + BEZIEHUNG]
+
+Mache es der Person leicht:
+- 3 konkrete Fragen stellen (nicht &quot;Was denkst du?&quot;)
+- Zeitrahmen nennen (&quot;5 Minuten reichen&quot;)
+- Ehrlichkeit explizit einladen
+Ton: Offen, nicht defensiv.
+</code></pre></div>
+</section>
+<section class="chapter" id="ch-3">
+<h1 id="business-berichte">Business &amp; Berichte</h1>
+<h2 id="wochenbericht">Wochenbericht</h2>
+<div class="highlight"><pre><span></span><code>Erstelle einen Wochenbericht.
+Daten/Notizen: [STICHPUNKTE DER WOCHE]
+Vergleich mit: Vorwoche
+Zielgruppe: [Chef/Team/Vorstand]
+
+Struktur:
+1. Executive Summary (3 Sätze, wichtigste Entwicklung)
+2. KPIs als Tabelle (Ist vs. Plan vs. Vorwoche)
+3. Highlights (2-3 Punkte)
+4. Herausforderungen (2-3 Punkte)
+5. Action Items für nächste Woche
+Max. 1 Seite.
+</code></pre></div>
+
+<h2 id="monatsbericht">Monatsbericht</h2>
+<div class="highlight"><pre><span></span><code>Erstelle einen Monatsbericht für [ABTEILUNG].
+Daten: [MONATSDATEN EINFÜGEN]
+Vergleiche mit: Vormonat UND Vorjahresmonat.
+
+KPIs als Tabelle mit Ampelfarben (🟢🟡🔴).
+Für rote KPIs: Ursache und Gegenmaßnahme.
+Budget: Ist vs. Plan (Abweichung in %).
+Ausblick: Was erwarten wir nächsten Monat?
+Ton: Sachlich, datengetrieben. Max. 2 Seiten.
+</code></pre></div>
+
+<h2 id="meeting-protokoll-aufbereiten">Meeting-Protokoll aufbereiten</h2>
+<div class="highlight"><pre><span></span><code>Hier sind meine Meeting-Notizen (stichwortartig):
+&quot;&quot;&quot;[NOTIZEN EINFÜGEN]&quot;&quot;&quot;
+
+Erstelle ein strukturiertes Protokoll:
+- Datum, Teilnehmer, Dauer
+- Themen mit Key Points
+- ENTSCHEIDUNGEN (fett markiert)
+- Action Items: Wer | Was | Bis wann
+- Offene Fragen
+Max. 1 Seite.
+</code></pre></div>
+
+<h2 id="meeting-agenda-erstellen">Meeting-Agenda erstellen</h2>
+<div class="highlight"><pre><span></span><code>Erstelle eine Meeting-Agenda.
+Teilnehmer: [WER]
+Dauer: [MINUTEN]
+Ziel: [Was soll am Ende entschieden/geklärt sein?]
+
+Für jeden Agendapunkt:
+- Verb am Anfang (Entscheiden/Informieren/Besprechen)
+- Zeitblock (Minuten)
+- Verantwortlicher
+- Erwartetes Ergebnis (Information/Diskussion/Entscheidung)
+5 Minuten Puffer am Ende.
+</code></pre></div>
+
+<h2 id="sop-standard-operating-procedure">SOP (Standard Operating Procedure)</h2>
+<div class="highlight"><pre><span></span><code>Erstelle eine SOP für [PROZESS].
+Zielgruppe: Neue Mitarbeiter (erster Tag).
+
+Struktur:
+1. Zweck (1 Satz: Warum gibt es diesen Prozess?)
+2. Voraussetzungen (Was braucht man vorab?)
+3. Schritt-für-Schritt (nummeriert, einfache Sprache)
+4. Häufige Fehler (und wie man sie vermeidet)
+5. FAQ (3-5 typische Fragen)
+6. Ansprechpartner bei Problemen
+
+Wo etwas fehlen könnte: Markiere mit [PRÜFEN].
+</code></pre></div>
+
+<h2 id="wissenstransfer-interview">Wissenstransfer-Interview</h2>
+<div class="highlight"><pre><span></span><code>Ich erkläre dir jetzt einen Prozess/ein System, das nur
+ich kenne. Frag mich aktiv nach, wenn etwas unklar ist.
+Stelle gezielte Fragen, um Lücken zu finden.
+
+Am Ende erstellst du eine Dokumentation, die jemand
+anderes nutzen kann, um den Prozess ohne meine Hilfe
+durchzuführen.
+
+Starte mit: &quot;Okay, beschreibe mir erstmal das große Bild.&quot;
+</code></pre></div>
+
+<h2 id="elevator-pitch">Elevator Pitch</h2>
+<div class="highlight"><pre><span></span><code>Formuliere einen Elevator Pitch (30 Sekunden) für
+[PROJEKT/PRODUKT/IDEE].
+
+Zielgruppe: [WER]
+Struktur: Problem → Lösung → Nutzen → Call to Action
+Keine Fachbegriffe. Keine Buzzwords.
+
+Erstelle 3 Varianten:
+1. Fakten-basiert (Zahlen und Ergebnisse)
+2. Story-basiert (Anekdote oder Beispiel)
+3. Provokant (unerwarteter Einstieg)
+</code></pre></div>
+
+<h2 id="interne-ankundigung">Interne Ankündigung</h2>
+<div class="highlight"><pre><span></span><code>Schreibe eine interne Ankündigung.
+Änderung: [WAS ÄNDERT SICH]
+Grund: [WARUM]
+Ab wann: [DATUM]
+
+Was Mitarbeiter tun müssen: [KONKRETE AKTION]
+FAQ: 3 erwartete Fragen mit Antworten
+Ansprechpartner: [WER BEI FRAGEN]
+Ton: Transparent, sachlich, nicht beschönigend.
+</code></pre></div>
+
+<h2 id="projektstart-dokument">Projektstart-Dokument</h2>
+<div class="highlight"><pre><span></span><code>Erstelle ein Projektstart-Dokument (Project Brief).
+Projekt: [NAME]
+Auftraggeber: [WER]
+Ziel: [WAS SOLL ERREICHT WERDEN]
+Budget: [BETRAG]
+Timeline: [START BIS ENDE]
+Team: [WER IST BETEILIGT]
+
+Inhalt: Projektziel, Scope (was gehört dazu, was NICHT),
+Meilensteine, Risiken (Top 3), Erfolgskriterien,
+Kommunikationsplan.
+</code></pre></div>
+
+<h2 id="prasentations-konzept">Präsentations-Konzept</h2>
+<div class="highlight"><pre><span></span><code>Erstelle ein Slide-Konzept für eine Präsentation.
+Thema: [WAS]
+Zielgruppe: [WER]
+Dauer: [MINUTEN]
+Ziel: [Was soll die Zielgruppe danach tun/wissen?]
+
+Für jede Slide:
+- Titel
+- Kernaussage (1 Satz)
+- 3-4 Bullet Points
+- Visualisierung (Chart/Bild/Diagramm)
+REGEL: Eine Kernaussage pro Slide. Max. [X] Slides.
+</code></pre></div>
+
+<h2 id="risikoanalyse">Risikoanalyse</h2>
+<div class="highlight"><pre><span></span><code>Erstelle eine Risikoanalyse für [PROJEKT/VORHABEN].
+
+Identifiziere 8-10 Risiken. Für jedes:
+- Beschreibung (1 Satz)
+- Eintrittswahrscheinlichkeit (hoch/mittel/niedrig)
+- Auswirkung (hoch/mittel/niedrig)
+- Präventionsmaßnahme
+- Reaktionsmaßnahme
+
+Sortiere nach Risikoscore (Wahrscheinlichkeit × Auswirkung).
+Denke auch an: Teamdynamik, Scope Creep, Key-Person-Risiko.
+</code></pre></div>
+
+<h2 id="budget-erstellen">Budget erstellen</h2>
+<div class="highlight"><pre><span></span><code>Erstelle eine Budgetplanung für [PROJEKT/ZEITRAUM].
+
+Kategorien: Personal, Marketing, IT/Software, Büro, Reisen,
+[WEITERE KATEGORIEN]
+
+Format: Tabelle (Kategorie | Budget | Ist | Abweichung | %)
+Szenario-Analyse: Best Case / Base Case / Worst Case
+Risikopuffer: Empfohlener Prozentsatz
+Trigger-Punkte: Ab welcher Abweichung muss gehandelt werden?
+</code></pre></div>
+
+<h2 id="retrospektive-vorbereiten">Retrospektive vorbereiten</h2>
+<div class="highlight"><pre><span></span><code>Erstelle Materialien für eine Retrospektive.
+Zeitraum: [SPRINT/QUARTAL/PROJEKT]
+Team: [GRÖSSE UND ROLLEN]
+Methode: Start-Stop-Continue
+
+Fragen pro Kategorie (je 3).
+Vorlage für Dokumentation der Ergebnisse.
+Action-Item-Template: Was | Wer | Bis wann
+Ton: Konstruktiv, keine Schuldzuweisungen.
+Zeitplan: [DAUER] Minuten gesamt.
+</code></pre></div>
+
+<h2 id="investitionsbewertung">Investitionsbewertung</h2>
+<div class="highlight"><pre><span></span><code>Bewerte folgende Investition:
+Was: [INVESTITION]
+Kosten: [ANSCHAFFUNG + LAUFEND]
+Erwarteter Nutzen: [EINSPARUNGEN ODER UMSATZ]
+Zeitraum: [JAHRE]
+Alternative: Was passiert, wenn wir NICHT investieren?
+
+Berechne: ROI, Amortisationszeit, Break-Even.
+Szenario: Best/Base/Worst Case.
+Empfehlung: Investieren oder nicht? Begründung.
+</code></pre></div>
+
+<h2 id="stakeholder-update">Stakeholder-Update</h2>
+<div class="highlight"><pre><span></span><code>Erstelle ein Stakeholder-Update in 3 Versionen:
+
+DATEN: [PROJEKT-STATUS EINFÜGEN]
+
+1. Für den Auftraggeber (2 Minuten Lesezeit):
+   Meilensteine, Budget, Timeline-Änderungen
+2. Für das Team (5 Minuten):
+   Nächste Aufgaben, Blocker, Entscheidungen
+3. Für das Management (30 Sekunden):
+   Ampelstatus, eine Zahl, eine Empfehlung
+</code></pre></div>
+
+<h2 id="kpi-dashboard-definieren">KPI-Dashboard definieren</h2>
+<div class="highlight"><pre><span></span><code>Definiere ein KPI-Dashboard für [ABTEILUNG/PROJEKT].
+
+Welche 5-7 Kennzahlen sind die wichtigsten?
+Für jede Kennzahl:
+- Name und Definition (1 Satz)
+- Datenquelle (woher kommt die Zahl?)
+- Zielwert und Warnschwelle (grün/gelb/rot)
+- Frequenz (täglich/wöchentlich/monatlich)
+- Verantwortlicher
+
+Layout: Oben KPI-Karten, Mitte Trends, Unten Details.
+</code></pre></div>
+
+<h2 id="lessons-learned">Lessons Learned</h2>
+<div class="highlight"><pre><span></span><code>Unser Projekt [NAME] ist abgeschlossen.
+Was lief gut: [STICHPUNKTE]
+Was lief nicht gut: [STICHPUNKTE]
+
+Erstelle ein Lessons-Learned-Dokument:
+1. Was haben wir gelernt? (3-5 Punkte, konkret)
+2. Was würden wir anders machen?
+3. Was sollten wir beibehalten?
+4. Empfehlungen für ähnliche Projekte
+Keine Plattitüden. Konkret und umsetzbar.
+</code></pre></div>
+
+<h2 id="wettbewerbsanalyse">Wettbewerbsanalyse</h2>
+<div class="highlight"><pre><span></span><code>Analysiere unsere Positionierung vs. Wettbewerber.
+
+WIR: [BESCHREIBUNG, USP, PREISE]
+WETTBEWERBER 1: [NAME + ANGEBOT]
+WETTBEWERBER 2: [NAME + ANGEBOT]
+WETTBEWERBER 3: [NAME + ANGEBOT]
+
+Tabelle: Preis | USP | Zielgruppe | Stärke | Schwäche
+Wo ist unsere Nische?
+Wo sollten wir uns NICHT positionieren?
+</code></pre></div>
+
+<h2 id="quartalsplanung">Quartalsplanung</h2>
+<div class="highlight"><pre><span></span><code>Erstelle eine Quartalsplanung für [Q1/Q2/Q3/Q4].
+Abteilung: [NAME]
+Jahresziele: [ÜBERGEORDNETE ZIELE]
+Budget: [QUARTALSBUDGET]
+Team: [GRÖSSE]
+
+Für jeden Monat:
+- 2-3 Schwerpunkte
+- Meilensteine
+- Ressourcenbedarf
+OKR-Format: Objective + 3 Key Results pro Monat
+</code></pre></div>
+</section>
+<section class="chapter" id="ch-4">
+<h1 id="marketing-social-media">Marketing &amp; Social Media</h1>
+<h2 id="marketing-persona-erstellen">Marketing-Persona erstellen</h2>
+<div class="highlight"><pre><span></span><code>Erstelle eine Marketing-Persona für [PRODUKT/DIENSTLEISTUNG].
+Branche: [BRANCHE] | Preissegment: [BUDGET/MITTEL/PREMIUM]
+
+1. Demografie: Name, Alter, Beruf, Einkommen
+2. Psychografie: Werte, Interessen, Lebensstil
+3. 3 Pain Points, die mein Produkt löst
+4. Medienverhalten: Welche Plattformen, wann?
+5. 3 typische Einwände gegen mein Produkt
+6. Sprache: Wie redet diese Person?
+
+Erstelle 2 Personas (primär und sekundär).
+</code></pre></div>
+
+<h2 id="content-kalender">Content-Kalender</h2>
+<div class="highlight"><pre><span></span><code>Erstelle einen Content-Kalender für [ZEITRAUM].
+Marke: [BESCHREIBUNG]
+Plattformen: [INSTAGRAM/LINKEDIN/TIKTOK/BLOG/NEWSLETTER]
+Posting-Frequenz: [z.B. 3x/Woche Instagram, 1x Blog]
+
+Pro Post: Datum, Plattform, Content-Typ
+(Educational/Entertaining/Promotional), Thema + Hook, CTA.
+80/20-Regel: 80% Mehrwert, 20% Promotion.
+Saisonale Events berücksichtigen.
+</code></pre></div>
+
+<h2 id="linkedin-post">LinkedIn-Post</h2>
+<div class="highlight"><pre><span></span><code>Schreibe einen LinkedIn-Post zu [THEMA].
+Länge: 150-300 Wörter.
+
+Hook: Erste 2 Zeilen (alles vor &quot;...mehr&quot;) müssen fesseln.
+Struktur: Hook → Story/Insight → Takeaway → CTA (Frage)
+Ton: Professionell aber menschlich.
+KEIN: &quot;Ich freue mich bekannt zu geben...&quot;
+Max. 3 Emojis. Hashtags am Ende (3-5).
+</code></pre></div>
+
+<h2 id="instagram-caption">Instagram-Caption</h2>
+<div class="highlight"><pre><span></span><code>Schreibe eine Instagram-Caption für [THEMA/BILD].
+Länge: 150-250 Wörter.
+Hook: Erste Zeile muss zum Weiterlesen motivieren.
+CTA: [Speichern/Kommentieren/Link in Bio]
+
+Hashtags: 15-20, Mischung aus:
+- 5 große (&gt;500k Posts)
+- 5 mittlere (50k-500k)
+- 5 Nische (&lt;50k)
+
+Zusätzlich: 3 Story-Slides und 1 Reel-Idee (30 Sek).
+</code></pre></div>
+
+<h2 id="seo-textoptimierung">SEO-Textoptimierung</h2>
+<div class="highlight"><pre><span></span><code>Optimiere folgenden Text für SEO:
+&quot;&quot;&quot;[TEXT]&quot;&quot;&quot;
+
+Hauptkeyword: [KEYWORD]
+Nebenkeywords: [3-5 KEYWORDS]
+
+Optimiere:
+1. Title Tag (max. 60 Zeichen, Keyword vorne)
+2. Meta Description (max. 155 Zeichen, mit CTA)
+3. H1 + H2-Struktur mit Keywords
+4. Keyword in den ersten 100 Wörtern
+5. Keyword-Dichte 1-2% (natürlich, kein Stuffing)
+6. Alt-Texte für Bilder
+7. 3-5 interne Link-Vorschläge
+</code></pre></div>
+
+<h2 id="blog-artikel-outline">Blog-Artikel-Outline</h2>
+<div class="highlight"><pre><span></span><code>Erstelle ein Outline für einen Blog-Artikel.
+Thema: [THEMA]
+Hauptkeyword: [KEYWORD]
+Zielgruppe: [WER LIEST DAS]
+Ziel: [SEO/Thought Leadership/Lead Generation]
+
+Struktur:
+- Titel (SEO-optimiert, max. 60 Zeichen)
+- H2/H3-Gliederung (5-7 Abschnitte)
+- Für jeden Abschnitt: 2-3 Kernpunkte
+- CTA am Ende
+- Geschätzte Wortanzahl: [ZAHL]
+</code></pre></div>
+
+<h2 id="e-mail-sequenz-automation">E-Mail-Sequenz (Automation)</h2>
+<div class="highlight"><pre><span></span><code>Erstelle eine E-Mail-Sequenz (5 E-Mails).
+Trigger: [Was löst die Sequenz aus?]
+Ziel: [Was soll am Ende passieren?]
+
+E-Mail 1 (Tag 0): Willkommen + sofortiger Mehrwert
+E-Mail 2 (Tag 2): Problem adressieren + Lösung andeuten
+E-Mail 3 (Tag 5): Social Proof (Testimonials, Zahlen)
+E-Mail 4 (Tag 8): Einwände entkräften
+E-Mail 5 (Tag 12): Finaler CTA + echte Dringlichkeit
+
+Für jede Mail: Betreffzeile, Inhalt (200 Wörter), CTA.
+</code></pre></div>
+
+<h2 id="ab-test-varianten">A/B-Test-Varianten</h2>
+<div class="highlight"><pre><span></span><code>Ich möchte [E-Mail-Betreff/Headline/CTA-Button] testen.
+Aktuell: [AKTUELLE VERSION]
+Ziel: [Öffnungsrate/CTR/Conversion verbessern]
+
+Erstelle 5 Varianten:
+1. Nutzen-fokussiert (Was bekommt der User?)
+2. Neugier-fokussiert (Was wird nicht verraten?)
+3. Dringlichkeit (Warum jetzt?)
+4. Social Proof (Was machen andere?)
+5. Konträr (das Gegenteil der üblichen Ansprache)
+Pro Variante: Text + Hypothese + warum es funktionieren könnte.
+</code></pre></div>
+
+<h2 id="produktbeschreibung">Produktbeschreibung</h2>
+<div class="highlight"><pre><span></span><code>Schreibe eine Produktbeschreibung für [PRODUKT].
+Zielgruppe: [WER KAUFT DAS]
+Plattform: [Webshop/Amazon/Instagram]
+Preis: [BETRAG]
+
+Struktur:
+1. Headline (Nutzen, nicht Feature)
+2. Subheadline (für wen, welches Problem löst es)
+3. 3-5 Features → als Benefits formuliert
+4. Social Proof (wenn vorhanden)
+5. CTA
+Ton: [Sachlich/Emotional/Premium/Verspielt]
+</code></pre></div>
+
+<h2 id="kampagnenkonzept">Kampagnenkonzept</h2>
+<div class="highlight"><pre><span></span><code>Erstelle ein Kampagnenkonzept für [PRODUKT/ANLASS].
+Zeitraum: [START BIS ENDE]
+Budget: [GROBE GRÖSSE]
+Kanäle: [SOCIAL MEDIA/EMAIL/BLOG/ADS]
+KPI-Ziel: [z.B. 500 Newsletter-Anmeldungen]
+
+4 Phasen:
+1. TEASER (Woche 1): Aufmerksamkeit
+2. LAUNCH (Woche 2): Hauptkampagne + Paid Ads
+3. SUSTAIN (Woche 3-4): Retargeting + Testimonials
+4. CLOSE (letzte Tage): Letzte-Chance-Messaging
+Pro Phase und Kanal: Konkreter Content-Vorschlag.
+</code></pre></div>
+
+<h2 id="faq-fur-website">FAQ für Website</h2>
+<div class="highlight"><pre><span></span><code>Erstelle 10 FAQ-Einträge für [PRODUKT/DIENSTLEISTUNG].
+
+Fragen wie echte Menschen sie googeln:
+- Nicht &quot;Was ist X?&quot; sondern &quot;Wie funktioniert X?&quot;
+- Mind. 2 Vergleichsfragen (&quot;X vs. Y?&quot;)
+- Mind. 2 Kostenfragen (&quot;Lohnt sich...?&quot;)
+Antworten: 2-4 Sätze, direkt und hilfreich.
+</code></pre></div>
+
+<h2 id="social-media-bio">Social-Media-Bio</h2>
+<div class="highlight"><pre><span></span><code>Schreibe eine Social-Media-Bio für [PLATTFORM].
+Wer: [NAME/MARKE]
+Was: [WAS MACHE ICH]
+Für wen: [ZIELGRUPPE]
+USP: [WAS MACHT MICH BESONDERS]
+
+Zeichenlimit: [140/150/160]
+Inklusive: Emoji (passend, max. 3), CTA, ggf. Hashtag.
+3 Varianten: Professionell, Kreativ, Persönlich.
+</code></pre></div>
+
+<h2 id="google-ads-text">Google Ads Text</h2>
+<div class="highlight"><pre><span></span><code>Schreibe Google Ads für [PRODUKT/DIENSTLEISTUNG].
+Keyword: [HAUPTKEYWORD]
+Zielgruppe: [WER SUCHT DAS]
+
+3 Anzeigen-Varianten:
+- Headline 1 (max. 30 Zeichen): Keyword + Nutzen
+- Headline 2 (max. 30 Zeichen): CTA oder USP
+- Headline 3 (max. 30 Zeichen): Vertrauenssignal
+- Description 1 (max. 90 Zeichen): Features + Benefits
+- Description 2 (max. 90 Zeichen): CTA + Dringlichkeit
+</code></pre></div>
+
+<h2 id="krisenkommunikation">Krisenkommunikation</h2>
+<div class="highlight"><pre><span></span><code>Schreibe ein Statement für [KRISENSITUATION].
+Was ist passiert: [FAKTEN]
+Betroffene: [WER IST BETROFFEN]
+Kanal: [Pressemitteilung/Social Media/E-Mail/Website]
+
+Struktur:
+1. Anerkennung des Problems (kein Leugnen)
+2. Was wir wissen (Fakten, nicht Spekulationen)
+3. Was wir tun (konkrete Maßnahmen)
+4. Nächste Schritte und Timeline
+5. Kontakt für Betroffene
+Ton: Transparent, empathisch, handlungsorientiert.
+</code></pre></div>
+
+<h2 id="testimonial-anfrage">Testimonial-Anfrage</h2>
+<div class="highlight"><pre><span></span><code>Schreibe eine Nachricht an [KUNDE], in der ich um ein
+Testimonial/Review bitte.
+
+Unser Projekt: [WAS HABEN WIR FÜR DEN KUNDEN GETAN]
+Ergebnis: [WAS HAT ES GEBRACHT]
+
+Mache es dem Kunden leicht:
+- 3 Leitfragen vorschlagen
+- Anbieten, einen Entwurf zu schreiben, den er anpassen kann
+- Optionen: Text, Video, LinkedIn-Empfehlung
+Ton: Dankbar, nicht fordernd. Max. 5 Sätze.
+</code></pre></div>
+
+<h2 id="marken-voice-definieren">Marken-Voice definieren</h2>
+<div class="highlight"><pre><span></span><code>Definiere eine Brand Voice für [MARKE].
+Branche: [BRANCHE]
+Zielgruppe: [WER]
+Werte: [3-5 KERNWERTE]
+Wettbewerber-Ton: [WIE KLINGEN DIE ANDEREN]
+
+Erstelle:
+1. Voice-Attribute (3 Adjektive, z.B. &quot;mutig, klar, warm&quot;)
+2. Do&#39;s und Don&#39;ts (je 5 Beispiele)
+3. Wortliste (10 Wörter, die wir nutzen / 10, die wir vermeiden)
+4. Beispiel-Sätze in unserer Voice (5 verschiedene Kontexte)
+</code></pre></div>
+
+<h2 id="influencer-outreach">Influencer-Outreach</h2>
+<div class="highlight"><pre><span></span><code>Schreibe eine Kooperations-Anfrage an [INFLUENCER].
+Plattform: [INSTAGRAM/YOUTUBE/TIKTOK]
+Follower: [ZAHL]
+Unsere Marke: [BESCHREIBUNG]
+Kooperationsidee: [WAS STELLEN WIR UNS VOR]
+
+Ton: Persönlich, nicht wie eine Massen-Mail.
+Zeige, dass du den Content des Influencers kennst.
+Konkretes Angebot (Produkt, Bezahlung, Freiheiten).
+Max. 6 Sätze. CTA: &quot;Hast du Lust auf ein kurzes Telefonat?&quot;
+</code></pre></div>
+
+<h2 id="content-recycling">Content-Recycling</h2>
+<div class="highlight"><pre><span></span><code>Hier ist ein bestehender Content-Piece:
+&quot;&quot;&quot;[BLOGPOST/ARTIKEL/VIDEO-TRANSKRIPT]&quot;&quot;&quot;
+
+Erstelle daraus:
+1. LinkedIn-Post (300 Wörter)
+2. Instagram-Caption (200 Wörter)
+3. Twitter/X-Thread (5 Tweets)
+4. Newsletter-Snippet (100 Wörter)
+5. 3 Reels/TikTok-Ideen (je 30 Sek Skript)
+Jedes Format an die Plattform angepasst, nicht nur gekürzt.
+</code></pre></div>
+</section>
+<section class="chapter" id="ch-5">
+<h1 id="bildung-e-learning">Bildung &amp; E-Learning</h1>
+<h2 id="unterrichtsentwurf">Unterrichtsentwurf</h2>
+<div class="highlight"><pre><span></span><code>Erstelle einen Unterrichtsentwurf (45 Min).
+Fach: [FACH] | Klasse: [JAHRGANGSSTUFE, SCHULFORM]
+Thema: [THEMA] | Lernziel: [WAS SOLLEN SUS KÖNNEN]
+Vorwissen: [WAS WISSEN SIE BEREITS]
+
+Phasen: Einstieg (5-8 Min), Erarbeitung (15-20 Min),
+Sicherung (10 Min), Transfer (5-10 Min), Abschluss (3-5 Min).
+Pro Phase: Lehreraktivität, Schüleraktivität,
+Sozialform (EA/PA/GA/Plenum), Material.
+Differenzierung für leistungsstarke und -schwache SuS.
+</code></pre></div>
+
+<h2 id="arbeitsblatt-erstellen">Arbeitsblatt erstellen</h2>
+<div class="highlight"><pre><span></span><code>Erstelle ein Arbeitsblatt für [FACH], [KLASSE].
+Thema: [THEMA] | Dauer: [MINUTEN]
+
+Aufbau: Einstiegsaufgabe (leicht) → 3-4 Hauptaufgaben
+(aufsteigend) → Zusatzaufgabe für Schnelle.
+Typen: Lückentext, MC, Zuordnung, offene Frage.
+Punkteangabe pro Aufgabe.
+Erwartungshorizont separat.
+</code></pre></div>
+
+<h2 id="quiz-generator">Quiz-Generator</h2>
+<div class="highlight"><pre><span></span><code>Erstelle ein Quiz mit [ANZAHL] Fragen zu [THEMA].
+Fach: [FACH] | Klasse: [KLASSE]
+Schwierigkeit: 30% leicht, 50% mittel, 20% schwer.
+
+Fragetypen mischen: MC (4 Optionen), Wahr/Falsch,
+Lückentext, Kurzantwort, Zuordnung.
+MC-Distraktoren plausibel aber klar falsch.
+Lösungsschlüssel am Ende.
+</code></pre></div>
+
+<h2 id="schuler-feedback-generieren">Schüler-Feedback generieren</h2>
+<div class="highlight"><pre><span></span><code>Hier ist ein Schülertext:
+&quot;&quot;&quot;[TEXT]&quot;&quot;&quot;
+Aufgabenstellung: [ORIGINAL-AUFGABE]
+Klasse: [KLASSE]
+
+Feedback-Format:
+STÄRKEN (2-3): Was ist gut gelungen?
+VERBESSERUNG (2-3): Konkret, nicht vage.
+NÄCHSTER SCHRITT (1): Was sollte als Nächstes geübt werden?
+Ton: Ermutigend, ehrlich, altersangemessen.
+</code></pre></div>
+
+<h2 id="komplexes-thema-erklaren">Komplexes Thema erklären</h2>
+<div class="highlight"><pre><span></span><code>Erkläre [KONZEPT] für Schüler der [KLASSE].
+Fachbegriffe beim ersten Auftreten erklären.
+Max. 1 neuer Fachbegriff pro Absatz.
+Alltagsbeispiele und Analogien verwenden.
+Absätze max. 4 Sätze.
+Am Ende: 3 Kontrollfragen zum Selbsttest.
+</code></pre></div>
+
+<h2 id="lernpfad-erstellen">Lernpfad erstellen</h2>
+<div class="highlight"><pre><span></span><code>Erstelle einen Lernpfad für [THEMA].
+Zielgruppe: [WER] | Vorwissen: [WAS]
+Lernziel: [WAS KÖNNEN SIE AM ENDE]
+Gesamtdauer: [STUNDEN]
+
+4 Module: Grundlagen → Vertiefung → Anwendung → Abschlusstest.
+Pro Modul: Einführungstext (300 Wörter), Kerninhalt,
+interaktive Elemente (Quiz, Zuordnung), Zusammenfassung.
+</code></pre></div>
+
+<h2 id="karteikarten-anki-export">Karteikarten / Anki-Export</h2>
+<div class="highlight"><pre><span></span><code>Erstelle [ANZAHL] Karteikarten zu [THEMA].
+Format: Vorderseite (Frage) | Rückseite (Antwort, max. 2 Sätze)
+
+Verteilung:
+- 40% Definitionen/Fakten
+- 30% Verständnisfragen (&quot;Warum...?&quot;)
+- 20% Anwendungsfragen (&quot;Was passiert, wenn...?&quot;)
+- 10% Vergleiche (&quot;Unterschied zwischen X und Y?&quot;)
+
+Export-Format: CSV (Frage;Antwort;Tag) für Anki-Import.
+</code></pre></div>
+
+<h2 id="differenziertes-material">Differenziertes Material</h2>
+<div class="highlight"><pre><span></span><code>Erstelle dasselbe Arbeitsblatt in 3 Niveaustufen.
+
+NIVEAU A (Grundlegend): Einfache Sprache, Hilfestellungen,
+geschlossene Formate (MC, Lücke), weniger Aufgaben.
+NIVEAU B (Erweitert): Standardformulierung, Mix aus
+offen und geschlossen, Transferaufgabe.
+NIVEAU C (Anspruchsvoll): Komplexere Quellen, offene
+Formate, Reflexionsaufgabe, Zusatzmaterial.
+
+Niveaus NICHT auf dem Blatt kennzeichnen.
+</code></pre></div>
+
+<h2 id="elternbrief">Elternbrief</h2>
+<div class="highlight"><pre><span></span><code>Schreibe einen Elternbrief.
+Schulform: [SCHULFORM] | Klasse: [KLASSE]
+Anlass: [WAS SOLL KOMMUNIZIERT WERDEN]
+
+Struktur: Begrüßung → Anlass (2 Sätze, kein Drumherum)
+→ Details (Was, Wann, Wo, Mitbringen?) → Rückmeldung
+(Abschnitt zum Unterschreiben) → Kontakt.
+Ton: Freundlich, professionell, kurze Sätze.
+Sprache: [Deutsch / Einfaches Deutsch / Zweisprachig]
+</code></pre></div>
+
+<h2 id="klausur-erstellen">Klausur erstellen</h2>
+<div class="highlight"><pre><span></span><code>Erstelle eine Klausur (90 Min) für [FACH/KURS].
+Thema: [THEMENGEBIET]
+
+Anforderungsbereiche:
+AFB I (Reproduktion): ~30%
+AFB II (Transfer): ~40%
+AFB III (Reflexion): ~30%
+
+Teile: A: Kurzfragen (30P) | B: Quellenarbeit (40P)
+| C: Erörterung (30P)
+
+Erstelle: Klausur + Erwartungshorizont + Bewertungskriterien.
+</code></pre></div>
+
+<h2 id="sprachubung-erstellen">Sprachübung erstellen</h2>
+<div class="highlight"><pre><span></span><code>Erstelle eine Sprachübung für [SPRACHE], Niveau [A1-C2].
+Thema: [GRAMMATIK/WORTSCHATZ/KOMMUNIKATION]
+
+5 Aufgaben, aufsteigend:
+1. Zuordnung (Wörter → Bilder/Definitionen)
+2. Lückentext (Grammatik im Kontext)
+3. Umformung (Sätze umschreiben)
+4. Produktion (eigene Sätze/kurzer Text)
+5. Kommunikation (Rollenspiel-Szenario)
+Mit Lösungen.
+</code></pre></div>
+
+<h2 id="forschungsfrage-entwickeln">Forschungsfrage entwickeln</h2>
+<div class="highlight"><pre><span></span><code>Mein Themenbereich: [THEMA]
+Mein Vorwissen: [WAS WEISS ICH SCHON]
+
+Hilf mir, eine Forschungsfrage zu entwickeln:
+1. 3 mögliche Forschungsfragen (überprüfbar, abgrenzbar)
+2. Für jede: Warum ist sie relevant?
+3. Welche Methode eignet sich?
+4. Welche Daten bräuchte ich?
+5. Empfehlung: Welche hat das meiste Potenzial?
+</code></pre></div>
+
+<h2 id="abstract-schreiben">Abstract schreiben</h2>
+<div class="highlight"><pre><span></span><code>Schreibe ein Abstract (250 Wörter) für:
+Titel: [TITEL]
+Forschungsfrage: [FRAGE]
+Methode: [METHODE]
+Ergebnisse: [HAUPTBEFUNDE]
+Schlussfolgerung: [WAS BEDEUTET DAS]
+
+Format: Background → Methods → Results → Conclusion.
+Jeder Satz muss Inhalt tragen. Ergebnisse mit Zahlen.
+Schlussfolgerung über &quot;mehr Forschung nötig&quot; hinaus.
+</code></pre></div>
+
+<h2 id="peer-review-simulieren">Peer Review simulieren</h2>
+<div class="highlight"><pre><span></span><code>Hier ist mein Text/Abstract:
+&quot;&quot;&quot;[TEXT]&quot;&quot;&quot;
+
+Simuliere ein Peer Review:
+1. Stärken (2-3)
+2. Schwächen (2-3)
+3. Methodische Kritik
+4. Argumentationslücken
+5. Formales (Sprache, Struktur, Zitierweise)
+6. Empfehlung: Accept / Minor / Major Revision / Reject
+Was müsste für Annahme geändert werden?
+</code></pre></div>
+
+<h2 id="suchstrategie-fur-literaturrecherche">Suchstrategie für Literaturrecherche</h2>
+<div class="highlight"><pre><span></span><code>Erstelle eine Suchstrategie für [FORSCHUNGSFRAGE].
+
+Für Google Scholar, [PUBMED/JSTOR/WEB OF SCIENCE]:
+1. Suchbegriffe (Deutsch + Englisch)
+2. Boolesche Operatoren (AND/OR/NOT)
+3. Synonyme und verwandte Begriffe
+4. Einschränkungen (Zeitraum, Peer-Review, Sprache)
+5. Fertige Suchstrings zum Kopieren
+
+Beispiel: (&quot;artificial intelligence&quot; OR &quot;machine learning&quot;)
+AND &quot;education&quot; AND &quot;higher education&quot;
+</code></pre></div>
+
+<h2 id="fortbildungs-planung">Fortbildungs-Planung</h2>
+<div class="highlight"><pre><span></span><code>Erstelle ein Fortbildungskonzept zu [THEMA].
+Zielgruppe: [WER] | Dauer: [STUNDEN]
+Vorkenntnisse: [NIVEAU]
+Ziel: [WAS SOLLEN TEILNEHMER DANACH KÖNNEN]
+
+Ablauf: Input (max. 30%) → Praxis (mind. 50%) → Reflexion (20%).
+Methoden: Mix aus Vortrag, Gruppenarbeit, Einzelübung.
+Material: Was wird vorbereitet?
+Evaluation: Wie messen wir den Lernerfolg?
+</code></pre></div>
+
+<h2 id="fallvorstellung-medizinjurabusiness">Fallvorstellung (Medizin/Jura/Business)</h2>
+<div class="highlight"><pre><span></span><code>Erstelle eine Fallvorstellung für [FACHGEBIET].
+Thema: [WAS SOLL GELERNT WERDEN]
+Niveau: [STUDIERENDE/BERUFSEINSTEIGER/FORTGESCHRITTENE]
+
+Aufbau:
+1. Vorstellung (anonymisiert, Kontext)
+2. Informationen schrittweise enthüllt
+3. Diskussionsfragen nach jedem Schritt
+4. Auflösung + Begründung
+5. Take-Home-Messages (3 Lernpunkte)
+</code></pre></div>
+
+<h2 id="onboarding-material-fur-neue-mitarbeiter">Onboarding-Material für neue Mitarbeiter</h2>
+<div class="highlight"><pre><span></span><code>Erstelle Onboarding-Material für [POSITION].
+Unternehmen: [KONTEXT]
+Ziel: Neue Person soll nach [ZEITRAUM] selbstständig arbeiten.
+
+Inhalt:
+1. Willkommen (Unternehmenskultur, wer ist wer)
+2. Systeme &amp; Tools (was nutzen wir, wie)
+3. Prozesse (die 5 wichtigsten Abläufe)
+4. FAQ (10 Fragen, die jeder Neue hat)
+5. Checkliste &quot;Erste Woche&quot; (Tag für Tag)
+6. Ansprechpartner (wer hilft bei was)
+</code></pre></div>
+</section>
+<section class="chapter" id="ch-6">
+<h1 id="schreiben-kreativ">Schreiben &amp; Kreativ</h1>
+<h2 id="blogpost-schreiben">Blogpost schreiben</h2>
+<div class="highlight"><pre><span></span><code>Schreibe einen Blogpost.
+Thema: [THEMA] | Zielgruppe: [WER]
+Keyword: [SEO-KEYWORD]
+Länge: [WÖRTER]
+Ton: [Professionell/Locker/Persönlich/Autoritativ]
+
+Struktur: Fesselnder Einstieg → Problem darstellen →
+Lösung(en) → Beispiele → Zusammenfassung → CTA.
+Jeder Absatz max. 4 Sätze. Zwischenüberschriften alle 200 Wörter.
+</code></pre></div>
+
+<h2 id="geschichte-short-story">Geschichte / Short Story</h2>
+<div class="highlight"><pre><span></span><code>Schreibe eine Kurzgeschichte.
+Genre: [GENRE]
+Setting: [WO UND WANN]
+Hauptfigur: [KURZE BESCHREIBUNG]
+Konflikt: [WAS IST DAS PROBLEM]
+Twist: [OPTIONAL: ÜBERRASCHENDE WENDUNG]
+Länge: [WÖRTER]
+Ton: [Düster/Humorvoll/Poetisch/Sachlich]
+
+Zeigen statt erzählen. Dialoge einbauen.
+</code></pre></div>
+
+<h2 id="text-umschreiben-stil-anpassung">Text umschreiben (Stil-Anpassung)</h2>
+<div class="highlight"><pre><span></span><code>Schreibe folgenden Text um:
+&quot;&quot;&quot;[TEXT]&quot;&quot;&quot;
+
+Neuer Stil: [AUTOR ODER STIL]
+z.B. Ernest Hemingway (kurze Sätze, wenig Adjektive)
+z.B. Akademisch (Passiv, Fachsprache, Quellen)
+z.B. Werbung (aktivierend, du-Anrede, CTA)
+z.B. Märchen (Es war einmal..., bildhafte Sprache)
+
+Behalte den Inhalt bei, ändere NUR den Stil.
+</code></pre></div>
+
+<h2 id="text-kurzen">Text kürzen</h2>
+<div class="highlight"><pre><span></span><code>Kürze folgenden Text um [30/50/70]%:
+&quot;&quot;&quot;[TEXT]&quot;&quot;&quot;
+
+Regeln:
+- Kernaussagen erhalten
+- Füllwörter entfernen
+- Nebensätze zu Hauptsätzen
+- Passiv zu Aktiv
+- Redundanzen streichen
+Zeige, was du gestrichen hast (durchgestrichen).
+</code></pre></div>
+
+<h2 id="gedicht-schreiben">Gedicht schreiben</h2>
+<div class="highlight"><pre><span></span><code>Schreibe ein Gedicht über [THEMA].
+Form: [Frei/Sonett/Haiku/Limerick/Ballade]
+Stimmung: [Fröhlich/Melancholisch/Nachdenklich/Humorvoll]
+Länge: [STROPHEN]
+Sprache: [Einfach/Poetisch/Modern/Klassisch]
+
+Wenn Reimform: [AABB/ABAB/ABBA/Kein Reim]
+</code></pre></div>
+
+<h2 id="rede-ansprache">Rede / Ansprache</h2>
+<div class="highlight"><pre><span></span><code>Schreibe eine Rede für [ANLASS].
+Publikum: [WER HÖRT ZU]
+Dauer: [MINUTEN]
+Ton: [Feierlich/Motivierend/Informativ/Humorvoll]
+
+Struktur:
+1. Eröffnung (Aufmerksamkeit gewinnen)
+2. Persönlicher Bezug (Geschichte oder Anekdote)
+3. Hauptteil (3 Kernpunkte)
+4. Emotionaler Höhepunkt
+5. Call to Action oder Abschluss
+Sprechzeit markieren (ca. 130 Wörter = 1 Minute).
+</code></pre></div>
+
+<h2 id="kreatives-brainstorming">Kreatives Brainstorming</h2>
+<div class="highlight"><pre><span></span><code>Ich brauche kreative Ideen für [PROJEKT].
+Kontext: [WAS IST DAS ZIEL]
+Zielgruppe: [FÜR WEN]
+Einschränkungen: [BUDGET/ZEIT/RESSOURCEN]
+
+Generiere 15 Ideen in 3 Kategorien:
+- 5x &quot;Sicher&quot; (bewährt, umsetzbar)
+- 5x &quot;Mutig&quot; (ungewöhnlich, auffällig)
+- 5x &quot;Verrückt&quot; (provokant, viral-potential)
+Für die beste Idee jeder Kategorie: Umsetzungsplan (3 Schritte).
+</code></pre></div>
+
+<h2 id="social-media-content-ideen">Social-Media-Content-Ideen</h2>
+<div class="highlight"><pre><span></span><code>Generiere 30 Content-Ideen für [MARKE/PERSON].
+Plattform: [INSTAGRAM/TIKTOK/LINKEDIN]
+Nische: [THEMENBEREICH]
+Zielgruppe: [WER]
+
+Für jede Idee:
+- Titel/Hook (1 Satz)
+- Format (Reel/Karussell/Story/Post/Live)
+- Warum es funktioniert (1 Satz)
+
+Mix: 40% Educational, 30% Entertaining, 20% Personal, 10% Promotional.
+</code></pre></div>
+
+<h2 id="buchrezension">Buchrezension</h2>
+<div class="highlight"><pre><span></span><code>Schreibe eine Rezension für [BUCHTITEL] von [AUTOR].
+Zielgruppe der Rezension: [WER LIEST DAS]
+Plattform: [Amazon/Blog/Goodreads]
+Länge: [KURZ 100W / MITTEL 300W / LANG 500W]
+
+Struktur: Worum geht&#39;s (ohne Spoiler) → Stärken → Schwächen
+→ Für wen geeignet → Fazit (Sterne + 1 Satz).
+Ton: Ehrlich, fair, hilfreich.
+</code></pre></div>
+
+<h2 id="storytelling-fur-business">Storytelling für Business</h2>
+<div class="highlight"><pre><span></span><code>Erzähle die Geschichte von [PRODUKT/UNTERNEHMEN/PERSON]
+als packende Story.
+
+Held: [WER]
+Problem: [WELCHES PROBLEM HATTEN SIE]
+Wendepunkt: [WAS HAT SICH GEÄNDERT]
+Lösung: [WIE WURDE ES GELÖST]
+Ergebnis: [WAS WAR DAS ERGEBNIS – MIT ZAHLEN]
+
+Struktur: Problem → Kampf → Durchbruch → Transformation.
+Emotionale Sprache, konkrete Details, Dialogzeilen.
+</code></pre></div>
+
+<h2 id="slogan-tagline">Slogan / Tagline</h2>
+<div class="highlight"><pre><span></span><code>Erstelle 10 Slogans für [MARKE/PRODUKT].
+USP: [WAS MACHT UNS BESONDERS]
+Zielgruppe: [WER]
+Ton: [Seriös/Verspielt/Provokant/Warm]
+
+Kriterien: Max. 6 Wörter. Einprägsam. Rhythmisch.
+Vermeiden: Wortspiele die nur auf Deutsch funktionieren.
+
+Varianten:
+- 3x nutzen-orientiert
+- 3x emotional
+- 2x provokant
+- 2x minimal (1-3 Wörter)
+</code></pre></div>
+
+<h2 id="bildbeschreibung-fur-ki-generierung">Bildbeschreibung für KI-Generierung</h2>
+<div class="highlight"><pre><span></span><code>Erstelle einen Bild-Prompt für [KI-TOOL: DALL-E/Midjourney/SD].
+Motiv: [WAS SOLL IM BILD SEIN]
+Stil: [Fotorealistisch/Illustration/Aquarell/Minimalistisch/3D]
+Stimmung: [Hell/Düster/Warm/Kalt/Dramatisch]
+Farben: [FARBPALETTE]
+Perspektive: [Nahaufnahme/Weitwinkel/Vogelperspektive/Isometrisch]
+
+Format: [Quadrat/Hochformat/Querformat]
+Negativ-Prompt: [WAS SOLL NICHT IM BILD SEIN]
+</code></pre></div>
+
+<h2 id="newsletter-begruungsmail">Newsletter-Begrüßungsmail</h2>
+<div class="highlight"><pre><span></span><code>Schreibe eine Willkommens-Mail für neue Newsletter-Abonnenten.
+Marke: [NAME]
+Was bekommt der Abonnent: [FREQUENZ + INHALT]
+Freebie: [FALLS VORHANDEN]
+
+Ton: Persönlich, warm, nicht verkäuferisch.
+Inhalt: Danke → Was erwartet dich → Freebie-Link →
+1 sofortiger Mehrwert → P.S. mit persönlicher Note.
+Max. 200 Wörter.
+</code></pre></div>
+
+<h2 id="video-skript">Video-Skript</h2>
+<div class="highlight"><pre><span></span><code>Schreibe ein Video-Skript.
+Plattform: [YouTube/TikTok/Instagram Reel/Kurs]
+Thema: [WAS]
+Dauer: [SEKUNDEN/MINUTEN]
+Zielgruppe: [WER]
+
+Format:
+[HOOK – erste 3 Sekunden, fesseln]
+[INTRO – worum geht&#39;s, 10 Sek]
+[HAUPTTEIL – Kerninhalt, strukturiert]
+[CTA – was soll der Zuschauer tun]
+
+B-Roll-Vorschläge in [Klammern].
+Sprechertext vs. Text-Overlay markieren.
+</code></pre></div>
+
+<h2 id="pressemitteilung">Pressemitteilung</h2>
+<div class="highlight"><pre><span></span><code>Schreibe eine Pressemitteilung.
+Anlass: [WAS IST NEU]
+Unternehmen: [NAME + KURZBESCHREIBUNG]
+Datum: [WANN]
+Ort: [WO]
+
+Struktur:
+1. Headline (max. 80 Zeichen, das Wichtigste)
+2. Subheadline (ergänzt die Headline)
+3. Erster Absatz: Wer, Was, Wann, Wo, Warum
+4. Zitat der Geschäftsführung (2-3 Sätze)
+5. Details und Hintergrund
+6. Boilerplate (Über uns, 3-4 Sätze)
+7. Kontaktdaten
+</code></pre></div>
+
+<h2 id="namensfindung">Namensfindung</h2>
+<div class="highlight"><pre><span></span><code>Ich brauche einen Namen für [PRODUKT/UNTERNEHMEN/PROJEKT].
+Branche: [BRANCHE]
+Werte: [3-5 WERTE]
+Zielgruppe: [WER]
+Sprache: [Deutsch/Englisch/International]
+
+Generiere 20 Namensvorschläge in 4 Kategorien:
+- 5x beschreibend (sagt was es ist)
+- 5x assoziativ (erzeugt ein Gefühl)
+- 5x Kunstwörter (neu erfunden)
+- 5x Abkürzungen/Akronyme
+
+Für die Top 5: Domain-Verfügbarkeit prüfen (.de/.com).
+</code></pre></div>
+
+<h2 id="podcast-konzept">Podcast-Konzept</h2>
+<div class="highlight"><pre><span></span><code>Erstelle ein Podcast-Konzept.
+Thema: [NISCHE]
+Zielgruppe: [WER HÖRT ZU]
+Format: [Solo/Interview/Panel/Storytelling]
+Länge pro Folge: [MINUTEN]
+
+Erstelle:
+1. Podcast-Name (3 Vorschläge)
+2. Tagline (1 Satz)
+3. Show-Beschreibung (100 Wörter)
+4. 10 Episoden-Ideen mit Titel und Kurzbeschreibung
+5. Intro-Skript (30 Sekunden)
+6. Outro-Skript (15 Sekunden)
+</code></pre></div>
+</section>
+<section class="chapter" id="ch-7">
+<h1 id="datenanalyse-finanzen">Datenanalyse &amp; Finanzen</h1>
+<h2 id="daten-check">Daten-Check</h2>
+<div class="highlight"><pre><span></span><code>Hier sind meine Daten:
+&quot;&quot;&quot;[ERSTE 20 ZEILEN DER CSV/TABELLE]&quot;&quot;&quot;
+
+Analysiere:
+1. Spalten und ihre Bedeutung
+2. Datentypen (Text/Zahl/Datum/Kategorie)
+3. Fehlende Werte und Ausreißer
+4. Mögliche Korrelationen
+5. Welche Analysen bieten sich an?
+</code></pre></div>
+
+<h2 id="explorative-analyse">Explorative Analyse</h2>
+<div class="highlight"><pre><span></span><code>Hier sind meine Daten:
+&quot;&quot;&quot;[DATEN EINFÜGEN]&quot;&quot;&quot;
+
+Erstelle eine explorative Analyse:
+1. Zusammenfassung (Anzahl, Zeitraum, Min/Max/Durchschnitt)
+2. Verteilungen (Auffälligkeiten, Schiefe, Ausreißer)
+3. Trends (zeitlich, saisonal)
+4. Zusammenhänge (Korrelationen)
+5. Top 3 Insights + was als Nächstes untersuchen
+</code></pre></div>
+
+<h2 id="chart-empfehlung">Chart-Empfehlung</h2>
+<div class="highlight"><pre><span></span><code>Ich habe folgende Daten: [BESCHREIBUNG]
+Ziel: [Vergleich/Trend/Verteilung/Zusammenhang/Proportion]
+Zielgruppe: [Experten/Management/Kunden]
+
+Empfiehl den besten Charttyp + 2 Alternativen.
+Achsenbeschriftung, Farbempfehlung (farbenblind-freundlich),
+Titel und Beschriftungen.
+Code in [Python matplotlib/Excel/Google Sheets].
+</code></pre></div>
+
+<h2 id="sql-generieren">SQL generieren</h2>
+<div class="highlight"><pre><span></span><code>Tabellenstruktur:
+[TABELLEN UND SPALTEN BESCHREIBEN]
+
+Schreibe eine SQL-Abfrage für: [WAS WILLST DU WISSEN]
+Datenbank: [MySQL/PostgreSQL/BigQuery]
+Sortierung: [KRITERIUM]
+Limit: Top [X] Ergebnisse
+Zeitraum: [VON BIS]
+
+Erkläre die Abfrage Zeile für Zeile.
+Performance-Hinweise bei großen Datenmengen.
+</code></pre></div>
+
+<h2 id="dashboard-konzept">Dashboard-Konzept</h2>
+<div class="highlight"><pre><span></span><code>Erstelle ein Dashboard-Konzept für [ABTEILUNG/ZWECK].
+Datenquellen: [WELCHE DATEN]
+Nutzer: [WER SCHAUT DRAUF]
+Aktualisierung: [Echtzeit/Täglich/Wöchentlich]
+
+Layout:
+OBEN: 3-4 KPI-Karten (Zahl + Trend)
+MITTE: Trend-Charts und Vergleiche
+UNTEN: Detail-Tabellen mit Filtern
+Warnschwellen: Rot/Gelb/Grün für jeden KPI.
+</code></pre></div>
+
+<h2 id="umfrage-analysieren">Umfrage analysieren</h2>
+<div class="highlight"><pre><span></span><code>Ich habe [ANZAHL] Umfrage-Antworten:
+&quot;&quot;&quot;[DATEN]&quot;&quot;&quot;
+
+Analysiere:
+1. Quantitativ: Häufigkeiten, Mittelwerte, Gruppenvergleiche
+2. Offene Fragen: Themen-Kategorisierung, Sentiment, Zitate
+3. Top 5 Erkenntnisse
+4. Überraschungen
+5. Handlungsempfehlungen
+6. Methodische Einschränkungen
+</code></pre></div>
+
+<h2 id="jahresabschluss-verstehen">Jahresabschluss verstehen</h2>
+<div class="highlight"><pre><span></span><code>Analysiere folgenden Jahresabschluss:
+&quot;&quot;&quot;[GUV UND/ODER BILANZ]&quot;&quot;&quot;
+
+1. Zusammenfassung für Nicht-Finanzler (3-5 Sätze)
+2. Kennzahlen: Umsatzwachstum, Gewinnmarge, EBITDA,
+   Eigenkapitalquote, Liquiditätsgrad, ROE
+3. Stärken und Risiken
+4. Branchenvergleich
+5. Empfehlung fürs Management
+
+Erkläre alle Kennzahlen verständlich.
+</code></pre></div>
+
+<h2 id="cashflow-prognose">Cashflow-Prognose</h2>
+<div class="highlight"><pre><span></span><code>Erstelle eine Cashflow-Prognose für [ZEITRAUM].
+Kontostand: [BETRAG]
+Erwartete Einnahmen: [AUFSCHLÜSSELUNG]
+Fixkosten monatlich: [AUFSCHLÜSSELUNG]
+Variable Kosten: [AUFSCHLÜSSELUNG]
+Investitionen: [GEPLANT]
+
+Monats-Tabelle: Einnahmen | Ausgaben | Saldo | Kumuliert.
+Warnschwellen: Wann wird es kritisch?
+Maßnahmen bei Liquiditätsengpass.
+</code></pre></div>
+
+<h2 id="steuerfrage-strukturieren">Steuerfrage strukturieren</h2>
+<div class="highlight"><pre><span></span><code>Steuerfrage: [IN EIGENEN WORTEN]
+Rechtsform: [GMBH/EINZELUNTERNEHMEN/FREIBERUFLER]
+Land: [DE/AT/CH]
+Zeitraum: [JAHR]
+
+Strukturiere für meinen Steuerberater:
+1. Relevantes Steuergesetz
+2. Grundregeln
+3. Ausnahmen
+4. Dokumentationspflichten
+5. Fristen
+6. Konkrete Fragen an den Steuerberater
+
+NICHT: Steuerberatung. Vorbereitung für das Gespräch.
+</code></pre></div>
+
+<h2 id="kennzahl-erklaren">Kennzahl erklären</h2>
+<div class="highlight"><pre><span></span><code>Erkläre [FINANZKENNZAHL] für [ZIELGRUPPE].
+z.B. EBITDA, Quick Ratio, P/E Ratio, CAC, LTV
+
+1. Was misst sie? (1 Satz)
+2. Formel + Rechenbeispiel
+3. Was ist ein &quot;guter&quot; Wert? (branchenabhängig)
+4. Was wenn zu hoch/zu niedrig?
+5. Alltagsanalogie
+</code></pre></div>
+
+<h2 id="personliches-budget-analysieren">Persönliches Budget analysieren</h2>
+<div class="highlight"><pre><span></span><code>Nettoeinkommen: [BETRAG]
+Ausgaben: [LISTE ALLER AUSGABEN]
+
+Analysiere:
+1. Kategorien und Prozente
+2. 50/30/20-Regel: Stimmt die Verteilung?
+   (50% Bedürfnisse / 30% Wünsche / 20% Sparen)
+3. Einsparpotenziale
+4. Überproportionale Ausgaben
+5. Sparrate: Ausreichend?
+6. 3 sofort umsetzbare Tipps
+Keine Anlageberatung.
+</code></pre></div>
+
+<h2 id="belege-kategorisieren">Belege kategorisieren</h2>
+<div class="highlight"><pre><span></span><code>Kategorisiere folgende Ausgaben für die Buchhaltung:
+&quot;&quot;&quot;[AUSGABENLISTE]&quot;&quot;&quot;
+
+Pro Ausgabe:
+1. Kategorie (SKR03/SKR04 oder Oberkategorie)
+2. Vorsteuerabzug möglich? (Ja/Nein/Teilweise)
+3. Betriebsausgabe? (Voll/Anteilig/Nein)
+4. Besonderheiten (z.B. Bewirtung: 70% absetzbar)
+
+Sortiere nach Kategorie. Erstelle Übersicht.
+Hinweis: Endgültige Zuordnung durch Steuerberater bestätigen.
+</code></pre></div>
+
+<h2 id="investor-pitch-finanzslides">Investor-Pitch Finanzslides</h2>
+<div class="highlight"><pre><span></span><code>Erstelle Finanzslides für einen Investor-Pitch.
+Unternehmen: [NAME, PHASE, BRANCHE]
+Kennzahlen: [UMSATZ, KOSTEN, WACHSTUM]
+Funding-Ziel: [BETRAG]
+Verwendung: [WOFÜR]
+
+Slides:
+1. Marktgröße (TAM/SAM/SOM)
+2. Geschäftsmodell
+3. Unit Economics (CAC, LTV, Marge)
+4. Finanz-Übersicht (Ist + 3-Jahres-Projektion)
+5. Use of Funds
+6. Milestones
+Pro Slide: Kernaussage (1 Satz) + unterstützende Daten.
+</code></pre></div>
+
+<h2 id="statistischen-test-wahlen">Statistischen Test wählen</h2>
+<div class="highlight"><pre><span></span><code>Hypothese: [IN NATÜRLICHER SPRACHE]
+Daten: [BESCHREIBUNG]
+Stichprobe: N = [ZAHL]
+Variablen: [ABHÄNGIG/UNABHÄNGIG]
+
+1. Welcher Test ist geeignet? Warum?
+2. Voraussetzungen des Tests
+3. Interpretation des Ergebnisses
+4. Nullhypothese
+5. Relevante Effektstärke
+6. Code in [Python/R]
+
+Alles so erklären, dass jemand ohne Statistik-Studium es versteht.
+</code></pre></div>
+
+<h2 id="segmentierungsanalyse">Segmentierungsanalyse</h2>
+<div class="highlight"><pre><span></span><code>Segmentiere meine Kundendaten nach [KRITERIUM].
+Daten: [BESCHREIBUNG]
+Ziel: [Kundenwert/Kaufverhalten/Churn-Risiko]
+
+Pro Segment:
+1. Name (beschreibend, z.B. &quot;Power-User&quot;)
+2. Größe (Anzahl und Prozent)
+3. Charakteristik
+4. Verhalten
+5. Potenzial (Wachstum? Risiko?)
+6. Empfohlene Maßnahme
+</code></pre></div>
+
+<h2 id="preisgestaltung-analysieren">Preisgestaltung analysieren</h2>
+<div class="highlight"><pre><span></span><code>Produkt: [BESCHREIBUNG]
+Aktuelle Kunden: [ANZAHL]
+Aktueller Preis: [BETRAG]
+Geplante Änderung: [NEUER PREIS]
+
+Analysiere:
+1. Break-Even: Wie viele Kunden darf ich verlieren?
+2. Preiswahrnehmung: Wie wirkt die Änderung?
+3. Wettbewerbsreaktion: Was könnten andere tun?
+4. Empfehlung: Sofort, gestaffelt oder gar nicht?
+</code></pre></div>
+
+<h2 id="daten-bereinigen">Daten bereinigen</h2>
+<div class="highlight"><pre><span></span><code>Meine Daten haben folgende Probleme:
+[z.B. fehlende Werte, Duplikate, inkonsistente Formate]
+
+Für jedes Problem:
+1. Wie identifiziere ich es? (Query/Code)
+2. Strategie zur Behebung
+3. Risiken der Behebung
+Code in [Python/SQL/Excel-Formeln].
+</code></pre></div>
+
+<h2 id="ab-test-auswerten">A/B-Test auswerten</h2>
+<div class="highlight"><pre><span></span><code>A/B-Test Ergebnis:
+Variante A: [METRIK] bei [N] Nutzern
+Variante B: [METRIK] bei [N] Nutzern
+Testzeitraum: [DAUER]
+
+Analysiere:
+1. Ist das Ergebnis statistisch signifikant?
+2. Konfidenzintervall
+3. Effektstärke (praktisch relevant?)
+4. Empfehlung: B implementieren, weiter testen, oder verwerfen?
+5. Was könnte das Ergebnis verfälschen?
+</code></pre></div>
+
+<h2 id="automatischen-bericht-erstellen">Automatischen Bericht erstellen</h2>
+<div class="highlight"><pre><span></span><code>Erstelle einen [wöchentlichen/monatlichen] Bericht aus:
+&quot;&quot;&quot;[DATEN]&quot;&quot;&quot;
+
+Vergleich mit: [Vorwoche/Vormonat/Vorjahr]
+Zielgruppe: [GESCHÄFTSFÜHRUNG/TEAM/KUNDEN]
+
+1. Executive Summary (3-5 Sätze)
+2. KPI-Übersicht (Ist vs. Soll vs. Vorperiode)
+3. Highlights (2-3) und Herausforderungen (2-3)
+4. Ursachenanalyse für Top-Abweichung
+5. 2-3 konkrete Empfehlungen
+6. Ausblick nächste Periode
+Ton: Sachlich. Keine Floskeln ohne Zahlen.
+</code></pre></div>
+</section>
+<section class="chapter" id="ch-8">
+<h1 id="recht-medizin-hr">Recht, Medizin &amp; HR</h1>
+<h2 id="vertrag-prufen">Vertrag prüfen</h2>
+<div class="highlight"><pre><span></span><code>Prüfe folgenden Vertrag:
+&quot;&quot;&quot;[VERTRAG EINFÜGEN]&quot;&quot;&quot;
+
+Meine Perspektive: [Auftragnehmer/Mieter/Arbeitnehmer]
+
+Analysiere: Zusammenfassung, Risiken, fehlende Klauseln,
+unklare Formulierungen, Haftung, Kündigung, Datenschutz.
+
+Bewertung pro Klausel:
+🟢 Unproblematisch | 🟡 Prüfenswert | 🔴 Anwaltlich prüfen
+
+HINWEIS: Dies ist keine Rechtsberatung.
+</code></pre></div>
+
+<h2 id="dsgvo-checkliste">DSGVO-Checkliste</h2>
+<div class="highlight"><pre><span></span><code>Erstelle eine DSGVO-Checkliste für [PROJEKT/UNTERNEHMEN].
+Kontext: [WAS MACHT IHR, WELCHE DATEN VERARBEITET IHR]
+
+Prüfe: Rechtsgrundlage, Informationspflichten,
+Betroffenenrechte, TOM (Verschlüsselung, Zugriffskontrolle),
+Auftragsverarbeitung, Verarbeitungsverzeichnis, DSFA.
+
+Für jeden fehlenden Punkt: Priorität + nächster Schritt.
+</code></pre></div>
+
+<h2 id="eu-ai-act-klassifizierung">EU AI Act Klassifizierung</h2>
+<div class="highlight"><pre><span></span><code>Klassifiziere folgendes KI-System nach EU AI Act:
+Beschreibung: [WAS TUT ES]
+Einsatzbereich: [WO WIRD ES EINGESETZT]
+Nutzer: [WER NUTZT ES]
+
+1. Risikoklasse (Unannehmbares/Hohes/Begrenztes/Minimales Risiko)
+2. Begründung
+3. Daraus folgende Pflichten
+4. Timeline (ab wann gilt was)
+5. Handlungsempfehlungen
+</code></pre></div>
+
+<h2 id="stellenausschreibung">Stellenausschreibung</h2>
+<div class="highlight"><pre><span></span><code>Erstelle eine Stellenausschreibung für [POSITION].
+Unternehmen: [NAME, BRANCHE, KULTUR]
+Standort: [ORT/REMOTE/HYBRID]
+
+Struktur: Hook → Aufgaben (5-7, Verben am Anfang) →
+Muss-Profil (4-5) → Nice-to-have (2-3) → Benefits
+(echte, keine Floskeln) → Bewerbungsprozess.
+
+Genderneutral. Keine übertriebenen Anforderungen.
+Konkret statt vage.
+</code></pre></div>
+
+<h2 id="bias-check-stellenausschreibung">Bias-Check Stellenausschreibung</h2>
+<div class="highlight"><pre><span></span><code>Prüfe folgende Stellenausschreibung auf Bias:
+&quot;&quot;&quot;[AUSSCHREIBUNG]&quot;&quot;&quot;
+
+Prüfe auf: Gender-Bias, Alters-Bias, Erfahrungs-Bias,
+Kultur-Bias, Disability-Bias.
+Für jeden Bias: Originaltext → Verbesserungsvorschlag.
+</code></pre></div>
+
+<h2 id="interview-fragen-generieren">Interview-Fragen generieren</h2>
+<div class="highlight"><pre><span></span><code>Erstelle Interviewfragen für [POSITION].
+Runde: [Erstgespräch/Fachlich/Kulturfit]
+Dauer: [MINUTEN]
+
+Kategorien: Einstieg (2), Fachlich (3-5),
+Situativ/STAR (3), Kultur (2), Abschluss (1-2).
+Pro Frage: Was prüft sie? Green-/Red-Flags. Follow-up.
+NICHT: Illegale Fragen, Brainteaser, &quot;Wo in 5 Jahren?&quot;
+</code></pre></div>
+
+<h2 id="arbeitszeugnis">Arbeitszeugnis</h2>
+<div class="highlight"><pre><span></span><code>Erstelle ein qualifiziertes Arbeitszeugnis.
+Person: [NAME, POSITION, ZEITRAUM]
+Aufgaben: [HAUPTTÄTIGKEITEN]
+Leistung: [Note 1-5]
+Sozialverhalten: [BEWERTUNG]
+Beendigungsgrund: [EIGENER WUNSCH/BETRIEBSBEDINGT]
+
+Deutsche Zeugnis-Codierung korrekt anwenden.
+&quot;stets zur vollsten Zufriedenheit&quot; = Note 1
+&quot;zur vollen Zufriedenheit&quot; = Note 2
+</code></pre></div>
+
+<h2 id="feedback-gesprach-vorbereiten">Feedback-Gespräch vorbereiten</h2>
+<div class="highlight"><pre><span></span><code>Bereite ein Feedback-Gespräch vor.
+Person: [ROLLE, SENIORITÄT]
+Positive Aspekte: [KONKRETE BEISPIELE]
+Verbesserungsbedarf: [KONKRETE BEISPIELE]
+Ziel: [WAS SOLL SICH ÄNDERN]
+
+SBI-Methode: Situation → Behavior → Impact.
+Nicht: &quot;Sie sind zu langsam.&quot;
+Sondern: &quot;Bei Projekt X lag die Deadline 2 Wochen zurück.&quot;
+SMART-Zielvereinbarung. Follow-up-Plan.
+</code></pre></div>
+
+<h2 id="onboarding-plan">Onboarding-Plan</h2>
+<div class="highlight"><pre><span></span><code>Erstelle einen 90-Tage-Onboarding-Plan für [POSITION].
+Team: [KONTEXT]
+
+Woche 1 &quot;Ankommen&quot;: Begrüßung, Setup, Rundgang, Buddy.
+Monat 1 &quot;Verstehen&quot;: Prozesse, erste Aufgaben, Feedback.
+Tag 30-90 &quot;Beitragen&quot;: Eigene Projekte, volle Produktivität.
+
+Pro Meilenstein: Was wird erwartet, Ansprechpartner,
+Erfolgskriterien, was tun bei Problemen.
+</code></pre></div>
+
+<h2 id="befund-ubersetzen-medizin">Befund übersetzen (Medizin)</h2>
+<div class="highlight"><pre><span></span><code>Übersetze folgenden medizinischen Befund in
+Patientensprache:
+&quot;&quot;&quot;[BEFUND]&quot;&quot;&quot;
+
+Sprachniveau: B1. Fachbegriffe erklären.
+Sätze max. 15 Wörter. Keine Verharmlosung, keine Panikmache.
+Am Ende: &quot;Was bedeutet das für mich?&quot; (2-3 Sätze)
+Hinweis: &quot;Besprechen Sie offene Fragen mit Ihrem Arzt.&quot;
+</code></pre></div>
+
+<h2 id="patienteninformation">Patienteninformation</h2>
+<div class="highlight"><pre><span></span><code>Erstelle eine Patienteninformation zu [ERKRANKUNG].
+Sprache: Einfaches Deutsch (B1). Max. 2 Seiten.
+
+1. Was ist [Erkrankung]? (3-4 Sätze)
+2. Wie erkennt man es? (Symptome)
+3. Was kann man tun? (Behandlung, Selbsthilfe)
+4. Wann zum Arzt? (Red Flags)
+5. Wo gibt es Hilfe? (Anlaufstellen)
+
+Keine Panikmache, keine Verharmlosung. Quellenbasiert.
+&quot;Diese Information ersetzt nicht den Arztbesuch.&quot;
+</code></pre></div>
+
+<h2 id="compliance-checkliste">Compliance-Checkliste</h2>
+<div class="highlight"><pre><span></span><code>Erstelle eine Compliance-Checkliste für [BEREICH].
+z.B. Anti-Korruption, Geldwäsche, Kartellrecht, Exportkontrolle.
+Unternehmen: [BRANCHE, GRÖSSE]
+
+1. Risikoanalyse (Welche Risiken bestehen?)
+2. Richtlinien (Welche internen Regeln brauche ich?)
+3. Prozesse (Erkennung, Meldung, Untersuchung)
+4. Schulungen (Wer, wie oft, welche Inhalte)
+5. Monitoring (KPIs für Wirksamkeit)
+</code></pre></div>
+
+<h2 id="datenschutzerklarung">Datenschutzerklärung</h2>
+<div class="highlight"><pre><span></span><code>Erstelle eine Datenschutzerklärung für [WEBSEITE/APP].
+Datenverarbeitungen: [KONTAKTFORMULAR, NEWSLETTER,
+ANALYTICS, COOKIES, SOCIAL MEDIA, PAYMENT]
+
+Pro Verarbeitung: Welche Daten, Rechtsgrundlage (Art. 6 DSGVO),
+Zweck, Empfänger, Speicherdauer, Drittlandtransfer.
+
+ENTWURF. Vor Veröffentlichung rechtlich prüfen lassen.
+</code></pre></div>
+
+<h2 id="hr-policy-erstellen">HR-Policy erstellen</h2>
+<div class="highlight"><pre><span></span><code>Erstelle eine Policy für [THEMA].
+z.B. Remote Work, Social Media, Weiterbildung, Anti-Diskriminierung.
+Unternehmen: [BRANCHE, GRÖSSE, KULTUR]
+
+Struktur: Zweck → Geltungsbereich → Definitionen →
+Regeln (nummeriert) → Verantwortlichkeiten →
+Konsequenzen → Ansprechpartner → Inkrafttreten.
+Sprache: Verständlich, nicht juristisch überladen.
+Vor Einführung: Rechtlich + Betriebsrat prüfen.
+</code></pre></div>
+
+<h2 id="gesprachsleitfaden-schwierige-gesprache-medizin">Gesprächsleitfaden schwierige Gespräche (Medizin)</h2>
+<div class="highlight"><pre><span></span><code>Erstelle einen Gesprächsleitfaden nach SPIKES-Modell.
+Situation: [DIAGNOSEMITTEILUNG/THERAPIEÄNDERUNG/PROGNOSE]
+Patient: [ALTER, KONTEXT]
+
+SPIKES:
+S – Setting (Rahmen vorbereiten)
+P – Perception (Was weiß der Patient?)
+I – Invitation (Wie viel will er wissen?)
+K – Knowledge (Information vermitteln)
+E – Emotions (Auf Reaktionen reagieren)
+S – Strategy (Weiteres Vorgehen)
+
+Konkrete Formulierungsvorschläge für schwierige Sätze.
+</code></pre></div>
+
+<h2 id="vertragsentwurf-freelancer">Vertragsentwurf Freelancer</h2>
+<div class="highlight"><pre><span></span><code>Erstelle einen Entwurf für einen Freelancer-Vertrag.
+Auftraggeber: [BESCHREIBUNG]
+Auftragnehmer: [BESCHREIBUNG]
+Leistung: [WAS WIRD GELIEFERT]
+Vergütung: [WIE UND WANN]
+Zeitraum: [DAUER]
+
+Mindest-Klauseln: Leistung, Vergütung, Nutzungsrechte/IP,
+Geheimhaltung, Haftung, Kündigung,
+Abgrenzung Scheinselbstständigkeit.
+ENTWURF – vor Verwendung anwaltlich prüfen.
+</code></pre></div>
+
+<h2 id="arbeitsvertrag-prufen">Arbeitsvertrag prüfen</h2>
+<div class="highlight"><pre><span></span><code>Prüfe folgenden Arbeitsvertrag (Arbeitnehmersicht):
+&quot;&quot;&quot;[VERTRAG]&quot;&quot;&quot;
+
+10 Prüfpunkte: Arbeitszeit/Überstunden, Vergütung,
+Urlaub, Kündigungsfristen, Wettbewerbsverbot,
+Geheimhaltung, Nebentätigkeit, Probezeit,
+Geistiges Eigentum, Homeoffice.
+
+Markiere alles, was vom Standard abweicht.
+</code></pre></div>
+
+<h2 id="differentialdiagnose-brainstorming">Differentialdiagnose-Brainstorming</h2>
+<div class="highlight"><pre><span></span><code>KONTEXT: Ich bin Arzt und nutze KI als Gedankenstütze.
+
+Hauptbeschwerde: [SYMPTOM] | Seit: [DAUER]
+Begleitend: [SYMPTOME] | Vorerkrankungen: [LISTE]
+Medikation: [LISTE] | Alter/Geschlecht: [ANGABE]
+
+WAHRSCHEINLICH: [Diagnosen] – Dafür/Dagegen
+WENIGER WAHRSCHEINLICH, ABER WICHTIG: [Diagnosen]
+RED FLAGS: [Sofort abklären]
+EMPFOHLENE DIAGNOSTIK: [Untersuchungen]
+
+Dies ist ein Brainstorming-Tool, keine klinische Entscheidung.
+</code></pre></div>
+</section>
+<section class="chapter" id="ch-9">
+<h1 id="code-entwicklung">Code &amp; Entwicklung</h1>
+<h2 id="feature-implementieren">Feature implementieren</h2>
+<div class="highlight"><pre><span></span><code>Implementiere folgendes Feature:
+&quot;&quot;&quot;[FEATURE-BESCHREIBUNG]&quot;&quot;&quot;
+
+Technologie: [SPRACHE/FRAMEWORK]
+Bestehender Code-Kontext: [RELEVANTE DATEIEN/ARCHITEKTUR]
+
+Anforderungen:
+- Typisiert (TypeScript/Python Type Hints)
+- Fehlerbehandlung
+- Edge Cases berücksichtigen
+- Tests (Unit + ggf. Integration)
+- Dokumentation (JSDoc/Docstring)
+</code></pre></div>
+
+<h2 id="bug-fixen">Bug fixen</h2>
+<div class="highlight"><pre><span></span><code>Bug: [BESCHREIBUNG DES FEHLVERHALTENS]
+Erwartet: [WAS SOLLTE PASSIEREN]
+Tatsächlich: [WAS PASSIERT STATTDESSEN]
+Reproduzieren: [SCHRITTE]
+
+Relevanter Code:
+&quot;&quot;&quot;[CODE EINFÜGEN]&quot;&quot;&quot;
+
+Finde die Ursache, erkläre sie, und liefere den Fix.
+Bonus: Wie hätte der Bug verhindert werden können?
+</code></pre></div>
+
+<h2 id="code-review">Code Review</h2>
+<div class="highlight"><pre><span></span><code>Reviewe folgenden Code:
+&quot;&quot;&quot;[CODE EINFÜGEN]&quot;&quot;&quot;
+
+Prüfe auf:
+1. Korrektheit (Logik, Edge Cases)
+2. Lesbarkeit (Benennung, Struktur)
+3. Performance (Bottlenecks, unnötige Operationen)
+4. Sicherheit (Injection, XSS, Secrets)
+5. Best Practices der Sprache
+
+Format: Problem → Warum problematisch → Verbesserung.
+</code></pre></div>
+
+<h2 id="refactoring">Refactoring</h2>
+<div class="highlight"><pre><span></span><code>Refactore folgenden Code:
+&quot;&quot;&quot;[CODE]&quot;&quot;&quot;
+
+Ziel: [Lesbarkeit/Performance/Testbarkeit/Modularität]
+
+Regeln:
+- Funktionalität NICHT ändern
+- Schritt für Schritt, nicht alles auf einmal
+- Jeden Schritt erklären
+- Vorher/Nachher zeigen
+</code></pre></div>
+
+<h2 id="tests-schreiben">Tests schreiben</h2>
+<div class="highlight"><pre><span></span><code>Schreibe Tests für:
+&quot;&quot;&quot;[CODE/FUNKTION]&quot;&quot;&quot;
+
+Framework: [Jest/Pytest/Go Test/JUnit]
+Abdeckung:
+- Happy Path (Normalfall)
+- Edge Cases (Grenzwerte, leere Inputs)
+- Error Cases (ungültige Inputs, Exceptions)
+- Grenzwerte (0, -1, MAX_INT, leerer String, null)
+
+Mindestens [X] Testfälle. Beschreibende Testnamen.
+</code></pre></div>
+
+<h2 id="api-endpunkt-designen">API-Endpunkt designen</h2>
+<div class="highlight"><pre><span></span><code>Designe einen REST-API-Endpunkt.
+Ressource: [WAS WIRD VERWALTET]
+Operationen: [CRUD oder spezifische Aktionen]
+
+Für jeden Endpunkt:
+- HTTP-Methode + URL
+- Request-Body (JSON-Schema)
+- Response (Erfolg + Fehler)
+- Authentifizierung
+- Rate Limiting
+- Beispiel-Requests (curl)
+
+Folge REST-Konventionen. Versionierung beachten.
+</code></pre></div>
+
+<h2 id="datenbank-schema">Datenbank-Schema</h2>
+<div class="highlight"><pre><span></span><code>Designe ein Datenbankschema für [ANWENDUNG].
+Anforderungen: [FEATURE-LISTE]
+Datenbank: [PostgreSQL/MySQL/MongoDB]
+
+Erstelle:
+1. Entitäten und ihre Attribute
+2. Beziehungen (1:1, 1:N, N:M)
+3. SQL CREATE TABLE Statements
+4. Indizes (für häufige Queries)
+5. Beispiel-Queries für die 3 häufigsten Use Cases
+</code></pre></div>
+
+<h2 id="git-commit-message">Git Commit Message</h2>
+<div class="highlight"><pre><span></span><code>Hier sind meine Änderungen:
+&quot;&quot;&quot;[GIT DIFF ODER BESCHREIBUNG]&quot;&quot;&quot;
+
+Schreibe eine Commit Message nach Conventional Commits:
+type(scope): kurze Beschreibung
+
+Body: Was und WARUM (nicht WIE – das sieht man im Diff).
+Types: feat, fix, refactor, docs, test, chore, perf.
+Max. 72 Zeichen Betreff. Body bei Bedarf.
+</code></pre></div>
+
+<h2 id="readme-schreiben">README schreiben</h2>
+<div class="highlight"><pre><span></span><code>Schreibe eine README.md für [PROJEKT].
+Sprache/Framework: [TECH STACK]
+Zweck: [WAS TUT DAS PROJEKT]
+
+Struktur:
+1. Projekt-Name + 1-Satz-Beschreibung
+2. Features (Bullet Points)
+3. Installation (Schritt für Schritt)
+4. Nutzung (Beispiele)
+5. Konfiguration (Env Vars, Optionen)
+6. Beitragen (Contribution Guide)
+7. Lizenz
+</code></pre></div>
+
+<h2 id="architektur-entscheidung">Architektur-Entscheidung</h2>
+<div class="highlight"><pre><span></span><code>Ich muss eine Architektur-Entscheidung treffen.
+Problem: [WAS MUSS GELÖST WERDEN]
+Optionen:
+A: [OPTION A]
+B: [OPTION B]
+C: [OPTION C]
+
+Kontext: [TEAM-GRÖSSE, BUDGET, TIMELINE, BESTEHENDE SYSTEME]
+
+Vergleiche nach: Komplexität, Skalierbarkeit, Kosten,
+Wartbarkeit, Time-to-Market, Team-Expertise.
+ADR-Format (Architecture Decision Record).
+</code></pre></div>
+
+<h2 id="code-erklaren">Code erklären</h2>
+<div class="highlight"><pre><span></span><code>Erkläre folgenden Code Zeile für Zeile:
+&quot;&quot;&quot;[CODE]&quot;&quot;&quot;
+
+Zielgruppe: [Junior-Entwickler/Nicht-Techniker/Selbst]
+Erkläre: Was tut jede Zeile? Warum so und nicht anders?
+Welche Konzepte werden verwendet?
+Wo sind potenzielle Probleme?
+</code></pre></div>
+
+<h2 id="performance-optimieren">Performance optimieren</h2>
+<div class="highlight"><pre><span></span><code>Dieser Code ist zu langsam:
+&quot;&quot;&quot;[CODE]&quot;&quot;&quot;
+
+Aktuelle Performance: [METRIK, z.B. 5s für 10k Records]
+Ziel: [METRIK, z.B. unter 500ms]
+
+Analysiere:
+1. Wo sind die Bottlenecks?
+2. Quick Wins (wenig Aufwand, großer Effekt)
+3. Größere Optimierungen (mehr Aufwand)
+4. Optimierter Code mit Erklärung
+5. Tradeoffs (Lesbarkeit vs. Performance)
+</code></pre></div>
+
+<h2 id="regex-erstellen">Regex erstellen</h2>
+<div class="highlight"><pre><span></span><code>Erstelle einen Regex für: [WAS SOLL GEFUNDEN WERDEN]
+Sprache/Engine: [JavaScript/Python/PCRE]
+
+Beispiele, die matchen sollen: [BEISPIELE]
+Beispiele, die NICHT matchen sollen: [GEGENBEISPIELE]
+
+Liefere:
+1. Den Regex
+2. Erklärung jedes Teils
+3. Test mit allen Beispielen
+4. Edge Cases, die du bedacht hast
+</code></pre></div>
+
+<h2 id="docker-setup">Docker-Setup</h2>
+<div class="highlight"><pre><span></span><code>Erstelle ein Docker-Setup für [ANWENDUNG].
+Tech Stack: [SPRACHE, FRAMEWORK, DATENBANK]
+Umgebung: [Entwicklung/Produktion/Beides]
+
+Erstelle:
+1. Dockerfile (Multi-Stage für Produktion)
+2. docker-compose.yml (mit allen Services)
+3. .dockerignore
+4. Wichtige Hinweise (Volumes, Ports, Env Vars)
+</code></pre></div>
+
+<h2 id="cicd-pipeline">CI/CD Pipeline</h2>
+<div class="highlight"><pre><span></span><code>Erstelle eine CI/CD Pipeline für [PROJEKT].
+Platform: [GitHub Actions/GitLab CI/Jenkins]
+Sprache: [TECH STACK]
+Deployment: [WOHIN]
+
+Stages:
+1. Lint + Type Check
+2. Unit Tests
+3. Build
+4. Integration Tests (optional)
+5. Deploy to [Staging/Production]
+
+Branch-Strategie: [main/develop/feature]
+</code></pre></div>
+
+<h2 id="error-handling-design">Error Handling Design</h2>
+<div class="highlight"><pre><span></span><code>Designe eine Error-Handling-Strategie für [ANWENDUNG].
+Typ: [API/CLI/Web-App/Library]
+Sprache: [SPRACHE]
+
+Definiere:
+1. Error-Hierarchie (Basis-Klassen)
+2. Error-Codes und Messages
+3. Logging-Strategie (was loggen, welches Level)
+4. User-facing vs. Internal Errors
+5. Retry-Strategie (was retrien, was nicht)
+6. Graceful Degradation
+</code></pre></div>
+
+<h2 id="mcp-server-konzipieren">MCP-Server konzipieren</h2>
+<div class="highlight"><pre><span></span><code>Konzipiere einen MCP-Server für [ANWENDUNGSFALL].
+Datenquelle: [WAS SOLL ANGEBUNDEN WERDEN]
+Nutzer: [WER NUTZT DEN SERVER]
+
+Definiere:
+1. Tools (Funktionen, die der Agent aufrufen kann)
+2. Resources (Daten, die gelesen werden können)
+3. Prompts (vordefinierte Templates)
+Pro Tool: Name, Beschreibung, Parameter, Rückgabe.
+Sicherheit: Welche Zugriffe sind kritisch?
+</code></pre></div>
+
+<h2 id="migration-planen">Migration planen</h2>
+<div class="highlight"><pre><span></span><code>Plane eine Migration von [ALT] nach [NEU].
+Betroffene Daten: [UMFANG]
+Betroffene Systeme: [LISTE]
+Nutzer: [ANZAHL]
+Downtime-Toleranz: [KEINE/KURZ/FLEXIBLE]
+
+Erstelle:
+1. Migrationsstrategie (Big Bang/Phasenweise/Parallel)
+2. Schritt-für-Schritt-Plan
+3. Rollback-Plan
+4. Testplan
+5. Kommunikationsplan
+6. Risiken und Mitigationen
+</code></pre></div>
+
+<h2 id="system-prompt-fur-chatbot">System-Prompt für Chatbot</h2>
+<div class="highlight"><pre><span></span><code>Schreibe einen produktionsreifen System-Prompt für
+einen Chatbot.
+Unternehmen: [NAME, BRANCHE]
+Aufgabe: [WAS SOLL DER BOT TUN]
+Tools: [WELCHE TOOLS HAT ER]
+Zielgruppe: [WER SPRICHT MIT IHM]
+
+Struktur:
+- Rolle und Identität
+- Verhalten und Ton
+- Fähigkeiten (was kann er)
+- Grenzen (was kann/darf er NICHT)
+- Dynamischer Kontext (Datum, User-Info)
+- Output-Format
+- Sicherheitsregeln (kein System-Prompt preisgeben)
+</code></pre></div>
+</section>
+<section class="chapter" id="ch-10">
+<h1 id="strategie-entscheidungen">Strategie &amp; Entscheidungen</h1>
+<h2 id="devils-advocate">Devil&rsquo;s Advocate</h2>
+<div class="highlight"><pre><span></span><code>Ich überlege, [ENTSCHEIDUNG] zu treffen.
+Meine Gründe: [ARGUMENTE]
+
+Spiele den Devil&#39;s Advocate:
+- Was spricht dagegen?
+- Welche Risiken übersehe ich?
+- Welche Annahmen könnten falsch sein?
+- Welche alternativen Erklärungen gibt es?
+Sei schonungslos ehrlich.
+</code></pre></div>
+
+<h2 id="pre-mortem">Pre-Mortem</h2>
+<div class="highlight"><pre><span></span><code>Stell dir vor: Wir haben [ENTSCHEIDUNG] getroffen.
+6 Monate später ist es gescheitert.
+
+Schreibe einen Bericht aus der Zukunft:
+- Was ist schiefgelaufen?
+- Welche Warnsignale haben wir ignoriert?
+- Was hätten wir anders machen sollen?
+- Wann hätten wir die Reißleine ziehen sollen?
+</code></pre></div>
+
+<h2 id="entscheidungsmatrix">Entscheidungsmatrix</h2>
+<div class="highlight"><pre><span></span><code>Entscheidung zwischen: [OPTION A, B, C]
+Kriterien: [KRITERIUM 1-5]
+
+Erstelle eine gewichtete Matrix:
+- Jede Option vs. Kriterium (1-10)
+- Kriterien gewichten (Summe = 100%)
+- Gewichtete Gesamtpunktzahl
+- Empfehlung mit Begründung
+- Sensitivitätsanalyse: Ändert sich die Empfehlung
+  bei anderer Gewichtung?
+</code></pre></div>
+
+<h2 id="szenario-analyse">Szenario-Analyse</h2>
+<div class="highlight"><pre><span></span><code>Geplante Entscheidung: [WAS]
+
+3 Szenarien:
+1. Best Case: Alles optimal. Was passiert?
+2. Base Case: Realistisch. Was passiert?
+3. Worst Case: Murphy&#39;s Law. Was passiert?
+
+Pro Szenario: Wahrscheinlichkeit (%), Konsequenzen,
+nötige Vorbereitungen, Handlungsoptionen.
+</code></pre></div>
+
+<h2 id="second-order-thinking">Second-Order Thinking</h2>
+<div class="highlight"><pre><span></span><code>Wenn wir [ENTSCHEIDUNG] treffen:
+
+1. Ordnung: Was sind die unmittelbaren Konsequenzen?
+2. Ordnung: Was sind die Konsequenzen der Konsequenzen?
+3. Ordnung: Was sind die langfristigen Auswirkungen?
+
+Beispiel: Preis erhöhen → weniger Kunden (1.) →
+höherer Umsatz pro Kunde (2.) → Premium-Positionierung (3.)
+</code></pre></div>
+
+<h2 id="swot-analyse">SWOT-Analyse</h2>
+<div class="highlight"><pre><span></span><code>Erstelle eine SWOT-Analyse für [UNTERNEHMEN/PRODUKT].
+Kontext: [BRANCHE, MARKTLAGE, WETTBEWERBER]
+
+Strengths (3-5): Interne Stärken
+Weaknesses (3-5): Interne Schwächen
+Opportunities (3-5): Externe Chancen
+Threats (3-5): Externe Bedrohungen
+
+Welche Stärke-Chancen-Kombination hat das meiste Potenzial?
+Welche Schwäche-Bedrohung-Kombination ist das größte Risiko?
+</code></pre></div>
+
+<h2 id="okr-setzen">OKR setzen</h2>
+<div class="highlight"><pre><span></span><code>Erstelle OKRs für [TEAM/PERSON] für [QUARTAL].
+Kontext: [UNTERNEHMENSZIELE, AKTUELLE LAGE]
+
+3 Objectives (qualitativ, inspirierend).
+Pro Objective: 3 Key Results (quantitativ, messbar).
+
+Regeln:
+- 70% Zielerreichung = gut (nicht zu leicht setzen)
+- Key Results messen Outcome, nicht Output
+- Jedes KR hat eine Zahl
+Beispiel: KR &quot;Kundenzufriedenheit NPS von 40 auf 55&quot;
+</code></pre></div>
+
+<h2 id="eisenhower-matrix">Eisenhower-Matrix</h2>
+<div class="highlight"><pre><span></span><code>Sortiere diese Aufgaben in die Eisenhower-Matrix:
+[AUFGABENLISTE]
+
+1. Dringend + Wichtig → SOFORT TUN
+2. Wichtig + Nicht dringend → PLANEN
+3. Dringend + Nicht wichtig → DELEGIEREN
+4. Weder noch → STREICHEN
+
+Begründe jede Einsortierung kurz.
+&quot;Dringend&quot; = hat eine nahe Deadline oder externe Erwartung.
+&quot;Wichtig&quot; = trägt zu langfristigen Zielen bei.
+</code></pre></div>
+
+<h2 id="pricing-strategie">Pricing-Strategie</h2>
+<div class="highlight"><pre><span></span><code>Produkt: [BESCHREIBUNG]
+Kosten: [HERSTELLKOSTEN PRO EINHEIT]
+Wettbewerber-Preise: [PREISRANGE]
+Zielgruppe: [WER]
+Positionierung: [Budget/Mittel/Premium]
+
+Analysiere 3 Pricing-Strategien:
+1. Cost-Plus (Kosten + Marge)
+2. Value-Based (Was ist es dem Kunden wert?)
+3. Competitive (Marktpreis ± X%)
+Empfehlung + Begründung. Psychologische Preispunkte.
+</code></pre></div>
+
+<h2 id="change-management-plan">Change-Management-Plan</h2>
+<div class="highlight"><pre><span></span><code>Erstelle einen Change-Management-Plan.
+Änderung: [WAS ÄNDERT SICH]
+Betroffene: [WER UND WIE VIELE]
+Timeline: [WANN]
+
+1. Kommunikation: Wann, wie, durch wen
+2. Widerstände: 3 erwartete + Gegenmaßnahmen
+3. Champions: Wer unterstützt intern
+4. Schulung: Was muss geschult werden
+5. Quick Wins: Erste sichtbare Erfolge
+6. Messung: Woran erkennen wir Erfolg?
+</code></pre></div>
+
+<h2 id="ki-roi-berechnen">KI-ROI berechnen</h2>
+<div class="highlight"><pre><span></span><code>Berechne den ROI für KI-Einführung.
+Team: [GRÖSSE]
+Zeitersparnis pro Person/Woche: [STUNDEN]
+Stundensatz (inkl. Nebenkosten): [€]
+KI-Tool-Kosten: [€/MONAT PRO PERSON]
+Schulungszeit einmalig: [STUNDEN PRO PERSON]
+
+Formel: (Zeitersparnis × Stundensatz × 48 Wochen)
+        - (Tool-Kosten × 12 + Schulungskosten)
+ROI in €/Jahr und Prozent.
+Break-Even: Ab welchem Monat?
+</code></pre></div>
+
+<h2 id="piloter-projekt-planen">Piloter-Projekt planen</h2>
+<div class="highlight"><pre><span></span><code>Plane ein KI-Pilotprojekt.
+Unternehmen: [BRANCHE, GRÖSSE]
+Verfügbares Budget: [BETRAG]
+
+1. Use-Case-Auswahl (Kriterien: Häufigkeit, Risiko,
+   Messbarkeit, Sichtbarkeit)
+2. 8-Wochen-Plan:
+   W1-2: Setup | W3-4: Training | W5-6: Anwendung | W7-8: Evaluation
+3. Erfolgskriterien (vorher definieren!)
+4. Go/No-Go-Entscheidung: Kriterien
+5. Skalierungsplan bei Erfolg
+</code></pre></div>
+
+<h2 id="markteintrittsstrategie">Markteintrittsstrategie</h2>
+<div class="highlight"><pre><span></span><code>Wir wollen mit [PRODUKT] in [MARKT] eintreten.
+Aktuell: [WO SIND WIR JETZT]
+Ziel: [WAS WOLLEN WIR ERREICHEN]
+Budget: [GRÖSSENORDNUNG]
+Timeline: [ZEITRAUM]
+
+Analysiere:
+1. Marktgröße und -dynamik
+2. Wettbewerber (Top 3)
+3. Eintrittsbarrieren
+4. Go-to-Market-Strategie (Kanal, Pricing, Messaging)
+5. First 90 Days Plan
+6. Risiken + Mitigationen
+</code></pre></div>
+
+<h2 id="verhandlungsstrategie">Verhandlungsstrategie</h2>
+<div class="highlight"><pre><span></span><code>Verhandlung über: [THEMA]
+Meine Position: [WAS WILL ICH]
+Gegenseite: [WER, WAS WOLLEN SIE]
+Mein BATNA: [BESTE ALTERNATIVE]
+
+Erstelle Strategie:
+1. Eröffnung (Anker setzen oder nicht?)
+2. Zone of Possible Agreement (ZOPA)
+3. Meine 3 stärksten Argumente
+4. Deren 3 Gegenargumente + meine Antworten
+5. Zugeständnisse (was kann ich geben?)
+6. Walk-away-Punkt (wann gehe ich?)
+</code></pre></div>
+
+<h2 id="krisenmanagement">Krisenmanagement</h2>
+<div class="highlight"><pre><span></span><code>Krise: [WAS IST PASSIERT]
+Betroffene: [WER]
+Aktuelle Lage: [WAS WISSEN WIR]
+
+Sofortmaßnahmen (erste 2 Stunden):
+1. [WAS TUN WIR JETZT]
+Kommunikation (erste 24 Stunden):
+2. Intern: [WER INFORMIERT WEN WIE]
+3. Extern: [STATEMENT, KANAL, TIMING]
+Mittelfristig (Woche 1):
+4. Ursachenanalyse
+5. Korrekturmaßnahmen
+6. Lessons Learned
+</code></pre></div>
+
+<h2 id="hiring-entscheidung">Hiring-Entscheidung</h2>
+<div class="highlight"><pre><span></span><code>Ich muss zwischen [KANDIDAT A] und [KANDIDAT B] wählen.
+Position: [ROLLE]
+
+A: [STÄRKEN, SCHWÄCHEN, EINDRUCK]
+B: [STÄRKEN, SCHWÄCHEN, EINDRUCK]
+
+Vergleiche nach: Fachkompetenz, Kulturfit, Wachstumspotenzial,
+Verfügbarkeit, Gehaltserwartung, Risiko.
+Welche Frage hätte ich im Interview noch stellen sollen?
+Empfehlung + Begründung.
+</code></pre></div>
+
+<h2 id="jahresplanung">Jahresplanung</h2>
+<div class="highlight"><pre><span></span><code>Erstelle eine Jahresplanung für [ABTEILUNG/PERSON].
+Übergeordnete Ziele: [UNTERNEHMENSZIELE]
+Budget: [JAHRESBUDGET]
+Team: [GRÖSSE]
+
+Pro Quartal: 2-3 Schwerpunkte, Meilensteine, Budget-Aufteilung.
+Jährliche OKRs (3 Objectives mit je 3 Key Results).
+Risiken: Was könnte den Plan gefährden?
+Review-Rhythmus: Wann prüfen wir Fortschritt?
+</code></pre></div>
+
+<h2 id="post-mortem">Post-Mortem</h2>
+<div class="highlight"><pre><span></span><code>Projekt [NAME] ist abgeschlossen.
+Ergebnis: [ERFOLG/TEILERFOLG/MISSERFOLG]
+
+Post-Mortem ohne Schuldzuweisungen:
+1. Timeline: Was ist wann passiert?
+2. Was lief gut? (3-5 Punkte)
+3. Was lief nicht gut? (3-5 Punkte)
+4. Root Cause: Warum lief es nicht gut?
+5. Was hätten wir anders machen sollen?
+6. Action Items: Konkrete Verbesserungen für nächstes Mal
+Ton: Lernen, nicht beschuldigen.
+</code></pre></div>
+
+<h2 id="stakeholder-mapping">Stakeholder-Mapping</h2>
+<div class="highlight"><pre><span></span><code>Projekt: [NAME]
+
+Identifiziere alle Stakeholder und kategorisiere sie:
+- Hoher Einfluss + Hohes Interesse → Eng einbinden
+- Hoher Einfluss + Niedriges Interesse → Zufrieden halten
+- Niedriger Einfluss + Hohes Interesse → Informieren
+- Niedriger Einfluss + Niedriges Interesse → Beobachten
+
+Pro Stakeholder: Name/Rolle, Interesse, Einfluss,
+Kommunikationskanal, Frequenz.
+</code></pre></div>
+</section>
+</article>
+</main>
+
+<button class="scroll-top" id="scrollTop" type="button" aria-label="Nach oben scrollen">
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4l-8 8h5v8h6v-8h5z"/></svg>
+</button>
+
+<div class="resume-banner" id="resumeBanner" role="dialog" aria-label="Lesezeichen">
+<div class="resume-top">
+<div class="resume-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 3H7c-1.1 0-2 .9-2 2v16l7-3 7 3V5c0-1.1-.9-2-2-2z"/></svg></div>
+<div class="resume-info">
+<div class="resume-label">Weiterlesen</div>
+<div class="resume-chapter" id="resumeChapter">Kapitel</div>
+</div>
+<button class="resume-close" id="resumeClose" type="button" aria-label="Schlie&szlig;en"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></button>
+</div>
+<div class="resume-progress"><div class="resume-progress-bar" id="resumeProgress"></div></div>
+<button class="resume-btn" id="resumeBtn" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>Weiterlesen</button>
+</div>
+
+<div class="update-toast" id="updateToast" role="alert" aria-live="polite">
+<div class="ver" id="toastVer"></div>
+<h3>Neues Update!</h3>
+<ul id="toastChanges"></ul>
+<button id="toastClose" type="button">Verstanden</button>
+</div>
+
+<button class="focus-exit" id="focusExit" type="button" aria-label="Lesemodus beenden">Lesemodus beenden <kbd>Esc</kbd></button>
+
+<script>
+(function(){
+var B=11,K='pe-band'+B;
+var html=document.documentElement;
+
+// Theme
+var stored=localStorage.getItem('theme');
+var dark=stored==='dark'||(!stored&&matchMedia('(prefers-color-scheme:dark)').matches);
+var themeInput=document.getElementById('themeInput');
+if(dark){html.dataset.theme='dark';themeInput.checked=true;}
+themeInput.addEventListener('change',function(){
+html.dataset.theme=this.checked?'dark':'light';
+localStorage.setItem('theme',html.dataset.theme);
+});
+
+// Mobile menu
+var menuBtn=document.getElementById('menuBtn');
+var sidebar=document.getElementById('sidebar');
+var overlay=document.getElementById('overlay');
+function closeSidebar(){sidebar.classList.remove('open');overlay.classList.remove('show');menuBtn.setAttribute('aria-expanded','false')}
+menuBtn.addEventListener('click',function(){
+var open=sidebar.classList.toggle('open');
+overlay.classList.toggle('show');
+menuBtn.setAttribute('aria-expanded',open?'true':'false');
+});
+overlay.addEventListener('click',closeSidebar);
+document.querySelectorAll('.toc-link').forEach(function(l){l.addEventListener('click',function(){if(innerWidth<=900)closeSidebar()})});
+
+// Progress bar + reading position save
+var prog=document.getElementById('progress');
+var saveTimer;
+function onScroll(){
+var h=document.documentElement.scrollHeight-innerHeight;
+var pct=h>0?scrollY/h:0;
+prog.style.width=(pct*100)+'%';
+// Scroll to top button
+scrollBtn.classList.toggle('show',scrollY>600);
+clearTimeout(saveTimer);
+saveTimer=setTimeout(function(){
+localStorage.setItem(K+'-scroll',scrollY);
+var chs=document.querySelectorAll('.chapter');
+for(var i=chs.length-1;i>=0;i--){
+if(chs[i].getBoundingClientRect().top<150){
+localStorage.setItem(K+'-chapter',chs[i].id);
+break;
+}
+}
+},300);
+}
+window.addEventListener('scroll',onScroll,{passive:true});
+
+// Resume reading position
+var savedScroll=parseInt(localStorage.getItem(K+'-scroll'),10);
+var savedChapter=localStorage.getItem(K+'-chapter');
+if(savedScroll>300&&savedChapter){
+var banner=document.getElementById('resumeBanner');
+var chEl=document.getElementById(savedChapter);
+var chapterName='Kapitel';
+if(chEl){
+var chTitle=chEl.querySelector('h1');
+if(chTitle)chapterName=chTitle.textContent;
+}
+document.getElementById('resumeChapter').textContent=chapterName;
+// Calculate reading progress percentage
+var docH=document.documentElement.scrollHeight-window.innerHeight;
+var pct=docH>0?Math.min(Math.round((savedScroll/docH)*100),100):0;
+document.getElementById('resumeProgress').style.width=pct+'%';
+banner.classList.add('show');
+function doResume(){scrollTo({top:savedScroll,behavior:'smooth'});banner.classList.remove('show')}
+function dismissBanner(){banner.classList.remove('show')}
+document.getElementById('resumeBtn').addEventListener('click',doResume);
+document.getElementById('resumeClose').addEventListener('click',dismissBanner);
+banner.addEventListener('keydown',function(e){if(e.key==='Enter')doResume();if(e.key==='Escape')dismissBanner()});
+setTimeout(dismissBanner,12000);
+}
+
+// Scroll to top
+var scrollBtn=document.getElementById('scrollTop');
+scrollBtn.addEventListener('click',function(){scrollTo({top:0,behavior:'smooth'})});
+
+// Active TOC tracking
+var chapters=document.querySelectorAll('.chapter');
+var links=document.querySelectorAll('.toc-link');
+var observer=new IntersectionObserver(function(entries){
+entries.forEach(function(e){
+if(e.isIntersecting){
+links.forEach(function(l){l.classList.remove('active')});
+var active=document.querySelector('.toc-link[data-target="'+e.target.id+'"]');
+if(active)active.classList.add('active');
+}
+});
+},{rootMargin:'-80px 0px -60% 0px'});
+chapters.forEach(function(ch){observer.observe(ch)});
+
+// Focus / Fullscreen reading mode
+var focusBtn=document.getElementById('focusBtn');
+var focusExit=document.getElementById('focusExit');
+function toggleFocus(on){
+var entering=typeof on==='boolean'?on:!document.body.classList.contains('focus-mode');
+document.body.classList.toggle('focus-mode',entering);
+if(entering)closeSidebar();
+}
+focusBtn.addEventListener('click',function(){toggleFocus(true)});
+focusExit.addEventListener('click',function(){toggleFocus(false)});
+document.addEventListener('keydown',function(e){
+if(e.key==='Escape'&&document.body.classList.contains('focus-mode'))toggleFocus(false);
+});
+
+// Service Worker + Version popup
+if('serviceWorker' in navigator){
+navigator.serviceWorker.register('../sw.js').then(function(){
+setTimeout(function(){
+var lastVer=localStorage.getItem('pe-app-version');
+fetch('../version.json?t='+Date.now()).then(function(r){return r.json()}).then(function(data){
+if(lastVer&&lastVer!==data.version){
+var toast=document.getElementById('updateToast');
+document.getElementById('toastVer').textContent='Version '+data.version;
+var ul=document.getElementById('toastChanges');ul.innerHTML='';
+data.changes.forEach(function(c){var li=document.createElement('li');li.textContent=c;ul.appendChild(li)});
+toast.classList.add('show');
+document.getElementById('toastClose').addEventListener('click',function(){toast.classList.remove('show');localStorage.setItem('pe-app-version',data.version)});
+}else{localStorage.setItem('pe-app-version',data.version)}
+}).catch(function(){});
+},1000);
+});
+}
+})();
+// Copy buttons for code blocks
+document.querySelectorAll('.chapter pre').forEach(function(pre){
+  var btn=document.createElement('button');
+  btn.className='copy-btn';btn.textContent='Kopieren';
+  btn.addEventListener('click',function(){
+    var code=pre.querySelector('code')||pre;
+    var text=code.textContent||code.innerText;
+    navigator.clipboard.writeText(text).then(function(){
+      btn.textContent='Kopiert!';btn.classList.add('copied');
+      setTimeout(function(){btn.textContent='Kopieren';btn.classList.remove('copied')},2000);
+    });
+  });
+  pre.style.position='relative';pre.appendChild(btn);
+});
+</script>
+</body>
+</html>

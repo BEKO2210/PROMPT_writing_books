@@ -198,6 +198,24 @@ BAND_CONFIG = {
             "10_Abschluss_der_Reihe.md",
         ],
     },
+    11: {
+        "ordner": "Band_Bonus_Prompt_Sammlung",
+        "titel": "Prompt-Sammlung",
+        "untertitel": "200+ sofort einsetzbare Prompts",
+        "dateien": [
+            "00_Vorwort.md",
+            "01_Alltag_und_Grundlagen.md",
+            "02_Email_und_Kommunikation.md",
+            "03_Business_und_Berichte.md",
+            "04_Marketing_und_Social_Media.md",
+            "05_Bildung_und_E_Learning.md",
+            "06_Schreiben_und_Kreativ.md",
+            "07_Datenanalyse_und_Finanzen.md",
+            "08_Recht_Medizin_HR.md",
+            "09_Code_und_Entwicklung.md",
+            "10_Strategie_und_Entscheidungen.md",
+        ],
+    },
 }
 
 BASE_URL = "https://beko2210.github.io/PROMPT_writing_books"
@@ -264,7 +282,7 @@ def build_band_page(band_nr, config):
     )
 
     pdf_name = f"Band_{band_nr:02d}_{config['titel']}"
-    page_url = f"{BASE_URL}/band-{band_nr:02d}/"
+    page_url = f"{BASE_URL}/band-bonus/" if band_nr == 11 else f"{BASE_URL}/band-{band_nr:02d}/"
 
     return f"""<!DOCTYPE html>
 <html lang="de" dir="ltr">
@@ -407,7 +425,10 @@ text-decoration:none;border-left:2px solid transparent;transition:all .2s;line-h
 .chapter li{{margin-bottom:8px}}.chapter li>ul,.chapter li>ol{{margin-top:6px}}
 
 /* Code */
-.chapter pre{{background:var(--code-bg);border:1px solid var(--border);border-radius:10px;padding:18px 20px;margin:20px 0;overflow-x:auto;font-family:var(--font-mono);font-size:14px;line-height:1.55;max-width:100%;white-space:pre-wrap;word-wrap:break-word}}
+.chapter pre{{background:var(--code-bg);border:1px solid var(--border);border-radius:10px;padding:18px 20px;margin:20px 0;overflow-x:auto;font-family:var(--font-mono);font-size:14px;line-height:1.55;max-width:100%;white-space:pre-wrap;word-wrap:break-word;position:relative}}
+.copy-btn{{position:absolute;top:8px;right:8px;background:var(--accent);color:#fff;border:none;border-radius:6px;padding:4px 12px;font-size:12px;cursor:pointer;opacity:0;transition:opacity .2s;font-family:var(--font-sans);z-index:2}}
+.chapter pre:hover .copy-btn{{opacity:1}}
+.copy-btn.copied{{background:#4ecdc4}}
 .chapter code{{font-family:var(--font-mono);font-size:15px;background:var(--code-bg);padding:2px 6px;border-radius:5px;color:var(--accent)}}
 .chapter pre code{{background:none;padding:0;color:var(--text);font-size:14px}}
 
@@ -731,6 +752,20 @@ document.getElementById('toastClose').addEventListener('click',function(){{toast
 }});
 }}
 }})();
+// Copy buttons for code blocks
+document.querySelectorAll('.chapter pre').forEach(function(pre){{
+  var btn=document.createElement('button');
+  btn.className='copy-btn';btn.textContent='Kopieren';
+  btn.addEventListener('click',function(){{
+    var code=pre.querySelector('code')||pre;
+    var text=code.textContent||code.innerText;
+    navigator.clipboard.writeText(text).then(function(){{
+      btn.textContent='Kopiert!';btn.classList.add('copied');
+      setTimeout(function(){{btn.textContent='Kopieren';btn.classList.remove('copied')}},2000);
+    }});
+  }});
+  pre.style.position='relative';pre.appendChild(btn);
+}});
 </script>
 </body>
 </html>"""
@@ -740,7 +775,7 @@ def main():
     script_dir = Path(__file__).parent.resolve()
 
     for band_nr, config in BAND_CONFIG.items():
-        out_dir = script_dir / f"band-{band_nr:02d}"
+        out_dir = script_dir / (f"band-bonus" if band_nr == 11 else f"band-{band_nr:02d}")
         out_dir.mkdir(parents=True, exist_ok=True)
 
         html = build_band_page(band_nr, config)

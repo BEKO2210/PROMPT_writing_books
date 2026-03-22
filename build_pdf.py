@@ -230,6 +230,26 @@ BAND_CONFIG = {
             "10_Abschluss_der_Reihe.md",
         ],
     },
+    11: {
+        "ordner": "Band_Bonus_Prompt_Sammlung",
+        "titel": "Prompt-Sammlung",
+        "untertitel": "200+ sofort einsetzbare Prompts",
+        "farbe": "#1a4a44",
+        "akzent": "#4ecdc4",
+        "dateien": [
+            "00_Vorwort.md",
+            "01_Alltag_und_Grundlagen.md",
+            "02_Email_und_Kommunikation.md",
+            "03_Business_und_Berichte.md",
+            "04_Marketing_und_Social_Media.md",
+            "05_Bildung_und_E_Learning.md",
+            "06_Schreiben_und_Kreativ.md",
+            "07_Datenanalyse_und_Finanzen.md",
+            "08_Recht_Medizin_HR.md",
+            "09_Code_und_Entwicklung.md",
+            "10_Strategie_und_Entscheidungen.md",
+        ],
+    },
 }
 
 AUTOR = "Belkis Aslani"
@@ -808,7 +828,7 @@ def build_title_page(band_nr, config):
     return f"""
     <div class="title-page">
         <div class="reihe">{REIHE}</div>
-        <div class="band-nummer">Band {band_nr}</div>
+        <div class="band-nummer">{"Bonusband" if band_nr == 11 else f"Band {band_nr}"}</div>
         <div class="haupttitel">{config['titel']}</div>
         <div class="untertitel">{config['untertitel']}</div>
         <div class="trennlinie"></div>
