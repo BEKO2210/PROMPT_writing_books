@@ -90,6 +90,24 @@ BAND_CONFIG = {
             "10_Zusammenfassung_und_Ausblick.md",
         ],
     },
+    5: {
+        "ordner": "Band_05_Kreatives_Prompting",
+        "titel": "Kreatives-Prompting",
+        "untertitel": "KI als Kreativpartner",
+        "dateien": [
+            "00_Vorwort.md",
+            "01_Kreativitaet_und_KI.md",
+            "02_Storytelling_mit_KI.md",
+            "03_Kreatives_Schreiben.md",
+            "04_Bild_Generierung.md",
+            "05_Musik_und_Audio.md",
+            "06_Video_und_Animation.md",
+            "07_Multimodales_Prompting.md",
+            "08_Kreative_Frameworks.md",
+            "09_Kreative_Workflows.md",
+            "10_Zusammenfassung_und_Ausblick.md",
+        ],
+    },
 }
 
 BASE_URL = "https://beko2210.github.io/PROMPT_writing_books"

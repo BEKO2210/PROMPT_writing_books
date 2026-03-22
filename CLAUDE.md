@@ -19,7 +19,7 @@ Deutschsprachige Sachbuchreihe zu Prompt Engineering fur Large Language Models.
 | 2 | **Prompt-Frameworks** | Fertig | CRAFT, RTF, RISEN; Zero-Shot, Few-Shot, One-Shot; Template-Bibliothek |
 | 3 | **Fortgeschrittene Basics** | Fertig | Prompt-Chaining, Delimiter, negative Prompts, Temperatur, System-Prompts |
 | 4 | **Reasoning-Techniken** | Fertig | Chain-of-Thought, Tree-of-Thought, Self-Consistency, ReAct, Meta-Prompting |
-| 5 | **Kreatives Prompting** | Geplant | Storytelling, Bild-Generierung, Musik/Audio, multimodales Prompting |
+| 5 | **Kreatives Prompting** | Fertig | Storytelling, Bild-Generierung, Musik/Audio, multimodales Prompting |
 | 6 | **Spezialisiertes Prompting** | Geplant | Bildung, Marketing, Datenanalyse, Wissenschaft, Recht, Medizin |
 | 7 | **Prompting fur Entwickler** | Geplant | Code-Generierung, APIs, RAG, Fine-Tuning vs. Prompting |
 | 8 | **Business & Produktivitat** | Geplant | Workflow-Automatisierung, E-Mail/Berichte, Team-Standards |
