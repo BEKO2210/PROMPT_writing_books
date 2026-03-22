@@ -1,503 +1,334 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="utf-8">
-    <title>Prompt Engineering Meistern – Band 1: Grundlagen</title>
-    <style>
-/* ============================================
-   BUCHFORMAT: A5 (148mm × 210mm)
-   Ränder: Innen 18mm (Bindung), Außen 14mm, Oben 16mm, Unten 18mm
-   Optimiert für digitale Bücher (Gumroad, etc.) und Print-on-Demand
-   ============================================ */
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Band 1: Grundlagen – Prompt Engineering Meistern</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 
-@page {
-    size: 148mm 210mm;
-    margin-top: 16mm;
-    margin-bottom: 18mm;
-    margin-inside: 18mm;
-    margin-outside: 14mm;
-
-    @bottom-center {
-        content: counter(page);
-        font-family: 'Liberation Sans', 'DejaVu Sans', sans-serif;
-        font-size: 8pt;
-        color: #999;
-    }
+:root{
+--bg:#ffffff;--bg2:#f8f9fb;--card:#fff;
+--text:#1a1a1a;--text2:#555;--text3:#888;
+--accent:#2d4a7a;--accent-light:#8ab4f8;
+--border:#e5e7eb;--code-bg:#f5f7fa;
+--sidebar-bg:#fafbfc;
+--max-w:680px;
+--font:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+--font-reading:'Georgia','Liberation Serif',serif;
+--font-mono:'SF Mono','Liberation Mono','Cascadia Code',monospace;
 }
 
-@page chapter-start {
-    @bottom-center { content: none; }
-    @top-center { content: none; }
+[data-theme="dark"]{
+--bg:#0d1117;--bg2:#161b22;--card:#1c2333;
+--text:#e4e8ef;--text2:#8899aa;--text3:#556677;
+--accent:#8ab4f8;--accent-light:#8ab4f8;
+--border:#2a3444;--code-bg:#161b22;
+--sidebar-bg:#0d1117;
 }
 
-@page title-page {
-    margin: 0;
-    @bottom-center { content: none; }
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{
+font-family:var(--font);
+background:var(--bg);
+color:var(--text);
+transition:background .3s,color .3s;
 }
 
-@page blank-page {
-    @bottom-center { content: none; }
+/* ===== PROGRESS BAR ===== */
+.progress{
+position:fixed;top:0;left:0;height:3px;
+background:linear-gradient(90deg,var(--accent),var(--accent-light));
+z-index:1000;width:0;transition:width .1s;
 }
 
-@page copyright-page {
-    @bottom-center { content: none; }
+/* ===== TOP BAR ===== */
+.topbar{
+position:fixed;top:0;left:0;right:0;
+height:56px;
+background:var(--bg);
+border-bottom:1px solid var(--border);
+display:flex;align-items:center;
+padding:0 16px;
+z-index:100;
+transition:background .3s,border-color .3s;
+backdrop-filter:blur(12px);
+background:color-mix(in srgb,var(--bg) 85%,transparent);
+}
+.topbar-left{display:flex;align-items:center;gap:12px;flex:1;min-width:0}
+.menu-btn{
+background:none;border:none;cursor:pointer;
+padding:8px;color:var(--text);display:none;
+}
+@media(max-width:900px){.menu-btn{display:block}}
+.topbar-title{
+font-size:14px;font-weight:600;color:var(--text2);
+white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.topbar-title a{color:inherit;text-decoration:none}
+.topbar-title a:hover{color:var(--accent)}
+.topbar-actions{display:flex;align-items:center;gap:8px}
+.btn-sm{
+font-size:12px;font-weight:600;
+padding:7px 14px;border-radius:8px;
+border:1px solid var(--border);
+background:var(--bg2);color:var(--text);
+cursor:pointer;text-decoration:none;
+transition:all .2s;
+display:inline-flex;align-items:center;gap:6px;
+}
+.btn-sm:hover{border-color:var(--accent);color:var(--accent)}
+.btn-sm svg{width:14px;height:14px;fill:currentColor}
+.theme-toggle{
+background:none;border:1px solid var(--border);
+width:34px;height:34px;border-radius:8px;
+cursor:pointer;color:var(--text);
+display:flex;align-items:center;justify-content:center;
+transition:all .2s;
+}
+.theme-toggle:hover{border-color:var(--accent)}
+.theme-toggle svg{width:16px;height:16px;fill:currentColor}
+
+/* ===== SIDEBAR ===== */
+.sidebar{
+position:fixed;top:56px;left:0;bottom:0;
+width:280px;
+background:var(--sidebar-bg);
+border-right:1px solid var(--border);
+overflow-y:auto;
+padding:20px 0;
+z-index:90;
+transition:transform .3s,background .3s,border-color .3s;
+}
+@media(max-width:900px){
+.sidebar{transform:translateX(-100%);width:300px;z-index:200;box-shadow:4px 0 30px rgba(0,0,0,.2)}
+.sidebar.open{transform:translateX(0)}
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:150}
+.overlay.show{display:block}
 }
 
-@page toc-page {
-    @bottom-center { content: none; }
+.sidebar-header{
+padding:0 20px 16px;
+font-size:12px;
+text-transform:uppercase;
+letter-spacing:2px;
+color:var(--text3);
+font-weight:600;
+}
+.toc-link{
+display:block;
+padding:8px 20px 8px 24px;
+font-size:14px;
+color:var(--text2);
+text-decoration:none;
+border-left:2px solid transparent;
+transition:all .2s;
+line-height:1.4;
+}
+.toc-link:hover{color:var(--accent);background:var(--bg2)}
+.toc-link.active{
+color:var(--accent);
+border-left-color:var(--accent);
+background:var(--bg2);
+font-weight:600;
 }
 
-/* ============================================
-   TYPOGRAFIE – A5-optimiert (kleinere Schrift)
-   ============================================ */
-
-body {
-    font-family: 'Liberation Serif', 'DejaVu Serif', 'FreeSerif', serif;
-    font-size: 9.5pt;
-    line-height: 1.5;
-    color: #1a1a1a;
-    text-align: justify;
-    hyphens: auto;
-    -webkit-hyphens: auto;
-    orphans: 3;
-    widows: 3;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
+/* ===== MAIN CONTENT ===== */
+.main{
+margin-left:280px;
+padding:80px 24px 100px;
+transition:margin .3s;
+}
+@media(max-width:900px){
+.main{margin-left:0}
+}
+.content{
+max-width:var(--max-w);
+margin:0 auto;
 }
 
-/* ============================================
-   TITELSEITE
-   ============================================ */
+/* ===== TYPOGRAPHY ===== */
+.chapter{
+padding-bottom:60px;
+margin-bottom:40px;
+border-bottom:1px solid var(--border);
+}
+.chapter:last-child{border-bottom:none}
 
-.title-page {
-    page: title-page;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    text-align: center;
-    padding: 2cm 1.5cm;
-    background: linear-gradient(180deg, #0a1628 0%, #1a2744 40%, #2d4a7a 100%);
-    color: white;
+.chapter h1{
+font-family:var(--font);
+font-size:clamp(1.6rem,4vw,2.2rem);
+font-weight:800;
+color:var(--text);
+margin:0 0 24px;
+line-height:1.15;
+letter-spacing:-.02em;
+}
+.chapter h2{
+font-family:var(--font);
+font-size:clamp(1.2rem,3vw,1.5rem);
+font-weight:700;
+color:var(--text);
+margin:40px 0 16px;
+line-height:1.2;
+}
+.chapter h3{
+font-family:var(--font);
+font-size:1.1rem;
+font-weight:600;
+color:var(--text);
+margin:32px 0 12px;
+}
+.chapter h4{
+font-size:1rem;
+font-weight:600;
+color:var(--text2);
+margin:24px 0 8px;
 }
 
-.title-page .reihe {
-    font-family: 'Liberation Sans', 'DejaVu Sans', sans-serif;
-    font-size: 9pt;
-    text-transform: uppercase;
-    letter-spacing: 3.5pt;
-    color: #8ab4f8;
-    margin-bottom: 1.2cm;
-    font-weight: 400;
+.chapter p{
+font-family:var(--font-reading);
+font-size:17px;
+line-height:1.75;
+margin-bottom:18px;
+color:var(--text);
 }
 
-.title-page .band-nummer {
-    font-family: 'Liberation Sans', 'DejaVu Sans', sans-serif;
-    font-size: 11pt;
-    color: #8ab4f8;
-    letter-spacing: 2pt;
-    margin-bottom: 0.6cm;
-    text-transform: uppercase;
+.chapter strong{font-weight:700}
+.chapter em{font-style:italic}
+
+.chapter ul,.chapter ol{
+font-family:var(--font-reading);
+font-size:17px;
+line-height:1.7;
+margin:12px 0 18px;
+padding-left:28px;
+}
+.chapter li{margin-bottom:8px}
+.chapter li > ul,.chapter li > ol{margin-top:6px}
+
+/* ===== CODE ===== */
+.chapter pre{
+background:var(--code-bg);
+border:1px solid var(--border);
+border-radius:10px;
+padding:18px 20px;
+margin:20px 0;
+overflow-x:auto;
+font-family:var(--font-mono);
+font-size:14px;
+line-height:1.55;
+}
+.chapter code{
+font-family:var(--font-mono);
+font-size:15px;
+background:var(--code-bg);
+padding:2px 6px;
+border-radius:5px;
+color:var(--accent);
+}
+.chapter pre code{
+background:none;padding:0;color:var(--text);font-size:14px;
 }
 
-.title-page .haupttitel {
-    font-family: 'Liberation Serif', 'DejaVu Serif', serif;
-    font-size: 26pt;
-    font-weight: bold;
-    line-height: 1.15;
-    margin-bottom: 0.5cm;
-    color: #ffffff;
+/* ===== TABLES ===== */
+.chapter table{
+width:100%;border-collapse:collapse;
+margin:20px 0;font-size:15px;
+border-radius:8px;overflow:hidden;
+}
+.chapter thead{background:var(--accent);color:#fff}
+.chapter th{padding:10px 14px;text-align:left;font-size:13px;font-weight:600}
+.chapter td{
+padding:10px 14px;border-bottom:1px solid var(--border);
+font-family:var(--font-reading);
+}
+.chapter tr:nth-child(even){background:var(--bg2)}
+
+/* ===== BLOCKQUOTE ===== */
+.chapter blockquote{
+border-left:3px solid var(--accent-light);
+background:var(--bg2);
+padding:16px 20px;
+margin:20px 0;
+border-radius:0 8px 8px 0;
+font-style:italic;
+}
+.chapter blockquote p{margin-bottom:8px;font-size:16px}
+
+/* ===== HR ===== */
+.chapter hr{
+border:none;
+border-top:2px solid var(--border);
+margin:40px 60px;
 }
 
-.title-page .untertitel {
-    font-family: 'Liberation Sans', 'DejaVu Sans', sans-serif;
-    font-size: 11pt;
-    font-weight: 300;
-    color: #c8ddf8;
-    margin-bottom: 2cm;
-    line-height: 1.35;
+/* ===== SCROLL TO TOP ===== */
+.scroll-top{
+position:fixed;bottom:24px;right:24px;
+width:44px;height:44px;border-radius:12px;
+background:var(--accent);color:#fff;
+border:none;cursor:pointer;
+display:none;align-items:center;justify-content:center;
+box-shadow:0 4px 20px rgba(0,0,0,.2);
+z-index:50;transition:all .3s;
 }
+.scroll-top:hover{transform:translateY(-2px)}
+.scroll-top.show{display:flex}
+.scroll-top svg{width:20px;height:20px;fill:currentColor}
 
-.title-page .autor {
-    font-family: 'Liberation Sans', 'DejaVu Sans', sans-serif;
-    font-size: 13pt;
-    letter-spacing: 2pt;
-    color: #ffffff;
-    margin-bottom: 0.3cm;
-}
-
-.title-page .trennlinie {
-    width: 3cm;
-    height: 2px;
-    background: #8ab4f8;
-    margin: 0.6cm auto;
-}
-
-.title-page .jahr {
-    font-family: 'Liberation Sans', 'DejaVu Sans', sans-serif;
-    font-size: 9pt;
-    color: #8ab4f8;
-    letter-spacing: 1pt;
-}
-
-/* ============================================
-   LEERE SEITE (Rückseite Titel)
-   ============================================ */
-
-.blank-page {
-    page: blank-page;
-    page-break-before: always;
-    height: 100%;
-}
-
-/* ============================================
-   COPYRIGHT-SEITE
-   ============================================ */
-
-.copyright-page {
-    page: copyright-page;
-    page-break-before: always;
-    font-family: 'Liberation Sans', 'DejaVu Sans', sans-serif;
-    font-size: 7.5pt;
-    color: #666;
-    line-height: 1.55;
-    padding-top: 55%;
-}
-
-.copyright-page p {
-    margin-bottom: 0.3cm;
-    text-align: left;
-}
-
-/* ============================================
-   LEERE SEITE (Rückseite Copyright)
-   ============================================ */
-
-/* ============================================
-   INHALTSVERZEICHNIS
-   ============================================ */
-
-.toc-page {
-    page: toc-page;
-    page-break-before: always;
-}
-
-.toc-page h2 {
-    font-family: 'Liberation Sans', 'DejaVu Sans', sans-serif;
-    font-size: 16pt;
-    color: #1a2744;
-    border-bottom: 2px solid #2d4a7a;
-    padding-bottom: 0.25cm;
-    margin-bottom: 0.8cm;
-    margin-top: 1cm;
-    text-align: left;
-}
-
-.toc-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.toc-list li {
-    padding: 0.2cm 0;
-    border-bottom: 1px dotted #ccc;
-    font-size: 9.5pt;
-    line-height: 1.35;
-}
-
-.toc-list li.vorwort {
-    font-style: italic;
-    color: #555;
-}
-
-.toc-list .toc-nummer {
-    font-family: 'Liberation Sans', 'DejaVu Sans', sans-serif;
-    font-weight: bold;
-    color: #2d4a7a;
-    display: inline-block;
-    width: 1cm;
-}
-
-/* ============================================
-   KAPITEL-ÜBERSCHRIFTEN
-   ============================================ */
-
-h1 {
-    page: chapter-start;
-    page-break-before: always;
-    font-family: 'Liberation Sans', 'DejaVu Sans', sans-serif;
-    font-size: 20pt;
-    font-weight: bold;
-    color: #1a2744;
-    margin-top: 2.5cm;
-    margin-bottom: 0.8cm;
-    line-height: 1.15;
-    border-bottom: 2.5px solid #2d4a7a;
-    padding-bottom: 0.4cm;
-    text-align: left;
-}
-
-.chapter-content:first-of-type h1 {
-    page-break-before: always;
-}
-
-h2 {
-    font-family: 'Liberation Sans', 'DejaVu Sans', sans-serif;
-    font-size: 13pt;
-    font-weight: bold;
-    color: #2d4a7a;
-    margin-top: 0.9cm;
-    margin-bottom: 0.35cm;
-    line-height: 1.25;
-    page-break-after: avoid;
-}
-
-h3 {
-    font-family: 'Liberation Sans', 'DejaVu Sans', sans-serif;
-    font-size: 11pt;
-    font-weight: bold;
-    color: #3d5a8a;
-    margin-top: 0.6cm;
-    margin-bottom: 0.25cm;
-    page-break-after: avoid;
-}
-
-h4 {
-    font-family: 'Liberation Sans', 'DejaVu Sans', sans-serif;
-    font-size: 9.5pt;
-    font-weight: bold;
-    color: #4a6a9a;
-    margin-top: 0.5cm;
-    margin-bottom: 0.2cm;
-    page-break-after: avoid;
-}
-
-/* ============================================
-   ABSÄTZE UND TEXT
-   ============================================ */
-
-p {
-    margin-bottom: 0.3cm;
-    text-indent: 0;
-}
-
-h1 + p, h2 + p, h3 + p, h4 + p {
-    text-indent: 0;
-}
-
-strong {
-    font-weight: bold;
-    color: #1a1a1a;
-}
-
-em {
-    font-style: italic;
-}
-
-/* ============================================
-   LISTEN
-   ============================================ */
-
-ul, ol {
-    margin: 0.3cm 0;
-    padding-left: 1cm;
-}
-
-li {
-    margin-bottom: 0.15cm;
-    line-height: 1.45;
-}
-
-li > ul, li > ol {
-    margin-top: 0.1cm;
-}
-
-/* ============================================
-   CODE-BLÖCKE
-   ============================================ */
-
-pre {
-    background: #f5f7fa;
-    border: 1px solid #d0d7e2;
-    border-left: 3px solid #2d4a7a;
-    border-radius: 3px;
-    padding: 0.35cm 0.45cm;
-    margin: 0.4cm 0;
-    font-family: 'Liberation Mono', 'DejaVu Sans Mono', monospace;
-    font-size: 7.5pt;
-    line-height: 1.4;
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-    white-space: pre-wrap;
-    page-break-inside: avoid;
-}
-
-code {
-    font-family: 'Liberation Mono', 'DejaVu Sans Mono', monospace;
-    font-size: 8pt;
-    background: #f0f3f7;
-    padding: 1px 3px;
-    border-radius: 2px;
-    color: #2d4a7a;
-}
-
-pre code {
-    background: none;
-    padding: 0;
-    border-radius: 0;
-    color: #1a1a1a;
-    font-size: 7.5pt;
-}
-
-/* ============================================
-   TABELLEN
-   ============================================ */
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 0.4cm 0;
-    font-size: 8.5pt;
-    page-break-inside: avoid;
-}
-
-thead {
-    background: #1a2744;
-    color: white;
-}
-
-th {
-    font-family: 'Liberation Sans', 'DejaVu Sans', sans-serif;
-    font-weight: bold;
-    padding: 0.2cm 0.3cm;
-    text-align: left;
-    font-size: 8pt;
-}
-
-td {
-    padding: 0.18cm 0.3cm;
-    border-bottom: 1px solid #e0e4ea;
-    vertical-align: top;
-}
-
-tr:nth-child(even) {
-    background: #f8f9fb;
-}
-
-/* ============================================
-   HORIZONTALE LINIE
-   ============================================ */
-
-hr {
-    border: none;
-    border-top: 1.5px solid #2d4a7a;
-    margin: 0.7cm 1.5cm;
-}
-
-/* ============================================
-   BLOCKQUOTES (Tipps/Hinweise)
-   ============================================ */
-
-blockquote {
-    border-left: 3px solid #8ab4f8;
-    background: #f0f5ff;
-    margin: 0.35cm 0;
-    padding: 0.3cm 0.45cm;
-    font-style: italic;
-    color: #333;
-    page-break-inside: avoid;
-}
-
-blockquote p {
-    margin-bottom: 0.15cm;
-}
-
-/* ============================================
-   LINKS
-   ============================================ */
-
-a {
-    color: #2d4a7a;
-    text-decoration: none;
-}
-
-/* ============================================
-   SEITENUMBRÜCHE
-   ============================================ */
-
-.page-break {
-    page-break-before: always;
-}
-
-.avoid-break {
-    page-break-inside: avoid;
-}
-
-/* ============================================
-   WASSERZEICHEN (Entwurfsmodus)
-   ============================================ */
-
-.draft-watermark {
-    position: fixed;
-    top: 45%;
-    left: 10%;
-    font-size: 60pt;
-    color: rgba(200, 0, 0, 0.08);
-    transform: rotate(-45deg);
-    font-family: 'Liberation Sans', sans-serif;
-    font-weight: bold;
-    z-index: -1;
-    pointer-events: none;
+/* ===== RESPONSIVE TABLE ===== */
+@media(max-width:600px){
+.chapter table{font-size:13px}
+.chapter th,.chapter td{padding:8px 10px}
+.chapter p{font-size:16px}
+.chapter pre{font-size:13px;padding:14px 16px}
 }
 </style>
 </head>
 <body>
-    
-    
-    <div class="title-page">
-        <div class="reihe">Prompt Engineering Meistern</div>
-        <div class="band-nummer">Band 1</div>
-        <div class="haupttitel">Grundlagen</div>
-        <div class="untertitel">Dein Einstieg in die Welt der KI-Kommunikation</div>
-        <div class="trennlinie"></div>
-        <div class="autor">Belkis Aslani</div>
-        <div class="trennlinie"></div>
-        <div class="jahr">2026</div>
-    </div>
-    
-    
-    <div class="copyright-page">
-        <p><strong>Prompt Engineering Meistern</strong><br>
-        Band 1: Grundlagen &ndash; Dein Einstieg in die Welt der KI-Kommunikation</p>
 
-        <p>&copy; 2026 Belkis Aslani. Alle Rechte vorbehalten.</p>
+<div class="progress" id="progress"></div>
 
-        <p>1. Auflage, M&auml;rz 2026</p>
+<div class="overlay" id="overlay"></div>
 
-        <p>Dieses Werk ist urheberrechtlich gesch&uuml;tzt. Jede Verwertung au&szlig;erhalb
-        der engen Grenzen des Urheberrechtsgesetzes ist ohne Zustimmung des Autors
-        unzul&auml;ssig und strafbar. Das gilt insbesondere f&uuml;r Vervielf&auml;ltigungen,
-        &Uuml;bersetzungen, Mikroverfilmungen und die Einspeicherung und Verarbeitung
-        in elektronischen Systemen.</p>
+<header class="topbar">
+<div class="topbar-left">
+<button class="menu-btn" id="menuBtn" aria-label="Menu">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+</button>
+<div class="topbar-title"><a href="../">Prompt Engineering Meistern</a> &middot; Band 1</div>
+</div>
+<div class="topbar-actions">
+<a href="../../output/Band_01_Grundlagen.pdf" class="btn-sm" download>
+<svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+PDF
+</a>
+<button class="theme-toggle" id="themeToggle" aria-label="Theme umschalten">
+<svg id="sunIcon" viewBox="0 0 24 24"><path d="M12 7a5 5 0 100 10 5 5 0 000-10zm0-3a1 1 0 01-1-1V1a1 1 0 112 0v2a1 1 0 01-1 1zm0 18a1 1 0 01-1-1v-2a1 1 0 112 0v2a1 1 0 01-1 1zm9-9a1 1 0 01-1 1h-2a1 1 0 110-2h2a1 1 0 011 1zM6 12a1 1 0 01-1 1H3a1 1 0 110-2h2a1 1 0 011 1zm11.07-6.07a1 1 0 010 1.41l-1.41 1.42a1 1 0 11-1.42-1.42l1.42-1.41a1 1 0 011.41 0zM8.76 15.24a1 1 0 010 1.42l-1.42 1.41a1 1 0 11-1.41-1.41l1.41-1.42a1 1 0 011.42 0zm8.48 0a1 1 0 011.42 0l1.41 1.42a1 1 0 01-1.41 1.41l-1.42-1.41a1 1 0 010-1.42zM8.76 8.76a1 1 0 01-1.42 0L5.93 7.34A1 1 0 017.34 5.93l1.42 1.41a1 1 0 010 1.42z"/></svg>
+</button>
+</div>
+</header>
 
-        <p>Die in diesem Buch genannten Produkt- und Firmennamen sind Marken
-        der jeweiligen Eigent&uuml;mer.</p>
+<nav class="sidebar" id="sidebar">
+<div class="sidebar-header">Kapitel</div>
+<a href="#ch-0" class="toc-link" data-target="ch-0">Vorwort</a>
+<a href="#ch-1" class="toc-link" data-target="ch-1">Was ist KI eigentlich?</a>
+<a href="#ch-2" class="toc-link" data-target="ch-2">LLMs verstehen – Wie Sprachmodelle funktionieren</a>
+<a href="#ch-3" class="toc-link" data-target="ch-3">Dein erster Prompt</a>
+<a href="#ch-4" class="toc-link" data-target="ch-4">Anatomie eines guten Prompts</a>
+<a href="#ch-5" class="toc-link" data-target="ch-5">Die häufigsten Fehler beim Prompting</a>
+<a href="#ch-6" class="toc-link" data-target="ch-6">Kontext ist alles</a>
+<a href="#ch-7" class="toc-link" data-target="ch-7">Rollen und Personas – Die KI in eine Rolle schlüpfen lassen</a>
+<a href="#ch-8" class="toc-link" data-target="ch-8">Output-Formate steuern – Damit die KI liefert, was du brauchst</a>
+<a href="#ch-9" class="toc-link" data-target="ch-9">Iteratives Prompting – Warum der erste Versuch selten reicht</a>
+<a href="#ch-10" class="toc-link" data-target="ch-10">Zusammenfassung und Ausblick</a>
+</nav>
 
-        <p>Satz und Layout: Eigensatz des Autors<br>
-        Umschlaggestaltung: Belkis Aslani</p>
-    </div>
-    
-    
-    <div class="toc-page">
-        <h2>Inhaltsverzeichnis</h2>
-        <ul class="toc-list">
-            <li class="vorwort">Vorwort</li><li><span class="toc-nummer">1</span>Was ist KI eigentlich?</li><li><span class="toc-nummer">2</span>LLMs verstehen – Wie Sprachmodelle funktionieren</li><li><span class="toc-nummer">3</span>Dein erster Prompt</li><li><span class="toc-nummer">4</span>Anatomie eines guten Prompts</li><li><span class="toc-nummer">5</span>Die häufigsten Fehler beim Prompting</li><li><span class="toc-nummer">6</span>Kontext ist alles</li><li><span class="toc-nummer">7</span>Rollen und Personas – Die KI in eine Rolle schlüpfen lassen</li><li><span class="toc-nummer">8</span>Output-Formate steuern – Damit die KI liefert, was du brauchst</li><li><span class="toc-nummer">9</span>Iteratives Prompting – Warum der erste Versuch selten reicht</li><li><span class="toc-nummer">10</span>Zusammenfassung und Ausblick</li>
-        </ul>
-    </div>
-    
-    <div class="chapter-content"><h1 id="vorwort">Vorwort</h1>
+<main class="main">
+<div class="content">
+<section class="chapter" id="ch-0">
+<h1 id="vorwort">Vorwort</h1>
 <p>Ich bin Belkis Aslani, und ich muss dir was gestehen: Als ich zum ersten Mal von ChatGPT gehört habe, dachte ich mir – naja, wieder so ein Hype. Wie Blockchain. Wie Clubhouse. Kommt und geht.</p>
 <p>Ich lag komplett falsch.</p>
 <p>Innerhalb weniger Wochen hat sich mein kompletter Arbeitsalltag verändert. Nicht weil die KI magisch alles besser konnte, sondern weil ich angefangen habe, richtig mit ihr zu kommunizieren. Und genau da liegt der Knackpunkt, den die meisten Leute übersehen: Es geht nicht darum, <em>ob</em> du KI benutzt. Es geht darum, <em>wie</em> du mit ihr redest.</p>
@@ -516,7 +347,10 @@ a {
 <h2 id="danksagung">Danksagung</h2>
 <p>Dieses Buch wäre nicht möglich gewesen ohne die unzähligen Gespräche mit Freunden, Kollegen und Fremden im Internet, die ihre Erfahrungen mit KI geteilt haben. Besonderer Dank geht an die Open-Source-Community, die Forschenden, die ihre Erkenntnisse frei zugänglich machen, und an jeden, der mutig genug war, mir seine schlimmsten Prompts zu zeigen. Wir haben alle dabei gelernt.</p>
 <p>Und jetzt: Lass uns loslegen.</p>
-<p><em>Belkis Aslani, März 2026</em></p></div><div class="chapter-content"><h1 id="kapitel-1-was-ist-ki-eigentlich">Kapitel 1: Was ist KI eigentlich?</h1>
+<p><em>Belkis Aslani, März 2026</em></p>
+</section>
+<section class="chapter" id="ch-1">
+<h1 id="kapitel-1-was-ist-ki-eigentlich">Kapitel 1: Was ist KI eigentlich?</h1>
 <p>Bevor wir über Prompts reden, müssen wir über das reden, was dahintersteckt. Also: Was ist Künstliche Intelligenz? Und was ist sie <em>nicht</em>?</p>
 <p>Ich fange mal mit dem an, was sie nicht ist. KI ist kein denkendes Wesen. Sie hat kein Bewusstsein. Sie hat keine Meinung, keine Gefühle und keinen freien Willen. Wenn ChatGPT dir schreibt &ldquo;Das finde ich eine gute Idee!&rdquo;, dann <em>findet</em> es gar nichts. Es produziert Text, der in diesem Kontext statistisch wahrscheinlich ist. Mehr nicht. Weniger aber auch nicht – denn das ist schon ziemlich beeindruckend.</p>
 <h2 id="ki-in-einfachen-worten">KI in einfachen Worten</h2>
@@ -567,7 +401,10 @@ a {
 <h2 id="ubung">Übung</h2>
 <p><strong>Finde 5 KI-Anwendungen in deinem Alltag.</strong></p>
 <p>Nimm dir 10 Minuten und geh durch deinen normalen Tag. Vom Aufstehen bis zum Schlafengehen. Wo begegnet dir KI? Schreib mindestens fünf Beispiele auf. Bonus: Überlege, welche davon im Hintergrund arbeiten (wie der Spam-Filter) und welche du aktiv benutzt (wie einen Sprachassistenten).</p>
-<p>Wenn du weniger als fünf findest, bist du wahrscheinlich nicht genau genug hingeschaut. Die meisten Leute kommen locker auf zehn oder mehr, wenn sie ehrlich sind.</p></div><div class="chapter-content"><h1 id="kapitel-2-llms-verstehen-wie-sprachmodelle-funktionieren">Kapitel 2: LLMs verstehen – Wie Sprachmodelle funktionieren</h1>
+<p>Wenn du weniger als fünf findest, bist du wahrscheinlich nicht genau genug hingeschaut. Die meisten Leute kommen locker auf zehn oder mehr, wenn sie ehrlich sind.</p>
+</section>
+<section class="chapter" id="ch-2">
+<h1 id="kapitel-2-llms-verstehen-wie-sprachmodelle-funktionieren">Kapitel 2: LLMs verstehen – Wie Sprachmodelle funktionieren</h1>
 <p>OK, jetzt wird&rsquo;s ein bisschen technischer. Aber keine Sorge – ich erkläre das so, dass du es auch ohne Informatik-Studium verstehst. Versprochen.</p>
 <h2 id="was-sind-large-language-models">Was sind Large Language Models?</h2>
 <p>LLM steht für &ldquo;Large Language Model&rdquo; – großes Sprachmodell. Der Name sagt eigentlich schon alles:</p>
@@ -585,11 +422,11 @@ a {
 <h2 id="training-woher-kommt-das-wissen">Training: Woher kommt das Wissen?</h2>
 <p>LLMs werden mit gigantischen Textmengen trainiert. Bücher, Webseiten, Wikipedia, Code-Repositories, wissenschaftliche Paper, Foren, Nachrichtenartikel – alles, was in Textform existiert und zugänglich ist.</p>
 <p>Das Training läuft grob in zwei Phasen:</p>
-<p><strong>Phase 1: Pre-Training</strong><br />
+<p><strong>Phase 1: Pre-Training</strong>
 Das Modell liest (vereinfacht gesagt) das halbe Internet und lernt, wie Sprache funktioniert. Welche Wörter zusammengehören. Wie Sätze aufgebaut sind. Welche Antwort auf welche Frage typischerweise folgt. Das ist der teure Teil – Pre-Training kostet Hunderte Millionen Euro an Rechenleistung.</p>
-<p><strong>Phase 2: Fine-Tuning und RLHF</strong><br />
-Das rohe Modell nach dem Pre-Training ist wie ein Lexikon mit Persönlichkeitsstörung. Es weiß viel, aber es antwortet wirr und manchmal gefährlich. Deshalb wird es nachtrainiert:<br />
-- <strong>Fine-Tuning:</strong> Menschliche Trainer zeigen dem Modell, wie gute Antworten aussehen<br />
+<p><strong>Phase 2: Fine-Tuning und RLHF</strong>
+Das rohe Modell nach dem Pre-Training ist wie ein Lexikon mit Persönlichkeitsstörung. Es weiß viel, aber es antwortet wirr und manchmal gefährlich. Deshalb wird es nachtrainiert:
+- <strong>Fine-Tuning:</strong> Menschliche Trainer zeigen dem Modell, wie gute Antworten aussehen
 - <strong>RLHF (Reinforcement Learning from Human Feedback):</strong> Menschen bewerten Antworten als gut oder schlecht, und das Modell lernt, bessere Antworten zu geben</p>
 <p>Das Ergebnis ist das, was du als ChatGPT, Claude oder Gemini kennst – ein Modell, das höflich, hilfreich und halbwegs sicher antwortet.</p>
 <h2 id="die-wichtigsten-begriffe-einfach-erklart">Die wichtigsten Begriffe – einfach erklärt</h2>
@@ -655,7 +492,10 @@ Das rohe Modell nach dem Pre-Training ist wie ein Lexikon mit Persönlichkeitsst
 <li>Welche ist genauer?</li>
 <li>Welche gefällt dir besser – und warum?</li>
 </ol>
-<p>Schreib deine Beobachtungen auf. Das ist der Anfang deines Prompt-Tagebuchs, das dir in den nächsten Kapiteln noch sehr nützlich sein wird.</p></div><div class="chapter-content"><h1 id="kapitel-3-dein-erster-prompt">Kapitel 3: Dein erster Prompt</h1>
+<p>Schreib deine Beobachtungen auf. Das ist der Anfang deines Prompt-Tagebuchs, das dir in den nächsten Kapiteln noch sehr nützlich sein wird.</p>
+</section>
+<section class="chapter" id="ch-3">
+<h1 id="kapitel-3-dein-erster-prompt">Kapitel 3: Dein erster Prompt</h1>
 <p>Genug Theorie. Jetzt wird&rsquo;s praktisch.</p>
 <p>In diesem Kapitel schreibst du deinen ersten Prompt. Und deinen zweiten. Und deinen zehnten. Am Ende wirst du ein Gefühl dafür haben, was passiert, wenn du mit einem LLM sprichst – und was nicht.</p>
 <h2 id="was-ist-ein-prompt-uberhaupt">Was ist ein Prompt überhaupt?</h2>
@@ -702,10 +542,10 @@ Das rohe Modell nach dem Pre-Training ist wie ein Lexikon mit Persönlichkeitsst
 <div class="highlight"><pre><span></span><code>Ich bin Anfänger und habe noch nie mit KI gearbeitet. Erkläre mir in einfachen Worten, was Prompt Engineering ist. Verwende ein Alltagsbeispiel, um es anschaulich zu machen. Maximal 200 Wörter.
 </code></pre></div>
 
-<p>Merkst du den Unterschied in der Antwort? Der zweite Prompt gibt dem Modell viel mehr Informationen:<br />
-- <strong>Wer du bist:</strong> Anfänger ohne Vorwissen<br />
-- <strong>Was du willst:</strong> Erklärung von Prompt Engineering<br />
-- <strong>Wie du es willst:</strong> Einfache Worte, Alltagsbeispiel<br />
+<p>Merkst du den Unterschied in der Antwort? Der zweite Prompt gibt dem Modell viel mehr Informationen:
+- <strong>Wer du bist:</strong> Anfänger ohne Vorwissen
+- <strong>Was du willst:</strong> Erklärung von Prompt Engineering
+- <strong>Wie du es willst:</strong> Einfache Worte, Alltagsbeispiel
 - <strong>Wie lang:</strong> Maximal 200 Wörter</p>
 <p>Das ist im Kern schon Prompt Engineering: Dem Modell genug Informationen geben, damit es dir genau das liefert, was du brauchst.</p>
 <h2 id="10-prompts-zum-ausprobieren">10 Prompts zum Ausprobieren</h2>
@@ -777,19 +617,22 @@ vor und erkläre, warum sie passen.
 <h2 id="ubung">Übung</h2>
 <p><strong>Schreibe 5 eigene Prompts und beobachte die Ergebnisse.</strong></p>
 <p>Denk an Dinge, die dich in deinem Alltag beschäftigen. Dein Job, dein Hobby, dein nächster Urlaub, ein Problem, das du gerade hast. Schreib zu jedem Thema einen Prompt und teste ihn.</p>
-<p>Achte besonders auf:<br />
-- Wie ausführlich ist die Antwort?<br />
-- Entspricht sie dem, was du erwartet hast?<br />
+<p>Achte besonders auf:
+- Wie ausführlich ist die Antwort?
+- Entspricht sie dem, was du erwartet hast?
 - Was hättest du anders formulieren können?</p>
-<p>Schreib dir die Ergebnisse auf. In den nächsten Kapiteln wirst du lernen, wie du diese Prompts systematisch verbessern kannst.</p></div><div class="chapter-content"><h1 id="kapitel-4-anatomie-eines-guten-prompts">Kapitel 4: Anatomie eines guten Prompts</h1>
+<p>Schreib dir die Ergebnisse auf. In den nächsten Kapiteln wirst du lernen, wie du diese Prompts systematisch verbessern kannst.</p>
+</section>
+<section class="chapter" id="ch-4">
+<h1 id="kapitel-4-anatomie-eines-guten-prompts">Kapitel 4: Anatomie eines guten Prompts</h1>
 <p>Du hast jetzt deine ersten Prompts geschrieben. Manche haben gut funktioniert, andere weniger. Aber woran liegt das eigentlich? Was macht einen Prompt gut – und was macht ihn schlecht?</p>
 <p>In diesem Kapitel zerlege ich gute Prompts in ihre Einzelteile. Danach wirst du verstehen, warum manche Prompts goldene Ergebnisse liefern und andere nur Standardbrei.</p>
 <h2 id="die-5-bausteine-eines-guten-prompts">Die 5 Bausteine eines guten Prompts</h2>
 <p>Ich hab mir angewöhnt, jeden Prompt gedanklich in fünf Bausteine aufzuteilen. Nicht jeder Prompt braucht alle fünf – aber je mehr du davon verwendest, desto präziser wird das Ergebnis.</p>
 <h3 id="1-die-aufgabe-was-soll-die-ki-tun">1. Die Aufgabe (Was soll die KI tun?)</h3>
 <p>Das ist der offensichtlichste Teil, aber viele Leute machen es sich hier zu einfach. &ldquo;Schreib mir was über Marketing&rdquo; ist eine Aufgabe. Aber eine miese.</p>
-<p><strong>Vage:</strong> &ldquo;Schreib mir was über Marketing.&rdquo;<br />
-<strong>Besser:</strong> &ldquo;Schreib mir eine Einleitung für einen Blogartikel über E-Mail-Marketing für kleine Unternehmen.&rdquo;<br />
+<p><strong>Vage:</strong> &ldquo;Schreib mir was über Marketing.&rdquo;
+<strong>Besser:</strong> &ldquo;Schreib mir eine Einleitung für einen Blogartikel über E-Mail-Marketing für kleine Unternehmen.&rdquo;
 <strong>Noch besser:</strong> &ldquo;Schreib mir eine Einleitung (maximal 100 Wörter) für einen Blogartikel über E-Mail-Marketing für kleine Unternehmen mit weniger als 10 Mitarbeitern.&rdquo;</p>
 <p>Siehst du, wie jede Version spezifischer wird? Spezifisch schlägt vage. Immer.</p>
 <h3 id="2-der-kontext-was-muss-die-ki-wissen">2. Der Kontext (Was muss die KI wissen?)</h3>
@@ -925,7 +768,10 @@ Länge: 100-150 Wörter. Inklusive einem konkreten Call-to-Action am Ende.
 <li>&ldquo;Erkläre mir Wirtschaft.&rdquo;</li>
 <li>&ldquo;Schreib mir eine Geschichte.&rdquo;</li>
 </ol>
-<p>Teste sowohl die Original-Version als auch deine verbesserte Version in einem LLM deiner Wahl. Vergleiche die Ergebnisse. Du wirst den Unterschied sofort sehen.</p></div><div class="chapter-content"><h1 id="kapitel-5-die-haufigsten-fehler-beim-prompting">Kapitel 5: Die häufigsten Fehler beim Prompting</h1>
+<p>Teste sowohl die Original-Version als auch deine verbesserte Version in einem LLM deiner Wahl. Vergleiche die Ergebnisse. Du wirst den Unterschied sofort sehen.</p>
+</section>
+<section class="chapter" id="ch-5">
+<h1 id="kapitel-5-die-haufigsten-fehler-beim-prompting">Kapitel 5: Die häufigsten Fehler beim Prompting</h1>
 <p>Jeder macht Fehler. Ich auch. Als ich angefangen habe, mit LLMs zu arbeiten, habe ich Prompts geschrieben, für die ich mich heute schämen würde. Aber genau aus diesen Fehlern habe ich am meisten gelernt.</p>
 <p>In diesem Kapitel zeige ich dir die Fehler, die fast jeder am Anfang macht. Wenn du die vermeidest, bist du schon weiter als 80% aller LLM-Nutzer.</p>
 <h2 id="fehler-1-zu-vage-sein">Fehler 1: Zu vage sein</h2>
@@ -1006,19 +852,19 @@ Freund erklären.
 <p>Das ist kein Zeichen, dass du schlecht promptest. Das ist normaler Workflow.</p>
 <h2 id="fehler-6-die-falschen-erwartungen-haben">Fehler 6: Die falschen Erwartungen haben</h2>
 <p>Ein LLM ist kein Mensch. Es hat kein Weltwissen im menschlichen Sinn. Es hat Muster gelernt. Deswegen gibt es Dinge, die es gut kann, und Dinge, die es schlecht kann.</p>
-<p><strong>Gut darin:</strong><br />
-- Texte schreiben und umformulieren<br />
-- Zusammenfassungen erstellen<br />
-- Brainstorming und Ideengenerierung<br />
-- Strukturierung und Gliederung<br />
-- Code schreiben und erklären<br />
-- Sprachen übersetzen<br />
+<p><strong>Gut darin:</strong>
+- Texte schreiben und umformulieren
+- Zusammenfassungen erstellen
+- Brainstorming und Ideengenerierung
+- Strukturierung und Gliederung
+- Code schreiben und erklären
+- Sprachen übersetzen
 - Konzepte erklären</p>
-<p><strong>Schlecht darin:</strong><br />
-- Mathematik (ja, wirklich – einfache Rechnungen gehen schief)<br />
-- Verlässliche Fakten liefern (insbesondere aktuelle)<br />
-- Emotionale Intelligenz (es simuliert Empathie, hat aber keine)<br />
-- Kreative Originalität (es kombiniert Bekanntes neu, erfindet aber nichts wirklich Neues)<br />
+<p><strong>Schlecht darin:</strong>
+- Mathematik (ja, wirklich – einfache Rechnungen gehen schief)
+- Verlässliche Fakten liefern (insbesondere aktuelle)
+- Emotionale Intelligenz (es simuliert Empathie, hat aber keine)
+- Kreative Originalität (es kombiniert Bekanntes neu, erfindet aber nichts wirklich Neues)
 - Logische Rätsel und Brainteaser (oft überraschend schlecht)</p>
 <p>Wenn du weißt, wo die Stärken und Schwächen liegen, kannst du die KI viel gezielter einsetzen.</p>
 <h2 id="fehler-7-bitte-und-danke-bringt-das-was">Fehler 7: &ldquo;Bitte&rdquo; und &ldquo;Danke&rdquo; – bringt das was?</h2>
@@ -1051,17 +897,20 @@ Freund erklären.
 <li>&ldquo;Berechne 17,3 × 24,8 + sin(45°) / log(128)&rdquo; (An ein Sprachmodell)</li>
 <li>&ldquo;Schreib mir einen Text. Aber nicht zu lang. Und nicht zu kurz. Und lustig, aber seriös.&rdquo;</li>
 </ol>
-<p>Bei manchen ist es offensichtlich. Bei anderen musst du ein bisschen nachdenken. Genau das ist der Punkt – nach diesem Kapitel wirst du solche Fehler instinktiv erkennen.</p></div><div class="chapter-content"><h1 id="kapitel-6-kontext-ist-alles">Kapitel 6: Kontext ist alles</h1>
+<p>Bei manchen ist es offensichtlich. Bei anderen musst du ein bisschen nachdenken. Genau das ist der Punkt – nach diesem Kapitel wirst du solche Fehler instinktiv erkennen.</p>
+</section>
+<section class="chapter" id="ch-6">
+<h1 id="kapitel-6-kontext-ist-alles">Kapitel 6: Kontext ist alles</h1>
 <p>Wenn es ein einziges Wort gibt, das den Unterschied zwischen einem mittelmäßigen und einem großartigen Prompt ausmacht, dann ist es: Kontext.</p>
 <p>Ich hab das in den vorherigen Kapiteln schon mehrfach erwähnt. Aber jetzt gehen wir richtig in die Tiefe. Denn Kontext geben ist eine Kunst, die man lernen kann – und die sich sofort auszahlt.</p>
 <h2 id="warum-kontext-so-wichtig-ist">Warum Kontext so wichtig ist</h2>
 <p>Ein LLM hat kein Gedächtnis über Sitzungen hinweg. Es weiß nicht, wer du bist. Es weiß nicht, was du gestern gefragt hast (es sei denn, es steht noch im selben Chat). Es weiß nicht, ob du 16 oder 60 bist, ob du Arzt oder Bäcker bist, ob du Deutsch als Muttersprache sprichst oder nicht.</p>
-<p>Wenn du fragst &ldquo;Wie investiere ich mein Geld?&rdquo;, dann weiß das Modell nicht:<br />
-- Wie viel Geld du hast<br />
-- Wie alt du bist<br />
-- Wie risikobereit du bist<br />
-- Ob du schon Erfahrung mit Investments hast<br />
-- In welchem Land du lebst (Steuerrecht!)<br />
+<p>Wenn du fragst &ldquo;Wie investiere ich mein Geld?&rdquo;, dann weiß das Modell nicht:
+- Wie viel Geld du hast
+- Wie alt du bist
+- Wie risikobereit du bist
+- Ob du schon Erfahrung mit Investments hast
+- In welchem Land du lebst (Steuerrecht!)
 - Was dein Ziel ist (Altersvorsorge? Hausbau? Urlaub?)</p>
 <p>Ohne diese Informationen bekommst du eine Standardantwort, die für niemanden wirklich passt. Mit diesen Informationen bekommst du eine Antwort, die tatsächlich hilfreich ist.</p>
 <h2 id="die-5-kontext-kategorien">Die 5 Kontext-Kategorien</h2>
@@ -1203,12 +1052,15 @@ zwischen 16 und 18 Jahren.
 <li>&ldquo;Schreib mir einen Brief.&rdquo;</li>
 <li>&ldquo;Was soll ich beruflich machen?&rdquo;</li>
 </ol>
-<p>Für jeden Prompt:<br />
-- Überlege dir eine konkrete Person mit einer konkreten Situation<br />
-- Füge mindestens 3 der 5 Kontext-Kategorien hinzu<br />
-- Teste beide Versionen (ohne und mit Kontext) in einem LLM<br />
+<p>Für jeden Prompt:
+- Überlege dir eine konkrete Person mit einer konkreten Situation
+- Füge mindestens 3 der 5 Kontext-Kategorien hinzu
+- Teste beide Versionen (ohne und mit Kontext) in einem LLM
 - Vergleiche die Ergebnisse</p>
-<p>Bonus: Versuche den &ldquo;Goldenen Satz&rdquo; – finde für jedes Szenario den einen Satz, der den größten Unterschied macht.</p></div><div class="chapter-content"><h1 id="kapitel-7-rollen-und-personas-die-ki-in-eine-rolle-schlupfen-lassen">Kapitel 7: Rollen und Personas – Die KI in eine Rolle schlüpfen lassen</h1>
+<p>Bonus: Versuche den &ldquo;Goldenen Satz&rdquo; – finde für jedes Szenario den einen Satz, der den größten Unterschied macht.</p>
+</section>
+<section class="chapter" id="ch-7">
+<h1 id="kapitel-7-rollen-und-personas-die-ki-in-eine-rolle-schlupfen-lassen">Kapitel 7: Rollen und Personas – Die KI in eine Rolle schlüpfen lassen</h1>
 <p>Stell dir vor, du fragst jemanden nach einem Trainingsplan. Wenn du einen zufälligen Passanten fragst, bekommst du eine andere Antwort als von einem Personal Trainer. Gleiche Frage, völlig anderes Ergebnis.</p>
 <p>Bei LLMs funktioniert das genauso. Und das Beste: Du kannst der KI sagen, wer sie sein soll.</p>
 <h2 id="du-bist-ein-so-weist-du-rollen-zu">&ldquo;Du bist ein&hellip;&rdquo; – So weist du Rollen zu</h2>
@@ -1287,9 +1139,9 @@ no-bullshit Kommunikation. Du magst keine Buzzwords und sagst lieber
 &quot;das funktioniert nicht&quot; als &quot;da gibt es Optimierungspotenzial&quot;.
 </code></pre></div>
 
-<p>Je detaillierter die Persona, desto konsistenter und charaktervoller die Antworten. Das ist besonders nützlich, wenn du:<br />
-- Fiktive Interviews für Marktforschung simulierst<br />
-- Einen konsistenten Charakter für eine Geschichte brauchst<br />
+<p>Je detaillierter die Persona, desto konsistenter und charaktervoller die Antworten. Das ist besonders nützlich, wenn du:
+- Fiktive Interviews für Marktforschung simulierst
+- Einen konsistenten Charakter für eine Geschichte brauchst
 - Verschiedene Perspektiven auf ein Problem haben willst</p>
 <h2 id="mehrere-perspektiven-einholen">Mehrere Perspektiven einholen</h2>
 <p>Ein richtig starker Move: Lass die KI aus verschiedenen Rollen auf dieselbe Frage antworten.</p>
@@ -1325,7 +1177,7 @@ Vermeide Fachjargon – mein Chef ist kein Designer (EINSCHRÄNKUNG).
 </code></pre></div>
 
 <p>Das Modell wird verwirrt sein und inkonsistent antworten.</p>
-<p><strong>Fehler 3: Die Rolle vergessen</strong><br />
+<p><strong>Fehler 3: Die Rolle vergessen</strong>
 Wenn du in einem längeren Chat die Rolle nur am Anfang zuweist, kann das Modell sie nach einigen Nachrichten &ldquo;vergessen&rdquo;. Erinnere es gelegentlich: &ldquo;Bleib bitte in deiner Rolle als Steuerberater.&rdquo;</p>
 <h2 id="das-wichtigste-aus-diesem-kapitel">Das Wichtigste aus diesem Kapitel</h2>
 <ul>
@@ -1339,17 +1191,20 @@ Wenn du in einem längeren Chat die Rolle nur am Anfang zuweist, kann das Modell
 <h2 id="ubung">Übung</h2>
 <p><strong>Erstelle 5 verschiedene Rollen-Prompts zum selben Thema.</strong></p>
 <p>Wähle ein Thema, das dich interessiert. Zum Beispiel: &ldquo;Soll ich auf Social Media aktiver werden?&rdquo;</p>
-<p>Jetzt schreibe 5 Prompts – immer mit einer anderen Rolle:<br />
-1. Ein Social-Media-Manager<br />
-2. Ein Psychologe<br />
-3. Ein Datenschutz-Experte<br />
-4. Ein erfolgreicher Influencer<br />
+<p>Jetzt schreibe 5 Prompts – immer mit einer anderen Rolle:
+1. Ein Social-Media-Manager
+2. Ein Psychologe
+3. Ein Datenschutz-Experte
+4. Ein erfolgreicher Influencer
 5. Ein Großvater, der skeptisch gegenüber Technologie ist</p>
-<p>Teste alle 5 im selben LLM und vergleiche die Antworten. Achte darauf:<br />
-- Wie unterscheidet sich die Sprache?<br />
-- Welche Argumente kommen nur in bestimmten Rollen vor?<br />
+<p>Teste alle 5 im selben LLM und vergleiche die Antworten. Achte darauf:
+- Wie unterscheidet sich die Sprache?
+- Welche Argumente kommen nur in bestimmten Rollen vor?
 - Welche Perspektive war am überraschendsten?</p>
-<p>Das ist Prompt Engineering in Aktion: Durch die Rolle steuerst du nicht nur <em>was</em> die KI sagt, sondern <em>wie</em> und <em>aus welcher Perspektive</em> sie es sagt.</p></div><div class="chapter-content"><h1 id="kapitel-8-output-formate-steuern-damit-die-ki-liefert-was-du-brauchst">Kapitel 8: Output-Formate steuern – Damit die KI liefert, was du brauchst</h1>
+<p>Das ist Prompt Engineering in Aktion: Durch die Rolle steuerst du nicht nur <em>was</em> die KI sagt, sondern <em>wie</em> und <em>aus welcher Perspektive</em> sie es sagt.</p>
+</section>
+<section class="chapter" id="ch-8">
+<h1 id="kapitel-8-output-formate-steuern-damit-die-ki-liefert-was-du-brauchst">Kapitel 8: Output-Formate steuern – Damit die KI liefert, was du brauchst</h1>
 <p>Du weißt jetzt, wie du gute Prompts schreibst, Kontext gibst und Rollen zuweist. Aber was nützt die beste Antwort, wenn sie im falschen Format kommt?</p>
 <p>Stell dir vor, du brauchst eine Tabelle für eine Präsentation, aber die KI liefert dir einen Fließtext. Oder du willst eine kurze Zusammenfassung und bekommst einen Roman. Das passiert ständig – und es ist komplett vermeidbar.</p>
 <p>In diesem Kapitel lernst du, wie du das Output-Format kontrollierst. Das spart dir Zeit und Nerven.</p>
@@ -1503,23 +1358,26 @@ Erstelle 3 weitere in diesem Format zum Thema Zellteilung.
 <h2 id="ubung">Übung</h2>
 <p><strong>Lass dir dasselbe Thema in 5 verschiedenen Formaten ausgeben.</strong></p>
 <p>Wähle ein beliebiges Thema. Zum Beispiel: &ldquo;Die Vorteile von regelmäßiger Bewegung.&rdquo;</p>
-<p>Jetzt fordere es in diesen 5 Formaten an:<br />
-1. Eine nummerierte Liste mit 7 Punkten<br />
-2. Eine Tabelle (Vorteil | Erklärung | Wie oft pro Woche)<br />
-3. Ein kurzer Absatz (maximal 80 Wörter) im akademischen Stil<br />
-4. Ein Instagram-Post (locker, mit Emoji-Vorschlägen)<br />
+<p>Jetzt fordere es in diesen 5 Formaten an:
+1. Eine nummerierte Liste mit 7 Punkten
+2. Eine Tabelle (Vorteil | Erklärung | Wie oft pro Woche)
+3. Ein kurzer Absatz (maximal 80 Wörter) im akademischen Stil
+4. Ein Instagram-Post (locker, mit Emoji-Vorschlägen)
 5. Ein JSON-Objekt mit den Feldern: vorteil, kategorie, evidenz</p>
-<p>Vergleiche die Ergebnisse. Achte darauf, wie das gleiche Wissen komplett anders präsentiert wird – nur durch die Format-Anweisung.</p></div><div class="chapter-content"><h1 id="kapitel-9-iteratives-prompting-warum-der-erste-versuch-selten-reicht">Kapitel 9: Iteratives Prompting – Warum der erste Versuch selten reicht</h1>
+<p>Vergleiche die Ergebnisse. Achte darauf, wie das gleiche Wissen komplett anders präsentiert wird – nur durch die Format-Anweisung.</p>
+</section>
+<section class="chapter" id="ch-9">
+<h1 id="kapitel-9-iteratives-prompting-warum-der-erste-versuch-selten-reicht">Kapitel 9: Iteratives Prompting – Warum der erste Versuch selten reicht</h1>
 <p>Ich muss dir was sagen, das viele Prompt-Engineering-Anfänger nicht hören wollen: Dein erster Prompt wird fast nie perfekt sein. Und das ist völlig in Ordnung.</p>
 <p>Die besten Ergebnisse entstehen nicht durch einen einzigen genialen Prompt. Sie entstehen durch einen Prozess: Schreiben, Ergebnis lesen, korrigieren, verfeinern, nochmal probieren. Genau wie ein Bildhauer nicht mit einem einzigen Hammerschlag eine Statue formt, formst du dein Ergebnis Schritt für Schritt.</p>
 <p>Das nennt sich iteratives Prompting. Und es ist die vielleicht wichtigste Fähigkeit, die du in diesem Buch lernst.</p>
 <h2 id="warum-der-erste-prompt-selten-perfekt-ist">Warum der erste Prompt selten perfekt ist</h2>
 <p>Drei Gründe:</p>
-<p><strong>1. Du weißt nicht immer, was du willst</strong><br />
+<p><strong>1. Du weißt nicht immer, was du willst</strong>
 Klingt komisch, ist aber wahr. Oft merkst du erst, wenn du die Antwort siehst, dass du eigentlich etwas anderes wolltest. Das ist kein Versagen – das ist ein normaler Denkprozess. Die erste Antwort hilft dir, dein eigenes Ziel zu schärfen.</p>
-<p><strong>2. Du kannst nicht alles im Voraus bedenken</strong><br />
+<p><strong>2. Du kannst nicht alles im Voraus bedenken</strong>
 Selbst mit den 5 Bausteinen aus Kapitel 4 vergisst du manchmal einen wichtigen Kontext. Oder du merkst, dass der Ton nicht stimmt. Oder die Länge passt nicht. Kein Problem – dafür gibt es Folgeprompts.</p>
-<p><strong>3. LLMs interpretieren anders als du denkst</strong><br />
+<p><strong>3. LLMs interpretieren anders als du denkst</strong>
 Du schreibst &ldquo;kurz&rdquo;, aber dein &ldquo;kurz&rdquo; sind 3 Sätze und das &ldquo;kurz&rdquo; des Modells sind 3 Absätze. Oder du schreibst &ldquo;professionell&rdquo; und meinst &ldquo;freundlich-businesslike&rdquo;, aber das Modell versteht &ldquo;steif und distanziert&rdquo;. Missverständnisse passieren – und du korrigierst sie im Dialog.</p>
 <h2 id="die-kunst-des-folge-prompts">Die Kunst des Folge-Prompts</h2>
 <p>Ein Folge-Prompt ist dein Werkzeug, um die Antwort zu verfeinern. Hier sind die häufigsten Situationen und was du schreiben kannst:</p>
@@ -1618,11 +1476,11 @@ Immer einen konkreten Aspekt wählen statt ein breites Thema.
 
 <h2 id="aus-fehlern-lernen">Aus Fehlern lernen</h2>
 <p>Jede schlechte Antwort ist eine Lektion. Wenn das Modell nicht liefert, was du willst, liegt das fast immer am Prompt – nicht am Modell.</p>
-<p>Frag dich:<br />
-- War ich spezifisch genug?<br />
-- Fehlte Kontext?<br />
-- Hätte eine Rolle geholfen?<br />
-- War das gewünschte Format klar?<br />
+<p>Frag dich:
+- War ich spezifisch genug?
+- Fehlte Kontext?
+- Hätte eine Rolle geholfen?
+- War das gewünschte Format klar?
 - Habe ich zu viel auf einmal verlangt?</p>
 <p>Meistens liegt es an einem dieser Punkte. Und wenn du den Fehler erkennst, wird dein nächster Prompt besser. Prompt Engineering ist eine Fähigkeit, die mit jedem Versuch wächst.</p>
 <h2 id="wann-du-aufhoren-solltest-zu-iterieren">Wann du aufhören solltest zu iterieren</h2>
@@ -1649,7 +1507,10 @@ Immer einen konkreten Aspekt wählen statt ein breites Thema.
 <li>Vergleiche die erste und die letzte Antwort</li>
 </ol>
 <p>Schreib dir den finalen Prompt auf – er kommt in dein Prompt-Protokoll.</p>
-<p>Bonus-Übung: Versuche dieselbe Aufgabe, aber schreibe direkt einen detaillierten Prompt (ohne Iteration). Vergleiche, ob das Ergebnis besser oder schlechter ist als nach 5 Iterationen. Du wirst überrascht sein, wie oft der iterative Weg gewinnt.</p></div><div class="chapter-content"><h1 id="kapitel-10-zusammenfassung-und-ausblick">Kapitel 10: Zusammenfassung und Ausblick</h1>
+<p>Bonus-Übung: Versuche dieselbe Aufgabe, aber schreibe direkt einen detaillierten Prompt (ohne Iteration). Vergleiche, ob das Ergebnis besser oder schlechter ist als nach 5 Iterationen. Du wirst überrascht sein, wie oft der iterative Weg gewinnt.</p>
+</section>
+<section class="chapter" id="ch-10">
+<h1 id="kapitel-10-zusammenfassung-und-ausblick">Kapitel 10: Zusammenfassung und Ausblick</h1>
 <p>Du hast es geschafft. Band 1 ist durch.</p>
 <p>Lass mich kurz zusammenfassen, was du in den letzten neun Kapiteln gelernt hast – und dann zeige ich dir, wohin die Reise in Band 2 geht.</p>
 <h2 id="was-du-jetzt-kannst">Was du jetzt kannst</h2>
@@ -1715,19 +1576,19 @@ Immer einen konkreten Aspekt wählen statt ein breites Thema.
 <p>Und schließlich lernst du, wie du dir eine eigene Template-Bibliothek aufbaust – eine Sammlung von erprobten Prompt-Vorlagen, die du immer wieder verwenden und anpassen kannst.</p>
 <h2 id="wie-die-ganze-reihe-aufgebaut-ist">Wie die ganze Reihe aufgebaut ist</h2>
 <p>Falls du dich fragst, wie es nach Band 2 weitergeht – hier der Überblick:</p>
-<p><strong>Anfänger (Band 1-3)</strong><br />
-- Band 1: Grundlagen <em>(das hast du gerade gelesen)</em><br />
-- Band 2: Prompt-Frameworks<br />
+<p><strong>Anfänger (Band 1-3)</strong>
+- Band 1: Grundlagen <em>(das hast du gerade gelesen)</em>
+- Band 2: Prompt-Frameworks
 - Band 3: Fortgeschrittene Basics</p>
-<p><strong>Fortgeschritten (Band 4-6)</strong><br />
-- Band 4: Reasoning-Techniken (Chain-of-Thought, Tree-of-Thought, etc.)<br />
-- Band 5: Kreatives Prompting (Texte, Bilder, Multimedia)<br />
+<p><strong>Fortgeschritten (Band 4-6)</strong>
+- Band 4: Reasoning-Techniken (Chain-of-Thought, Tree-of-Thought, etc.)
+- Band 5: Kreatives Prompting (Texte, Bilder, Multimedia)
 - Band 6: Spezialisiertes Prompting (Marketing, Bildung, Datenanalyse)</p>
-<p><strong>Profi (Band 7-9)</strong><br />
-- Band 7: Prompting für Entwickler (Code, APIs, Automatisierung)<br />
-- Band 8: Business &amp; Produktivität<br />
+<p><strong>Profi (Band 7-9)</strong>
+- Band 7: Prompting für Entwickler (Code, APIs, Automatisierung)
+- Band 8: Business &amp; Produktivität
 - Band 9: Sicherheit, Ethik und Verantwortung</p>
-<p><strong>Experte (Band 10)</strong><br />
+<p><strong>Experte (Band 10)</strong>
 - Band 10: Die Zukunft (Agenten, Multimodal, Automation)</p>
 <p>Jeder Band baut auf den vorherigen auf. Du kannst sie der Reihe nach lesen oder nach Bedarf in die Bände springen, die dich am meisten interessieren. Ich empfehle aber, zumindest Band 1-3 in der Reihenfolge zu lesen – die Grundlagen braucht alles Weitere.</p>
 <h2 id="ein-letztes-wort">Ein letztes Wort</h2>
@@ -1740,20 +1601,74 @@ Immer einen konkreten Aspekt wählen statt ein breites Thema.
 <hr />
 <h2 id="ressourcen-und-weiterfuhrende-links">Ressourcen und weiterführende Links</h2>
 <p>Hier sind ein paar Ressourcen, die ich empfehlen kann, wenn du tiefer einsteigen willst:</p>
-<p><strong>Zum Nachlesen:</strong><br />
-- Prompt Engineering Guide (promptingguide.ai) – Die umfassendste kostenlose Ressource im Netz<br />
-- IBM&rsquo;s Guide to Prompt Engineering – Gut strukturiert, viele Beispiele<br />
+<p><strong>Zum Nachlesen:</strong>
+- Prompt Engineering Guide (promptingguide.ai) – Die umfassendste kostenlose Ressource im Netz
+- IBM&rsquo;s Guide to Prompt Engineering – Gut strukturiert, viele Beispiele
 - LearnPrompting.org – Interaktiver Online-Kurs</p>
-<p><strong>Zum Ausprobieren:</strong><br />
-- ChatGPT (chat.openai.com) – Kostenloser Account verfügbar<br />
-- Claude (claude.ai) – Kostenloser Account verfügbar<br />
+<p><strong>Zum Ausprobieren:</strong>
+- ChatGPT (chat.openai.com) – Kostenloser Account verfügbar
+- Claude (claude.ai) – Kostenloser Account verfügbar
 - Gemini (gemini.google.com) – Kostenlos mit Google-Account</p>
-<p><strong>Zum Weiterlesen:</strong><br />
-- Band 2 dieser Reihe: &ldquo;Prompt-Frameworks – Strukturiert zum perfekten Prompt&rdquo;<br />
-- &ldquo;The Quick Guide to Prompt Engineering&rdquo; (O&rsquo;Reilly) – Englischsprachig, aber sehr gut<br />
+<p><strong>Zum Weiterlesen:</strong>
+- Band 2 dieser Reihe: &ldquo;Prompt-Frameworks – Strukturiert zum perfekten Prompt&rdquo;
+- &ldquo;The Quick Guide to Prompt Engineering&rdquo; (O&rsquo;Reilly) – Englischsprachig, aber sehr gut
 - Diverse YouTube-Channels zum Thema – such einfach nach &ldquo;Prompt Engineering Tutorial Deutsch&rdquo;</p>
-<p><strong>Wissenschaftlich:</strong><br />
-- &ldquo;Attention Is All You Need&rdquo; (Vaswani et al., 2017) – Das Paper, das alles gestartet hat<br />
-- &ldquo;A Systematic Survey of Prompt Engineering in Large Language Models&rdquo; (Sahoo et al., 2024) – Umfassende akademische Übersicht</p></div>
+<p><strong>Wissenschaftlich:</strong>
+- &ldquo;Attention Is All You Need&rdquo; (Vaswani et al., 2017) – Das Paper, das alles gestartet hat
+- &ldquo;A Systematic Survey of Prompt Engineering in Large Language Models&rdquo; (Sahoo et al., 2024) – Umfassende akademische Übersicht</p>
+</section>
+</div>
+</main>
+
+<button class="scroll-top" id="scrollTop" aria-label="Nach oben">
+<svg viewBox="0 0 24 24"><path d="M12 4l-8 8h5v8h6v-8h5z"/></svg>
+</button>
+
+<script>
+// Theme
+const html=document.documentElement;
+const toggle=document.getElementById('themeToggle');
+const stored=localStorage.getItem('theme');
+if(stored==='dark'||(! stored&&matchMedia('(prefers-color-scheme:dark)').matches))html.dataset.theme='dark';
+toggle.addEventListener('click',()=>{
+html.dataset.theme=html.dataset.theme==='dark'?'light':'dark';
+localStorage.setItem('theme',html.dataset.theme);
+});
+
+// Mobile menu
+const menuBtn=document.getElementById('menuBtn');
+const sidebar=document.getElementById('sidebar');
+const overlay=document.getElementById('overlay');
+function closeSidebar(){sidebar.classList.remove('open');overlay.classList.remove('show')}
+menuBtn.addEventListener('click',()=>{sidebar.classList.toggle('open');overlay.classList.toggle('show')});
+overlay.addEventListener('click',closeSidebar);
+document.querySelectorAll('.toc-link').forEach(l=>l.addEventListener('click',()=>{if(innerWidth<=900)closeSidebar()}));
+
+// Progress bar
+const prog=document.getElementById('progress');
+window.addEventListener('scroll',()=>{
+const h=document.documentElement.scrollHeight-innerHeight;
+prog.style.width=h>0?(scrollY/h*100)+'%':'0';
+});
+
+// Scroll to top
+const scrollBtn=document.getElementById('scrollTop');
+window.addEventListener('scroll',()=>{scrollBtn.classList.toggle('show',scrollY>600)});
+scrollBtn.addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}));
+
+// Active TOC
+const chapters=document.querySelectorAll('.chapter');
+const links=document.querySelectorAll('.toc-link');
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(e=>{
+if(e.isIntersecting){
+links.forEach(l=>l.classList.remove('active'));
+const active=document.querySelector(`.toc-link[data-target="${e.target.id}"]`);
+if(active)active.classList.add('active');
+}
+});
+},{rootMargin:'-80px 0px -60% 0px'});
+chapters.forEach(ch=>observer.observe(ch));
+</script>
 </body>
 </html>

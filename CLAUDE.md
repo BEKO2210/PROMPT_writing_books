@@ -42,6 +42,64 @@ Eine deutschsprachige Sachbuchreihe zum Thema Prompt Engineering für Large Lang
 
 ---
 
+## Projektstruktur
+
+```
+PROMPT_writing_books/
+├── CLAUDE.md                    # Diese Datei – Projekt-Übersicht
+├── build_pdf.py                 # PDF-Generator (WeasyPrint, A5-Format)
+├── build_web.py                 # Web-Generator (HTML/CSS/JS)
+├── index.html                   # Redirect → docs/index.html
+│
+├── Band_01_Grundlagen/          # Markdown-Quelldateien Band 1
+│   ├── README.md
+│   ├── 00_Vorwort.md
+│   ├── 01_Was_ist_KI_eigentlich.md
+│   └── ...
+├── Band_02_Prompt_Frameworks/   # (geplant)
+│   └── ...
+├── ...                          # Band 03-10 (geplant)
+│
+├── output/                      # Generierte PDFs
+│   ├── Band_01_Grundlagen.pdf
+│   └── Band_01_Grundlagen.html  # Debug-HTML
+│
+└── docs/                        # Webseite (GitHub Pages kompatibel)
+    ├── index.html               # Buchverzeichnis (alle 10 Bände)
+    └── band-01/
+        └── index.html           # Web-Leseversion Band 1
+```
+
+## Build-Befehle
+
+### PDF generieren
+```bash
+python3 build_pdf.py                    # Band 1 (Standard), A5-Format
+python3 build_pdf.py --band 1           # Explizit Band 1
+python3 build_pdf.py --band 1 --draft   # Mit ENTWURF-Wasserzeichen
+```
+
+### Webseite generieren
+```bash
+python3 build_web.py                    # Generiert docs/ Verzeichnis
+```
+
+## PDF-Spezifikationen
+
+- **Format:** A5 (148mm × 210mm)
+- **Ränder:** Innen 18mm (Bindung), Außen 14mm, Oben 16mm, Unten 18mm
+- **Schrift:** Liberation Serif (Text), Liberation Sans (Überschriften), Liberation Mono (Code)
+- **Schriftgröße:** 9.5pt (A5-optimiert)
+- **Features:** Titelseite, Copyright, Inhaltsverzeichnis, Seitenzahlen, Kapitel-Seitenumbrüche
+- **Verkaufsplattformen:** Gumroad, Amazon KDP, Lulu, Epubli
+
+## Webseite-Spezifikationen
+
+- **Verzeichnis (docs/index.html):** Dark-Theme, animierter Gradient, Glassmorphism-Karten für alle 10 Bände
+- **Leseversion (docs/band-XX/):** Mobile-first, Dark/Light-Mode, Lese-Fortschrittsbalken, sticky TOC
+- **Technologie:** Pure HTML/CSS/Vanilla JS, keine Frameworks
+- **Kompatibel mit:** GitHub Pages, Netlify, Vercel, statisches Hosting
+
 ## Schreibstil-Leitfaden
 
 - **Sprache:** Deutsch, lockerer Ton, Du-Ansprache
@@ -75,3 +133,21 @@ Band 1 enthält 10 Kapitel + Vorwort:
 - **Kap. 8:** Output-Formate steuern (Listen, Tabellen, JSON, Länge, Tonalität)
 - **Kap. 9:** Iteratives Prompting (Verfeinern, Feedback, Prompt-Protokoll)
 - **Kap. 10:** Zusammenfassung und Ausblick (Checkliste, Vorschau Band 2)
+
+## Abhängigkeiten
+
+```bash
+pip3 install weasyprint markdown Pygments
+```
+
+## Farb-Schema
+
+| Verwendung | Farbe | Hex |
+|---|---|---|
+| Primär dunkel | Navy | `#0a1628` |
+| Primär mittel | Dunkelblau | `#1a2744` |
+| Primär hell | Blau | `#2d4a7a` |
+| Akzent | Hellblau | `#8ab4f8` |
+| Text | Fast-Schwarz | `#1a1a1a` |
+| Hintergrund hell | Weiß | `#ffffff` |
+| Hintergrund dunkel | GitHub Dark | `#0d1117` |

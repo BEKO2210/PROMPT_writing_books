@@ -8,7 +8,8 @@ Verwendung:
     python3 build_pdf.py --band 2           # Band 2
     python3 build_pdf.py --band 1 --draft   # Entwurfsmodus (mit Wasserzeichen)
 
-Autor: Belkis Aslani | Build-System v1.0
+Format: A5 (148mm x 210mm) – ideal für digitale Bücher und Print-on-Demand
+Autor: Belkis Aslani | Build-System v2.0
 """
 
 import argparse
@@ -32,6 +33,8 @@ BAND_CONFIG = {
         "ordner": "Band_01_Grundlagen",
         "titel": "Grundlagen",
         "untertitel": "Dein Einstieg in die Welt der KI-Kommunikation",
+        "farbe": "#2d4a7a",
+        "akzent": "#8ab4f8",
         "dateien": [
             "00_Vorwort.md",
             "01_Was_ist_KI_eigentlich.md",
@@ -54,40 +57,44 @@ JAHR = "2026"
 AUFLAGE = "1. Auflage"
 
 # ─────────────────────────────────────────────────
-# CSS: Professionelles Buchdesign
+# CSS: Professionelles Buchdesign – A5
 # ─────────────────────────────────────────────────
 
 def get_book_css():
-    """CSS für ein verkaufsfertiges Buchformat (6×9 Zoll / 15,24×22,86 cm)."""
+    """CSS für ein verkaufsfertiges A5-Buchformat (148mm x 210mm)."""
     return """
 /* ============================================
-   BUCHFORMAT: 6×9 Zoll (Standard für Gumroad/Amazon KDP)
-   Ränder: Innen 2cm (Bindung), Außen 1.8cm, Oben 2cm, Unten 2.2cm
+   BUCHFORMAT: A5 (148mm × 210mm)
+   Ränder: Innen 18mm (Bindung), Außen 14mm, Oben 16mm, Unten 18mm
+   Optimiert für digitale Bücher (Gumroad, etc.) und Print-on-Demand
    ============================================ */
 
 @page {
-    size: 15.24cm 22.86cm;  /* 6×9 Zoll */
-    margin-top: 2cm;
-    margin-bottom: 2.2cm;
-    margin-inside: 2cm;     /* Bundsteg (Innenseite) */
-    margin-outside: 1.8cm;
+    size: 148mm 210mm;
+    margin-top: 16mm;
+    margin-bottom: 18mm;
+    margin-inside: 18mm;
+    margin-outside: 14mm;
 
     @bottom-center {
         content: counter(page);
         font-family: 'Liberation Sans', 'DejaVu Sans', sans-serif;
-        font-size: 9pt;
-        color: #555;
+        font-size: 8pt;
+        color: #999;
     }
 }
 
-/* Erste Seite jedes Kapitels: keine Seitenzahl */
 @page chapter-start {
+    @bottom-center { content: none; }
+    @top-center { content: none; }
+}
+
+@page title-page {
+    margin: 0;
     @bottom-center { content: none; }
 }
 
-/* Titelseiten: keine Seitenzahl, keine Ränder-Extras */
-@page title-page {
-    margin: 0;
+@page blank-page {
     @bottom-center { content: none; }
 }
 
@@ -100,13 +107,13 @@ def get_book_css():
 }
 
 /* ============================================
-   TYPOGRAFIE
+   TYPOGRAFIE – A5-optimiert (kleinere Schrift)
    ============================================ */
 
 body {
     font-family: 'Liberation Serif', 'DejaVu Serif', 'FreeSerif', serif;
-    font-size: 11pt;
-    line-height: 1.55;
+    font-size: 9.5pt;
+    line-height: 1.5;
     color: #1a1a1a;
     text-align: justify;
     hyphens: auto;
@@ -129,88 +136,102 @@ body {
     align-items: center;
     height: 100%;
     text-align: center;
-    padding: 3cm 2cm;
+    padding: 2cm 1.5cm;
     background: linear-gradient(180deg, #0a1628 0%, #1a2744 40%, #2d4a7a 100%);
     color: white;
 }
 
 .title-page .reihe {
     font-family: 'Liberation Sans', 'DejaVu Sans', sans-serif;
-    font-size: 11pt;
+    font-size: 9pt;
     text-transform: uppercase;
-    letter-spacing: 4pt;
+    letter-spacing: 3.5pt;
     color: #8ab4f8;
-    margin-bottom: 1.5cm;
+    margin-bottom: 1.2cm;
     font-weight: 400;
 }
 
 .title-page .band-nummer {
     font-family: 'Liberation Sans', 'DejaVu Sans', sans-serif;
-    font-size: 14pt;
+    font-size: 11pt;
     color: #8ab4f8;
     letter-spacing: 2pt;
-    margin-bottom: 0.8cm;
+    margin-bottom: 0.6cm;
     text-transform: uppercase;
 }
 
 .title-page .haupttitel {
     font-family: 'Liberation Serif', 'DejaVu Serif', serif;
-    font-size: 32pt;
+    font-size: 26pt;
     font-weight: bold;
-    line-height: 1.2;
-    margin-bottom: 0.6cm;
+    line-height: 1.15;
+    margin-bottom: 0.5cm;
     color: #ffffff;
 }
 
 .title-page .untertitel {
     font-family: 'Liberation Sans', 'DejaVu Sans', sans-serif;
-    font-size: 13pt;
+    font-size: 11pt;
     font-weight: 300;
     color: #c8ddf8;
-    margin-bottom: 2.5cm;
-    line-height: 1.4;
+    margin-bottom: 2cm;
+    line-height: 1.35;
 }
 
 .title-page .autor {
     font-family: 'Liberation Sans', 'DejaVu Sans', sans-serif;
-    font-size: 16pt;
+    font-size: 13pt;
     letter-spacing: 2pt;
     color: #ffffff;
     margin-bottom: 0.3cm;
 }
 
 .title-page .trennlinie {
-    width: 4cm;
+    width: 3cm;
     height: 2px;
     background: #8ab4f8;
-    margin: 0.8cm auto;
+    margin: 0.6cm auto;
 }
 
 .title-page .jahr {
     font-family: 'Liberation Sans', 'DejaVu Sans', sans-serif;
-    font-size: 10pt;
+    font-size: 9pt;
     color: #8ab4f8;
     letter-spacing: 1pt;
 }
 
 /* ============================================
-   RÜCKSEITE TITELSEITE (Copyright)
+   LEERE SEITE (Rückseite Titel)
+   ============================================ */
+
+.blank-page {
+    page: blank-page;
+    page-break-before: always;
+    height: 100%;
+}
+
+/* ============================================
+   COPYRIGHT-SEITE
    ============================================ */
 
 .copyright-page {
     page: copyright-page;
     page-break-before: always;
     font-family: 'Liberation Sans', 'DejaVu Sans', sans-serif;
-    font-size: 8.5pt;
-    color: #555;
-    line-height: 1.6;
-    padding-top: 60%;
+    font-size: 7.5pt;
+    color: #666;
+    line-height: 1.55;
+    padding-top: 55%;
 }
 
 .copyright-page p {
-    margin-bottom: 0.4cm;
+    margin-bottom: 0.3cm;
     text-align: left;
 }
+
+/* ============================================
+   LEERE SEITE (Rückseite Copyright)
+   ============================================ */
 
 /* ============================================
    INHALTSVERZEICHNIS
@@ -223,11 +244,12 @@ body {
 
 .toc-page h2 {
     font-family: 'Liberation Sans', 'DejaVu Sans', sans-serif;
-    font-size: 20pt;
+    font-size: 16pt;
     color: #1a2744;
     border-bottom: 2px solid #2d4a7a;
-    padding-bottom: 0.3cm;
-    margin-bottom: 1cm;
+    padding-bottom: 0.25cm;
+    margin-bottom: 0.8cm;
+    margin-top: 1cm;
     text-align: left;
 }
 
@@ -238,10 +260,10 @@ body {
 }
 
 .toc-list li {
-    padding: 0.3cm 0;
+    padding: 0.2cm 0;
     border-bottom: 1px dotted #ccc;
-    font-size: 11pt;
-    line-height: 1.4;
+    font-size: 9.5pt;
+    line-height: 1.35;
 }
 
 .toc-list li.vorwort {
@@ -254,7 +276,7 @@ body {
     font-weight: bold;
     color: #2d4a7a;
     display: inline-block;
-    width: 1.2cm;
+    width: 1cm;
 }
 
 /* ============================================
@@ -265,48 +287,50 @@ h1 {
     page: chapter-start;
     page-break-before: always;
     font-family: 'Liberation Sans', 'DejaVu Sans', sans-serif;
-    font-size: 24pt;
+    font-size: 20pt;
     font-weight: bold;
     color: #1a2744;
-    margin-top: 3cm;
-    margin-bottom: 1cm;
-    line-height: 1.2;
-    border-bottom: 3px solid #2d4a7a;
-    padding-bottom: 0.5cm;
+    margin-top: 2.5cm;
+    margin-bottom: 0.8cm;
+    line-height: 1.15;
+    border-bottom: 2.5px solid #2d4a7a;
+    padding-bottom: 0.4cm;
     text-align: left;
 }
 
-/* Erstes h1 (Vorwort) soll keinen Seitenumbruch erzwingen */
 .chapter-content:first-of-type h1 {
     page-break-before: always;
 }
 
 h2 {
     font-family: 'Liberation Sans', 'DejaVu Sans', sans-serif;
-    font-size: 16pt;
+    font-size: 13pt;
     font-weight: bold;
     color: #2d4a7a;
-    margin-top: 1.2cm;
-    margin-bottom: 0.5cm;
-    line-height: 1.3;
+    margin-top: 0.9cm;
+    margin-bottom: 0.35cm;
+    line-height: 1.25;
+    page-break-after: avoid;
 }
 
 h3 {
     font-family: 'Liberation Sans', 'DejaVu Sans', sans-serif;
-    font-size: 13pt;
+    font-size: 11pt;
     font-weight: bold;
     color: #3d5a8a;
-    margin-top: 0.8cm;
-    margin-bottom: 0.4cm;
+    margin-top: 0.6cm;
+    margin-bottom: 0.25cm;
+    page-break-after: avoid;
 }
 
 h4 {
     font-family: 'Liberation Sans', 'DejaVu Sans', sans-serif;
-    font-size: 11pt;
+    font-size: 9.5pt;
     font-weight: bold;
     color: #4a6a9a;
-    margin-top: 0.6cm;
-    margin-bottom: 0.3cm;
+    margin-top: 0.5cm;
+    margin-bottom: 0.2cm;
+    page-break-after: avoid;
 }
 
 /* ============================================
@@ -314,11 +338,10 @@ h4 {
    ============================================ */
 
 p {
-    margin-bottom: 0.4cm;
+    margin-bottom: 0.3cm;
     text-indent: 0;
 }
 
-/* Erster Absatz nach Überschrift: kein Einzug */
 h1 + p, h2 + p, h3 + p, h4 + p {
     text-indent: 0;
 }
@@ -337,17 +360,17 @@ em {
    ============================================ */
 
 ul, ol {
-    margin: 0.4cm 0;
-    padding-left: 1.2cm;
+    margin: 0.3cm 0;
+    padding-left: 1cm;
 }
 
 li {
-    margin-bottom: 0.2cm;
-    line-height: 1.5;
+    margin-bottom: 0.15cm;
+    line-height: 1.45;
 }
 
 li > ul, li > ol {
-    margin-top: 0.15cm;
+    margin-top: 0.1cm;
 }
 
 /* ============================================
@@ -357,13 +380,13 @@ li > ul, li > ol {
 pre {
     background: #f5f7fa;
     border: 1px solid #d0d7e2;
-    border-left: 4px solid #2d4a7a;
-    border-radius: 4px;
-    padding: 0.5cm 0.6cm;
-    margin: 0.5cm 0;
+    border-left: 3px solid #2d4a7a;
+    border-radius: 3px;
+    padding: 0.35cm 0.45cm;
+    margin: 0.4cm 0;
     font-family: 'Liberation Mono', 'DejaVu Sans Mono', monospace;
-    font-size: 9pt;
-    line-height: 1.45;
+    font-size: 7.5pt;
+    line-height: 1.4;
     overflow-wrap: break-word;
     word-wrap: break-word;
     white-space: pre-wrap;
@@ -372,10 +395,10 @@ pre {
 
 code {
     font-family: 'Liberation Mono', 'DejaVu Sans Mono', monospace;
-    font-size: 9.5pt;
+    font-size: 8pt;
     background: #f0f3f7;
-    padding: 1px 4px;
-    border-radius: 3px;
+    padding: 1px 3px;
+    border-radius: 2px;
     color: #2d4a7a;
 }
 
@@ -384,7 +407,7 @@ pre code {
     padding: 0;
     border-radius: 0;
     color: #1a1a1a;
-    font-size: 9pt;
+    font-size: 7.5pt;
 }
 
 /* ============================================
@@ -394,8 +417,8 @@ pre code {
 table {
     width: 100%;
     border-collapse: collapse;
-    margin: 0.6cm 0;
-    font-size: 10pt;
+    margin: 0.4cm 0;
+    font-size: 8.5pt;
     page-break-inside: avoid;
 }
 
@@ -407,13 +430,13 @@ thead {
 th {
     font-family: 'Liberation Sans', 'DejaVu Sans', sans-serif;
     font-weight: bold;
-    padding: 0.3cm 0.4cm;
+    padding: 0.2cm 0.3cm;
     text-align: left;
-    font-size: 9.5pt;
+    font-size: 8pt;
 }
 
 td {
-    padding: 0.25cm 0.4cm;
+    padding: 0.18cm 0.3cm;
     border-bottom: 1px solid #e0e4ea;
     vertical-align: top;
 }
@@ -423,52 +446,35 @@ tr:nth-child(even) {
 }
 
 /* ============================================
-   HORIZONTALE LINIE (Übungstrenner)
+   HORIZONTALE LINIE
    ============================================ */
 
 hr {
     border: none;
-    border-top: 2px solid #2d4a7a;
-    margin: 1cm 2cm;
+    border-top: 1.5px solid #2d4a7a;
+    margin: 0.7cm 1.5cm;
 }
 
 /* ============================================
-   BLOCKQUOTES (für Tipps/Hinweise)
+   BLOCKQUOTES (Tipps/Hinweise)
    ============================================ */
 
 blockquote {
-    border-left: 4px solid #8ab4f8;
+    border-left: 3px solid #8ab4f8;
     background: #f0f5ff;
-    margin: 0.5cm 0;
-    padding: 0.4cm 0.6cm;
+    margin: 0.35cm 0;
+    padding: 0.3cm 0.45cm;
     font-style: italic;
     color: #333;
     page-break-inside: avoid;
 }
 
 blockquote p {
-    margin-bottom: 0.2cm;
+    margin-bottom: 0.15cm;
 }
 
 /* ============================================
-   ÜBUNGSBOX
-   ============================================ */
-
-.uebung-box {
-    background: #f0f8f0;
-    border: 2px solid #4a8a4a;
-    border-radius: 6px;
-    padding: 0.6cm;
-    margin: 0.8cm 0;
-    page-break-inside: avoid;
-}
-
-.uebung-box h2, .uebung-box h3 {
-    color: #2d6a2d;
-}
-
-/* ============================================
-   LINKS (für Print: nur Text, kein Underline)
+   LINKS
    ============================================ */
 
 a {
@@ -495,8 +501,8 @@ a {
 .draft-watermark {
     position: fixed;
     top: 45%;
-    left: 15%;
-    font-size: 80pt;
+    left: 10%;
+    font-size: 60pt;
     color: rgba(200, 0, 0, 0.08);
     transform: rotate(-45deg);
     font-family: 'Liberation Sans', sans-serif;
@@ -540,7 +546,6 @@ def extract_toc_entries(dateien, band_ordner):
                 line = line.strip()
                 if line.startswith("# "):
                     titel = line[2:].strip()
-                    # Kapitelnummer extrahieren
                     match = re.match(r"Kapitel\s+(\d+):\s*(.*)", titel)
                     if match:
                         entries.append(
@@ -577,26 +582,23 @@ def build_copyright_page(band_nr, config):
     return f"""
     <div class="copyright-page">
         <p><strong>{REIHE}</strong><br>
-        Band {band_nr}: {config['titel']} – {config['untertitel']}</p>
+        Band {band_nr}: {config['titel']} &ndash; {config['untertitel']}</p>
 
         <p>&copy; {JAHR} {AUTOR}. Alle Rechte vorbehalten.</p>
 
-        <p>{AUFLAGE}, März {JAHR}</p>
+        <p>{AUFLAGE}, M&auml;rz {JAHR}</p>
 
-        <p>Dieses Werk ist urheberrechtlich geschützt. Jede Verwertung außerhalb
+        <p>Dieses Werk ist urheberrechtlich gesch&uuml;tzt. Jede Verwertung au&szlig;erhalb
         der engen Grenzen des Urheberrechtsgesetzes ist ohne Zustimmung des Autors
-        unzulässig und strafbar. Das gilt insbesondere für Vervielfältigungen,
-        Übersetzungen, Mikroverfilmungen und die Einspeicherung und Verarbeitung
+        unzul&auml;ssig und strafbar. Das gilt insbesondere f&uuml;r Vervielf&auml;ltigungen,
+        &Uuml;bersetzungen, Mikroverfilmungen und die Einspeicherung und Verarbeitung
         in elektronischen Systemen.</p>
 
         <p>Die in diesem Buch genannten Produkt- und Firmennamen sind Marken
-        der jeweiligen Eigentümer. Die Nennung erfolgt ohne Gewähr der freien
-        Verwendbarkeit.</p>
+        der jeweiligen Eigent&uuml;mer.</p>
 
         <p>Satz und Layout: Eigensatz des Autors<br>
         Umschlaggestaltung: Belkis Aslani</p>
-
-        <p>Kontakt: prompt-engineering-meistern@belkisaslani.com</p>
     </div>
     """
 
@@ -631,17 +633,12 @@ def build_chapter_html(md_text):
 
 def build_full_html(band_nr, config, band_ordner, draft=False):
     """Baut das komplette HTML-Dokument zusammen."""
-    # Titelseite
     title_page = build_title_page(band_nr, config)
-
-    # Copyright-Seite
     copyright_page = build_copyright_page(band_nr, config)
 
-    # Kapitelüberschriften für Inhaltsverzeichnis sammeln
     toc_entries = extract_toc_entries(config["dateien"], band_ordner)
     toc_page = build_toc_page(toc_entries)
 
-    # Kapitel-Inhalte laden und konvertieren
     chapters_html = []
     for datei in config["dateien"]:
         pfad = os.path.join(band_ordner, datei)
@@ -653,10 +650,8 @@ def build_full_html(band_nr, config, band_ordner, draft=False):
         chapters_html.append(build_chapter_html(md_text))
         print(f"  ✓ {datei}")
 
-    # Wasserzeichen für Entwurf
     watermark = '<div class="draft-watermark">ENTWURF</div>' if draft else ""
 
-    # Alles zusammensetzen
     css = get_book_css()
     full_html = f"""<!DOCTYPE html>
 <html lang="de">
@@ -696,7 +691,6 @@ def generate_pdf(band_nr, draft=False):
         print(f"FEHLER: Ordner {band_ordner} nicht gefunden.")
         sys.exit(1)
 
-    # Output-Verzeichnis
     output_dir = script_dir / "output"
     output_dir.mkdir(exist_ok=True)
 
@@ -705,30 +699,26 @@ def generate_pdf(band_nr, draft=False):
     output_html = output_dir / f"Band_{band_nr:02d}_{config['titel']}{suffix}.html"
 
     print(f"\n{'='*60}")
-    print(f"  PDF-Buchgenerator | {REIHE}")
+    print(f"  PDF-Buchgenerator v2.0 | {REIHE}")
     print(f"  Band {band_nr}: {config['titel']}")
+    print(f"  Format: A5 (148mm × 210mm)")
     print(f"  Modus: {'ENTWURF' if draft else 'VERKAUFSFERTIG'}")
     print(f"{'='*60}\n")
 
-    # HTML zusammenbauen
     print("Kapitel werden verarbeitet:")
     full_html = build_full_html(band_nr, config, str(band_ordner), draft)
 
-    # HTML speichern (für Debugging)
     with open(output_html, "w", encoding="utf-8") as f:
         f.write(full_html)
     print(f"\n  HTML gespeichert: {output_html}")
 
-    # PDF erzeugen
     print(f"  PDF wird generiert...")
     HTML(string=full_html, base_url=str(script_dir)).write_pdf(str(output_pdf))
 
-    # Dateigröße
     size_mb = os.path.getsize(output_pdf) / (1024 * 1024)
     print(f"\n  ✓ PDF erfolgreich erstellt: {output_pdf}")
     print(f"  ✓ Dateigröße: {size_mb:.2f} MB")
 
-    # Seitenanzahl schätzen (grob)
     total_words = 0
     for datei in config["dateien"]:
         pfad = os.path.join(str(band_ordner), datei)
@@ -736,7 +726,7 @@ def generate_pdf(band_nr, draft=False):
             with open(pfad, "r", encoding="utf-8") as f:
                 total_words += len(f.read().split())
     print(f"  ✓ Geschätzte Wortanzahl: ~{total_words:,}")
-    print(f"  ✓ Format: 6×9 Zoll (15,24 × 22,86 cm)")
+    print(f"  ✓ Format: A5 (148 × 210 mm)")
     print(f"  ✓ Geeignet für: Gumroad, Amazon KDP, Lulu, Epubli")
 
     print(f"\n{'='*60}")
