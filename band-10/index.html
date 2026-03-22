@@ -388,6 +388,7 @@ box-shadow:0 12px 40px rgba(0,0,0,.4);
 </tbody>
 </table></div>
 <h2 id="warum-2026-das-jahr-der-agenten-ist">Warum 2026 das Jahr der Agenten ist</h2>
+<p>Stanford&rsquo;s HAI Institute nennt 2026 das &ldquo;Mainstream-Adoptionsjahr&rdquo; für Agentic AI. 67% der Fortune-500-Unternehmen haben mindestens einen KI-Agenten in Produktion (34% waren es noch 2025). 88% der Führungskräfte pilotieren oder skalieren autonome Agenten.</p>
 <p>Drei Entwicklungen kamen zusammen:</p>
 <p><strong>1. Bessere Modelle:</strong> Claude Opus 4.6, GPT-5.2, Gemini 3 Pro – die Modelle von 2026 machen weniger Fehler, folgen Anweisungen besser und können komplexere Pläne ausführen. Die Halluzinationsrate bei Frontier-Modellen liegt unter 2% für Standard-Tasks.</p>
 <p><strong>2. Infrastruktur:</strong> MCP (Model Context Protocol) hat das Tool-Problem gelöst. Statt für jedes Tool eigene Integrationen zu schreiben, gibt es ein universelles Protokoll. 97 Millionen monatliche SDK-Downloads. Unterstützt von Anthropic, OpenAI, Google, Microsoft und Amazon.</p>
@@ -469,16 +470,17 @@ Bei Agenten sagst du: &ldquo;Implementiere Feature X. Schreibe Tests. Stelle sic
 <p>Coding war der erste Bereich, in dem Agenten wirklich funktioniert haben. Der Grund: Code ist testbar. Ein Agent kann Code schreiben, Tests laufen lassen, sehen ob sie bestehen, und wenn nicht, den Code fixen. Die Feedback-Schleife ist klar und automatisierbar.</p>
 <h3 id="claude-code">Claude Code</h3>
 <p>Anthropics Terminal-nativer Coding-Agent. Arbeitet direkt in deinem Git-Repository, versteht den Kontext deiner Codebasis (bis zu 1M Tokens), kann Dateien lesen und schreiben, Tests ausführen, Git-Operationen durchführen und über MCP-Server auf externe Tools zugreifen.</p>
-<p><strong>Was ihn besonders macht:</strong> Tiefe Integration ins Entwickler-Ökosystem. Kein IDE-Plugin, sondern ein eigenständiges Tool, das im Terminal lebt – da, wo Entwickler arbeiten. Agent Teams erlauben mehrere parallel arbeitende Agenten.</p>
+<p><strong>Was ihn besonders macht:</strong> Tiefe Integration ins Entwickler-Ökosystem. Kein IDE-Plugin, sondern ein eigenständiges Tool, das im Terminal lebt – da, wo Entwickler arbeiten. Claude Code erreichte 1 Milliarde Dollar Jahresumsatz (ARR) schneller als ChatGPT und steht im März 2026 bei <strong>2,5 Milliarden Dollar ARR</strong> – mehr als die Hälfte von Anthropics Enterprise-Umsatz.</p>
+<p>Seit Februar 2026: <strong>Agent Teams</strong> – Multi-Agent-Koordination. Ein Lead-Agent spawnt Teammates, jeder mit eigener Session und eigenem Kontextfenster. Kommunikation über JSON-Inbox-Dateien. Reduziert die Arbeitszeit um 3-5x bei parallelisierbarer Arbeit.</p>
 <p>In Umfragen 2026 wird Claude Code als &ldquo;most loved&rdquo; AI Coding Tool von 46% der Befragten genannt.</p>
 <h3 id="cursor">Cursor</h3>
-<p>Der IDE-native Ansatz. Cursor ist ein Fork von VS Code mit eingebauter KI. Marktführer im Bereich AI-IDEs mit über 360.000 zahlenden Nutzern und über 500 Mio. Dollar Jahresumsatz (Stand 2026).</p>
-<p><strong>Background Agents:</strong> Cursor kann im Hintergrund an Aufgaben arbeiten, während du etwas anderes tust. Du gibst ein Ziel, Cursor arbeitet autonom und meldet sich, wenn es fertig ist.</p>
+<p>Der IDE-native Ansatz. Cursor ist ein Fork von VS Code mit eingebauter KI. Marktführer im Bereich AI-IDEs mit über 360.000 zahlenden Nutzern und über 500 Mio. Dollar Jahresumsatz (Stand 2026). Über 90% der Entwickler bei Salesforce nutzen Cursor.</p>
+<p><strong>Cloud Agents (Februar 2026):</strong> Völlig autonome Agenten auf isolierten Linux-VMs. Schreiben Code, testen ihn, nehmen Video-Demos auf und liefern Merge-ready Pull Requests. 30% von Cursors eigenen gemergten PRs werden von diesen Agenten erstellt. BugBot findet Bugs in PRs und spawnt automatisch Cloud-Agenten zur Reparatur – über 35% der Fixes werden ohne Änderung gemergt.</p>
 <h3 id="github-copilot">GitHub Copilot</h3>
 <p>15 Millionen Entwickler nutzen Copilot. Der Agent Mode ermöglicht mehrstufige Aufgaben: nicht nur Code-Vervollständigung, sondern Feature-Implementierung über mehrere Dateien. Enterprise-Features wie Audit-Trails und Compliance (SOC 2) machen es für große Unternehmen attraktiv.</p>
 <h3 id="devin">Devin</h3>
 <p>Der &ldquo;KI-Software-Engineer&rdquo; von Cognition. Kann Stunden bis Tage autonom an Aufgaben arbeiten – deutlich längere Autonomie als die meisten Konkurrenten. Setzt eigene Entwicklungsumgebungen auf, navigiert Webseiten, debuggt.</p>
-<p><strong>Die Realität:</strong> Beeindruckend für klar definierte, abgegrenzte Aufgaben. Bei ambigen oder kreativen Aufgaben noch unzuverlässig. Sicherheitsforscher fanden Schwachstellen (siehe Band 9).</p>
+<p><strong>Die Realität:</strong> Beeindruckend für klar definierte, abgegrenzte Aufgaben. Preis von 500$/Monat auf 20$/Monat + 2,25$ pro &ldquo;Agent Compute Unit&rdquo; gesenkt – deutlich zugänglicher. Bei ambigen oder kreativen Aufgaben noch unzuverlässig. Sicherheitsforscher fanden Schwachstellen (siehe Band 9).</p>
 <h3 id="aider">Aider</h3>
 <p>Open-Source, terminal-basiert, Git-nativ. Funktioniert mit jedem LLM (Claude, GPT, lokale Modelle). Bring-Your-Own-Model-Ansatz. Typische Kosten: 5-30$/Monat. Ideal für Entwickler, die maximale Kontrolle und Transparenz wollen.</p>
 <h3 id="die-benchmark-realitat">Die Benchmark-Realität</h3>
@@ -504,8 +506,8 @@ Bei Agenten sagst du: &ldquo;Implementiere Feature X. Schreibe Tests. Stelle sic
 <p>Tools wie Zapier AI, Make (ehemals Integromat) und n8n integrieren KI in bestehende Workflows: Wenn eine E-Mail eingeht → KI klassifiziert sie → leitet sie an die richtige Person → erstellt ein Ticket → sendet eine Bestätigung. Ohne Code.</p>
 <h2 id="computer-use-agenten">Computer-Use-Agenten</h2>
 <p>Die neueste Entwicklung: Agenten, die einen Computer bedienen können – wie ein Mensch. Sie sehen den Bildschirm (Screenshots), klicken auf Buttons, tippen Text, navigieren durch Webseiten und Anwendungen.</p>
-<p><strong>Anthropic Computer Use:</strong> Claude kann einen Desktop steuern. Screenshots machen, Mausbewegungen und Klicks ausführen, Text eingeben. Noch in der Beta, aber funktional für einfache Workflows.</p>
-<p><strong>OpenAI Operator:</strong> OpenAIs Computer-Use-Agent. Navigiert Webseiten, füllt Formulare aus, interagiert mit Web-Anwendungen.</p>
+<p><strong>Anthropic Computer Use:</strong> Claude kann einen Desktop steuern. Screenshots machen, Mausbewegungen und Klicks ausführen, Text eingeben. Funktional für einfache bis mittlere Workflows.</p>
+<p><strong>OpenAI Operator/ChatGPT Agent:</strong> Gestartet Januar 2025, im Juli 2025 in ChatGPT integriert. Erreichte 38,1% auf OSWorld, 58,1% auf WebArena und 87% auf WebVoyager. Kann Reisen buchen, Restaurants reservieren, online einkaufen – automatisch.</p>
 <p><strong>Warum das wichtig ist:</strong> Nicht jede Software hat eine API. Computer Use ermöglicht Agenten, mit <em>jeder</em> Software zu arbeiten – auch mit Legacy-Systemen, die nie für KI-Integration gedacht waren. Das ist der letzte Baustein für universelle Automatisierung.</p>
 <h2 id="die-grenzen-stand-2026">Die Grenzen (Stand 2026)</h2>
 <p>Agenten sind beeindruckend, aber nicht allwissend:</p>
@@ -551,7 +553,7 @@ Bei Agenten sagst du: &ldquo;Implementiere Feature X. Schreibe Tests. Stelle sic
 <p>MCP-Server können <strong>State halten</strong> (anders als einfaches Function Calling), bieten <strong>dynamische Tool-Discovery</strong> (der Agent entdeckt automatisch verfügbare Tools) und exponieren nicht nur Tools, sondern auch <strong>Resources</strong> (Daten) und <strong>Prompts</strong> (Templates).</p>
 <h2 id="a2a-agent-zu-agent-kommunikation">A2A: Agent-zu-Agent-Kommunikation</h2>
 <p>MCP verbindet Agenten mit Tools. Aber was, wenn Agenten miteinander kommunizieren müssen?</p>
-<p>Das <strong>Agent-to-Agent Protocol</strong> (A2A), initiiert von Google, ist der nächste Schritt: Ein Standard für die Kommunikation zwischen Agenten verschiedener Hersteller und Systeme.</p>
+<p>Das <strong>Agent-to-Agent Protocol</strong> (A2A), im April 2025 von Google mit über 50 Partnern gelauncht (Atlassian, Salesforce, PayPal, SAP, ServiceNow, LangChain, Accenture, McKinsey, Deloitte), ist der nächste Schritt: Ein Standard für die Kommunikation zwischen Agenten verschiedener Hersteller. Agenten entdecken sich gegenseitig über &ldquo;Agent Cards&rdquo; und tauschen über einen sicheren Kanal Informationen aus.</p>
 <h3 id="mcp-vs-a2a">MCP vs. A2A</h3>
 <div class="table-wrap"><table>
 <thead>
@@ -955,8 +957,9 @@ Bei Agenten sagst du: &ldquo;Implementiere Feature X. Schreibe Tests. Stelle sic
 <li><strong>Wiederhole</strong> (iterativ verbessern)</li>
 </ol>
 <h3 id="dspy-der-vorreiter">DSPy: Der Vorreiter</h3>
-<p>DSPy (Stanford, 2023, aktiv weiterentwickelt) hat APE populär gemacht. Statt Prompts als Text zu schreiben, definierst du <strong>Module</strong> und <strong>Signaturen</strong>. DSPy optimiert automatisch die Prompts, die Few-Shot-Beispiele und die Pipeline-Konfiguration.</p>
-<p>Die Idee: Prompts sollen nicht von Hand geschrieben werden, sondern von einem Optimierer erzeugt werden – ähnlich wie neuronale Netzwerke nicht von Hand konfiguriert, sondern trainiert werden.</p>
+<p>DSPy (Stanford, 2023, aktiv weiterentwickelt) hat APE populär gemacht. Statt Prompts als Text zu schreiben, definierst du <strong>Module</strong> und <strong>Signaturen</strong>. DSPy optimiert automatisch die Prompts, die Few-Shot-Beispiele und die Pipeline-Konfiguration. Genutzt von Shopify, Databricks, Dropbox und OpenAI.</p>
+<p><strong>GEPA (ICLR 2026 Oral)</strong> – der aktuelle State-of-the-Art: &ldquo;Genetic-Pareto&rdquo; – ein reflektiver Optimierer, der Textkomponenten adaptiv evolviert. Die Ergebnisse sind beeindruckend: 93% Accuracy auf dem MATH-Benchmark (vs. 67% mit einfachem Chain-of-Thought). Übertrifft Reinforcement Learning um durchschnittlich 6%, bei 35x weniger Rechenaufwand. Bereits in DSPy integriert als <code>dspy.GEPA</code>.</p>
+<p><strong>Enterprise-Impact:</strong> Databricks zeigt, dass mit GEPA-optimierten Prompts ein Open-Source-Modell proprietäre Modelle übertrifft – bei 20-90x günstigeren Kosten. Automatische Prompt-Optimierung liefert Qualität auf dem Niveau von Fine-Tuning, ohne die Kosten und den Aufwand des Trainings.</p>
 <h3 id="opro-google-deepmind">OPRO (Google DeepMind)</h3>
 <p>&ldquo;Optimization by PROmpting&rdquo; – ein LLM optimiert Prompts für ein anderes LLM. Das Meta-Modell generiert Prompt-Varianten, evaluiert sie auf Testdaten und iteriert. Einfach in der Idee, überraschend effektiv in der Praxis.</p>
 <h3 id="textgrad">TextGrad</h3>
@@ -1015,8 +1018,9 @@ Bei Agenten sagst du: &ldquo;Implementiere Feature X. Schreibe Tests. Stelle sic
 <p>Das ändert sich grundlegend. Die Interfaces der Zukunft sind natürlicher, multimodaler und unsichtbarer. KI wird nicht mehr ein Tool sein, das du öffnest – sondern eine Schicht, die in alles integriert ist.</p>
 <h2 id="voice-sprechen-statt-tippen">Voice: Sprechen statt Tippen</h2>
 <h3 id="wo-wir-stehen">Wo wir stehen</h3>
-<p>OpenAIs Advanced Voice Mode hat gezeigt, was möglich ist: Natürliche Gespräche mit Pausen, Unterbrechungen, emotionaler Nuance. Die Stimme klingt nicht mehr robotisch – sie klingt menschlich. Zu menschlich, finden manche.</p>
-<p>Claude, Gemini und andere bieten ebenfalls Sprach-Interfaces an. Die Qualität variiert, aber die Richtung ist klar: Sprache wird zum primären Interaktionskanal für viele Anwendungsfälle.</p>
+<p>OpenAIs Advanced Voice Mode hat gezeigt, was möglich ist: Natürliche Gespräche mit Pausen, Unterbrechungen, emotionaler Nuance. Antwortzeit ab 232ms (Durchschnitt 320ms). 35% weniger Wortfehlerrate als Vorgänger. Die Stimme klingt nicht mehr robotisch – sie klingt menschlich. Zu menschlich, finden manche.</p>
+<p>Claude bietet seit Anfang 2026 einen Voice Mode mit fünf wählbaren Stimmen. Im März 2026 wurde sogar ein <strong>Voice Mode für Claude Code</strong> an erste Nutzer ausgerollt – Sprachbefehle für Code-Änderungen und Refactoring. Die Partnerschaft zwischen Anthropic und Hume AI (emotional intelligente Sprach-KI) hat über 1 Million Gespräche und fast 2 Millionen Interaktionsminuten generiert – viele Gespräche über 30 Minuten.</p>
+<p>Gemini Live ermöglicht Echtzeit-Sprachgespräche mit kontextuellem Bewusstsein. Die Gemini Live API verarbeitet kontinuierliche Audio- und Video-Streams für sofortige, menschenähnliche Antworten.</p>
 <h3 id="warum-sprache-die-interaktion-verandert">Warum Sprache die Interaktion verändert</h3>
 <p><strong>Niedrigere Einstiegshürde:</strong> Sprechen kann jeder. Prompten erfordert Übung. Sprach-KI macht KI für Menschen zugänglich, die nie einen Prompt tippen würden.</p>
 <p><strong>Höhere Geschwindigkeit:</strong> Du sprichst schneller als du tippst. Für Brainstorming, Ideenentwicklung und schnelle Fragen ist Sprache dem Text überlegen.</p>

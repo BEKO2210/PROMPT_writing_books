@@ -34,7 +34,7 @@ MCP-Server können **State halten** (anders als einfaches Function Calling), bie
 
 MCP verbindet Agenten mit Tools. Aber was, wenn Agenten miteinander kommunizieren müssen?
 
-Das **Agent-to-Agent Protocol** (A2A), initiiert von Google, ist der nächste Schritt: Ein Standard für die Kommunikation zwischen Agenten verschiedener Hersteller und Systeme.
+Das **Agent-to-Agent Protocol** (A2A), im April 2025 von Google mit über 50 Partnern gelauncht (Atlassian, Salesforce, PayPal, SAP, ServiceNow, LangChain, Accenture, McKinsey, Deloitte), ist der nächste Schritt: Ein Standard für die Kommunikation zwischen Agenten verschiedener Hersteller. Agenten entdecken sich gegenseitig über "Agent Cards" und tauschen über einen sicheren Kanal Informationen aus.
 
 ### MCP vs. A2A
 

@@ -10,15 +10,17 @@ Coding war der erste Bereich, in dem Agenten wirklich funktioniert haben. Der Gr
 
 Anthropics Terminal-nativer Coding-Agent. Arbeitet direkt in deinem Git-Repository, versteht den Kontext deiner Codebasis (bis zu 1M Tokens), kann Dateien lesen und schreiben, Tests ausführen, Git-Operationen durchführen und über MCP-Server auf externe Tools zugreifen.
 
-**Was ihn besonders macht:** Tiefe Integration ins Entwickler-Ökosystem. Kein IDE-Plugin, sondern ein eigenständiges Tool, das im Terminal lebt – da, wo Entwickler arbeiten. Agent Teams erlauben mehrere parallel arbeitende Agenten.
+**Was ihn besonders macht:** Tiefe Integration ins Entwickler-Ökosystem. Kein IDE-Plugin, sondern ein eigenständiges Tool, das im Terminal lebt – da, wo Entwickler arbeiten. Claude Code erreichte 1 Milliarde Dollar Jahresumsatz (ARR) schneller als ChatGPT und steht im März 2026 bei **2,5 Milliarden Dollar ARR** – mehr als die Hälfte von Anthropics Enterprise-Umsatz.
+
+Seit Februar 2026: **Agent Teams** – Multi-Agent-Koordination. Ein Lead-Agent spawnt Teammates, jeder mit eigener Session und eigenem Kontextfenster. Kommunikation über JSON-Inbox-Dateien. Reduziert die Arbeitszeit um 3-5x bei parallelisierbarer Arbeit.
 
 In Umfragen 2026 wird Claude Code als "most loved" AI Coding Tool von 46% der Befragten genannt.
 
 ### Cursor
 
-Der IDE-native Ansatz. Cursor ist ein Fork von VS Code mit eingebauter KI. Marktführer im Bereich AI-IDEs mit über 360.000 zahlenden Nutzern und über 500 Mio. Dollar Jahresumsatz (Stand 2026).
+Der IDE-native Ansatz. Cursor ist ein Fork von VS Code mit eingebauter KI. Marktführer im Bereich AI-IDEs mit über 360.000 zahlenden Nutzern und über 500 Mio. Dollar Jahresumsatz (Stand 2026). Über 90% der Entwickler bei Salesforce nutzen Cursor.
 
-**Background Agents:** Cursor kann im Hintergrund an Aufgaben arbeiten, während du etwas anderes tust. Du gibst ein Ziel, Cursor arbeitet autonom und meldet sich, wenn es fertig ist.
+**Cloud Agents (Februar 2026):** Völlig autonome Agenten auf isolierten Linux-VMs. Schreiben Code, testen ihn, nehmen Video-Demos auf und liefern Merge-ready Pull Requests. 30% von Cursors eigenen gemergten PRs werden von diesen Agenten erstellt. BugBot findet Bugs in PRs und spawnt automatisch Cloud-Agenten zur Reparatur – über 35% der Fixes werden ohne Änderung gemergt.
 
 ### GitHub Copilot
 
@@ -28,7 +30,7 @@ Der IDE-native Ansatz. Cursor ist ein Fork von VS Code mit eingebauter KI. Markt
 
 Der "KI-Software-Engineer" von Cognition. Kann Stunden bis Tage autonom an Aufgaben arbeiten – deutlich längere Autonomie als die meisten Konkurrenten. Setzt eigene Entwicklungsumgebungen auf, navigiert Webseiten, debuggt.
 
-**Die Realität:** Beeindruckend für klar definierte, abgegrenzte Aufgaben. Bei ambigen oder kreativen Aufgaben noch unzuverlässig. Sicherheitsforscher fanden Schwachstellen (siehe Band 9).
+**Die Realität:** Beeindruckend für klar definierte, abgegrenzte Aufgaben. Preis von 500$/Monat auf 20$/Monat + 2,25$ pro "Agent Compute Unit" gesenkt – deutlich zugänglicher. Bei ambigen oder kreativen Aufgaben noch unzuverlässig. Sicherheitsforscher fanden Schwachstellen (siehe Band 9).
 
 ### Aider
 
@@ -70,9 +72,9 @@ Tools wie Zapier AI, Make (ehemals Integromat) und n8n integrieren KI in bestehe
 
 Die neueste Entwicklung: Agenten, die einen Computer bedienen können – wie ein Mensch. Sie sehen den Bildschirm (Screenshots), klicken auf Buttons, tippen Text, navigieren durch Webseiten und Anwendungen.
 
-**Anthropic Computer Use:** Claude kann einen Desktop steuern. Screenshots machen, Mausbewegungen und Klicks ausführen, Text eingeben. Noch in der Beta, aber funktional für einfache Workflows.
+**Anthropic Computer Use:** Claude kann einen Desktop steuern. Screenshots machen, Mausbewegungen und Klicks ausführen, Text eingeben. Funktional für einfache bis mittlere Workflows.
 
-**OpenAI Operator:** OpenAIs Computer-Use-Agent. Navigiert Webseiten, füllt Formulare aus, interagiert mit Web-Anwendungen.
+**OpenAI Operator/ChatGPT Agent:** Gestartet Januar 2025, im Juli 2025 in ChatGPT integriert. Erreichte 38,1% auf OSWorld, 58,1% auf WebArena und 87% auf WebVoyager. Kann Reisen buchen, Restaurants reservieren, online einkaufen – automatisch.
 
 **Warum das wichtig ist:** Nicht jede Software hat eine API. Computer Use ermöglicht Agenten, mit *jeder* Software zu arbeiten – auch mit Legacy-Systemen, die nie für KI-Integration gedacht waren. Das ist der letzte Baustein für universelle Automatisierung.
 

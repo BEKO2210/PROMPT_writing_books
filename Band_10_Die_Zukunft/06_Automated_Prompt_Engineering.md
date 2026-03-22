@@ -26,9 +26,11 @@ Du hast 9 Bände lang gelernt, wie man gute Prompts schreibt. Das ist wertvoll. 
 
 ### DSPy: Der Vorreiter
 
-DSPy (Stanford, 2023, aktiv weiterentwickelt) hat APE populär gemacht. Statt Prompts als Text zu schreiben, definierst du **Module** und **Signaturen**. DSPy optimiert automatisch die Prompts, die Few-Shot-Beispiele und die Pipeline-Konfiguration.
+DSPy (Stanford, 2023, aktiv weiterentwickelt) hat APE populär gemacht. Statt Prompts als Text zu schreiben, definierst du **Module** und **Signaturen**. DSPy optimiert automatisch die Prompts, die Few-Shot-Beispiele und die Pipeline-Konfiguration. Genutzt von Shopify, Databricks, Dropbox und OpenAI.
 
-Die Idee: Prompts sollen nicht von Hand geschrieben werden, sondern von einem Optimierer erzeugt werden – ähnlich wie neuronale Netzwerke nicht von Hand konfiguriert, sondern trainiert werden.
+**GEPA (ICLR 2026 Oral)** – der aktuelle State-of-the-Art: "Genetic-Pareto" – ein reflektiver Optimierer, der Textkomponenten adaptiv evolviert. Die Ergebnisse sind beeindruckend: 93% Accuracy auf dem MATH-Benchmark (vs. 67% mit einfachem Chain-of-Thought). Übertrifft Reinforcement Learning um durchschnittlich 6%, bei 35x weniger Rechenaufwand. Bereits in DSPy integriert als `dspy.GEPA`.
+
+**Enterprise-Impact:** Databricks zeigt, dass mit GEPA-optimierten Prompts ein Open-Source-Modell proprietäre Modelle übertrifft – bei 20-90x günstigeren Kosten. Automatische Prompt-Optimierung liefert Qualität auf dem Niveau von Fine-Tuning, ohne die Kosten und den Aufwand des Trainings.
 
 ### OPRO (Google DeepMind)
 

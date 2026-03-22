@@ -8,9 +8,11 @@ Das ändert sich grundlegend. Die Interfaces der Zukunft sind natürlicher, mult
 
 ### Wo wir stehen
 
-OpenAIs Advanced Voice Mode hat gezeigt, was möglich ist: Natürliche Gespräche mit Pausen, Unterbrechungen, emotionaler Nuance. Die Stimme klingt nicht mehr robotisch – sie klingt menschlich. Zu menschlich, finden manche.
+OpenAIs Advanced Voice Mode hat gezeigt, was möglich ist: Natürliche Gespräche mit Pausen, Unterbrechungen, emotionaler Nuance. Antwortzeit ab 232ms (Durchschnitt 320ms). 35% weniger Wortfehlerrate als Vorgänger. Die Stimme klingt nicht mehr robotisch – sie klingt menschlich. Zu menschlich, finden manche.
 
-Claude, Gemini und andere bieten ebenfalls Sprach-Interfaces an. Die Qualität variiert, aber die Richtung ist klar: Sprache wird zum primären Interaktionskanal für viele Anwendungsfälle.
+Claude bietet seit Anfang 2026 einen Voice Mode mit fünf wählbaren Stimmen. Im März 2026 wurde sogar ein **Voice Mode für Claude Code** an erste Nutzer ausgerollt – Sprachbefehle für Code-Änderungen und Refactoring. Die Partnerschaft zwischen Anthropic und Hume AI (emotional intelligente Sprach-KI) hat über 1 Million Gespräche und fast 2 Millionen Interaktionsminuten generiert – viele Gespräche über 30 Minuten.
+
+Gemini Live ermöglicht Echtzeit-Sprachgespräche mit kontextuellem Bewusstsein. Die Gemini Live API verarbeitet kontinuierliche Audio- und Video-Streams für sofortige, menschenähnliche Antworten.
 
 ### Warum Sprache die Interaktion verändert
 
