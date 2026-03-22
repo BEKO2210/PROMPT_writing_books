@@ -89,10 +89,15 @@ max-width:600px;margin:0 auto 16px;line-height:1.5;
 .hero .author{font-size:15px;color:var(--accent);letter-spacing:1px;opacity:.8}
 
 /* Stats */
-.stats{display:flex;justify-content:center;gap:40px;margin:40px 0 60px;flex-wrap:wrap}
-.stat{text-align:center}
-.stat-num{font-size:2.5rem;font-weight:800;color:var(--accent);line-height:1}
-.stat-label{font-size:12px;color:var(--text2);text-transform:uppercase;letter-spacing:1.5px;margin-top:6px}
+.stats{display:flex;justify-content:center;gap:12px;margin:40px auto 60px;flex-wrap:wrap;max-width:700px}
+.stat{text-align:center;background:rgba(138,180,248,.06);border:1px solid rgba(138,180,248,.12);border-radius:16px;padding:20px 28px;min-width:130px;flex:1;position:relative;overflow:hidden;transition:all .3s ease}
+.stat:hover{border-color:rgba(138,180,248,.3);transform:translateY(-3px);box-shadow:0 8px 30px rgba(138,180,248,.1)}
+.stat-icon{font-size:22px;margin-bottom:8px;display:block;opacity:.9}
+.stat-num{font-size:2.2rem;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+.stat-label{font-size:11px;color:var(--text2);text-transform:uppercase;letter-spacing:1.5px;margin-top:6px}
+.stat-bar{position:absolute;bottom:0;left:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));width:0;transition:width 1.5s cubic-bezier(.22,1,.36,1)}
+.stat.visible .stat-bar{width:100%}
+@keyframes countPulse{0%{transform:scale(1)}50%{transform:scale(1.08)}100%{transform:scale(1)}}
 
 /* Grid + Cards */
 .grid{
@@ -183,7 +188,7 @@ padding:8px 20px;font-size:13px;font-weight:600;cursor:pointer;width:100%;
 
 /* Mobile */
 @media(max-width:600px){
-.stats{gap:24px}.stat-num{font-size:2rem}
+.stats{gap:8px}.stat{padding:14px 16px;min-width:0}.stat-num{font-size:1.6rem}.stat-icon{font-size:18px}
 .grid{gap:14px}.card{padding:22px 18px}
 }
 </style>
@@ -203,9 +208,30 @@ padding:8px 20px;font-size:13px;font-weight:600;cursor:pointer;width:100%;
 </header>
 
 <section class="stats" aria-label="Statistiken">
-<div class="stat"><div class="stat-num" aria-label="10 Bände">10</div><div class="stat-label">B&auml;nde</div></div>
-<div class="stat"><div class="stat-num" aria-label="10 Bände verfügbar">10</div><div class="stat-label">Verf&uuml;gbar</div></div>
-<div class="stat"><div class="stat-num" aria-label="Über 100000 Wörter">100k+</div><div class="stat-label">W&ouml;rter</div></div>
+<div class="stat">
+<span class="stat-icon">&#128218;</span>
+<div class="stat-num" data-target="10" data-suffix="" aria-label="10 Bände">0</div>
+<div class="stat-label">B&auml;nde</div>
+<div class="stat-bar"></div>
+</div>
+<div class="stat">
+<span class="stat-icon">&#128161;</span>
+<div class="stat-num" data-target="200" data-suffix="+" aria-label="200+ Prompts">0</div>
+<div class="stat-label">Prompts</div>
+<div class="stat-bar"></div>
+</div>
+<div class="stat">
+<span class="stat-icon">&#128196;</span>
+<div class="stat-num" data-target="100" data-suffix="k+" aria-label="Über 100000 Wörter">0</div>
+<div class="stat-label">W&ouml;rter</div>
+<div class="stat-bar"></div>
+</div>
+<div class="stat">
+<span class="stat-icon">&#127775;</span>
+<div class="stat-num" data-target="100" data-suffix="%" aria-label="100% kostenlos">0</div>
+<div class="stat-label">Kostenlos</div>
+<div class="stat-bar"></div>
+</div>
 </section>
 
 <nav aria-label="Buchreihe">
@@ -389,6 +415,39 @@ localStorage.setItem('pe-app-version',data.version);
 },1000);
 });
 }
+
+// Count-up animation for stats
+(function(){
+var animated=false;
+var stats=document.querySelector('.stats');
+if(!stats)return;
+function animateCounters(){
+if(animated)return;animated=true;
+stats.querySelectorAll('.stat').forEach(function(s,i){
+setTimeout(function(){s.classList.add('visible')},i*150);
+});
+stats.querySelectorAll('.stat-num[data-target]').forEach(function(el,i){
+var target=parseInt(el.dataset.target);
+var suffix=el.dataset.suffix||'';
+var duration=1400;
+var start=performance.now();
+setTimeout(function(){
+requestAnimationFrame(function step(now){
+var t=Math.min((now-start-i*150)/duration,1);
+var ease=1-Math.pow(1-t,3);
+var val=Math.round(ease*target);
+el.textContent=val+suffix;
+if(t<1)requestAnimationFrame(step);
+else{el.textContent=target+suffix;el.style.animation='countPulse .3s ease'}
+});
+},i*150);
+});
+}
+var io=new IntersectionObserver(function(entries){
+entries.forEach(function(e){if(e.isIntersecting)animateCounters()});
+},{threshold:0.5});
+io.observe(stats);
+})();
 </script>
 </body>
 </html>
