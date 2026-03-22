@@ -228,9 +228,15 @@ In Band 1 habe ich das Prompt-Protokoll eingeführt. Jetzt wird es zum Debugging
 
 Erweitere dein Protokoll um diese Spalten:
 
-| Datum | Prompt | Ergebnis | Problem | Hypothese | Änderung | Besser? |
-|-------|--------|----------|---------|-----------|----------|---------|
-| 22.03 | [Prompt] | Zu allgemein | Kein Kontext | Mehr Kontext | Zielgruppe ergänzt | Ja |
+**Beispiel-Eintrag:**
+
+- **Datum:** 22.03
+- **Prompt:** [Dein Prompt]
+- **Ergebnis:** Zu allgemein
+- **Problem:** Kein Kontext
+- **Hypothese:** Mehr Kontext nötig
+- **Änderung:** Zielgruppe ergänzt
+- **Besser?** Ja
 
 Drei Spalten mehr. Aber sie machen den Unterschied zwischen ziellosem Herumprobieren und systematischer Verbesserung.
 

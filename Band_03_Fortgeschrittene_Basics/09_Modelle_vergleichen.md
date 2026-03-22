@@ -79,17 +79,17 @@ GPT-4o ist nicht Claude ist nicht Gemini ist nicht Llama. Jedes Modell hat Stär
 
 ## Modelle vergleichen: Die Entscheidungsmatrix
 
-| Kriterium | GPT-4o | Claude 3.5 | Gemini 2.0 | Llama 3.3 |
-|-----------|--------|-------------|------------|-----------|
-| Textqualität | ★★★★☆ | ★★★★★ | ★★★★☆ | ★★★☆☆ |
-| Code | ★★★★★ | ★★★★☆ | ★★★★☆ | ★★★☆☆ |
-| Faktengenauigkeit | ★★★★☆ | ★★★★☆ | ★★★★★ | ★★★☆☆ |
-| Lange Kontexte | ★★★★☆ | ★★★★★ | ★★★★★ | ★★★☆☆ |
-| Kreativität | ★★★★★ | ★★★★☆ | ★★★☆☆ | ★★★☆☆ |
-| Instruktionsbefolgung | ★★★★★ | ★★★★★ | ★★★★☆ | ★★★☆☆ |
-| Datenschutz | ★★★☆☆ | ★★★☆☆ | ★★★☆☆ | ★★★★★ |
-| Kosten (API) | ★★★☆☆ | ★★★☆☆ | ★★★★☆ | ★★★★★ |
-| Multimodal | ★★★★☆ | ★★★☆☆ | ★★★★★ | ★★☆☆☆ |
+**GPT-4o**
+Textqualität ★★★★☆ · Code ★★★★★ · Fakten ★★★★☆ · Lange Kontexte ★★★★☆ · Kreativität ★★★★★ · Instruktionsbefolgung ★★★★★ · Datenschutz ★★★☆☆ · Kosten ★★★☆☆ · Multimodal ★★★★☆
+
+**Claude 3.5**
+Textqualität ★★★★★ · Code ★★★★☆ · Fakten ★★★★☆ · Lange Kontexte ★★★★★ · Kreativität ★★★★☆ · Instruktionsbefolgung ★★★★★ · Datenschutz ★★★☆☆ · Kosten ★★★☆☆ · Multimodal ★★★☆☆
+
+**Gemini 2.0**
+Textqualität ★★★★☆ · Code ★★★★☆ · Fakten ★★★★★ · Lange Kontexte ★★★★★ · Kreativität ★★★☆☆ · Instruktionsbefolgung ★★★★☆ · Datenschutz ★★★☆☆ · Kosten ★★★★☆ · Multimodal ★★★★★
+
+**Llama 3.3**
+Textqualität ★★★☆☆ · Code ★★★☆☆ · Fakten ★★★☆☆ · Lange Kontexte ★★★☆☆ · Kreativität ★★★☆☆ · Instruktionsbefolgung ★★★☆☆ · Datenschutz ★★★★★ · Kosten ★★★★★ · Multimodal ★★☆☆☆
 
 ## Modellwahl nach Aufgabe
 

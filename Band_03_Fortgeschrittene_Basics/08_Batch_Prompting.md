@@ -77,7 +77,7 @@ Variante 5: Mit Zeitangabe
 Ich gebe dir eine Liste von Kundenfeedback-Einträgen.
 Erstelle eine Tabelle mit folgenden Spalten:
 
-| Nr. | Sentiment | Kategorie | Kernaussage (max. 10 Wörter) | Priorität |
+| Nr. | Sentiment | Kategorie | Kernaussage | Priorität |
 
 Kategorien: Produkt, Lieferung, Service, Preis, Sonstiges
 Priorität: Hoch (negativ + häufig), Mittel, Niedrig
