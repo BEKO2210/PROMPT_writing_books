@@ -79,17 +79,61 @@ GPT-4o ist nicht Claude ist nicht Gemini ist nicht Llama. Jedes Modell hat Stär
 
 ## Modelle vergleichen: Die Entscheidungsmatrix
 
-**GPT-4o**
-Textqualität ★★★★☆ · Code ★★★★★ · Fakten ★★★★☆ · Lange Kontexte ★★★★☆ · Kreativität ★★★★★ · Instruktionsbefolgung ★★★★★ · Datenschutz ★★★☆☆ · Kosten ★★★☆☆ · Multimodal ★★★★☆
+### GPT-4o
 
-**Claude 3.5**
-Textqualität ★★★★★ · Code ★★★★☆ · Fakten ★★★★☆ · Lange Kontexte ★★★★★ · Kreativität ★★★★☆ · Instruktionsbefolgung ★★★★★ · Datenschutz ★★★☆☆ · Kosten ★★★☆☆ · Multimodal ★★★☆☆
+| Kriterium | Bewertung |
+|---|---|
+| Textqualität | ★★★★☆ |
+| Code | ★★★★★ |
+| Faktengenauigkeit | ★★★★☆ |
+| Lange Kontexte | ★★★★☆ |
+| Kreativität | ★★★★★ |
+| Instruktionsbefolgung | ★★★★★ |
+| Datenschutz | ★★★☆☆ |
+| Kosten (API) | ★★★☆☆ |
+| Multimodal | ★★★★☆ |
 
-**Gemini 2.0**
-Textqualität ★★★★☆ · Code ★★★★☆ · Fakten ★★★★★ · Lange Kontexte ★★★★★ · Kreativität ★★★☆☆ · Instruktionsbefolgung ★★★★☆ · Datenschutz ★★★☆☆ · Kosten ★★★★☆ · Multimodal ★★★★★
+### Claude 3.5
 
-**Llama 3.3**
-Textqualität ★★★☆☆ · Code ★★★☆☆ · Fakten ★★★☆☆ · Lange Kontexte ★★★☆☆ · Kreativität ★★★☆☆ · Instruktionsbefolgung ★★★☆☆ · Datenschutz ★★★★★ · Kosten ★★★★★ · Multimodal ★★☆☆☆
+| Kriterium | Bewertung |
+|---|---|
+| Textqualität | ★★★★★ |
+| Code | ★★★★☆ |
+| Faktengenauigkeit | ★★★★☆ |
+| Lange Kontexte | ★★★★★ |
+| Kreativität | ★★★★☆ |
+| Instruktionsbefolgung | ★★★★★ |
+| Datenschutz | ★★★☆☆ |
+| Kosten (API) | ★★★☆☆ |
+| Multimodal | ★★★☆☆ |
+
+### Gemini 2.0
+
+| Kriterium | Bewertung |
+|---|---|
+| Textqualität | ★★★★☆ |
+| Code | ★★★★☆ |
+| Faktengenauigkeit | ★★★★★ |
+| Lange Kontexte | ★★★★★ |
+| Kreativität | ★★★☆☆ |
+| Instruktionsbefolgung | ★★★★☆ |
+| Datenschutz | ★★★☆☆ |
+| Kosten (API) | ★★★★☆ |
+| Multimodal | ★★★★★ |
+
+### Llama 3.3
+
+| Kriterium | Bewertung |
+|---|---|
+| Textqualität | ★★★☆☆ |
+| Code | ★★★☆☆ |
+| Faktengenauigkeit | ★★★☆☆ |
+| Lange Kontexte | ★★★☆☆ |
+| Kreativität | ★★★☆☆ |
+| Instruktionsbefolgung | ★★★☆☆ |
+| Datenschutz | ★★★★★ |
+| Kosten (API) | ★★★★★ |
+| Multimodal | ★★☆☆☆ |
 
 ## Modellwahl nach Aufgabe
 
