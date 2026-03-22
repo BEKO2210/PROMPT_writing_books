@@ -197,15 +197,35 @@ background:var(--bg2);border:1px solid var(--border);border-radius:4px;
 padding:1px 6px;font-size:11px;font-family:var(--font-mono);
 }
 
-/* Resume banner */
+/* Resume banner (mobile-first popup) */
 .resume-banner{
-display:none;position:fixed;bottom:80px;left:50%;transform:translateX(-50%);
-background:var(--accent);color:#fff;padding:10px 20px;border-radius:12px;
-font-size:14px;font-weight:600;cursor:pointer;z-index:60;
-box-shadow:0 4px 24px rgba(0,0,0,.3);transition:all .3s;white-space:nowrap;
+display:none;position:fixed;bottom:16px;left:16px;right:16px;
+background:var(--card);border:1px solid var(--border);border-radius:16px;
+padding:16px;z-index:60;
+box-shadow:0 8px 32px rgba(0,0,0,.25);
+transition:all .3s;
+max-width:420px;margin:0 auto;
 }
-.resume-banner:hover{transform:translateX(-50%) translateY(-2px)}
-.resume-banner.show{display:block}
+.resume-banner.show{display:block;animation:resumeIn .4s ease}
+@keyframes resumeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.resume-top{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.resume-icon{width:36px;height:36px;border-radius:10px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.resume-icon svg{width:18px;height:18px;fill:currentColor}
+.resume-info{flex:1;min-width:0}
+.resume-label{font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:var(--text3);font-weight:600;margin-bottom:2px}
+.resume-chapter{font-size:14px;font-weight:700;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.resume-close{background:none;border:none;color:var(--text3);cursor:pointer;padding:4px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:color .2s}
+.resume-close:hover{color:var(--text)}
+.resume-close svg{width:16px;height:16px;fill:currentColor}
+.resume-progress{height:4px;background:var(--border);border-radius:2px;margin-bottom:12px;overflow:hidden}
+.resume-progress-bar{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-light));border-radius:2px;transition:width .3s}
+.resume-btn{
+width:100%;padding:10px;border:none;border-radius:10px;
+background:var(--accent);color:#fff;font-size:14px;font-weight:600;
+cursor:pointer;transition:opacity .2s;display:flex;align-items:center;justify-content:center;gap:8px;
+}
+.resume-btn:hover{opacity:.9}
+.resume-btn svg{width:16px;height:16px;fill:currentColor}
 
 /* Update toast */
 .update-toast{
@@ -3524,7 +3544,18 @@ da persönliche Faktoren den Break-Even verschieben können.
 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4l-8 8h5v8h6v-8h5z"/></svg>
 </button>
 
-<div class="resume-banner" id="resumeBanner" role="button" tabindex="0" aria-label="Weiterlesen">Weiterlesen &rarr;</div>
+<div class="resume-banner" id="resumeBanner" role="dialog" aria-label="Lesezeichen">
+<div class="resume-top">
+<div class="resume-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 3H7c-1.1 0-2 .9-2 2v16l7-3 7 3V5c0-1.1-.9-2-2-2z"/></svg></div>
+<div class="resume-info">
+<div class="resume-label">Weiterlesen</div>
+<div class="resume-chapter" id="resumeChapter">Kapitel</div>
+</div>
+<button class="resume-close" id="resumeClose" type="button" aria-label="Schlie&szlig;en"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></button>
+</div>
+<div class="resume-progress"><div class="resume-progress-bar" id="resumeProgress"></div></div>
+<button class="resume-btn" id="resumeBtn" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>Weiterlesen</button>
+</div>
 
 <div class="update-toast" id="updateToast" role="alert" aria-live="polite">
 <div class="ver" id="toastVer"></div>
@@ -3592,15 +3623,23 @@ var savedChapter=localStorage.getItem(K+'-chapter');
 if(savedScroll>300&&savedChapter){
 var banner=document.getElementById('resumeBanner');
 var chEl=document.getElementById(savedChapter);
+var chapterName='Kapitel';
 if(chEl){
 var chTitle=chEl.querySelector('h1');
-banner.textContent=(chTitle?chTitle.textContent:'Weiterlesen')+' →';
+if(chTitle)chapterName=chTitle.textContent;
 }
+document.getElementById('resumeChapter').textContent=chapterName;
+// Calculate reading progress percentage
+var docH=document.documentElement.scrollHeight-window.innerHeight;
+var pct=docH>0?Math.min(Math.round((savedScroll/docH)*100),100):0;
+document.getElementById('resumeProgress').style.width=pct+'%';
 banner.classList.add('show');
 function doResume(){scrollTo({top:savedScroll,behavior:'smooth'});banner.classList.remove('show')}
-banner.addEventListener('click',doResume);
-banner.addEventListener('keydown',function(e){if(e.key==='Enter')doResume()});
-setTimeout(function(){banner.classList.remove('show')},8000);
+function dismissBanner(){banner.classList.remove('show')}
+document.getElementById('resumeBtn').addEventListener('click',doResume);
+document.getElementById('resumeClose').addEventListener('click',dismissBanner);
+banner.addEventListener('keydown',function(e){if(e.key==='Enter')doResume();if(e.key==='Escape')dismissBanner()});
+setTimeout(dismissBanner,12000);
 }
 
 // Scroll to top
