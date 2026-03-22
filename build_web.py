@@ -284,6 +284,33 @@ box-shadow:0 4px 20px rgba(0,0,0,.2);z-index:50;transition:all .3s;
 .scroll-top.show{{display:flex}}
 .scroll-top svg{{width:20px;height:20px;fill:currentColor}}
 
+/* Fullscreen / Focus Mode */
+.focus-btn{{
+background:none;border:1px solid var(--border);width:34px;height:34px;
+border-radius:8px;cursor:pointer;color:var(--text);
+display:inline-flex;align-items:center;justify-content:center;transition:all .2s;
+}}
+.focus-btn:hover{{border-color:var(--accent);color:var(--accent)}}
+.focus-btn svg{{width:16px;height:16px;fill:currentColor}}
+body.focus-mode .topbar{{transform:translateY(-100%)}}
+body.focus-mode .sidebar{{transform:translateX(-100%)}}
+body.focus-mode .main{{margin-left:0;padding-top:40px}}
+body.focus-mode .scroll-top,.body.focus-mode .resume-banner{{display:none!important}}
+body.focus-mode .progress{{opacity:0}}
+body.focus-mode .focus-exit{{display:flex}}
+.focus-exit{{
+display:none;position:fixed;top:16px;right:16px;z-index:200;
+background:var(--bg);border:1px solid var(--border);border-radius:10px;
+padding:8px 16px;font-size:13px;font-weight:600;color:var(--text2);
+cursor:pointer;align-items:center;gap:6px;
+box-shadow:0 4px 20px rgba(0,0,0,.15);transition:all .2s;
+}}
+.focus-exit:hover{{color:var(--accent);border-color:var(--accent)}}
+.focus-exit kbd{{
+background:var(--bg2);border:1px solid var(--border);border-radius:4px;
+padding:1px 6px;font-size:11px;font-family:var(--font-mono);
+}}
+
 /* Resume banner */
 .resume-banner{{
 display:none;position:fixed;bottom:80px;left:50%;transform:translateX(-50%);
@@ -333,6 +360,9 @@ box-shadow:0 12px 40px rgba(0,0,0,.4);
 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
 <span>PDF</span>
 </a>
+<button class="focus-btn" id="focusBtn" type="button" aria-label="Vollbild-Lesemodus">
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
+</button>
 <label class="switch" aria-label="Farbmodus umschalten">
 <input id="themeInput" type="checkbox" role="switch" aria-label="Dark Mode">
 <div class="tm-slider">
@@ -384,6 +414,8 @@ box-shadow:0 12px 40px rgba(0,0,0,.4);
 <ul id="toastChanges"></ul>
 <button id="toastClose" type="button">Verstanden</button>
 </div>
+
+<button class="focus-exit" id="focusExit" type="button" aria-label="Lesemodus beenden">Lesemodus beenden <kbd>Esc</kbd></button>
 
 <script>
 (function(){{
@@ -470,6 +502,20 @@ if(active)active.classList.add('active');
 }});
 }},{{rootMargin:'-80px 0px -60% 0px'}});
 chapters.forEach(function(ch){{observer.observe(ch)}});
+
+// Focus / Fullscreen reading mode
+var focusBtn=document.getElementById('focusBtn');
+var focusExit=document.getElementById('focusExit');
+function toggleFocus(on){{
+var entering=typeof on==='boolean'?on:!document.body.classList.contains('focus-mode');
+document.body.classList.toggle('focus-mode',entering);
+if(entering)closeSidebar();
+}}
+focusBtn.addEventListener('click',function(){{toggleFocus(true)}});
+focusExit.addEventListener('click',function(){{toggleFocus(false)}});
+document.addEventListener('keydown',function(e){{
+if(e.key==='Escape'&&document.body.classList.contains('focus-mode'))toggleFocus(false);
+}});
 
 // Service Worker + Version popup
 if('serviceWorker' in navigator){{
