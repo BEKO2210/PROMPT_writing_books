@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Key-Generator – Prompt Engineering Meistern</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0d1117;--card:#161b22;--border:#21262d;--text:#e6edf3;--text2:#8b949e;--accent:#8ab4f8;--accent2:#4ecdc4;--red:#f85149;--green:#3fb950}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,-apple-system,sans-serif;padding:40px 20px;max-width:800px;margin:0 auto;line-height:1.6}
+h1{font-size:1.8rem;margin-bottom:8px;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.subtitle{color:var(--text2);margin-bottom:40px;font-size:14px}
+
+/* Tabs */
+.tabs{display:flex;gap:4px;margin-bottom:30px;border-bottom:1px solid var(--border);padding-bottom:0}
+.tab{padding:10px 20px;background:none;border:none;color:var(--text2);font-size:14px;cursor:pointer;border-bottom:2px solid transparent;transition:all .2s;font-family:inherit}
+.tab:hover{color:var(--text)}
+.tab.active{color:var(--accent);border-bottom-color:var(--accent)}
+.panel{display:none}
+.panel.active{display:block}
+
+/* Form */
+.form-group{margin-bottom:20px}
+label{display:block;font-size:13px;color:var(--text2);margin-bottom:6px;text-transform:uppercase;letter-spacing:1px}
+input,select{width:100%;padding:12px 16px;background:var(--card);border:1px solid var(--border);border-radius:10px;color:var(--text);font-size:15px;font-family:inherit;outline:none;transition:border-color .2s}
+input:focus,select:focus{border-color:var(--accent)}
+select option{background:var(--card)}
+
+.checkbox-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px}
+.checkbox-item{display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--card);border:1px solid var(--border);border-radius:8px;cursor:pointer;transition:all .2s;font-size:14px}
+.checkbox-item:hover{border-color:var(--accent)}
+.checkbox-item input{width:auto;margin:0}
+.checkbox-item.checked{border-color:var(--accent);background:rgba(138,180,248,.08)}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;border:none;border-radius:10px;font-size:15px;font-weight:600;cursor:pointer;transition:all .3s;font-family:inherit}
+.btn-primary{background:linear-gradient(135deg,var(--accent),#6a9af8);color:#0d1117}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(138,180,248,.3)}
+.btn-danger{background:rgba(248,81,73,.15);color:var(--red);border:1px solid rgba(248,81,73,.3)}
+.btn-danger:hover{background:rgba(248,81,73,.25)}
+.btn-secondary{background:var(--card);color:var(--text);border:1px solid var(--border)}
+.btn-secondary:hover{border-color:var(--accent)}
+.btn-group{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+
+/* Output */
+.output{margin-top:20px;padding:20px;background:var(--card);border:1px solid var(--border);border-radius:12px}
+.key-display{font-family:'Courier New',monospace;font-size:18px;letter-spacing:2px;color:var(--accent2);word-break:break-all;padding:16px;background:rgba(78,205,196,.06);border:1px solid rgba(78,205,196,.2);border-radius:8px;margin:12px 0;text-align:center}
+.key-meta{font-size:12px;color:var(--text2);margin-top:8px}
+
+/* Table */
+.key-table{width:100%;border-collapse:collapse;font-size:13px;margin-top:16px}
+.key-table th{text-align:left;padding:10px 12px;background:rgba(138,180,248,.08);color:var(--accent);font-weight:600;border-bottom:1px solid var(--border)}
+.key-table td{padding:10px 12px;border-bottom:1px solid var(--border);color:var(--text2)}
+.key-table tr:hover td{background:rgba(138,180,248,.04)}
+.key-table .key-code{font-family:'Courier New',monospace;color:var(--accent2);font-size:12px}
+.key-table .bands{font-size:11px}
+.badge{display:inline-block;padding:2px 8px;border-radius:100px;font-size:11px;font-weight:600}
+.badge-active{background:rgba(63,185,80,.15);color:var(--green)}
+.badge-revoked{background:rgba(248,81,73,.15);color:var(--red)}
+
+/* Stats cards */
+.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px}
+.stat-card{padding:16px;background:var(--card);border:1px solid var(--border);border-radius:10px;text-align:center}
+.stat-card .num{font-size:1.8rem;font-weight:800;color:var(--accent)}
+.stat-card .lbl{font-size:11px;color:var(--text2);text-transform:uppercase;letter-spacing:1px}
+
+.hidden{display:none}
+.toast{position:fixed;bottom:20px;right:20px;padding:12px 20px;background:var(--green);color:#0d1117;border-radius:10px;font-size:14px;font-weight:600;transform:translateY(100px);opacity:0;transition:all .3s}
+.toast.show{transform:translateY(0);opacity:1}
+
+/* Auth */
+.auth-wall{text-align:center;padding:80px 20px}
+.auth-wall input{max-width:400px;margin:20px auto;text-align:center;font-size:18px;letter-spacing:4px}
+.auth-wall .error{color:var(--red);font-size:13px;margin-top:8px;display:none}
+</style>
+</head>
+<body>
+
+<!-- Auth Wall -->
+<div id="authWall" class="auth-wall">
+<h1>&#128274; Key-Generator</h1>
+<p class="subtitle">Nur f&uuml;r den Autor. Bitte Admin-Passwort eingeben.</p>
+<input type="password" id="adminPass" placeholder="Passwort" autofocus>
+<div class="error" id="authError">Falsches Passwort</div>
+<div style="margin-top:16px">
+<button class="btn btn-primary" onclick="authenticate()">Anmelden</button>
+</div>
+</div>
+
+<!-- Main App (hidden until auth) -->
+<div id="mainApp" class="hidden">
+<h1>&#128273; Key-Generator</h1>
+<p class="subtitle">Generiere und verwalte Zugangsschl&uuml;ssel f&uuml;r B&auml;nde 4&ndash;10 + Bonus</p>
+
+<div class="tabs">
+<button class="tab active" onclick="switchTab('generate')">Generieren</button>
+<button class="tab" onclick="switchTab('manage')">Verwalten</button>
+<button class="tab" onclick="switchTab('export')">Export</button>
+</div>
+
+<!-- Generate Tab -->
+<div id="tab-generate" class="panel active">
+<div class="form-group">
+<label>Kundenname / Notiz (optional)</label>
+<input type="text" id="customerName" placeholder="z.B. Max Mustermann">
+</div>
+
+<div class="form-group">
+<label>B&auml;nde freischalten</label>
+<div class="checkbox-grid" id="bandCheckboxes">
+<label class="checkbox-item" onclick="toggleCheck(this)"><input type="checkbox" value="4" checked> Band 4</label>
+<label class="checkbox-item checked" onclick="toggleCheck(this)"><input type="checkbox" value="5" checked> Band 5</label>
+<label class="checkbox-item checked" onclick="toggleCheck(this)"><input type="checkbox" value="6" checked> Band 6</label>
+<label class="checkbox-item checked" onclick="toggleCheck(this)"><input type="checkbox" value="7" checked> Band 7</label>
+<label class="checkbox-item checked" onclick="toggleCheck(this)"><input type="checkbox" value="8" checked> Band 8</label>
+<label class="checkbox-item checked" onclick="toggleCheck(this)"><input type="checkbox" value="9" checked> Band 9</label>
+<label class="checkbox-item checked" onclick="toggleCheck(this)"><input type="checkbox" value="10" checked> Band 10</label>
+<label class="checkbox-item checked" onclick="toggleCheck(this)"><input type="checkbox" value="11" checked> Bonus</label>
+</div>
+</div>
+
+<div class="form-group">
+<label>Schnellauswahl</label>
+<div class="btn-group">
+<button class="btn btn-secondary" onclick="selectBands([4,5,6,7,8,9,10,11])">Alle</button>
+<button class="btn btn-secondary" onclick="selectBands([4,5,6])">Band 4&ndash;6</button>
+<button class="btn btn-secondary" onclick="selectBands([7,8,9,10])">Band 7&ndash;10</button>
+<button class="btn btn-secondary" onclick="selectBands([11])">Nur Bonus</button>
+</div>
+</div>
+
+<button class="btn btn-primary" onclick="generateKey()">&#128273; Schl&uuml;ssel generieren</button>
+
+<div id="keyOutput" class="output hidden">
+<div style="font-size:13px;color:var(--text2)">Zugangsschl&uuml;ssel:</div>
+<div class="key-display" id="generatedKey"></div>
+<div class="key-meta" id="keyMeta"></div>
+<div class="btn-group">
+<button class="btn btn-secondary" onclick="copyKey()">&#128203; Kopieren</button>
+</div>
+</div>
+</div>
+
+<!-- Manage Tab -->
+<div id="tab-manage" class="panel">
+<div class="stats-row" id="statsRow">
+<div class="stat-card"><div class="num" id="statTotal">0</div><div class="lbl">Gesamt</div></div>
+<div class="stat-card"><div class="num" id="statActive">0</div><div class="lbl">Aktiv</div></div>
+<div class="stat-card"><div class="num" id="statRevoked">0</div><div class="lbl">Widerrufen</div></div>
+</div>
+<div style="overflow-x:auto">
+<table class="key-table">
+<thead><tr><th>Schl&uuml;ssel</th><th>Kunde</th><th>B&auml;nde</th><th>Erstellt</th><th>Status</th><th></th></tr></thead>
+<tbody id="keyTableBody"></tbody>
+</table>
+</div>
+<div id="emptyState" style="text-align:center;padding:40px;color:var(--text2)">Noch keine Schl&uuml;ssel generiert.</div>
+</div>
+
+<!-- Export Tab -->
+<div id="tab-export" class="panel">
+<p style="color:var(--text2);margin-bottom:20px">Exportiere alle Schl&uuml;ssel als JSON-Backup oder importiere vorhandene.</p>
+<div class="btn-group">
+<button class="btn btn-primary" onclick="exportKeys()">&#128229; JSON exportieren</button>
+<button class="btn btn-secondary" onclick="document.getElementById('importFile').click()">&#128228; JSON importieren</button>
+<input type="file" id="importFile" accept=".json" style="display:none" onchange="importKeys(event)">
+</div>
+<div class="btn-group" style="margin-top:20px">
+<button class="btn btn-danger" onclick="clearAllKeys()">&#128465; Alle Schl&uuml;ssel l&ouml;schen</button>
+</div>
+</div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// === CONFIG ===
+var ADMIN_HASH = '2d0d8b7379de945fc87131a80e414258787e3cd5b57b87123ef35e8f2bcb3c8b';
+var SECRET = 'PE-Meistern-2026-Belkis';
+var BAND_NAMES = {4:'Band 4',5:'Band 5',6:'Band 6',7:'Band 7',8:'Band 8',9:'Band 9',10:'Band 10',11:'Bonus'};
+
+// === CRYPTO ===
+async function sha256(msg) {
+    var enc = new TextEncoder().encode(msg);
+    var hash = await crypto.subtle.digest('SHA-256', enc);
+    return Array.from(new Uint8Array(hash)).map(function(b){return b.toString(16).padStart(2,'0')}).join('');
+}
+
+async function hmacSign(message) {
+    var enc = new TextEncoder();
+    var keyData = enc.encode(SECRET);
+    var key = await crypto.subtle.importKey('raw', keyData, {name:'HMAC',hash:'SHA-256'}, false, ['sign']);
+    var sig = await crypto.subtle.sign('HMAC', key, enc.encode(message));
+    return Array.from(new Uint8Array(sig)).map(function(b){return b.toString(16).padStart(2,'0')}).join('');
+}
+
+// === AUTH ===
+async function authenticate() {
+    var pass = document.getElementById('adminPass').value;
+    var hash = await sha256(pass);
+    if (hash === ADMIN_HASH) {
+        document.getElementById('authWall').classList.add('hidden');
+        document.getElementById('mainApp').classList.remove('hidden');
+        refreshTable();
+    } else {
+        document.getElementById('authError').style.display = 'block';
+        document.getElementById('adminPass').value = '';
+    }
+}
+document.getElementById('adminPass').addEventListener('keydown', function(e){if(e.key==='Enter')authenticate()});
+
+// === KEY GENERATION ===
+// Key format: PE-XXXX-XXXX-XXXX-XXXX
+// Encodes: bands bitmask + random ID + HMAC signature
+async function generateKey() {
+    var checkboxes = document.querySelectorAll('#bandCheckboxes input:checked');
+    var bands = [];
+    checkboxes.forEach(function(cb){bands.push(parseInt(cb.value))});
+    if (bands.length === 0) {showToast('Mindestens 1 Band auswählen!'); return;}
+
+    // Bitmask: band 4=bit0, band 5=bit1, ..., band 11=bit7
+    var bitmask = 0;
+    bands.forEach(function(b){bitmask |= (1 << (b - 4))});
+    var maskHex = bitmask.toString(16).padStart(2, '0');
+
+    // Random ID (4 bytes)
+    var randBytes = crypto.getRandomValues(new Uint8Array(4));
+    var randHex = Array.from(randBytes).map(function(b){return b.toString(16).padStart(2,'0')}).join('');
+
+    // Payload: mask + random
+    var payload = maskHex + randHex;
+
+    // HMAC signature (first 8 chars)
+    var sig = await hmacSign(payload);
+    var sigShort = sig.substring(0, 8);
+
+    // Format: PE-XXXX-XXXX-XXXX (payload 10 chars + sig 8 chars = 18 hex, split into groups)
+    var raw = payload + sigShort;
+    var key = 'PE-' + raw.substring(0,4).toUpperCase() + '-' + raw.substring(4,8).toUpperCase() + '-' + raw.substring(8,12).toUpperCase() + '-' + raw.substring(12,16).toUpperCase();
+
+    // Save
+    var customer = document.getElementById('customerName').value.trim() || 'Ohne Name';
+    var entry = {
+        key: key,
+        bands: bands,
+        customer: customer,
+        created: new Date().toISOString(),
+        status: 'active'
+    };
+    var keys = getKeys();
+    keys.push(entry);
+    saveKeys(keys);
+
+    // Show
+    document.getElementById('keyOutput').classList.remove('hidden');
+    document.getElementById('generatedKey').textContent = key;
+    document.getElementById('keyMeta').textContent = 'Für: ' + customer + ' · Bände: ' + bands.map(function(b){return BAND_NAMES[b]}).join(', ');
+
+    showToast('Schlüssel generiert!');
+    refreshTable();
+}
+
+// === KEY VALIDATION (same logic used in band pages) ===
+async function validateKey(key) {
+    // Parse PE-XXXX-XXXX-XXXX-XXXX
+    var clean = key.replace(/[^A-Fa-f0-9]/g, '').toLowerCase();
+    if (clean.length < 16) return null;
+    // Remove 'pe' prefix if present from cleaning
+    if (key.toUpperCase().startsWith('PE-')) {
+        clean = key.replace('PE-','').replace(/-/g,'').toLowerCase();
+    }
+    if (clean.length < 16) return null;
+
+    var payload = clean.substring(0, 10);
+    var sigShort = clean.substring(10, 18);
+
+    // Verify HMAC
+    var sig = await hmacSign(payload);
+    if (sig.substring(0, 8) !== sigShort) return null;
+
+    // Decode bitmask
+    var maskHex = payload.substring(0, 2);
+    var bitmask = parseInt(maskHex, 16);
+    var bands = [];
+    for (var i = 0; i < 8; i++) {
+        if (bitmask & (1 << i)) bands.push(i + 4);
+    }
+    return {bands: bands};
+}
+
+// === STORAGE ===
+function getKeys() {
+    try { return JSON.parse(localStorage.getItem('pe-admin-keys') || '[]'); }
+    catch(e) { return []; }
+}
+function saveKeys(keys) { localStorage.setItem('pe-admin-keys', JSON.stringify(keys)); }
+
+// === UI ===
+function toggleCheck(label) {
+    setTimeout(function(){
+        var cb = label.querySelector('input');
+        label.classList.toggle('checked', cb.checked);
+    }, 10);
+}
+
+function selectBands(bands) {
+    document.querySelectorAll('#bandCheckboxes input').forEach(function(cb) {
+        cb.checked = bands.indexOf(parseInt(cb.value)) !== -1;
+        cb.closest('.checkbox-item').classList.toggle('checked', cb.checked);
+    });
+}
+
+// Init first checkbox
+document.querySelector('#bandCheckboxes .checkbox-item').classList.add('checked');
+
+function switchTab(name) {
+    document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active')});
+    document.querySelectorAll('.panel').forEach(function(p){p.classList.remove('active')});
+    event.target.classList.add('active');
+    document.getElementById('tab-' + name).classList.add('active');
+    if (name === 'manage') refreshTable();
+}
+
+function refreshTable() {
+    var keys = getKeys();
+    var tbody = document.getElementById('keyTableBody');
+    tbody.innerHTML = '';
+    var active = 0, revoked = 0;
+
+    keys.forEach(function(entry, i) {
+        if (entry.status === 'active') active++;
+        else revoked++;
+        var tr = document.createElement('tr');
+        var bandLabels = entry.bands.map(function(b){return BAND_NAMES[b]||b}).join(', ');
+        var date = new Date(entry.created).toLocaleDateString('de-DE');
+        var statusClass = entry.status === 'active' ? 'badge-active' : 'badge-revoked';
+        var statusText = entry.status === 'active' ? 'Aktiv' : 'Widerrufen';
+        tr.innerHTML = '<td class="key-code">' + entry.key + '</td><td>' + entry.customer + '</td><td class="bands">' + bandLabels + '</td><td>' + date + '</td><td><span class="badge ' + statusClass + '">' + statusText + '</span></td><td>' +
+            (entry.status === 'active' ? '<button class="btn btn-danger" style="padding:4px 10px;font-size:11px" onclick="revokeKey(' + i + ')">Sperren</button>' : '<button class="btn btn-secondary" style="padding:4px 10px;font-size:11px" onclick="reactivateKey(' + i + ')">Aktivieren</button>') + '</td>';
+        tbody.appendChild(tr);
+    });
+
+    document.getElementById('statTotal').textContent = keys.length;
+    document.getElementById('statActive').textContent = active;
+    document.getElementById('statRevoked').textContent = revoked;
+    document.getElementById('emptyState').style.display = keys.length ? 'none' : 'block';
+}
+
+function revokeKey(i) {
+    var keys = getKeys();
+    keys[i].status = 'revoked';
+    saveKeys(keys);
+    refreshTable();
+    showToast('Schlüssel gesperrt');
+}
+
+function reactivateKey(i) {
+    var keys = getKeys();
+    keys[i].status = 'active';
+    saveKeys(keys);
+    refreshTable();
+    showToast('Schlüssel reaktiviert');
+}
+
+function copyKey() {
+    var key = document.getElementById('generatedKey').textContent;
+    navigator.clipboard.writeText(key);
+    showToast('Schlüssel kopiert!');
+}
+
+function exportKeys() {
+    var keys = getKeys();
+    var blob = new Blob([JSON.stringify(keys, null, 2)], {type:'application/json'});
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'pe-keys-' + new Date().toISOString().split('T')[0] + '.json';
+    a.click();
+    showToast('Export heruntergeladen');
+}
+
+function importKeys(event) {
+    var file = event.target.files[0];
+    if (!file) return;
+    var reader = new FileReader();
+    reader.onload = function(e) {
+        try {
+            var imported = JSON.parse(e.target.result);
+            if (!Array.isArray(imported)) throw 'invalid';
+            var keys = getKeys();
+            var existingKeys = keys.map(function(k){return k.key});
+            var added = 0;
+            imported.forEach(function(entry) {
+                if (existingKeys.indexOf(entry.key) === -1) {
+                    keys.push(entry);
+                    added++;
+                }
+            });
+            saveKeys(keys);
+            refreshTable();
+            showToast(added + ' Schlüssel importiert');
+        } catch(err) {
+            showToast('Ungültige Datei!');
+        }
+    };
+    reader.readAsText(file);
+    event.target.value = '';
+}
+
+function clearAllKeys() {
+    if (confirm('Alle Schlüssel unwiderruflich löschen?')) {
+        saveKeys([]);
+        refreshTable();
+        showToast('Alle Schlüssel gelöscht');
+    }
+}
+
+function showToast(msg) {
+    var t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(function(){t.classList.remove('show')}, 2500);
+}
+</script>
+</body>
+</html>
