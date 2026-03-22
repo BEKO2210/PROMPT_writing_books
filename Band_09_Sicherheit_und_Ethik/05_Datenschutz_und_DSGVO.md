@@ -51,6 +51,14 @@ Wenn du Cloud-LLMs nutzt (Claude, ChatGPT, Gemini), ist der Anbieter ein Auftrag
 
 **Kostenlose Versionen und Standard-Abos** können Nutzerdaten für Modellverbesserung verwenden (je nach Anbieter und Einstellung). Prüfe die Datenschutzrichtlinien deines Anbieters genau.
 
+### Was passiert, wenn man es falsch macht
+
+**OpenAI-Strafe (Dezember 2024):** Die italienische Datenschutzbehörde (Garante) verhängte eine Strafe von **15 Millionen Euro** gegen OpenAI. Gründe: Training von ChatGPT mit personenbezogenen Daten ohne ausreichende Rechtsgrundlage, Verstöße gegen die DSGVO-Transparenzpflicht, unzureichende Altersverifikation. OpenAI nannte die Strafe "unverhältnismäßig" und legte Berufung ein.
+
+**Meta KI-Training (Mai 2025):** Meta plante, öffentliche EU-Nutzerdaten von Facebook/Instagram zum KI-Training zu verwenden, mit "berechtigtem Interesse" als Rechtsgrundlage statt Einwilligung. Das Kölner Landgericht lehnte eine einstweilige Verfügung dagegen ab, aber die Hamburger Datenschutzbehörde verwies auf eine "bevorstehende EU-weite Evaluation". Die Debatte ist ungelöst.
+
+**Clearview AI:** Frankreich, Griechenland, Italien, die Niederlande und Schweden verhängten Strafen zwischen 250.000 und 30,5 Millionen Euro für Web-Scraping von Gesichtsbildern.
+
 ### Drittlandtransfer
 
 Wenn Daten in die USA übermittelt werden (was bei den meisten Cloud-LLMs der Fall ist), brauchst du eine Grundlage für den Drittlandtransfer. Seit dem EU-US Data Privacy Framework (Juli 2023) ist das für zertifizierte US-Unternehmen wieder möglich. Anthropic, OpenAI und Google sind zertifiziert. Aber: Das Framework könnte erneut angefochten werden (wie Safe Harbor und Privacy Shield davor).

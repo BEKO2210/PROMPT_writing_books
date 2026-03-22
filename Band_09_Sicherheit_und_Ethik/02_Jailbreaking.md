@@ -28,7 +28,7 @@ Die älteste und bekannteste Technik: Dem Modell eine Rolle zuweisen, die die Si
 
 **Warum es (manchmal) funktioniert:** Das Modell wurde darauf trainiert, Rollen anzunehmen und im Charakter zu bleiben. Wenn die Rolle überzeugend genug formuliert ist, kann der Rollen-Kontext die Sicherheitsschranken überwiegen.
 
-**Status 2026:** Die meisten DAN-artigen Prompts funktionieren nicht mehr bei aktuellen Modellen. Die Hersteller haben diese Muster in die Sicherheitsschulungen aufgenommen. Aber neue Variationen tauchen ständig auf.
+**Status 2026:** Die meisten DAN-artigen Prompts funktionieren nicht mehr bei aktuellen Modellen. Aber eine Studie in *Nature Communications* (März 2026) zeigte: Autonome Jailbreak-Agenten – LLMs, die andere LLMs angreifen – erreichen eine Erfolgsrate von **97,14%**. Persuasionsbasierte Angriffe treffen 88,1% bei GPT-4o, DeepSeek-V3 und Gemini 2.5 Flash.
 
 ### Many-Shot Jailbreaking
 

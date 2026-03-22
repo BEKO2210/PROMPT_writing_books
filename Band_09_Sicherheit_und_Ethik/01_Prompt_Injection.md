@@ -10,9 +10,11 @@ Das ist Prompt Injection. Und es ist das größte Sicherheitsproblem von LLM-bas
 
 ## Was ist Prompt Injection?
 
-Prompt Injection ist ein Angriff, bei dem ein Nutzer die Anweisungen des Systems überschreibt, indem er eigene Anweisungen in seinen Input einschleust. Es ist das LLM-Äquivalent von SQL Injection – nur dass es viel schwerer zu verhindern ist.
+Prompt Injection ist ein Angriff, bei dem ein Nutzer die Anweisungen des Systems überschreibt, indem er eigene Anweisungen in seinen Input einschleust. Es ist das LLM-Äquivalent von SQL Injection – nur dass es viel schwerer zu verhindern ist. OWASP listet Prompt Injection seit 2025 als **#1 Schwachstelle** in den Top 10 für LLM-Anwendungen.
 
 Der Grund: LLMs unterscheiden nicht grundsätzlich zwischen System-Prompt (den Anweisungen des Entwicklers) und User-Input (dem Text des Nutzers). Beides sind Tokens im Kontextfenster. Ein cleverer Angriff nutzt diese fehlende Trennung aus.
+
+Wie ernst ist das? Der International AI Safety Report 2026 fand: Erfahrene Angreifer umgehen die bestverteidigten Modelle in etwa **50% der Fälle mit nur 10 Versuchen**. Anthropics eigene Tests zeigen, dass ein einzelner Prompt-Injection-Versuch gegen einen GUI-basierten Agenten in 17,8% der Fälle erfolgreich ist – ohne zusätzliche Schutzmaßnahmen.
 
 ## Die zwei Arten von Prompt Injection
 
@@ -58,15 +60,23 @@ Indirekte Injection ist besonders tückisch, weil:
 
 ## Echte Vorfälle
 
-**Bing Chat (2023):** Sicherheitsforscher versteckten Prompt-Injection-Anweisungen in Webseiten. Als Bing Chat diese Seiten besuchte, folgten sie den eingebetteten Anweisungen statt den Nutzer-Anfragen.
-
-**ChatGPT-Plugins (2023-2024):** Mehrere Forscher demonstrierten, wie manipulierte Webseiten und Dokumente ChatGPT-Plugins dazu bringen konnten, Daten an externe Server zu senden.
+Die Vorfälle werden nicht weniger – sie werden gefährlicher:
 
 **Chevrolet Chatbot (2023):** Ein Autohaus-Chatbot wurde manipuliert, einem Kunden einen Chevy Tahoe für 1 Dollar zu "verkaufen". Der Chatbot bestätigte den Deal schriftlich.
 
-**Airline-Chatbot (2024):** Air Canada's Chatbot gab einem Kunden falsche Informationen über Erstattungsrichtlinien. Das Unternehmen musste die Zusage des Chatbots einhalten – per Gerichtsbeschluss.
+**Air Canada Chatbot (2024):** Air Canada's Chatbot gab einem Kunden falsche Informationen über Erstattungsrichtlinien. Das Unternehmen musste die Zusage des Chatbots einhalten – per Gerichtsbeschluss. Ein Wendepunkt: Ab jetzt haften Unternehmen für die Aussagen ihrer Chatbots.
 
-Diese Fälle zeigen: Prompt Injection ist kein theoretisches Problem. Es hat reale finanzielle und rechtliche Konsequenzen.
+**EchoLeak / Microsoft 365 Copilot (2025, CVE-2025-32711):** Ein Zero-Click-Exploit ermöglichte Datenexfiltration durch präparierte E-Mails. Der Angreifer musste keine Aktion des Opfers auslösen – allein das Öffnen der Mail reichte.
+
+**GitHub Copilot RCE (2025, CVE-2025-53773):** Ein Angreifer bettete Prompt-Injection in Code-Kommentare eines öffentlichen Repos ein. Copilot aktivierte den YOLO-Modus und ermöglichte **beliebige Code-Ausführung** auf dem Rechner des Entwicklers. CVSS-Score über 9.0 (kritisch).
+
+**Cursor IDE RCE (2025):** Gleich zwei Schwachstellen (CVE-2025-54135 und CVE-2025-59944) – eine über Dotfile-Erstellung, eine über einen Case-Sensitivity-Bug – führten zu Remote Code Execution.
+
+**Devin AI (2025):** Ein Sicherheitsforscher gab 500 Dollar für Tests aus und fand den Coding-Agenten **komplett schutzlos** – er konnte manipuliert werden, um Ports freizugeben, Tokens zu leaken und Malware zu installieren.
+
+**KI-Werbeprüfung (Dezember 2025):** Palo Alto Networks Unit 42 meldete die erste Erkennung von indirekter Prompt Injection, die darauf abzielte, ein KI-basiertes Werbe-Review-System zu umgehen.
+
+Das UK National Cyber Security Centre (NCSC) warnte im Dezember 2025: Prompt Injection **"wird vielleicht nie vollständig behoben, wie SQL Injection es wurde"** – LLMs seien "von Natur aus manipulierbare Stellvertreter".
 
 ## Abwehrstrategien
 

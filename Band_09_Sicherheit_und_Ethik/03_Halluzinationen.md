@@ -35,26 +35,43 @@ LLMs sind Muster-Vervollständiger, keine Wissensdatenbanken. Sie generieren die
 5. **Bei langen Antworten:** Je länger die Antwort, desto mehr Gelegenheiten für Fehler.
 6. **Wenn das Modell keine gute Antwort hat:** Statt "Ich weiß es nicht" zu sagen, generiert es eine plausibel klingende Antwort. Das liegt am Training – Modelle werden belohnt für hilfreiche Antworten, nicht für Ehrlichkeit.
 
-### Halluzinationsraten
+### Halluzinationsraten (Vectara-Benchmark, Stand 2026)
 
-Die Raten variieren stark nach Modell, Aufgabe und Domain. Grobe Orientierungswerte (Stand 2026):
+Vectara, ein auf Retrieval spezialisiertes Unternehmen, misst Halluzinationsraten bei Zusammenfassungsaufgaben. Die Raten sind über die Jahre dramatisch gesunken – von 21,8% (2021) auf unter 1% bei den besten Modellen (2025):
 
-- **Frontier-Modelle** (Claude Opus, GPT-5, Gemini Pro): 2-5% Halluzinationsrate bei Standardfragen, deutlich höher bei Spezialwissen
-- **Kleinere Modelle** (Haiku, nano, Flash-Lite): 5-15% – günstiger, aber weniger zuverlässig
-- **Quellen-Halluzinationen:** Bis zu 25-30% erfundene oder falsche Quellenangaben, wenn nicht mit Retrieval kombiniert
-- **Mathematik:** Frontier-Modelle 2026 sind deutlich besser als 2024, aber Rechenfehler kommen noch vor
+| Modell | Halluzinationsrate |
+|--------|-------------------|
+| Gemini 2.0 Flash | 0,7% |
+| o3-mini-high | 0,8% |
+| GPT-5 | 1,4% |
+| GPT-4o | 1,5% |
+| Claude Sonnet | 4,4% |
 
-Wichtig: Diese Zahlen sind Durchschnittswerte. In manchen Domänen (Medizin, Recht) können die Raten höher sein. In anderen (kreatives Schreiben) ist "Halluzination" sogar erwünscht.
+Vier Modelle liegen inzwischen unter 1% – ein Meilenstein.
+
+**Aber:** Auf einem schwierigeren Benchmark (7.700 Artikel, bis zu 32.000 Tokens) sieht das Bild anders aus: Jedes getestete Reasoning-Modell überschritt 10% Halluzinationsrate. Überraschend: Reasoning-Modelle ("Denk-Modelle") schneiden bei faktenbasierten Zusammenfassungen **schlechter** ab als einfache Modelle.
+
+**Quellen-Halluzinationen in der Rechtswelt:** Stanford CodeX fand, dass allgemeine LLMs in 30-45% der Rechtsrecherche-Antworten Fallzitate erfinden.
+
+**Der Kosten-Faktor:** Deloitte fand, dass 47% der Enterprise-KI-Nutzer 2024 mindestens eine wichtige Entscheidung auf Basis halluzinierter Inhalte trafen. Geschätzter globaler finanzieller Schaden: **67,4 Milliarden Dollar** im Jahr 2024.
+
+**Der Vertrauens-Paradox (MIT, Januar 2025):** Modelle verwenden Wörter wie "definitiv" und "sicherlich" **34% häufiger bei falschen Antworten** als bei richtigen. Je überzeugter die KI klingt, desto vorsichtiger solltest du sein.
 
 ## Echte Konsequenzen
 
-**Anwälte vor Gericht (2023, New York):** Zwei Anwälte reichten einen Schriftsatz ein, der sechs fiktive Gerichtsentscheidungen zitierte – alle von ChatGPT generiert. Der Richter verhängte Geldstrafen. Die Anwälte wurden öffentlich bloßgestellt. Der Fall "Mata v. Avianca" wurde zum Warnsymbol.
+**Die Gerichtsfälle häufen sich:** Über **700 Gerichtsverfahren** betreffen inzwischen KI-halluzinierte Inhalte (Stand 2026, laut LexisNexis/Bloomberg Law Tracking). Die Rate beschleunigte sich von 2 pro Woche auf 2-3 pro Tag bis Frühjahr 2025.
+
+**Mata v. Avianca (2023, New York):** Der Wendepunkt. Zwei Anwälte reichten einen Schriftsatz mit sechs fiktiven Gerichtsentscheidungen ein – alle von ChatGPT generiert. 5.000 Dollar Strafe, öffentliche Bloßstellung.
+
+**MyPillow/Lindell (Juli 2025):** Zwei Anwälte mussten je 3.000 Dollar zahlen, weil sie 24+ halluzinierte Fallzitate einreichten.
+
+**Noland v. Land of the Free (Kalifornien, September 2025):** 21 von 23 Zitaten waren erfunden. 10.000 Dollar Strafe. Und ein Novum: Das Gericht sprach auch die Pflicht an, **die Zitate des Gegners** auf KI-Fälschungen zu prüfen.
+
+**Colorado (2025):** Ein Anwalt wurde suspendiert, weil er in mehreren Fällen erfundene Zitate eingereicht hatte.
+
+**Pennsylvania (2025-2026):** Mindestens 13 Fälle mit bestätigten KI-Halluzinationen.
 
 **Medizinische Fehlinformationen:** Studien zeigen, dass LLMs bei medizinischen Fragen in 5-15% der Fälle potenziell schädliche Informationen generieren. In einem Fall empfahl ein Chatbot einem Elternteil, dem Kind eine gefährliche Menge eines Medikaments zu geben.
-
-**Finanzielle Entscheidungen:** Ein LLM-generierter Finanzbericht mit erfundenen Kennzahlen kann zu Fehlentscheidungen führen, die Millionen kosten.
-
-**Akademischer Betrug:** Studierende, die KI-generierte Quellenangaben ungeprüft einreichen, riskieren Plagiatsvorwürfe und Exmatrikulation.
 
 ## Gegenmaßnahmen
 

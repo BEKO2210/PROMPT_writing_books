@@ -34,9 +34,15 @@ Bestimmte Trainingsmethoden können Bias verstärken. RLHF (Reinforcement Learni
 
 ### Bewerbungen und HR
 
-Amazons berüchtigtes KI-Recruiting-Tool (2018) benachteiligte systematisch Frauen, weil es auf historischen Einstellungsdaten trainiert wurde – und in der Vergangenheit wurden mehr Männer eingestellt. Amazon schaltete das System ab.
+Amazons berüchtigtes KI-Recruiting-Tool (2018) benachteiligte systematisch Frauen, weil es auf historischen Einstellungsdaten trainiert wurde. Amazon schaltete das System ab. Das Problem ist nicht verschwunden – es ist 2026 noch immer akut.
 
-Das Problem existiert 2026 noch immer. Wenn du in Band 6 die HR-Prompts nutzt, beachte:
+**Workday-Klage (Mai 2025):** Ein Bundesrichter ließ eine Sammelklage nach dem ADEA (Age Discrimination in Employment Act) zu, die behauptet, dass KI-Screening-Tools Bewerber über 40 systematisch benachteiligen. Workday muss im Discovery-Verfahren seine Daten offenlegen. Der Fall könnte zum Präzedenzfall für KI-Bias-Klagen werden.
+
+**Resume-Screening (2026):** Studien zeigten, dass KI-Tools bei traditionell schwarzen männlichen Namen eine **Null-Prozent-Auswahlrate** hatten. Systeme bevorzugten männliche Namen in 52% der Fälle vs. 11% für weibliche. Traditionell afroamerikanische männliche Namen wurden *nie* gegenüber weiß assoziierten Namen bevorzugt.
+
+**Medizin (2026):** Eine 30% höhere Sterblichkeitsrate für nicht-hispanische schwarze Patienten im Vergleich zu weißen Patienten wird teilweise auf medizinische KI-Systeme zurückgeführt. 83,1% von 555 neuroimaging-basierten KI-Modellen hatten ein hohes Bias-Risiko (JAMA Network Open).
+
+Wenn du in Band 6 die HR-Prompts nutzt, beachte:
 
 *"Erstelle eine Stellenausschreibung"* kann gender-biased Formulierungen produzieren. "Durchsetzungsstark", "analytisch", "teamfähig" – Studien zeigen, dass diese Wörter unterschiedliche Geschlechter unterschiedlich ansprechen.
 

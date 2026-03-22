@@ -72,7 +72,11 @@ Die UNESCO hat als erste internationale Organisation Ethik-Richtlinien für KI v
 
 Anthropic (die Macher von Claude) verfolgen einen Ansatz namens "Constitutional AI": Statt das Modell nur durch menschliches Feedback zu trainieren, geben sie ihm eine "Verfassung" – eine Sammlung von Prinzipien, an die es sich halten soll. Das Modell wird dann trainiert, seine eigenen Antworten gegen diese Prinzipien zu prüfen.
 
-Die Prinzipien basieren unter anderem auf: der UN-Menschenrechtserklärung, Apples Terms of Service (für Harmlosigkeit), DeepMinds Sparrow-Richtlinien und Anthropics eigenen Forschungsergebnissen.
+**Im Januar 2026 wurde die Verfassung grundlegend überarbeitet:** Der Wechsel ging von regelbasierter zu **begründungsbasierter Ausrichtung** – das Modell lernt nicht mehr nur "Tu X nicht", sondern *warum* ethische Prinzipien existieren. Die neue Verfassung etabliert eine 4-stufige Prioritätshierarchie: (1) Sicherheit, (2) Ethik, (3) Compliance, (4) Hilfreichkeit.
+
+Bemerkenswert: Anthropic ist das erste große KI-Unternehmen, das in einem offiziellen Dokument die Möglichkeit von KI-Bewusstsein und moralischem Status anerkennt.
+
+Die ursprünglichen Prinzipien basieren auf der UN-Menschenrechtserklärung, Apples Terms of Service und nicht-westlichen kulturellen Werten.
 
 ### Dein eigenes ethisches Framework
 
