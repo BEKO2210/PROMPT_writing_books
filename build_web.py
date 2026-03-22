@@ -54,6 +54,24 @@ BAND_CONFIG = {
             "10_Zusammenfassung_und_Ausblick.md",
         ],
     },
+    3: {
+        "ordner": "Band_03_Fortgeschrittene_Basics",
+        "titel": "Fortgeschrittene Basics",
+        "untertitel": "Vom Anfänger zum sicheren Anwender",
+        "dateien": [
+            "00_Vorwort.md",
+            "01_Prompt_Chaining.md",
+            "02_Delimiter_und_Strukturierung.md",
+            "03_Negative_Prompts.md",
+            "04_Temperatur_und_Parameter.md",
+            "05_System_Prompts.md",
+            "06_Kontext_Fenster_meistern.md",
+            "07_Prompt_Debugging.md",
+            "08_Batch_Prompting.md",
+            "09_Modelle_vergleichen.md",
+            "10_Zusammenfassung_und_Ausblick.md",
+        ],
+    },
 }
 
 BASE_URL = "https://beko2210.github.io/PROMPT_writing_books"
