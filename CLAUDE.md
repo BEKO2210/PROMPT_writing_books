@@ -22,7 +22,7 @@ Deutschsprachige Sachbuchreihe zu Prompt Engineering fur Large Language Models.
 | 5 | **Kreatives Prompting** | Fertig | Storytelling, Bild-Generierung, Musik/Audio, multimodales Prompting |
 | 6 | **Spezialisiertes Prompting** | Fertig | Bildung, Marketing, Datenanalyse, Wissenschaft, Recht, Medizin |
 | 7 | **Prompting fur Entwickler** | Fertig | Code-Generierung, APIs, RAG, Fine-Tuning vs. Prompting |
-| 8 | **Business & Produktivitat** | Geplant | Workflow-Automatisierung, E-Mail/Berichte, Team-Standards |
+| 8 | **Business & Produktivitat** | Fertig | Workflow-Automatisierung, E-Mail/Berichte, Team-Standards, Entscheidungen, KI-Strategie |
 | 9 | **Sicherheit & Ethik** | Geplant | Prompt Injection, Bias, DSGVO, EU AI Act, Halluzinationen |
 | 10 | **Die Zukunft** | Geplant | Agentic AI, autonome Agenten, Context Engineering, Automated Prompt Engineering |
 

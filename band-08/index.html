@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+<html lang="de" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Band 8: Business-und-Produktivitaet &ndash; Prompt Engineering Meistern</title>
+<meta name="description" content="KI im Arbeitsalltag &ndash; Band 8 der Buchreihe Prompt Engineering Meistern von Belkis Aslani. Kostenlos online lesen.">
+<meta name="author" content="Belkis Aslani">
+<meta name="theme-color" content="#0a1628" media="(prefers-color-scheme:dark)">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme:light)">
+<meta name="color-scheme" content="light dark">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://beko2210.github.io/PROMPT_writing_books/band-08/">
+<link rel="manifest" href="../manifest.json">
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../icon-192.png">
+<meta property="og:type" content="book">
+<meta property="og:title" content="Band 8: Business-und-Produktivitaet &ndash; Prompt Engineering Meistern">
+<meta property="og:description" content="KI im Arbeitsalltag. Kostenlos online lesen.">
+<meta property="og:url" content="https://beko2210.github.io/PROMPT_writing_books/band-08/">
+<meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="Prompt Engineering Meistern">
+<meta property="og:image" content="https://beko2210.github.io/PROMPT_writing_books/icon-512.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Band 8: Business-und-Produktivitaet">
+<meta name="twitter:description" content="KI im Arbeitsalltag">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Book","name":"Prompt Engineering Meistern – Band 8: Business-und-Produktivitaet","author":{"@type":"Person","name":"Belkis Aslani"},"bookEdition":"1. Auflage","inLanguage":"de","url":"https://beko2210.github.io/PROMPT_writing_books/band-08/","isPartOf":{"@type":"BookSeries","name":"Prompt Engineering Meistern"}}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+--bg:#fff;--bg2:#f8f9fb;--card:#fff;
+--text:#1a1a1a;--text2:#555;--text3:#888;
+--accent:#2d4a7a;--accent-light:#8ab4f8;
+--border:#e5e7eb;--code-bg:#f5f7fa;
+--sidebar-bg:#fafbfc;--max-w:680px;
+--font:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+--font-reading:'Georgia','Liberation Serif',serif;
+--font-mono:'SF Mono','Liberation Mono','Cascadia Code',monospace;
+}
+[data-theme="dark"]{
+--bg:#0d1117;--bg2:#161b22;--card:#1c2333;
+--text:#e4e8ef;--text2:#8899aa;--text3:#556677;
+--accent:#8ab4f8;--accent-light:#8ab4f8;
+--border:#2a3444;--code-bg:#161b22;--sidebar-bg:#0d1117;
+}
+html{scroll-behavior:smooth;scroll-padding-top:70px;overflow-x:hidden}
+body{font-family:var(--font);background:var(--bg);color:var(--text);transition:background .3s,color .3s;overflow-x:hidden}
+
+/* Progress */
+.progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent-light));z-index:1000;width:0;transition:width .15s}
+
+/* Topbar */
+.topbar{
+position:fixed;top:0;left:0;right:0;height:56px;
+border-bottom:1px solid var(--border);display:flex;align-items:center;
+padding:0 16px;z-index:100;transition:background .3s,border-color .3s;
+backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+background:color-mix(in srgb,var(--bg) 85%,transparent);
+}
+.topbar-left{display:flex;align-items:center;gap:12px;flex:1;min-width:0}
+.menu-btn{background:none;border:none;cursor:pointer;padding:8px;color:var(--text);display:none}
+@media(max-width:900px){.menu-btn{display:block}}
+.topbar-title{font-size:14px;font-weight:600;color:var(--text2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.topbar-title a{color:inherit;text-decoration:none}
+.topbar-title a:hover{color:var(--accent)}
+.topbar-actions{display:flex;align-items:center;gap:8px}
+.btn-sm{
+font-size:12px;font-weight:600;padding:7px 14px;border-radius:8px;
+border:1px solid var(--border);background:var(--bg2);color:var(--text);
+cursor:pointer;text-decoration:none;transition:all .2s;
+display:inline-flex;align-items:center;gap:6px;
+}
+.btn-sm:hover{border-color:var(--accent);color:var(--accent)}
+.btn-sm svg{width:14px;height:14px;fill:currentColor}
+
+/* Sun/Moon Toggle */
+.switch{position:relative;display:inline-block;width:54px;height:30px}
+.switch input{opacity:0;width:0;height:0;position:absolute}
+.tm-slider{position:absolute;cursor:pointer;inset:0;background:#2196f3;transition:.4s;overflow:hidden;border-radius:30px}
+.sun-moon{position:absolute;height:22px;width:22px;left:4px;bottom:4px;background:yellow;transition:.4s;border-radius:50%}
+.switch input:checked+.tm-slider{background:#111827}
+.switch input:checked+.tm-slider .sun-moon{transform:translateX(24px);background:#e2e8f0;animation:smRotate .6s ease-in-out both}
+@keyframes smRotate{0%{transform:translateX(24px) rotate(0)}100%{transform:translateX(24px) rotate(360deg)}}
+.moon-dot{opacity:0;transition:.4s;fill:#94a3b8;position:absolute;z-index:4}
+.switch input:checked+.tm-slider .moon-dot{opacity:1}
+.md1{left:9px;top:3px;width:5px;height:5px}.md2{left:2px;top:9px;width:8px;height:8px}.md3{left:14px;top:16px;width:3px;height:3px}
+.light-ray{position:absolute;z-index:-1;fill:white;opacity:.1}
+.lr1{left:-7px;top:-7px;width:36px;height:36px}.lr2{left:-50%;top:-50%;width:44px;height:44px}.lr3{left:-14px;top:-14px;width:50px;height:50px}
+.cloud-l,.cloud-d{position:absolute;animation:cMv 6s infinite}
+.cloud-l{fill:#eee}.cloud-d{fill:#ccc;animation-delay:1s}
+.c1{left:26px;top:13px;width:34px}.c2{left:38px;top:8px;width:17px}.c3{left:15px;top:20px;width:26px}
+.c4{left:30px;top:15px;width:34px}.c5{left:42px;top:11px;width:17px}.c6{left:18px;top:22px;width:26px}
+@keyframes cMv{0%,100%{transform:translateX(0)}40%{transform:translateX(3px)}80%{transform:translateX(-3px)}}
+.stars{transform:translateY(-28px);opacity:0;transition:.4s}
+.star{fill:white;position:absolute;transition:.4s;animation:stTw 2s infinite}
+.switch input:checked+.tm-slider .stars{transform:translateY(0);opacity:1}
+.s1{width:16px;top:2px;left:3px;animation-delay:.3s}.s2{width:5px;top:14px;left:3px}
+.s3{width:10px;top:17px;left:9px;animation-delay:.6s}.s4{width:14px;top:0;left:15px;animation-delay:1.3s}
+@keyframes stTw{0%,100%{transform:scale(1)}40%{transform:scale(1.2)}80%{transform:scale(.8)}}
+
+/* Sidebar */
+.sidebar{
+position:fixed;top:56px;left:0;bottom:0;width:280px;
+background:var(--sidebar-bg);border-right:1px solid var(--border);
+overflow-y:auto;padding:20px 0;z-index:90;
+transition:transform .3s,background .3s,border-color .3s;
+}
+@media(max-width:900px){
+.sidebar{transform:translateX(-100%);width:300px;z-index:200;box-shadow:4px 0 30px rgba(0,0,0,.2)}
+.sidebar.open{transform:translateX(0)}
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:150}
+.overlay.show{display:block}
+}
+.sidebar-header{padding:0 20px 16px;font-size:12px;text-transform:uppercase;letter-spacing:2px;color:var(--text3);font-weight:600}
+.toc-link{
+display:block;padding:8px 20px 8px 24px;font-size:14px;color:var(--text2);
+text-decoration:none;border-left:2px solid transparent;transition:all .2s;line-height:1.4;
+}
+.toc-link:hover{color:var(--accent);background:var(--bg2)}
+.toc-link.active{color:var(--accent);border-left-color:var(--accent);background:var(--bg2);font-weight:600}
+
+/* Main */
+.main{margin-left:280px;padding:80px 24px 100px;transition:margin .3s}
+@media(max-width:900px){.main{margin-left:0}}
+.content{max-width:var(--max-w);margin:0 auto;overflow-x:hidden}
+
+/* Typography */
+.chapter{padding-bottom:60px;margin-bottom:40px;border-bottom:1px solid var(--border)}
+.chapter:last-child{border-bottom:none}
+.chapter h1{font-family:var(--font);font-size:clamp(1.6rem,4vw,2.2rem);font-weight:800;color:var(--text);margin:0 0 24px;line-height:1.15;letter-spacing:-.02em}
+.chapter h2{font-family:var(--font);font-size:clamp(1.2rem,3vw,1.5rem);font-weight:700;color:var(--text);margin:40px 0 16px;line-height:1.2}
+.chapter h3{font-family:var(--font);font-size:1.1rem;font-weight:600;color:var(--text);margin:32px 0 12px}
+.chapter h4{font-size:1rem;font-weight:600;color:var(--text2);margin:24px 0 8px}
+.chapter p{font-family:var(--font-reading);font-size:17px;line-height:1.75;margin-bottom:18px;color:var(--text)}
+.chapter strong{font-weight:700}.chapter em{font-style:italic}
+.chapter ul,.chapter ol{font-family:var(--font-reading);font-size:17px;line-height:1.7;margin:12px 0 18px;padding-left:28px}
+.chapter li{margin-bottom:8px}.chapter li>ul,.chapter li>ol{margin-top:6px}
+
+/* Code */
+.chapter pre{background:var(--code-bg);border:1px solid var(--border);border-radius:10px;padding:18px 20px;margin:20px 0;overflow-x:auto;font-family:var(--font-mono);font-size:14px;line-height:1.55;max-width:100%;white-space:pre-wrap;word-wrap:break-word}
+.chapter code{font-family:var(--font-mono);font-size:15px;background:var(--code-bg);padding:2px 6px;border-radius:5px;color:var(--accent)}
+.chapter pre code{background:none;padding:0;color:var(--text);font-size:14px}
+
+/* Table wrapper for scroll */
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:20px 0;border-radius:8px;max-width:100%}
+/* Tables */
+.chapter table{width:100%;border-collapse:collapse;font-size:15px;border-radius:8px;min-width:320px;margin:0}
+.chapter thead{background:var(--accent);color:#fff}
+.chapter th{padding:10px 14px;text-align:left;font-size:13px;font-weight:600;white-space:nowrap}
+.chapter td{padding:10px 14px;border-bottom:1px solid var(--border);font-family:var(--font-reading)}
+.chapter tr:nth-child(even){background:var(--bg2)}
+
+/* Blockquote */
+.chapter blockquote{border-left:3px solid var(--accent-light);background:var(--bg2);padding:16px 20px;margin:20px 0;border-radius:0 8px 8px 0;font-style:italic}
+.chapter blockquote p{margin-bottom:8px;font-size:16px}
+
+/* HR */
+.chapter hr{border:none;border-top:2px solid var(--border);margin:40px 60px}
+
+/* Scroll to top */
+.scroll-top{
+position:fixed;bottom:24px;right:24px;width:44px;height:44px;border-radius:12px;
+background:var(--accent);color:#fff;border:none;cursor:pointer;
+display:none;align-items:center;justify-content:center;
+box-shadow:0 4px 20px rgba(0,0,0,.2);z-index:50;transition:all .3s;
+}
+.scroll-top:hover{transform:translateY(-2px)}
+.scroll-top.show{display:flex}
+.scroll-top svg{width:20px;height:20px;fill:currentColor}
+
+/* Fullscreen / Focus Mode */
+.focus-btn{
+background:none;border:1px solid var(--border);width:34px;height:34px;
+border-radius:8px;cursor:pointer;color:var(--text);
+display:inline-flex;align-items:center;justify-content:center;transition:all .2s;
+}
+.focus-btn:hover{border-color:var(--accent);color:var(--accent)}
+.focus-btn svg{width:16px;height:16px;fill:currentColor}
+body.focus-mode .topbar{transform:translateY(-100%)}
+body.focus-mode .sidebar{transform:translateX(-100%)}
+body.focus-mode .main{margin-left:0;padding-top:40px}
+body.focus-mode .scroll-top,.body.focus-mode .resume-banner{display:none!important}
+body.focus-mode .progress{opacity:0}
+body.focus-mode .focus-exit{display:flex}
+.focus-exit{
+display:none;position:fixed;top:16px;right:16px;z-index:200;
+background:var(--bg);border:1px solid var(--border);border-radius:10px;
+padding:8px 16px;font-size:13px;font-weight:600;color:var(--text2);
+cursor:pointer;align-items:center;gap:6px;
+box-shadow:0 4px 20px rgba(0,0,0,.15);transition:all .2s;
+}
+.focus-exit:hover{color:var(--accent);border-color:var(--accent)}
+.focus-exit kbd{
+background:var(--bg2);border:1px solid var(--border);border-radius:4px;
+padding:1px 6px;font-size:11px;font-family:var(--font-mono);
+}
+
+/* Resume banner (mobile-first popup) */
+.resume-banner{
+display:none;position:fixed;bottom:16px;left:16px;right:16px;
+background:var(--card);border:1px solid var(--border);border-radius:16px;
+padding:16px;z-index:60;
+box-shadow:0 8px 32px rgba(0,0,0,.25);
+transition:all .3s;
+max-width:420px;margin:0 auto;
+}
+.resume-banner.show{display:block;animation:resumeIn .4s ease}
+@keyframes resumeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.resume-top{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.resume-icon{width:36px;height:36px;border-radius:10px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.resume-icon svg{width:18px;height:18px;fill:currentColor}
+.resume-info{flex:1;min-width:0}
+.resume-label{font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:var(--text3);font-weight:600;margin-bottom:2px}
+.resume-chapter{font-size:14px;font-weight:700;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.resume-close{background:none;border:none;color:var(--text3);cursor:pointer;padding:4px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:color .2s}
+.resume-close:hover{color:var(--text)}
+.resume-close svg{width:16px;height:16px;fill:currentColor}
+.resume-progress{height:4px;background:var(--border);border-radius:2px;margin-bottom:12px;overflow:hidden}
+.resume-progress-bar{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-light));border-radius:2px;transition:width .3s}
+.resume-btn{
+width:100%;padding:10px;border:none;border-radius:10px;
+background:var(--accent);color:#fff;font-size:14px;font-weight:600;
+cursor:pointer;transition:opacity .2s;display:flex;align-items:center;justify-content:center;gap:8px;
+}
+.resume-btn:hover{opacity:.9}
+.resume-btn svg{width:16px;height:16px;fill:currentColor}
+
+/* Update toast */
+.update-toast{
+display:none;position:fixed;bottom:24px;left:50%;transform:translateX(-50%);
+background:var(--card);border:1px solid var(--border);border-radius:16px;
+padding:20px 24px;z-index:999;max-width:420px;width:calc(100% - 32px);
+box-shadow:0 12px 40px rgba(0,0,0,.4);
+}
+.update-toast.show{display:block;animation:toastIn .4s ease}
+@keyframes toastIn{from{opacity:0;transform:translateX(-50%) translateY(20px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+.update-toast h3{font-size:15px;color:var(--text);margin-bottom:8px}
+.update-toast ul{padding-left:18px;margin:8px 0 14px;font-size:13px;color:var(--text2);line-height:1.6}
+.update-toast .ver{font-size:12px;color:var(--accent);margin-bottom:6px;letter-spacing:1px}
+.update-toast button{background:var(--accent);color:#fff;border:none;border-radius:8px;padding:8px 20px;font-size:13px;font-weight:600;cursor:pointer;width:100%}
+.update-toast button:hover{opacity:.9}
+
+/* Responsive */
+@media(max-width:600px){
+.chapter table{font-size:13px}.chapter th,.chapter td{padding:8px 10px}
+.chapter p{font-size:16px}.chapter pre{font-size:13px;padding:14px 12px}
+.chapter ul,.chapter ol{padding-left:20px}
+.topbar-actions .btn-sm span{display:none}
+.main{padding:70px 14px 80px}
+}
+</style>
+</head>
+<body>
+<div class="progress" id="progress" role="progressbar" aria-label="Lesefortschritt"></div>
+<div class="overlay" id="overlay"></div>
+
+<header class="topbar">
+<div class="topbar-left">
+<button class="menu-btn" id="menuBtn" type="button" aria-label="Inhaltsverzeichnis &ouml;ffnen" aria-expanded="false" aria-controls="sidebar">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+</button>
+<div class="topbar-title"><a href="../">Prompt Engineering Meistern</a> &middot; Band 8</div>
+</div>
+<div class="topbar-actions">
+<a href="../output/Band_08_Business-und-Produktivitaet.pdf" class="btn-sm" download aria-label="PDF herunterladen">
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+<span>PDF</span>
+</a>
+<button class="focus-btn" id="focusBtn" type="button" aria-label="Vollbild-Lesemodus">
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
+</button>
+<label class="switch" aria-label="Farbmodus umschalten">
+<input id="themeInput" type="checkbox" role="switch" aria-label="Dark Mode">
+<div class="tm-slider">
+<div class="sun-moon">
+<svg class="moon-dot md1" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="50"/></svg>
+<svg class="moon-dot md2" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="50"/></svg>
+<svg class="moon-dot md3" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="50"/></svg>
+<svg class="light-ray lr1" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="50"/></svg>
+<svg class="light-ray lr2" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="50"/></svg>
+<svg class="light-ray lr3" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="50"/></svg>
+<svg class="cloud-d c1" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="50"/></svg>
+<svg class="cloud-d c2" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="50"/></svg>
+<svg class="cloud-d c3" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="50"/></svg>
+<svg class="cloud-l c4" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="50"/></svg>
+<svg class="cloud-l c5" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="50"/></svg>
+<svg class="cloud-l c6" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="50"/></svg>
+</div>
+<div class="stars">
+<svg class="star s1" viewBox="0 0 20 20" aria-hidden="true"><path d="M0 10C10 10 10 10 0 10 10 10 10 10 10 20 10 10 10 10 20 10 10 10 10 10 10 0 10 10 10 10 0 10Z"/></svg>
+<svg class="star s2" viewBox="0 0 20 20" aria-hidden="true"><path d="M0 10C10 10 10 10 0 10 10 10 10 10 10 20 10 10 10 10 20 10 10 10 10 10 10 0 10 10 10 10 0 10Z"/></svg>
+<svg class="star s3" viewBox="0 0 20 20" aria-hidden="true"><path d="M0 10C10 10 10 10 0 10 10 10 10 10 10 20 10 10 10 10 20 10 10 10 10 10 10 0 10 10 10 10 0 10Z"/></svg>
+<svg class="star s4" viewBox="0 0 20 20" aria-hidden="true"><path d="M0 10C10 10 10 10 0 10 10 10 10 10 10 20 10 10 10 10 20 10 10 10 10 10 10 0 10 10 10 10 0 10Z"/></svg>
+</div>
+</div>
+</label>
+</div>
+</header>
+
+<nav class="sidebar" id="sidebar" aria-label="Inhaltsverzeichnis">
+<div class="sidebar-header">Kapitel</div>
+<a href="#ch-0" class="toc-link" data-target="ch-0">Vorwort</a>
+<a href="#ch-1" class="toc-link" data-target="ch-1">Workflow-Automatisierung – KI als Fließband</a>
+<a href="#ch-2" class="toc-link" data-target="ch-2">E-Mail-Meisterklasse – Nie wieder 20 Minuten an einer Mail sitzen</a>
+<a href="#ch-3" class="toc-link" data-target="ch-3">Meetings & Kommunikation – KI als Meeting-Retter</a>
+<a href="#ch-4" class="toc-link" data-target="ch-4">Berichte & Dokumentation – KI als Ghostwriter</a>
+<a href="#ch-5" class="toc-link" data-target="ch-5">Projektmanagement – KI als Projektassistent</a>
+<a href="#ch-6" class="toc-link" data-target="ch-6">Team-Standards für Prompting – KI als Teamfähigkeit</a>
+<a href="#ch-7" class="toc-link" data-target="ch-7">Entscheidungsunterstützung – KI als Sparringspartner</a>
+<a href="#ch-8" class="toc-link" data-target="ch-8">Persönliche Produktivität – KI als Personal Assistant</a>
+<a href="#ch-9" class="toc-link" data-target="ch-9">KI-Strategie für Unternehmen – Vom Experiment zur Institution</a>
+<a href="#ch-10" class="toc-link" data-target="ch-10">Zusammenfassung und Ausblick</a>
+</nav>
+
+<main class="main" id="main">
+<article class="content">
+<section class="chapter" id="ch-0">
+<h1 id="vorwort">Vorwort</h1>
+<p>Sieben Bände lang hast du gelernt, wie man mit KI kommuniziert. Du kennst die Grundlagen, die Frameworks, die fortgeschrittenen Techniken, die Reasoning-Methoden, kreatives und spezialisiertes Prompting und sogar die Entwickler-Seite. Das ist mehr als 99% der Leute wissen.</p>
+<p>Aber hier ist die unbequeme Wahrheit: Wissen allein bringt kein Geld.</p>
+<p>In diesem Band geht es darum, KI so in deinen Arbeitsalltag zu integrieren, dass sie echten, messbaren Mehrwert liefert. Nicht als Spielzeug. Nicht als Gimmick. Sondern als Werkzeug, das dir Stunden pro Woche spart und die Qualität deiner Arbeit hebt.</p>
+<h2 id="was-diesen-band-anders-macht">Was diesen Band anders macht</h2>
+<p>Die Bände 1-7 waren Fähigkeiten. Band 8 ist Anwendung. Hier geht es nicht um neue Prompting-Techniken – sondern darum, die Techniken, die du bereits kennst, systematisch auf Business-Probleme anzuwenden.</p>
+<p>Ich sehe in meinem Umfeld zwei Typen von KI-Nutzern im Business:</p>
+<p><strong>Typ 1:</strong> Nutzt KI sporadisch. Mal eine E-Mail umschreiben lassen, mal eine Idee brainstormen. Spart vielleicht 30 Minuten pro Woche. Findet KI &ldquo;ganz nett&rdquo;.</p>
+<p><strong>Typ 2:</strong> Hat KI in jeden wiederkehrenden Workflow integriert. Prompt-Templates für alle Standardaufgaben. Automatisierte Pipelines. Team-Standards. Spart 5-10 Stunden pro Woche. Findet KI &ldquo;unverzichtbar&rdquo;.</p>
+<p>Dieser Band macht dich zu Typ 2.</p>
+<h2 id="fur-wen-ist-dieser-band">Für wen ist dieser Band?</h2>
+<p>Für alle, die im Büro arbeiten – egal ob Einzelunternehmer, Teamleiter, Manager oder Angestellter. Die Beispiele kommen aus verschiedenen Branchen und Unternehmensgrößen. Die Prinzipien sind universell.</p>
+<p>Du brauchst die Grundlagen aus Band 1-3. Die fortgeschrittenen Techniken aus Band 4 helfen, sind aber kein Muss. Entwickler-Wissen (Band 7) brauchst du nicht – dieses Band ist bewusst nicht-technisch.</p>
+<h2 id="wie-du-diesen-band-nutzt">Wie du diesen Band nutzt</h2>
+<p>Lies nicht alles auf einmal. Nimm dir pro Woche ein Kapitel vor. Identifiziere die Aufgabe, die dich am meisten nervt – die, die du jede Woche machst und die immer gleich abläuft. Fang dort an. Ein automatisierter Workflow spart mehr als zehn perfekte Einzelprompts.</p>
+<p>Am Ende jedes Kapitels findest du Übungen. Die sind diesmal besonders wichtig, weil es um <em>deine</em> Workflows geht, nicht um abstrakte Beispiele.</p>
+<p>Los geht&rsquo;s.</p>
+</section>
+<section class="chapter" id="ch-1">
+<h1 id="kapitel-1-workflow-automatisierung-ki-als-flieband">Kapitel 1: Workflow-Automatisierung – KI als Fließband</h1>
+<p>Die größte Zeitersparnis durch KI kommt nicht von einzelnen brillanten Prompts. Sie kommt von <strong>automatisierten Workflows</strong> – Aufgaben, die du jede Woche machst, in eine wiederholbare Struktur zu gießen, die mit einem Klick läuft.</p>
+<h2 id="das-automatisierungs-mindset">Das Automatisierungs-Mindset</h2>
+<p>Bevor du einen Prompt schreibst, stell dir drei Fragen:</p>
+<ol>
+<li><strong>Mache ich das regelmäßig?</strong> (Mindestens einmal pro Woche)</li>
+<li><strong>Folgt es einem Muster?</strong> (Ähnliche Struktur, ähnlicher Output)</li>
+<li><strong>Ist das Ergebnis überprüfbar?</strong> (Du erkennst, ob es gut ist)</li>
+</ol>
+<p>Wenn alle drei Ja: Automatisiere es.</p>
+<h3 id="die-8020-regel-der-ki-produktivitat">Die 80/20-Regel der KI-Produktivität</h3>
+<p>80% deiner KI-Zeitersparnis kommt von 20% deiner Aufgaben. Finde diese 20%.</p>
+<p>Typische Kandidaten:
+- Wiederkehrende E-Mails (Absagen, Follow-ups, Status-Updates)
+- Berichte, die sich nur in den Zahlen unterscheiden
+- Meeting-Vorbereitung und Protokolle
+- Recherche-Zusammenfassungen
+- Dokumentation und SOPs</p>
+<h2 id="prompt-ketten-fur-workflows">Prompt-Ketten für Workflows</h2>
+<p>Ein einzelner Prompt reicht für einfache Aufgaben. Für Workflows brauchst du <strong>Prompt-Ketten</strong> (siehe Band 3) – mehrere Prompts, die aufeinander aufbauen.</p>
+<h3 id="beispiel-wochentlicher-kundenbericht">Beispiel: Wöchentlicher Kundenbericht</h3>
+<p><strong>Schritt 1 – Daten strukturieren:</strong></p>
+<div class="highlight"><pre><span></span><code>Hier sind die Rohdaten dieser Woche:
+[CRM-Export, Support-Tickets, Verkaufszahlen einfügen]
+
+Extrahiere und strukturiere:
+1. Neue Kunden (Anzahl, Namen, Branche)
+2. Offene Support-Tickets (Anzahl, Top-3-Themen)
+3. Umsatz vs. Vorwoche (Zahl + Prozent)
+4. Churn-Risiko (Kunden ohne Aktivität &gt;30 Tage)
+</code></pre></div>
+
+<p><strong>Schritt 2 – Bericht schreiben:</strong></p>
+<div class="highlight"><pre><span></span><code>Basierend auf diesen strukturierten Daten:
+[Output von Schritt 1]
+
+Schreibe einen Wochenbericht für das Management.
+STRUKTUR: Executive Summary (3 Sätze) → KPIs (Tabelle)
+→ Highlights → Risiken → Empfehlungen
+TON: Sachlich, datengetrieben, max. 1 Seite
+</code></pre></div>
+
+<p><strong>Schritt 3 – E-Mail formulieren:</strong></p>
+<div class="highlight"><pre><span></span><code>Formuliere eine E-Mail an das Management-Team,
+die den Bericht zusammenfasst.
+Betreff: Max. 8 Wörter, mit der wichtigsten Zahl.
+Body: 5 Sätze, die wichtigsten Punkte.
+Anhang-Hinweis auf den vollständigen Bericht.
+</code></pre></div>
+
+<h3 id="template-fur-prompt-ketten">Template für Prompt-Ketten</h3>
+<p>Jede Kette hat dasselbe Schema:</p>
+<ol>
+<li><strong>Input-Schritt:</strong> Rohdaten in strukturierte Form bringen</li>
+<li><strong>Verarbeitungs-Schritt:</strong> Analyse, Zusammenfassung, Bewertung</li>
+<li><strong>Output-Schritt:</strong> Finales Format (Bericht, E-Mail, Präsentation)</li>
+</ol>
+<h2 id="wiederkehrende-aufgaben-erkennen">Wiederkehrende Aufgaben erkennen</h2>
+<h3 id="der-workflow-audit">Der Workflow-Audit</h3>
+<p>Führe eine Woche lang ein Protokoll: Jedes Mal, wenn du eine Aufgabe machst, die du schon mal gemacht hast, schreib sie auf. Am Ende der Woche hast du deine Automatisierungs-Kandidaten.</p>
+<p><strong>Die häufigsten Workflow-Typen im Büro:</strong></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Workflow</th>
+<th>Häufigkeit</th>
+<th>Zeitersparnis</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E-Mail-Vorlagen</td>
+<td>Täglich</td>
+<td>15-30 Min/Tag</td>
+</tr>
+<tr>
+<td>Meeting-Protokolle</td>
+<td>3-5x/Woche</td>
+<td>20-40 Min/Woche</td>
+</tr>
+<tr>
+<td>Status-Berichte</td>
+<td>Wöchentlich</td>
+<td>1-2 Std/Woche</td>
+</tr>
+<tr>
+<td>Recherche-Zusammenfassungen</td>
+<td>2-3x/Woche</td>
+<td>30-60 Min/Woche</td>
+</tr>
+<tr>
+<td>Dokumentation</td>
+<td>Laufend</td>
+<td>1-3 Std/Woche</td>
+</tr>
+<tr>
+<td>Feedback-Formulierungen</td>
+<td>2-3x/Woche</td>
+<td>15-30 Min/Woche</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Potenzial:</strong> 5-10 Stunden pro Woche – das ist ein ganzer Arbeitstag.</p>
+<h2 id="prompt-templates-anlegen">Prompt-Templates anlegen</h2>
+<p>Ein gutes Template hat <strong>Platzhalter</strong> für die variablen Teile:</p>
+<div class="highlight"><pre><span></span><code>Du bist [ROLLE] bei [UNTERNEHMEN].
+
+Aufgabe: [AUFGABE]
+
+Kontext:
+- Empfänger: [WER]
+- Anlass: [WARUM]
+- Ton: [WIE]
+
+Erstelle [OUTPUT-FORMAT].
+
+Einschränkungen:
+- Max. [LÄNGE]
+- Sprache: [SPRACHE]
+- Wichtig: [BESONDERHEITEN]
+</code></pre></div>
+
+<p>Speichere deine Templates in einem Ordner, einer Notion-Datenbank oder einem Google Doc. Jedes Template braucht: <strong>Name</strong>, <strong>Wann nutzen</strong>, <strong>Platzhalter</strong>, <strong>Beispiel-Output</strong>.</p>
+<h2 id="automatisierung-ohne-code">Automatisierung ohne Code</h2>
+<p>Du brauchst keine Programmierung für Business-Automatisierung. Drei Wege:</p>
+<p><strong>1. Chat-Projekte:</strong> Claude Projects, ChatGPT Custom GPTs oder Gemini Gems. Du definierst System-Prompt, Wissensbasis und häufige Aufgaben einmal – danach reicht ein kurzer Prompt.</p>
+<p><strong>2. Custom Instructions:</strong> Hinterlege deine Standard-Kontexte (Unternehmen, Rolle, Ton, Formatierung) in den Custom Instructions deines Chat-Tools. Dann musst du sie nicht bei jedem Prompt wiederholen.</p>
+<p><strong>3. Makros und Shortcuts:</strong> Viele Tools (Notion AI, Google Workspace, Microsoft Copilot) haben eingebaute KI-Funktionen. Richte Shortcuts ein für deine häufigsten Aufgaben.</p>
+<h2 id="die-automatisierungs-falle">Die Automatisierungs-Falle</h2>
+<p>Nicht alles automatisieren. Drei Warnzeichen:</p>
+<ol>
+<li><strong>Die Aufgabe braucht viel Kontext, der sich ständig ändert</strong> – dann ist manuelles Prompting effizienter</li>
+<li><strong>Das Ergebnis muss 100% korrekt sein</strong> (Verträge, Finanzzahlen) – dann ist KI ein Entwurf, kein Endprodukt</li>
+<li><strong>Die Aufgabe erfordert emotionale Intelligenz</strong> (Konfliktgespräch, Krisenkommunikation) – KI kann helfen, aber nicht ersetzen</li>
+</ol>
+<hr />
+<h2 id="ubungen">Übungen</h2>
+<h3 id="ubung-1-workflow-audit">Übung 1: Workflow-Audit</h3>
+<p>Führe eine Woche lang ein Protokoll wiederkehrender Aufgaben. Welche drei haben das größte Automatisierungs-Potenzial?</p>
+<h3 id="ubung-2-prompt-kette-bauen">Übung 2: Prompt-Kette bauen</h3>
+<p>Nimm eine wiederkehrende Aufgabe und baue eine 3-Schritt-Prompt-Kette (Input → Verarbeitung → Output).</p>
+<h3 id="ubung-3-template-erstellen">Übung 3: Template erstellen</h3>
+<p>Erstelle ein Prompt-Template mit Platzhaltern für deine häufigste E-Mail-Art. Teste es mit 3 verschiedenen Szenarien.</p>
+<h3 id="ubung-4-zeitersparnis-messen">Übung 4: Zeitersparnis messen</h3>
+<p>Miss die Zeit für eine Aufgabe manuell vs. mit deinem Template. Wie viel sparst du pro Durchlauf? Rechne hoch auf den Monat.</p>
+</section>
+<section class="chapter" id="ch-2">
+<h1 id="kapitel-2-e-mail-meisterklasse-nie-wieder-20-minuten-an-einer-mail-sitzen">Kapitel 2: E-Mail-Meisterklasse – Nie wieder 20 Minuten an einer Mail sitzen</h1>
+<p>E-Mails sind der größte Zeitfresser im Büroalltag. Der durchschnittliche Büroangestellte verbringt 2-3 Stunden pro Tag mit E-Mails. Nicht weil E-Mails komplex sind, sondern weil wir zu lange über den richtigen Ton, die richtige Formulierung und die richtige Struktur nachdenken.</p>
+<p>KI löst das Problem – wenn du weißt, wie.</p>
+<h2 id="das-e-mail-framework">Das E-Mail-Framework</h2>
+<p>Jede professionelle E-Mail braucht fünf Angaben:</p>
+<ol>
+<li><strong>Empfänger:</strong> Wer liest das? (Chef, Kunde, Kollege, Bewerber)</li>
+<li><strong>Ziel:</strong> Was soll passieren? (Information, Entscheidung, Handlung)</li>
+<li><strong>Ton:</strong> Wie soll es klingen? (Formell, locker, diplomatisch)</li>
+<li><strong>Kontext:</strong> Was ist der Hintergrund?</li>
+<li><strong>Länge:</strong> Wie lang darf es sein?</li>
+</ol>
+<div class="highlight"><pre><span></span><code>Schreibe eine E-Mail.
+AN: [Empfänger + Beziehung]
+ZIEL: [Was soll der Empfänger tun/wissen?]
+TON: [Formell/Locker/Diplomatisch/Direkt]
+KONTEXT: [Hintergrund in 2-3 Sätzen]
+MAX. LÄNGE: [Wortanzahl oder &quot;kurz&quot;/&quot;mittel&quot;/&quot;lang&quot;]
+</code></pre></div>
+
+<h2 id="die-haufigsten-e-mail-typen">Die häufigsten E-Mail-Typen</h2>
+<h3 id="1-die-follow-up-mail">1. Die Follow-up-Mail</h3>
+<p>Die Kunst des Nachhakens, ohne nervig zu klingen:</p>
+<p><em>&ldquo;Schreibe eine Follow-up-Mail an einen Kunden, der seit 5 Tagen nicht auf mein Angebot geantwortet hat. Ton: Freundlich, nicht aufdringlich. Erinnere an den Mehrwert, nicht an die offene Rechnung. Biete einen konkreten nächsten Schritt an (Telefonat, 15 Min). Max. 5 Sätze.&rdquo;</em></p>
+<h3 id="2-die-absage">2. Die Absage</h3>
+<p>Nein sagen, ohne Beziehungen zu zerstören:</p>
+<p><em>&ldquo;Schreibe eine Absage an einen Dienstleister, dessen Angebot wir nicht annehmen. Wir haben uns für einen günstigeren Anbieter entschieden. Ton: Wertschätzend, ehrlich, kurz. Tür offen lassen für zukünftige Projekte. Max. 4 Sätze.&rdquo;</em></p>
+<h3 id="3-die-eskalation">3. Die Eskalation</h3>
+<p>Ein Problem nach oben kommunizieren, ohne wie ein Beschwerdeführer zu klingen:</p>
+<p><em>&ldquo;Schreibe eine E-Mail an meinen Vorgesetzten. Problem: Projekt X ist 2 Wochen im Verzug, weil Abteilung Y die Zulieferung nicht liefert. Ton: Sachlich, lösungsorientiert. Nicht: Schuldzuweisung. Sondern: Was ist das Problem, was habe ich versucht, welche Unterstützung brauche ich. Max. 8 Sätze.&rdquo;</em></p>
+<h3 id="4-die-gute-nachricht">4. Die gute Nachricht</h3>
+<p>Positive Nachrichten so kommunizieren, dass sie Wirkung zeigen:</p>
+<p><em>&ldquo;Schreibe eine E-Mail an das Team. Gute Nachricht: Wir haben den Kunden XY gewonnen (Jahresvertrag, 120k€). Feiere das Ergebnis, benenne die Leute, die daran beteiligt waren (namentlich), und gib einen Ausblick auf die nächsten Schritte.&rdquo;</em></p>
+<h3 id="5-die-kaltakquise">5. Die Kaltakquise</h3>
+<p>Der erste Kontakt – hart, weil du 3 Sekunden hast:</p>
+<p><em>&ldquo;Schreibe eine Kaltakquise-Mail an den Marketingleiter eines mittelständischen E-Commerce-Unternehmens. Wir bieten SEO-Beratung an. Betreffzeile: Neugier wecken, keine Versprechen. Erster Satz: Konkreter Bezug zum Empfänger (nicht &lsquo;Ich bin&hellip;&rsquo;). Max. 6 Sätze. CTA: Konkreter Vorschlag (15-Min-Call nächste Woche).&rdquo;</em></p>
+<h2 id="e-mails-beantworten">E-Mails beantworten</h2>
+<h3 id="der-reply-prompt">Der Reply-Prompt</h3>
+<div class="highlight"><pre><span></span><code>Hier ist eine E-Mail, die ich erhalten habe:
+&quot;&quot;&quot;[E-Mail einfügen]&quot;&quot;&quot;
+
+Schreibe eine Antwort.
+MEINE POSITION: [Wer bin ich in Bezug auf den Sender?]
+MEIN ZIEL: [Was will ich erreichen?]
+TON: [Wie soll es klingen?]
+BESONDERHEITEN: [z.B. &quot;Lehne höflich ab&quot;, &quot;Stimme zu,
+aber mit Bedingung&quot;, &quot;Bitte um mehr Zeit&quot;]
+</code></pre></div>
+
+<h3 id="schwierige-e-mails-beantworten">Schwierige E-Mails beantworten</h3>
+<p>Wenn du eine Mail bekommst, die dich ärgert – antworte nicht sofort. Lass die KI drei Versionen schreiben:</p>
+<p><em>&ldquo;Schreibe 3 Antwort-Varianten: (1) Diplomatisch – sachlich, deeskalierend, lösungsorientiert. (2) Direkt – klar in der Sache, aber respektvoll. (3) Minimal – so kurz wie möglich, nur das Nötigste.&rdquo;</em></p>
+<p>Wähle die Version, die morgen früh immer noch richtig klingt.</p>
+<h2 id="betreffzeilen">Betreffzeilen</h2>
+<p>Die Betreffzeile entscheidet, ob deine Mail gelesen wird. Die Regeln:</p>
+<ul>
+<li><strong>Max. 6-8 Wörter</strong> – alles darüber wird abgeschnitten</li>
+<li><strong>Die wichtigste Info zuerst</strong> – &ldquo;Entscheidung nötig: Budget Q3&rdquo; statt &ldquo;Bezüglich des Q3-Budgets&rdquo;</li>
+<li><strong>Handlung klar machen</strong> – &ldquo;[Aktion nötig]&rdquo;, &ldquo;[Info]&rdquo;, &ldquo;[Entscheidung bis Fr]&rdquo;</li>
+<li><strong>Keine Clickbait-Tricks</strong> im Business-Kontext</li>
+</ul>
+<p>Lass dir für jede wichtige Mail 3 Betreffzeilen-Varianten generieren und wähle die beste.</p>
+<h2 id="e-mail-ton-anpassen">E-Mail-Ton anpassen</h2>
+<p>Derselbe Inhalt, unterschiedliche Empfänger:</p>
+<p><em>&ldquo;Formuliere diese Nachricht in 3 Versionen: (1) An meinen Chef – formell, kurz, auf den Punkt. (2) An mein Team – locker, motivierend. (3) An den Kunden – professionell, vertrauenserweckend.&rdquo;</em></p>
+<h2 id="e-mail-vorlagen-bibliothek">E-Mail-Vorlagen-Bibliothek</h2>
+<p>Erstelle eine Sammlung deiner häufigsten E-Mail-Typen:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Template</th>
+<th>Wann nutzen</th>
+<th>Platzhalter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Follow-up Angebot</td>
+<td>3-5 Tage nach Angebot</td>
+<td>Kundenname, Angebotsdatum, Betrag</td>
+</tr>
+<tr>
+<td>Projektstart</td>
+<td>Nach Auftragserteilung</td>
+<td>Projekt, Ansprechpartner, Timeline</td>
+</tr>
+<tr>
+<td>Status-Update</td>
+<td>Wöchentlich/Monatlich</td>
+<td>Fortschritt, Meilensteine, Risiken</td>
+</tr>
+<tr>
+<td>Absage freundlich</td>
+<td>Bei Ablehnung</td>
+<td>Grund, Alternative, Tür offen</td>
+</tr>
+<tr>
+<td>Terminvorschlag</td>
+<td>Bei Terminbedarf</td>
+<td>3 Zeitslots, Dauer, Thema</td>
+</tr>
+<tr>
+<td>Krankmeldung</td>
+<td>Bei Krankheit</td>
+<td>Datum, Vertretung, Dringliches</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="ubungen">Übungen</h2>
+<h3 id="ubung-1-e-mail-typen-identifizieren">Übung 1: E-Mail-Typen identifizieren</h3>
+<p>Geh deine gesendeten Mails der letzten Woche durch. Welche 5 Typen kommen am häufigsten vor?</p>
+<h3 id="ubung-2-template-bibliothek-starten">Übung 2: Template-Bibliothek starten</h3>
+<p>Erstelle für deine Top-3-E-Mail-Typen je ein Template mit Platzhaltern. Teste jedes Template mit einem realen Szenario.</p>
+<h3 id="ubung-3-ton-anpassung">Übung 3: Ton-Anpassung</h3>
+<p>Nimm eine E-Mail und lass sie in 3 verschiedenen Tönen umschreiben (formell, locker, diplomatisch). Welche Unterschiede fallen dir auf?</p>
+<h3 id="ubung-4-schwierige-mail-beantworten">Übung 4: Schwierige Mail beantworten</h3>
+<p>Nimm eine E-Mail, auf die du nie geantwortet hast (weil sie unangenehm war). Lass 3 Antwort-Varianten generieren. Wähle eine und schick sie ab.</p>
+</section>
+<section class="chapter" id="ch-3">
+<h1 id="kapitel-3-meetings-kommunikation-ki-als-meeting-retter">Kapitel 3: Meetings &amp; Kommunikation – KI als Meeting-Retter</h1>
+<p>Meetings sind der natürliche Feind der Produktivität. Nicht weil sie unnötig sind – sondern weil sie schlecht vorbereitet, schlecht moderiert und schlecht nachbereitet werden. KI kann alle drei Probleme lösen.</p>
+<h2 id="vor-dem-meeting-agenda-erstellen">Vor dem Meeting: Agenda erstellen</h2>
+<p>Eine gute Agenda macht ein gutes Meeting. Die meisten Agenden sind zu vage (&ldquo;Projekt besprechen&rdquo;) oder zu lang (15 Punkte für 30 Minuten).</p>
+<p><em>&ldquo;Erstelle eine Meeting-Agenda. Teilnehmer: [Wer]. Dauer: [Minuten]. Ziel: [Was soll am Ende entschieden/geklärt sein?]. Hintergrund: [Kontext]. Struktur: Zeitblock pro Punkt, Verantwortlicher, erwartetes Ergebnis (Information/Diskussion/Entscheidung). Lass 5 Minuten Puffer am Ende.&rdquo;</em></p>
+<h3 id="die-goldene-regel-jeder-agendapunkt-hat-ein-verb">Die goldene Regel: Jeder Agendapunkt hat ein Verb</h3>
+<ul>
+<li><em>&ldquo;Entscheiden:</em> Budget für Q3 festlegen&rdquo; → klar</li>
+<li><em>&ldquo;Informieren:</em> Status Projekt Alpha&rdquo; → klar</li>
+<li><em>&ldquo;Besprechen:</em> Marketing&rdquo; → unklar, zu vage</li>
+</ul>
+<p>Lass KI vage Agendapunkte in klare umformulieren.</p>
+<h2 id="wahrend-des-meetings-protokoll-prompts">Während des Meetings: Protokoll-Prompts</h2>
+<h3 id="live-protokoll-aufbereiten">Live-Protokoll aufbereiten</h3>
+<p>Wenn du Notizen hast (stichwortartig, chaotisch), lass sie aufbereiten:</p>
+<p><em>&ldquo;Hier sind meine Meeting-Notizen: [Stichworte einfügen]. Erstelle ein strukturiertes Protokoll: Datum, Teilnehmer, Themen mit Key Points, Entscheidungen (fett markiert), Action Items (Wer macht Was bis Wann), offene Fragen. Max. 1 Seite.&rdquo;</em></p>
+<h3 id="audio-transkript-zusammenfassen">Audio-Transkript zusammenfassen</h3>
+<p>Viele Meeting-Tools erzeugen Transkripte. Diese sind lang und unstrukturiert. Der Prompt:</p>
+<p><em>&ldquo;Hier ist das Transkript eines 45-minütigen Meetings: [Transkript einfügen]. Erstelle: (1) Executive Summary (5 Sätze). (2) Alle Entscheidungen, die getroffen wurden. (3) Alle Action Items mit Verantwortlichem und Deadline. (4) Offene Punkte, die nicht geklärt wurden. (5) Stimmung/Dynamik (optional, 1 Satz).&rdquo;</em></p>
+<h2 id="nach-dem-meeting-follow-up">Nach dem Meeting: Follow-up</h2>
+<h3 id="action-items-nachverfolgen">Action Items nachverfolgen</h3>
+<p><em>&ldquo;Hier sind die Action Items aus dem letzten Meeting: [Liste]. Erstelle eine Follow-up-Mail an alle Teilnehmer. Für jeden Punkt: Was, Wer, Bis wann. Ton: Freundlich, verbindlich. Am Ende: Nächstes Meeting-Datum und Hinweis, dass Rückmeldung zu offenen Punkten bis [Datum] erwartet wird.&rdquo;</em></p>
+<h3 id="meeting-serien-effizient-gestalten">Meeting-Serien effizient gestalten</h3>
+<p>Für wiederkehrende Meetings (Weeklys, Monthlies):</p>
+<p><em>&ldquo;Hier ist das Protokoll vom letzten Weekly: [Protokoll]. Erstelle die Agenda für das nächste Weekly basierend auf: (1) Offene Action Items von letzter Woche. (2) Neue Themen: [deine Themen]. (3) Standard-Block: Kurze Runde &lsquo;Was steht diese Woche an?&rsquo;. Gesamtdauer: 30 Minuten.&rdquo;</em></p>
+<h2 id="prasentationen">Präsentationen</h2>
+<h3 id="slide-konzept-erstellen">Slide-Konzept erstellen</h3>
+<p><em>&ldquo;Erstelle ein Slide-Konzept für eine Präsentation. Thema: [Was]. Zielgruppe: [Wer]. Dauer: [Minuten]. Ziel: [Was soll die Zielgruppe danach wissen/tun?]. Für jede Slide: Titel, Kernaussage (1 Satz), 3-4 Bullet Points, Visualisierungsvorschlag (Chart/Bild/Diagramm). Max. [X] Slides.&rdquo;</em></p>
+<p>Die Regel für Business-Präsentationen: <strong>Eine Kernaussage pro Slide.</strong> Wenn du mehr als einen Gedanken auf einer Slide hast, brauchst du zwei Slides.</p>
+<h3 id="elevator-pitch">Elevator Pitch</h3>
+<p><em>&ldquo;Formuliere einen Elevator Pitch (30 Sekunden) für [Projekt/Produkt/Idee]. Zielgruppe: [Wer]. Problem → Lösung → Nutzen → Call to Action. Keine Fachbegriffe, keine Buzzwords. So, dass jemand ohne Kontext es versteht.&rdquo;</em></p>
+<p>Lass drei Varianten generieren: Eine fakten-basiert, eine story-basiert, eine provokant. Wähle die, die zu dir und deiner Zielgruppe passt.</p>
+<h2 id="interne-kommunikation">Interne Kommunikation</h2>
+<h3 id="ankundigungen">Ankündigungen</h3>
+<p>Gute Ankündigungen: Was ändert sich, warum, ab wann, was müssen die Leute tun, an wen bei Fragen.</p>
+<p><em>&ldquo;Schreibe eine interne Ankündigung. Änderung: [Was ändert sich?]. Grund: [Warum?]. Ab wann: [Datum]. Was Mitarbeiter tun müssen: [Konkrete Aktion]. FAQ: 3 erwartete Fragen mit Antworten. Ton: Transparent, sachlich, nicht beschönigend.&rdquo;</em></p>
+<h3 id="slack-teams-nachrichten">Slack-/Teams-Nachrichten</h3>
+<p>Im Chat gelten andere Regeln als in Mails. Kürzer, direkter, informeller. Aber: Auch Chat-Nachrichten können besser sein.</p>
+<p><em>&ldquo;Formuliere eine Slack-Nachricht an mein Team. Inhalt: [Was]. Ton: Locker aber klar. Max. 3 Sätze. Wenn Aktion nötig: Mit @mention und Deadline. Wenn nur Info: Entsprechend markieren.&rdquo;</em></p>
+<h2 id="schwierige-gesprache-vorbereiten">Schwierige Gespräche vorbereiten</h2>
+<h3 id="gehaltsverhandlung">Gehaltsverhandlung</h3>
+<p><em>&ldquo;Hilf mir, eine Gehaltsverhandlung vorzubereiten. Meine Position: [Rolle, Jahre Erfahrung, aktuelle Aufgaben]. Meine Argumente: [Leistungen, Marktvergleich, neue Verantwortung]. Mein Ziel: [Betrag oder Prozent]. Erstelle: Gesprächsleitfaden, 3 starke Argumente, Antworten auf typische Gegenargumente (&lsquo;kein Budget&rsquo;, &lsquo;nach der Probezeit&rsquo;), meine BATNA (Best Alternative).&rdquo;</em></p>
+<h3 id="kundigung-kommunizieren">Kündigung kommunizieren</h3>
+<p><em>&ldquo;Ich muss einem Mitarbeiter mitteilen, dass seine Stelle abgebaut wird. Situation: [Kontext]. Erstelle einen Gesprächsleitfaden: Wie eröffne ich, wie kommuniziere ich die Nachricht klar, wie gehe ich mit Emotionen um, welche nächsten Schritte, welche Unterstützung biete ich an. Ton: Respektvoll, direkt, empathisch.&rdquo;</em></p>
+<hr />
+<h2 id="ubungen">Übungen</h2>
+<h3 id="ubung-1-agenda-erstellen">Übung 1: Agenda erstellen</h3>
+<p>Erstelle für dein nächstes Meeting eine KI-generierte Agenda. Achte darauf, dass jeder Punkt ein Verb hat und ein erwartetes Ergebnis definiert ist.</p>
+<h3 id="ubung-2-protokoll-aufbereiten">Übung 2: Protokoll aufbereiten</h3>
+<p>Nimm Notizen von deinem letzten Meeting und lass sie in ein strukturiertes Protokoll umwandeln. Sind alle Action Items erfasst?</p>
+<h3 id="ubung-3-prasentations-konzept">Übung 3: Präsentations-Konzept</h3>
+<p>Erstelle ein Slide-Konzept für ein Thema, das du demnächst präsentieren musst. Hält sich jede Slide an die &ldquo;Eine Kernaussage&rdquo;-Regel?</p>
+<h3 id="ubung-4-elevator-pitch">Übung 4: Elevator Pitch</h3>
+<p>Formuliere einen 30-Sekunden-Pitch für dein aktuelles Projekt. Teste ihn an jemandem, der keinen Kontext hat.</p>
+</section>
+<section class="chapter" id="ch-4">
+<h1 id="kapitel-4-berichte-dokumentation-ki-als-ghostwriter">Kapitel 4: Berichte &amp; Dokumentation – KI als Ghostwriter</h1>
+<p>Berichte schreiben nervt. Nicht weil sie unwichtig sind – sondern weil sie immer gleich aufgebaut sind, sich nur in den Details unterscheiden und trotzdem jedes Mal Zeit fressen. Genau das macht sie zum perfekten KI-Anwendungsfall.</p>
+<h2 id="der-berichts-baukasten">Der Berichts-Baukasten</h2>
+<p>Jeder Bericht – egal ob Wochen-, Monats- oder Quartalsbericht – folgt demselben Grundschema:</p>
+<ol>
+<li><strong>Executive Summary</strong> – Das Wichtigste in 3-5 Sätzen</li>
+<li><strong>KPIs/Kennzahlen</strong> – Tabelle mit Ist vs. Plan vs. Vorperiode</li>
+<li><strong>Highlights</strong> – Was lief gut?</li>
+<li><strong>Herausforderungen</strong> – Was lief nicht gut?</li>
+<li><strong>Ursachenanalyse</strong> – Warum?</li>
+<li><strong>Empfehlungen</strong> – Was tun wir?</li>
+<li><strong>Ausblick</strong> – Was erwarten wir?</li>
+</ol>
+<p>Dieses Schema funktioniert für fast jeden Business-Bericht. Variiere die Tiefe je nach Zielgruppe.</p>
+<h2 id="wochenbericht">Wochenbericht</h2>
+<p><em>&ldquo;Erstelle einen Wochenbericht basierend auf diesen Informationen: [Daten/Notizen einfügen]. Zielgruppe: [Chef/Team/Vorstand]. Vergleich mit: Vorwoche. Executive Summary: 3 Sätze mit der wichtigsten Entwicklung. Highlights und Herausforderungen: je 2-3 Punkte. Action Items für nächste Woche. Max. 1 Seite.&rdquo;</em></p>
+<p><strong>Tipp:</strong> Führe unter der Woche eine Stichpunkt-Liste. Freitagnachmittag fütterst du sie an die KI – in 5 Minuten steht der Bericht.</p>
+<h2 id="monatsbericht">Monatsbericht</h2>
+<p>Mehr Tiefe, mehr Zahlen, mehr Kontext. Die Ergänzungen zum Wochenschema:</p>
+<ul>
+<li>Trends über den Monat (nicht nur Snapshot)</li>
+<li>Vergleich mit Vormonat UND Vorjahr</li>
+<li>Budgetabgleich (Ist vs. Plan)</li>
+<li>Teamleistung (wenn relevant)</li>
+<li>Risikobewertung für nächsten Monat</li>
+</ul>
+<p><em>&ldquo;Erstelle einen Monatsbericht für [ABTEILUNG]. Daten: [Monatsdaten einfügen]. Vergleiche mit Vormonat und Vorjahresmonat. KPIs als Tabelle mit Ampelfarben (rot/gelb/grün). Für rote KPIs: Ursache und Gegenmaßnahme. Ton: Sachlich, datengetrieben. Format: Management-freundlich, max. 2 Seiten.&rdquo;</em></p>
+<h2 id="dokumentation-und-sops">Dokumentation und SOPs</h2>
+<h3 id="standard-operating-procedures-sops">Standard Operating Procedures (SOPs)</h3>
+<p>SOPs dokumentieren, wie Prozesse ablaufen. KI kann aus deiner Beschreibung eine strukturierte SOP generieren:</p>
+<p><em>&ldquo;Erstelle eine SOP für [PROZESS]. Zielgruppe: Neue Mitarbeiter, die den Prozess zum ersten Mal durchführen. Struktur: Zweck → Voraussetzungen → Schritt-für-Schritt-Anleitung (nummeriert) → Häufige Fehler → FAQ → Ansprechpartner. Sprache: Klar, einfach, keine Abkürzungen ohne Erklärung. Wenn ein Schritt fehlen könnte: Markiere mit [PRÜFEN].&rdquo;</em></p>
+<h3 id="wissensdokumentation">Wissensdokumentation</h3>
+<p><em>&ldquo;Ich erkläre dir jetzt einen Prozess, den nur ich kenne. Frag mich aktiv nach, wenn etwas unklar ist. Am Ende erstellst du eine Dokumentation, die jemand anderes nutzen kann, um den Prozess ohne meine Hilfe durchzuführen.&rdquo;</em></p>
+<p>Das ist einer der mächtigsten Business-Prompts: <strong>Wissenstransfer per KI-Interview.</strong> Du redest, die KI fragt nach, am Ende steht die Dokumentation.</p>
+<h3 id="technische-dokumentation">Technische Dokumentation</h3>
+<p><em>&ldquo;Hier ist [Code/System/Prozess]. Erstelle eine Dokumentation mit: (1) Überblick – Was tut es, für wen? (2) Setup – Wie richtet man es ein? (3) Nutzung – Wie benutzt man es? (Häufigste Use Cases) (4) Troubleshooting – Was tun, wenn es nicht funktioniert? (5) Glossar – Fachbegriffe erklärt.&rdquo;</em></p>
+<h2 id="zusammenfassungen">Zusammenfassungen</h2>
+<h3 id="lange-dokumente-zusammenfassen">Lange Dokumente zusammenfassen</h3>
+<p><em>&ldquo;Fasse folgendes Dokument zusammen: [Dokument einfügen]. Erstelle drei Versionen: (1) Elevator-Version (3 Sätze). (2) Exec-Summary (1 Absatz). (3) Detaillierte Zusammenfassung (max. 1 Seite). Kernaussagen fett markieren.&rdquo;</em></p>
+<h3 id="research-zusammenfassungen">Research-Zusammenfassungen</h3>
+<p><em>&ldquo;Ich habe folgende 5 Artikel/Quellen gelesen: [Zusammenfassungen einfügen]. Erstelle eine Research-Zusammenfassung: Was sagen die Quellen übereinstimmend? Wo widersprechen sie sich? Was sind die 3 wichtigsten Erkenntnisse? Wo gibt es Wissenslücken?&rdquo;</em></p>
+<h2 id="formatierung-und-zielgruppen-anpassung">Formatierung und Zielgruppen-Anpassung</h2>
+<p>Derselbe Inhalt, verschiedene Zielgruppen:</p>
+<p><em>&ldquo;Formuliere diesen Bericht in 3 Versionen: (1) Für den Vorstand: Nur Zahlen und Entscheidungen, max. 10 Sätze. (2) Für das Team: Detaillierter, mit Kontext und nächsten Schritten. (3) Für den Kunden: Positiv geframt, professionell, ohne interne Details.&rdquo;</em></p>
+<h2 id="qualitatssicherung">Qualitätssicherung</h2>
+<p>KI-Berichte sind schnell, aber nicht fehlerfrei. Checkliste:</p>
+<ul>
+<li><strong>Zahlen verifiziert?</strong> KI kann Rechenfehler machen</li>
+<li><strong>Ton passt zur Zielgruppe?</strong> Vorstand ≠ Team ≠ Kunde</li>
+<li><strong>Keine vertraulichen Infos?</strong> Prüfe, ob die KI nichts hinzugefügt hat</li>
+<li><strong>Aussagen belegt?</strong> Keine Behauptungen ohne Daten</li>
+<li><strong>Empfehlungen realistisch?</strong> KI kennt dein Budget nicht</li>
+</ul>
+<hr />
+<h2 id="ubungen">Übungen</h2>
+<h3 id="ubung-1-wochenbericht-template">Übung 1: Wochenbericht-Template</h3>
+<p>Erstelle ein Wochenbericht-Template für deine Abteilung. Teste es mit echten Daten.</p>
+<h3 id="ubung-2-sop-erstellen">Übung 2: SOP erstellen</h3>
+<p>Dokumentiere einen Prozess, den nur du kennst. Nutze den KI-Interview-Ansatz.</p>
+<h3 id="ubung-3-zusammenfassung-in-3-versionen">Übung 3: Zusammenfassung in 3 Versionen</h3>
+<p>Nimm ein langes Dokument und lass es in Elevator-, Exec-Summary- und Detail-Version zusammenfassen.</p>
+<h3 id="ubung-4-zielgruppen-anpassung">Übung 4: Zielgruppen-Anpassung</h3>
+<p>Nimm einen bestehenden Bericht und lass ihn für eine andere Zielgruppe umschreiben.</p>
+</section>
+<section class="chapter" id="ch-5">
+<h1 id="kapitel-5-projektmanagement-ki-als-projektassistent">Kapitel 5: Projektmanagement – KI als Projektassistent</h1>
+<p>Projektmanagement ist Informationsarbeit: Pläne erstellen, Risiken identifizieren, Status kommunizieren, Retrospektiven moderieren. Alles Aufgaben, bei denen KI massiv unterstützen kann – nicht als Projektmanager, sondern als Assistent, der die Denkarbeit beschleunigt.</p>
+<h2 id="projektplanung">Projektplanung</h2>
+<h3 id="projektstrukturplan-work-breakdown-structure">Projektstrukturplan (Work Breakdown Structure)</h3>
+<p><em>&ldquo;Ich plane ein Projekt: [Beschreibung]. Erstelle einen Projektstrukturplan mit maximal 3 Ebenen. Ebene 1: Hauptarbeitspakete (5-8). Ebene 2: Teilarbeitspakete. Ebene 3: Konkrete Aufgaben. Für jede Aufgabe auf Ebene 3: Geschätzte Dauer, Abhängigkeiten, benötigte Ressourcen.&rdquo;</em></p>
+<p><strong>Tipp:</strong> Lass die KI auch fragen, was sie nicht weiß. <em>&ldquo;Welche Informationen brauchst du noch, um diesen Plan zu verbessern?&rdquo;</em> – oft kommen Fragen, an die du nicht gedacht hast.</p>
+<h3 id="meilensteinplanung">Meilensteinplanung</h3>
+<p><em>&ldquo;Basierend auf diesem Projektstrukturplan: [PSP einfügen]. Erstelle eine Meilensteinplanung mit: Meilenstein-Name, Datum, Kriterium für &lsquo;erledigt&rsquo; (messbar), Abhängigkeit von vorherigen Meilensteinen. Berücksichtige einen Puffer von 15% für Unvorhergesehenes.&rdquo;</em></p>
+<h3 id="timeline-erstellen">Timeline erstellen</h3>
+<p><em>&ldquo;Erstelle eine Timeline für [Projekt]. Startdatum: [Datum]. Deadline: [Datum]. Team: [Größe und Rollen]. Zeige: Arbeitspakete als Gantt-Beschreibung (textbasiert), kritischen Pfad markieren, Parallelisierungsmöglichkeiten identifizieren.&rdquo;</em></p>
+<h2 id="risikoanalyse">Risikoanalyse</h2>
+<p>Einer der stärksten KI-Anwendungsfälle: Risiken identifizieren, die du übersehen hast.</p>
+<p><em>&ldquo;Ich plane folgendes Projekt: [Beschreibung]. Erstelle eine Risikoanalyse: Identifiziere 8-10 Risiken. Für jedes Risiko: Beschreibung, Eintrittswahrscheinlichkeit (hoch/mittel/niedrig), Auswirkung (hoch/mittel/niedrig), Präventionsmaßnahme, Reaktionsmaßnahme. Sortiere nach Risikoscore (Wahrscheinlichkeit × Auswirkung). Welche 3 Risiken haben die höchste Priorität?&rdquo;</em></p>
+<p><strong>Profi-Tipp:</strong> <em>&ldquo;Denke auch an Risiken, die Projektmanager typischerweise übersehen: Teamdynamik, Scope Creep, versteckte Abhängigkeiten, Key-Person-Risiko.&rdquo;</em></p>
+<h2 id="status-updates">Status-Updates</h2>
+<h3 id="wochentliches-status-update">Wöchentliches Status-Update</h3>
+<p><em>&ldquo;Erstelle ein Projekt-Status-Update. Projekt: [Name]. Gesamtstatus: [Grün/Gelb/Rot]. Fortschritt diese Woche: [Stichpunkte]. Geplant nächste Woche: [Stichpunkte]. Blocker: [Falls vorhanden]. Risiken: [Neue oder veränderte]. Format: Max. 10 Bullet Points, Ampelfarben für Teilbereiche.&rdquo;</em></p>
+<h3 id="stakeholder-update">Stakeholder-Update</h3>
+<p>Für verschiedene Stakeholder verschiedene Updates:</p>
+<ul>
+<li><strong>Auftraggeber:</strong> Meilensteine, Budget, Timeline-Änderungen</li>
+<li><strong>Team:</strong> Nächste Aufgaben, Blocker, Entscheidungen</li>
+<li><strong>Management:</strong> Zusammenfassung, Risiken, Entscheidungsbedarf</li>
+</ul>
+<h2 id="retrospektiven">Retrospektiven</h2>
+<h3 id="sprint-retrospektive">Sprint-Retrospektive</h3>
+<p><em>&ldquo;Moderiere eine Retrospektive. Zeitraum: [Sprint/Quartal/Projekt]. Methode: [Start-Stop-Continue / 4L / Sailboat]. Teilnehmer: [Rollen]. Erstelle: (1) Einführung (2 Sätze, Zweck der Retro). (2) Fragen für jede Kategorie. (3) Vorlage für die Dokumentation der Ergebnisse. (4) Action-Item-Template (Was, Wer, Bis Wann). Ton: Konstruktiv, keine Schuldzuweisungen.&rdquo;</em></p>
+<h3 id="lessons-learned">Lessons Learned</h3>
+<p><em>&ldquo;Unser Projekt [Name] ist abgeschlossen. Hier ist eine Zusammenfassung: [Was lief gut, was nicht, Überraschungen]. Erstelle ein Lessons-Learned-Dokument: (1) Was haben wir gelernt? (3-5 Punkte). (2) Was würden wir beim nächsten Mal anders machen? (3) Was sollten wir beibehalten? (4) Empfehlungen für ähnliche Projekte. Format: Konkret und umsetzbar, keine Plattitüden.&rdquo;</em></p>
+<h2 id="ressourcenplanung">Ressourcenplanung</h2>
+<p><em>&ldquo;Ich habe folgende Teammitglieder: [Namen, Rollen, Verfügbarkeit]. Ich habe folgende Aufgaben: [Aufgabenliste mit geschätztem Aufwand]. Erstelle eine Ressourcenzuordnung: Wer macht was, wann? Wo gibt es Kapazitätsengpässe? Welche Aufgaben können parallelisiert werden? Wo brauche ich externe Unterstützung?&rdquo;</em></p>
+<h2 id="budgetplanung">Budgetplanung</h2>
+<p><em>&ldquo;Erstelle eine Budgetschätzung für [Projekt]. Kostenkategorien: Personal (intern + extern), Software/Lizenzen, Hardware, Reisen, Schulungen, Puffer. Für jede Kategorie: Geschätzter Betrag, Annahmen dahinter, Unsicherheitsspanne. Best Case / Base Case / Worst Case am Ende.&rdquo;</em></p>
+<hr />
+<h2 id="ubungen">Übungen</h2>
+<h3 id="ubung-1-projektstrukturplan">Übung 1: Projektstrukturplan</h3>
+<p>Erstelle einen PSP für ein aktuelles oder geplantes Projekt. Lass die KI auch fragen, was sie noch braucht.</p>
+<h3 id="ubung-2-risikoanalyse">Übung 2: Risikoanalyse</h3>
+<p>Führe eine KI-gestützte Risikoanalyse für ein Projekt durch. Sind die identifizierten Risiken realistisch?</p>
+<h3 id="ubung-3-retrospektive-vorbereiten">Übung 3: Retrospektive vorbereiten</h3>
+<p>Bereite eine Retrospektive für dein Team vor. Nutze die generierten Fragen wirklich im nächsten Meeting.</p>
+<h3 id="ubung-4-status-update-in-3-versionen">Übung 4: Status-Update in 3 Versionen</h3>
+<p>Erstelle ein Status-Update und lass es für 3 verschiedene Stakeholder anpassen.</p>
+</section>
+<section class="chapter" id="ch-6">
+<h1 id="kapitel-6-team-standards-fur-prompting-ki-als-teamfahigkeit">Kapitel 6: Team-Standards für Prompting – KI als Teamfähigkeit</h1>
+<p>Wenn nur du KI nutzt, sparst du Zeit. Wenn dein ganzes Team KI nutzt – mit Standards – multipliziert sich der Effekt. Aber ohne Standards wird es chaotisch: Jeder promptet anders, die Ergebnisqualität schwankt, und niemand lernt von den anderen.</p>
+<h2 id="warum-team-standards">Warum Team-Standards?</h2>
+<p>Drei Probleme ohne Standards:</p>
+<ol>
+<li><strong>Qualitätsschwankungen:</strong> Der eine Kollege bekommt brillante Ergebnisse, der andere Müll – weil er den Prompt anders formuliert</li>
+<li><strong>Wissensinseln:</strong> Jeder entwickelt eigene Tricks, aber niemand teilt sie</li>
+<li><strong>Datenschutz-Risiken:</strong> Jemand kopiert Kundendaten in ChatGPT, ohne nachzudenken</li>
+</ol>
+<h2 id="der-prompt-style-guide">Der Prompt-Style-Guide</h2>
+<p>Wie ein Code-Style-Guide für Entwickler – nur für Prompts.</p>
+<h3 id="inhalt-eines-prompt-style-guides">Inhalt eines Prompt-Style-Guides</h3>
+<p><strong>1. Erlaubte Tools:</strong> Welche KI-Tools darf das Team nutzen? (Welche sind für sensible Daten zugelassen, welche nur für allgemeine Aufgaben?)</p>
+<p><strong>2. Datenschutz-Regeln:</strong>
+- Welche Daten dürfen in KI-Tools eingegeben werden?
+- Welche NIEMALS? (Kundendaten, Personaldaten, Finanzdaten, Passwörter)
+- Gibt es freigegebene Enterprise-Versionen?</p>
+<p><strong>3. Prompt-Struktur:</strong> Einheitliches Format für alle Team-Prompts:</p>
+<div class="highlight"><pre><span></span><code>ROLLE: [Wer soll die KI sein?]
+AUFGABE: [Was soll sie tun?]
+KONTEXT: [Hintergrund-Informationen]
+FORMAT: [Wie soll das Ergebnis aussehen?]
+EINSCHRÄNKUNGEN: [Was soll sie NICHT tun?]
+</code></pre></div>
+
+<p><strong>4. Qualitätsregeln:</strong>
+- Jedes KI-Ergebnis wird von einem Menschen geprüft
+- Zahlen und Fakten werden verifiziert
+- KI-generierte Texte werden vor dem Versand personalisiert
+- Bei externen Texten: KI-Nutzung kennzeichnen (wenn verlangt)</p>
+<p><strong>5. Do&rsquo;s und Don&rsquo;ts:</strong></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Do</th>
+<th>Don&rsquo;t</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Kontext geben</td>
+<td>&ldquo;Schreib mir was über X&rdquo;</td>
+</tr>
+<tr>
+<td>Ergebnis prüfen</td>
+<td>Blind kopieren</td>
+</tr>
+<tr>
+<td>Templates teilen</td>
+<td>Jeder für sich</td>
+</tr>
+<tr>
+<td>Feedback an KI geben</td>
+<td>Beim ersten Ergebnis aufhören</td>
+</tr>
+<tr>
+<td>Sensible Daten anonymisieren</td>
+<td>Echtdaten einfügen</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="die-prompt-bibliothek">Die Prompt-Bibliothek</h2>
+<p>Eine zentrale Sammlung getesteter Prompt-Templates für wiederkehrende Aufgaben.</p>
+<h3 id="aufbau-der-bibliothek">Aufbau der Bibliothek</h3>
+<p>Für jedes Template:</p>
+<ul>
+<li><strong>Name:</strong> Eindeutig, beschreibend (z.B. &ldquo;Kunden-Follow-up nach Angebot&rdquo;)</li>
+<li><strong>Kategorie:</strong> E-Mail / Bericht / Planung / Analyse / Kreativ</li>
+<li><strong>Wann nutzen:</strong> In welcher Situation?</li>
+<li><strong>Platzhalter:</strong> Was muss eingefügt werden?</li>
+<li><strong>Beispiel-Input:</strong> Ein konkretes Beispiel</li>
+<li><strong>Beispiel-Output:</strong> Was kommt raus?</li>
+<li><strong>Getestet von:</strong> Wer hat es getestet und für gut befunden?</li>
+<li><strong>Letztes Update:</strong> Wann zuletzt geprüft?</li>
+</ul>
+<h3 id="wo-speichern">Wo speichern?</h3>
+<ul>
+<li><strong>Notion-Datenbank</strong> – Filterable, durchsuchbar, Tags</li>
+<li><strong>Google Sheets</strong> – Einfach, kollaborativ, niedrige Einstiegshürde</li>
+<li><strong>Confluence/Wiki</strong> – Für größere Teams mit bestehender Doku-Infrastruktur</li>
+<li><strong>Dedizierte Tools</strong> – PromptLayer, Promptbase, eigene Lösungen</li>
+</ul>
+<h3 id="bibliothek-aktuell-halten">Bibliothek aktuell halten</h3>
+<p>Templates veralten. Modelle werden besser, Workflows ändern sich. Einmal pro Quartal: Review aller Templates. Welche funktionieren noch? Welche brauchen Updates? Welche sind überflüssig?</p>
+<h2 id="ki-onboarding-fur-neue-mitarbeiter">KI-Onboarding für neue Mitarbeiter</h2>
+<p>Neue Teammitglieder brauchen KI-Onboarding – genauso wie Tool-Onboarding.</p>
+<h3 id="onboarding-plan-fur-ki">Onboarding-Plan für KI</h3>
+<p><strong>Tag 1:</strong> KI-Grundlagen (Welche Tools nutzen wir? Was darf rein, was nicht?)
+<strong>Woche 1:</strong> Prompt-Bibliothek zeigen, 3-5 Templates ausprobieren
+<strong>Woche 2:</strong> Eigene Workflows identifizieren und erste Templates anpassen
+<strong>Monat 1:</strong> Feedback-Runde – was funktioniert, was nicht?</p>
+<h3 id="ki-champion-im-team">KI-Champion im Team</h3>
+<p>Bestimme eine Person als KI-Champion. Sie ist verantwortlich für:
+- Prompt-Bibliothek pflegen
+- Neue Techniken evaluieren und teilen
+- KI-Office-Hours (30 Min pro Woche, Fragen beantworten)
+- Datenschutz-Compliance sicherstellen</p>
+<h2 id="prompt-reviews">Prompt-Reviews</h2>
+<p>Wie Code-Reviews – nur für Prompts:</p>
+<p><em>&ldquo;Hier ist ein Prompt-Template, das mein Kollege erstellt hat: [Prompt]. Bewerte: (1) Ist die Aufgabe klar? (2) Sind genug Kontext-Informationen vorhanden? (3) Ist das Output-Format spezifiziert? (4) Gibt es Datenschutz-Bedenken? (5) Ist es wiederverwendbar? Verbesserungsvorschläge?&rdquo;</em></p>
+<h2 id="messbare-ergebnisse">Messbare Ergebnisse</h2>
+<h3 id="ki-roi-messen">KI-ROI messen</h3>
+<p>Einfacher als du denkst:</p>
+<ol>
+<li><strong>Zeitersparnis pro Aufgabe:</strong> Manuell vs. KI-gestützt messen</li>
+<li><strong>Qualität:</strong> Sind die Ergebnisse besser, gleich oder schlechter?</li>
+<li><strong>Adoption:</strong> Wie viele Teammitglieder nutzen die Templates regelmäßig?</li>
+<li><strong>Kostenersparnis:</strong> Zeitersparnis × Stundensatz = €€€</li>
+</ol>
+<h3 id="beispielrechnung">Beispielrechnung</h3>
+<p>5 Teammitglieder × 3 Stunden/Woche Zeitersparnis × 50€/Stunde × 48 Wochen = <strong>36.000€/Jahr</strong></p>
+<p>Das ist konservativ gerechnet. Und die Qualitätsverbesserung ist da noch nicht eingepreist.</p>
+<hr />
+<h2 id="ubungen">Übungen</h2>
+<h3 id="ubung-1-prompt-style-guide-erstellen">Übung 1: Prompt-Style-Guide erstellen</h3>
+<p>Erstelle einen Prompt-Style-Guide für dein Team. Definiere Datenschutz-Regeln, Prompt-Struktur und Do&rsquo;s/Don&rsquo;ts.</p>
+<h3 id="ubung-2-prompt-bibliothek-starten">Übung 2: Prompt-Bibliothek starten</h3>
+<p>Erstelle die ersten 5 Templates für die häufigsten Aufgaben deines Teams. Dokumentiere sie vollständig.</p>
+<h3 id="ubung-3-ki-onboarding">Übung 3: KI-Onboarding</h3>
+<p>Erstelle einen KI-Onboarding-Plan für neue Mitarbeiter in deinem Team.</p>
+<h3 id="ubung-4-roi-berechnen">Übung 4: ROI berechnen</h3>
+<p>Miss die Zeitersparnis für 3 Aufgaben (manuell vs. KI). Rechne auf das Jahr hoch.</p>
+</section>
+<section class="chapter" id="ch-7">
+<h1 id="kapitel-7-entscheidungsunterstutzung-ki-als-sparringspartner">Kapitel 7: Entscheidungsunterstützung – KI als Sparringspartner</h1>
+<p>Die wichtigste Business-Fähigkeit ist Entscheidungen treffen. Nicht perfekte Entscheidungen – sondern gute Entscheidungen unter Unsicherheit und Zeitdruck. KI kann dich nicht ersetzen, aber sie kann dich besser vorbereiten.</p>
+<h2 id="ki-als-devils-advocate">KI als Devil&rsquo;s Advocate</h2>
+<p>Der wertvollste Einsatz: <strong>Lass die KI gegen dich argumentieren.</strong></p>
+<p><em>&ldquo;Ich überlege, [Entscheidung X] zu treffen. Hier sind meine Gründe: [Argumente]. Spiele den Devil&rsquo;s Advocate: Was spricht dagegen? Welche Risiken übersehe ich? Welche Annahmen könnten falsch sein? Welche alternativen Erklärungen gibt es für die Daten, auf denen meine Entscheidung basiert?&rdquo;</em></p>
+<p>Das funktioniert, weil wir alle Confirmation Bias haben – wir suchen nach Bestätigung für das, was wir ohnehin glauben. KI hat keinen Confirmation Bias (sie hat andere Biases, aber nicht diesen).</p>
+<h2 id="entscheidungs-frameworks">Entscheidungs-Frameworks</h2>
+<h3 id="procontra-analyse-strukturiert">Pro/Contra-Analyse (strukturiert)</h3>
+<p><em>&ldquo;Erstelle eine strukturierte Pro/Contra-Analyse für: [Entscheidung]. Für jedes Argument: Gewicht (1-5, wie wichtig ist es?), Reversibilität (Kann man das rückgängig machen?), Zeithorizont (Kurzfristig/Langfristig). Am Ende: Gewichtete Empfehlung.&rdquo;</em></p>
+<h3 id="entscheidungsmatrix">Entscheidungsmatrix</h3>
+<p><em>&ldquo;Ich muss zwischen [Option A], [Option B] und [Option C] wählen. Meine Kriterien: [Kriterium 1, 2, 3, 4, 5]. Erstelle eine Entscheidungsmatrix: Jede Option gegen jedes Kriterium bewerten (1-10). Kriterien gewichten (Summe = 100%). Gewichtete Gesamtpunktzahl berechnen. Empfehlung mit Begründung.&rdquo;</em></p>
+<h3 id="szenario-analyse">Szenario-Analyse</h3>
+<p><em>&ldquo;Ich plane [Entscheidung]. Erstelle drei Szenarien: (1) Best Case: Alles läuft optimal. Was passiert? (2) Base Case: Realistischstes Szenario. Was passiert? (3) Worst Case: Murphy&rsquo;s Law. Was passiert und wie schlimm ist es? Für jedes Szenario: Wahrscheinlichkeit (%), Konsequenzen, nötige Vorbereitungen.&rdquo;</em></p>
+<h3 id="pre-mortem">Pre-Mortem</h3>
+<p>Eines der mächtigsten Entscheidungs-Tools. Statt zu fragen &ldquo;Was könnte schiefgehen?&rdquo; fragst du: &ldquo;Es ist schiefgegangen. Warum?&rdquo;</p>
+<p><em>&ldquo;Stell dir vor, wir haben [Entscheidung] getroffen und es ist 6 Monate später. Das Projekt ist gescheitert. Schreibe einen Bericht aus der Zukunft: Was ist schiefgelaufen? Welche Warnsignale haben wir ignoriert? Was hätten wir anders machen sollen?&rdquo;</em></p>
+<h3 id="second-order-thinking">Second-Order Thinking</h3>
+<p><em>&ldquo;Wenn wir [Entscheidung] treffen: Was sind die unmittelbaren Konsequenzen (erste Ordnung)? Was sind die Konsequenzen der Konsequenzen (zweite Ordnung)? Und was sind die langfristigen Auswirkungen (dritte Ordnung)? Beispiel: Preis erhöhen → weniger Kunden (1. Ordnung) → höherer Umsatz pro Kunde (2. Ordnung) → Premium-Positionierung (3. Ordnung).&rdquo;</em></p>
+<h2 id="daten-interpretieren">Daten interpretieren</h2>
+<h3 id="zahlen-in-kontext-setzen">Zahlen in Kontext setzen</h3>
+<p><em>&ldquo;Hier sind unsere KPIs: [Zahlen]. Hilf mir, diese Zahlen zu interpretieren: Sind sie gut oder schlecht? Im Vergleich zu was? (Branche, Vorjahr, Plan). Welche Zahl ist die wichtigste und warum? Was fehlt in den Daten? Welche Fragen kann ich mit diesen Daten NICHT beantworten?&rdquo;</em></p>
+<h3 id="korrelation-vs-kausalitat">Korrelation vs. Kausalität</h3>
+<p><em>&ldquo;Wir beobachten: [Beobachtung, z.B. &lsquo;Umsatz steigt, wenn wir mehr Social Media Posts machen&rsquo;]. Ist das Kausalität oder Korrelation? Welche anderen Erklärungen könnte es geben? Welche Daten bräuchte ich, um Kausalität zu belegen?&rdquo;</em></p>
+<h2 id="strategische-analyse">Strategische Analyse</h2>
+<h3 id="swot-analyse">SWOT-Analyse</h3>
+<p><em>&ldquo;Erstelle eine SWOT-Analyse für [Unternehmen/Produkt/Projekt]. Kontext: [Branche, Marktlage, Wettbewerber]. Für jede Kategorie (Strengths, Weaknesses, Opportunities, Threats): 3-5 konkrete Punkte mit Begründung. Am Ende: Welche Stärke-Chancen-Kombination hat das größte Potenzial? Welche Schwäche-Bedrohung-Kombination ist das größte Risiko?&rdquo;</em></p>
+<h3 id="pricing-entscheidungen">Pricing-Entscheidungen</h3>
+<p><em>&ldquo;Ich überlege, den Preis von [Produkt] von [X€] auf [Y€] zu ändern. Aktuelle Kunden: [Anzahl]. Aktueller Umsatz: [Betrag]. Analysiere: Break-Even – wie viele Kunden darf ich verlieren? Preiswahrnehmung – wie wirkt die Änderung? Wettbewerbsreaktion – was könnten Wettbewerber tun? Empfehlung: Sofort, gestaffelt oder gar nicht?&rdquo;</em></p>
+<h2 id="die-grenzen-der-ki-entscheidungsunterstutzung">Die Grenzen der KI-Entscheidungsunterstützung</h2>
+<p>KI kennt weder dein Unternehmen noch deine Kunden persönlich. Sie hat kein Bauchgefühl. Sie kann nicht einschätzen, ob dein Team die Veränderung mitmacht. Sie weiß nicht, welche politischen Dynamiken im Unternehmen herrschen.</p>
+<p><strong>KI ist ein Werkzeug zum Denken, kein Ersatz fürs Denken.</strong> Nutze sie, um blinde Flecken zu finden, Argumente zu strukturieren und Szenarien durchzuspielen. Die Entscheidung triffst du.</p>
+<hr />
+<h2 id="ubungen">Übungen</h2>
+<h3 id="ubung-1-devils-advocate">Übung 1: Devil&rsquo;s Advocate</h3>
+<p>Nimm eine Entscheidung, die du kürzlich getroffen hast. Lass die KI dagegen argumentieren. Hat sie einen Punkt, den du übersehen hast?</p>
+<h3 id="ubung-2-entscheidungsmatrix">Übung 2: Entscheidungsmatrix</h3>
+<p>Erstelle eine gewichtete Entscheidungsmatrix für eine anstehende Entscheidung mit 3 Optionen und 5 Kriterien.</p>
+<h3 id="ubung-3-pre-mortem">Übung 3: Pre-Mortem</h3>
+<p>Führe ein Pre-Mortem für ein aktuelles Projekt durch. Welche Risiken tauchen auf, an die du nicht gedacht hast?</p>
+<h3 id="ubung-4-second-order-thinking">Übung 4: Second-Order Thinking</h3>
+<p>Nimm eine geplante Änderung und analysiere die Konsequenzen bis zur dritten Ordnung.</p>
+</section>
+<section class="chapter" id="ch-8">
+<h1 id="kapitel-8-personliche-produktivitat-ki-als-personal-assistant">Kapitel 8: Persönliche Produktivität – KI als Personal Assistant</h1>
+<p>Bisher ging es um Team- und Business-Aufgaben. Dieses Kapitel ist für dich persönlich. Wie nutzt du KI, um deinen Arbeitstag effizienter zu gestalten, schneller zu lernen und weniger Stress zu haben?</p>
+<h2 id="zeitmanagement-mit-ki">Zeitmanagement mit KI</h2>
+<h3 id="tagesplanung">Tagesplanung</h3>
+<p><em>&ldquo;Hier sind meine Aufgaben für heute: [Liste]. Geschätzte Dauer für jede Aufgabe: [Zeiten]. Mein Tag geht von [Uhrzeit] bis [Uhrzeit], ich habe Meetings um [Zeiten]. Erstelle einen Tagesplan: Wichtigste Aufgabe in die produktivste Zeit (vormittags), leichtere Aufgaben um Meetings herum, Puffer einplanen. Markiere die Top-3 &lsquo;Must do today&rsquo; und die &lsquo;Nice to have&rsquo;.&rdquo;</em></p>
+<h3 id="wochenplanung">Wochenplanung</h3>
+<p><em>&ldquo;Hier sind meine Aufgaben und Ziele für diese Woche: [Liste]. Deadlines: [Fristen]. Wiederkehrende Termine: [Meetings]. Erstelle eine Wochenplanung: Verteile Aufgaben auf Tage, berücksichtige Abhängigkeiten, plane einen &lsquo;Puffer-Nachmittag&rsquo; ein. Welche Aufgaben kann ich delegieren? Welche kann ich streichen?&rdquo;</em></p>
+<h3 id="die-eisenhower-matrix-automatisieren">Die Eisenhower-Matrix automatisieren</h3>
+<p><em>&ldquo;Sortiere folgende Aufgaben in die Eisenhower-Matrix: [Aufgabenliste]. Für jede Aufgabe: (1) Dringend + Wichtig → Sofort tun. (2) Wichtig + Nicht dringend → Planen. (3) Dringend + Nicht wichtig → Delegieren. (4) Weder noch → Streichen. Begründe kurz jede Einsortierung.&rdquo;</em></p>
+<h2 id="priorisierung">Priorisierung</h2>
+<h3 id="die-1-3-5-methode">Die 1-3-5-Methode</h3>
+<p><em>&ldquo;Ich habe heute zu viel auf dem Tisch. Hier sind alle meine offenen Aufgaben: [Liste]. Hilf mir, nach der 1-3-5-Methode zu priorisieren: 1 große Aufgabe (die ich heute abschließe), 3 mittlere Aufgaben (die ich voranbringen), 5 kleine Aufgaben (die ich nebenbei erledigen kann). Der Rest kommt auf &lsquo;Morgen&rsquo; oder &lsquo;Diese Woche&rsquo;.&rdquo;</em></p>
+<h3 id="wenn-alles-dringend-ist">Wenn alles dringend ist</h3>
+<p><em>&ldquo;Mein Chef sagt, alles ist dringend. Hier sind die Aufgaben: [Liste]. Hilf mir, trotzdem zu priorisieren: Für jede Aufgabe: Was passiert, wenn sie NICHT bis heute erledigt wird? Wer wartet darauf? Wie lange dauert sie? Kann jemand anderes sie übernehmen? Sortiere nach tatsächlicher Dringlichkeit, nicht nach gefühlter.&rdquo;</em></p>
+<h2 id="lernen-mit-ki">Lernen mit KI</h2>
+<h3 id="neue-themen-schnell-verstehen">Neue Themen schnell verstehen</h3>
+<p><em>&ldquo;Ich muss mich schnell in [Thema] einarbeiten. Ich habe [Zeitrahmen]. Mein Vorwissen: [Niveau]. Erstelle einen Lernplan: Was muss ich ZUERST verstehen (Grundlagen)? Was als Zweites (Aufbau)? Was ist &lsquo;Nice to know&rsquo; (kann warten)? Für jeden Block: Kernkonzepte in 3-5 Sätzen und eine gute Ressource.&rdquo;</em></p>
+<h3 id="feynman-technik-mit-ki">Feynman-Technik mit KI</h3>
+<p><em>&ldquo;Ich versuche, [Konzept] zu verstehen. Ich erkläre es dir jetzt in meinen Worten: [Deine Erklärung]. Identifiziere: Wo habe ich Recht? Wo liege ich falsch? Wo sind Lücken in meinem Verständnis? Erkläre die Lücken einfach und verständlich.&rdquo;</em></p>
+<h3 id="meeting-vorbereitung">Meeting-Vorbereitung</h3>
+<p><em>&ldquo;Ich habe morgen ein Meeting über [Thema]. Meine Rolle: [Rolle]. Ich muss: [Was wird von mir erwartet?]. Bereite mich vor: Die 5 wichtigsten Punkte, die ich kennen muss. 3 Fragen, die wahrscheinlich gestellt werden (mit guten Antworten). 2 kluge Fragen, die ich stellen kann.&rdquo;</em></p>
+<h2 id="texte-schneller-schreiben">Texte schneller schreiben</h2>
+<h3 id="erste-entwurf-beschleuniger">Erste-Entwurf-Beschleuniger</h3>
+<p>Der größte Zeitfresser beim Schreiben: Die leere Seite. KI löst das:</p>
+<p><em>&ldquo;Ich muss [Textart] schreiben. Thema: [Was]. Zielgruppe: [Wer]. Länge: [Wie lang]. Erstelle einen ersten Entwurf. Ich werde ihn danach überarbeiten und meine Stimme reinbringen. Markiere Stellen, die ich wahrscheinlich anpassen muss, mit [ANPASSEN].&rdquo;</em></p>
+<h3 id="text-uberarbeiten">Text überarbeiten</h3>
+<p><em>&ldquo;Hier ist mein Text: [Text einfügen]. Überarbeite: (1) Kürze um 30%. (2) Ersetze Passiv-Konstruktionen durch Aktiv. (3) Ersetze Nominalstil durch Verben (&lsquo;Die Durchführung der Analyse&rsquo; → &lsquo;Wir analysieren&rsquo;). (4) Entferne Füllwörter. Zeige mir Vorher/Nachher für jede Änderung.&rdquo;</em></p>
+<h3 id="e-mail-in-60-sekunden">E-Mail in 60 Sekunden</h3>
+<p>Für die Mails, die nicht in deine Template-Bibliothek passen: Drei-Satz-Prompt – Empfänger, Ziel, Ton. KI liefert in 10 Sekunden. Du passt in 30 Sekunden an. 20 Sekunden Puffer. Fertig.</p>
+<h2 id="stressreduktion">Stressreduktion</h2>
+<h3 id="gedanken-sortieren">Gedanken sortieren</h3>
+<p><em>&ldquo;Ich bin gerade überwältigt. Hier ist alles, was in meinem Kopf ist: [Brain Dump – alles rausschreiben, unstrukturiert]. Hilf mir, Ordnung reinzubringen: Sortiere nach Kategorien. Identifiziere, was ich kontrollieren kann und was nicht. Schlage 3 konkrete erste Schritte vor, die mich voranbringen.&rdquo;</em></p>
+<h3 id="schwierige-gesprache-vorbereiten">Schwierige Gespräche vorbereiten</h3>
+<p><em>&ldquo;Ich muss ein schwieriges Gespräch führen mit [Person, Kontext]. Ich fühle [Emotion]. Ich will erreichen [Ziel]. Hilf mir: Wie eröffne ich? Was sage ich, wenn [typische Reaktion]? Wie bleibe ich sachlich, wenn es emotional wird? Was ist mein &lsquo;Walk-away-Punkt&rsquo;?&rdquo;</em></p>
+<h2 id="die-personliche-ki-routine">Die persönliche KI-Routine</h2>
+<h3 id="morgenroutine-5-minuten">Morgenroutine (5 Minuten)</h3>
+<ol>
+<li>Aufgabenliste in KI → priorisiert und geplant</li>
+<li>Kalender checken → Meeting-Vorbereitung für den wichtigsten Termin</li>
+</ol>
+<h3 id="uber-den-tag">Über den Tag</h3>
+<ol>
+<li>E-Mails mit Templates beantworten</li>
+<li>Notizen direkt in KI für Protokolle</li>
+</ol>
+<h3 id="feierabendroutine-3-minuten">Feierabendroutine (3 Minuten)</h3>
+<ol>
+<li>Was habe ich geschafft? → Stichpunkte für Wochenbericht</li>
+<li>Was steht morgen an? → Grobe Planung</li>
+</ol>
+<p><strong>Total: ~8 Minuten KI-Zeit pro Tag.</strong> Geschätzte Zeitersparnis: 1-2 Stunden pro Tag.</p>
+<hr />
+<h2 id="ubungen">Übungen</h2>
+<h3 id="ubung-1-tagesplanung">Übung 1: Tagesplanung</h3>
+<p>Plane deinen morgigen Tag mit KI. Hältst du dich an den Plan? Was war realistisch, was nicht?</p>
+<h3 id="ubung-2-eisenhower-matrix">Übung 2: Eisenhower-Matrix</h3>
+<p>Erstelle eine Eisenhower-Matrix für alle deine offenen Aufgaben. Wie viel davon ist wirklich &ldquo;dringend UND wichtig&rdquo;?</p>
+<h3 id="ubung-3-feynman-technik">Übung 3: Feynman-Technik</h3>
+<p>Erkläre ein Konzept aus deinem Fachgebiet der KI. Wo findet sie Lücken in deinem Verständnis?</p>
+<h3 id="ubung-4-morgenroutine-starten">Übung 4: Morgenroutine starten</h3>
+<p>Probiere die 5-Minuten-Morgenroutine eine Woche lang aus. Was verändert sich?</p>
+</section>
+<section class="chapter" id="ch-9">
+<h1 id="kapitel-9-ki-strategie-fur-unternehmen-vom-experiment-zur-institution">Kapitel 9: KI-Strategie für Unternehmen – Vom Experiment zur Institution</h1>
+<p>Einzelne Mitarbeiter, die KI nutzen, sind nett. Ein Unternehmen, das KI strategisch einsetzt, ist transformativ. Aber zwischen &ldquo;ein paar Leute nutzen ChatGPT&rdquo; und &ldquo;KI ist Teil unserer Wertschöpfung&rdquo; liegt ein Weg, den die meisten Unternehmen noch nicht gegangen sind.</p>
+<h2 id="der-ki-reifegrad">Der KI-Reifegrad</h2>
+<h3 id="stufe-1-experimentell">Stufe 1: Experimentell</h3>
+<p>Einzelne Mitarbeiter nutzen KI privat. Kein Standard, keine Governance, keine Messung. <em>&ldquo;Der Kollege aus dem Marketing nutzt das.&rdquo;</em></p>
+<h3 id="stufe-2-projektbezogen">Stufe 2: Projektbezogen</h3>
+<p>Ein Pilotprojekt läuft. KI wird für einen konkreten Use Case eingesetzt und evaluiert. <em>&ldquo;Wir testen das mal für unseren Kundenservice.&rdquo;</em></p>
+<h3 id="stufe-3-abteilungsubergreifend">Stufe 3: Abteilungsübergreifend</h3>
+<p>Mehrere Abteilungen nutzen KI mit Standards. Prompt-Bibliothek, Datenschutz-Richtlinien, erste Schulungen. <em>&ldquo;KI ist ein offizielles Tool.&rdquo;</em></p>
+<h3 id="stufe-4-strategisch">Stufe 4: Strategisch</h3>
+<p>KI ist in Kernprozesse integriert. Automatisierte Workflows, Entscheidungsunterstützung, messbarer ROI. <em>&ldquo;Ohne KI wären wir langsamer und teurer.&rdquo;</em></p>
+<h3 id="stufe-5-transformativ">Stufe 5: Transformativ</h3>
+<p>KI ermöglicht neue Geschäftsmodelle, Produkte oder Services, die ohne KI nicht möglich wären. <em>&ldquo;KI ist unser Wettbewerbsvorteil.&rdquo;</em></p>
+<p>Die meisten Unternehmen (März 2026) sind zwischen Stufe 1 und 2. Der Sprung zu Stufe 3 ist der wichtigste – und der machbarste.</p>
+<h2 id="das-pilotprojekt">Das Pilotprojekt</h2>
+<h3 id="den-richtigen-use-case-finden">Den richtigen Use Case finden</h3>
+<p><em>&ldquo;Ich möchte KI in meinem Unternehmen einführen. Branche: [Branche]. Größe: [Mitarbeiter]. Typische Aufgaben: [Aufzählung der wiederkehrenden Aufgaben]. Identifiziere die 5 besten Kandidaten für ein KI-Pilotprojekt. Kriterien: Hohe Wiederholungsfrequenz, klar definierter Output, niedriges Risiko bei Fehlern, schnell messbare Ergebnisse.&rdquo;</em></p>
+<h3 id="pilot-kriterien">Pilot-Kriterien</h3>
+<p>Ein guter erster Use Case:
+- <strong>Niedrig-Risiko:</strong> Fehler haben keine gravierenden Konsequenzen
+- <strong>Hoch-Frequenz:</strong> Wird oft gemacht (täglich/wöchentlich)
+- <strong>Klar messbar:</strong> Du kannst Vorher/Nachher vergleichen
+- <strong>Sichtbar:</strong> Andere sehen den Erfolg und wollen auch</p>
+<p>Beispiele: E-Mail-Vorlagen, Meeting-Protokolle, FAQ-Antworten, interne Dokumentation.</p>
+<h3 id="pilot-durchfuhren-8-wochen-plan">Pilot durchführen (8-Wochen-Plan)</h3>
+<p><strong>Woche 1-2:</strong> Setup (Tool auswählen, Accounts einrichten, Datenschutz klären)
+<strong>Woche 3-4:</strong> Training (Team schulen, Templates erstellen, erste Anwendung)
+<strong>Woche 5-6:</strong> Anwendung (Tägliche Nutzung, Feedback sammeln, Templates verfeinern)
+<strong>Woche 7-8:</strong> Evaluierung (Zeitersparnis messen, Qualität bewerten, Kosten berechnen)</p>
+<h2 id="roi-berechnen">ROI berechnen</h2>
+<h3 id="die-einfache-formel">Die einfache Formel</h3>
+<p><strong>KI-ROI = (Zeitersparnis × Stundensatz) – KI-Kosten</strong></p>
+<p>Beispiel:
+- 10 Mitarbeiter sparen je 2 Stunden/Woche
+- Stundensatz: 60€ (inkl. Nebenkosten)
+- 10 × 2h × 60€ × 48 Wochen = <strong>57.600€/Jahr</strong> Ersparnis
+- KI-Tool-Kosten: 10 × 20€/Monat × 12 = <strong>2.400€/Jahr</strong>
+- <strong>ROI: 55.200€/Jahr</strong> (2.300% Return)</p>
+<h3 id="versteckte-kosten">Versteckte Kosten</h3>
+<ul>
+<li>Schulungszeit (einmalig: ~4-8 Stunden pro Mitarbeiter)</li>
+<li>Prompt-Bibliothek aufbauen und pflegen (~2 Stunden/Monat)</li>
+<li>Qualitätssicherung (Ergebnisse prüfen, ~10% der gesparten Zeit)</li>
+<li>Lizenzkosten bei Enterprise-Lösungen</li>
+</ul>
+<h3 id="versteckter-nutzen">Versteckter Nutzen</h3>
+<ul>
+<li><strong>Qualitätsverbesserung:</strong> Konsistentere Berichte, bessere E-Mails</li>
+<li><strong>Mitarbeiterzufriedenheit:</strong> Weniger Routinearbeit, mehr interessante Aufgaben</li>
+<li><strong>Schnellere Reaktion:</strong> Kundenanfragen, Angebote, Berichte schneller fertig</li>
+<li><strong>Wissenstransfer:</strong> SOPs und Dokumentation werden tatsächlich erstellt</li>
+</ul>
+<h2 id="change-management">Change Management</h2>
+<h3 id="die-drei-widerstande">Die drei Widerstände</h3>
+<p><strong>1. Angst (&ldquo;KI nimmt mir den Job weg&rdquo;):</strong>
+Direkt adressieren. KI ersetzt nicht Mitarbeiter – sie ersetzt Aufgaben. Und die meisten dieser Aufgaben sind die, die niemand gerne macht.</p>
+<p><strong>2. Skepsis (&ldquo;Das funktioniert doch eh nicht richtig&rdquo;):</strong>
+Mit Demos statt Slides überzeugen. Live zeigen, wie eine 30-Minuten-Aufgabe in 3 Minuten erledigt wird.</p>
+<p><strong>3. Trägheit (&ldquo;Ich mach das seit 10 Jahren so, warum ändern?&rdquo;):</strong>
+Nicht mit Zwang, sondern mit Pull. Die Early Adopters machen&rsquo;s vor, die anderen wollen nachziehen.</p>
+<h3 id="ki-champions-programm">KI-Champions-Programm</h3>
+<p>In jeder Abteilung einen KI-Champion bestimmen:
+- Erste Anlaufstelle für Fragen
+- Pflegt die abteilungsspezifische Prompt-Bibliothek
+- Teilt Erfolgsgeschichten
+- Meldet Probleme und Verbesserungsideen</p>
+<h3 id="schulungskonzept">Schulungskonzept</h3>
+<p><strong>Basis-Schulung (2 Stunden):</strong> Was ist KI, was kann sie, was nicht. Datenschutz. Erste Prompts. Template-Bibliothek zeigen.</p>
+<p><strong>Vertiefung (2 Stunden):</strong> Fortgeschrittene Techniken, eigene Templates erstellen, Prompt-Ketten.</p>
+<p><strong>Praxis-Workshop (halber Tag):</strong> Eigene Workflows identifizieren und automatisieren. Am Ende hat jeder mindestens 3 produktive Templates.</p>
+<h2 id="governance-und-datenschutz">Governance und Datenschutz</h2>
+<h3 id="ki-policy-mindestinhalt">KI-Policy (Mindestinhalt)</h3>
+<ol>
+<li><strong>Zugelassene Tools:</strong> Welche KI-Tools dürfen genutzt werden?</li>
+<li><strong>Datenklassifizierung:</strong> Welche Daten dürfen in welches Tool?</li>
+<li><strong>Prüfpflicht:</strong> Alle KI-Outputs werden von einem Menschen geprüft</li>
+<li><strong>Kennzeichnung:</strong> Wann muss KI-Nutzung gekennzeichnet werden?</li>
+<li><strong>Verantwortlichkeit:</strong> Wer ist verantwortlich für KI-generierte Inhalte?</li>
+<li><strong>Incident-Prozess:</strong> Was tun bei Datenschutz-Vorfall?</li>
+</ol>
+<h3 id="enterprise-losungen">Enterprise-Lösungen</h3>
+<p>Für Unternehmen mit sensiblen Daten:
+- <strong>Claude for Enterprise</strong> / <strong>ChatGPT Enterprise</strong> – Daten werden nicht zum Training genutzt
+- <strong>Microsoft Copilot</strong> – Integriert in bestehende Microsoft-365-Infrastruktur
+- <strong>Lokale Modelle</strong> (Ollama, vLLM) – Daten verlassen nie das Unternehmen</p>
+<hr />
+<h2 id="ubungen">Übungen</h2>
+<h3 id="ubung-1-ki-reifegrad-bestimmen">Übung 1: KI-Reifegrad bestimmen</h3>
+<p>Auf welcher Stufe ist dein Unternehmen? Was bräuchte es für die nächste Stufe?</p>
+<h3 id="ubung-2-pilotprojekt-planen">Übung 2: Pilotprojekt planen</h3>
+<p>Identifiziere den besten Use Case für ein Pilotprojekt. Erstelle einen 8-Wochen-Plan.</p>
+<h3 id="ubung-3-roi-berechnen">Übung 3: ROI berechnen</h3>
+<p>Rechne den ROI für 3 konkrete Aufgaben in deinem Team aus. Wie überzeugend sind die Zahlen?</p>
+<h3 id="ubung-4-ki-policy-erstellen">Übung 4: KI-Policy erstellen</h3>
+<p>Erstelle eine einfache KI-Policy für dein Team oder Unternehmen.</p>
+</section>
+<section class="chapter" id="ch-10">
+<h1 id="kapitel-10-zusammenfassung-und-ausblick">Kapitel 10: Zusammenfassung und Ausblick</h1>
+<h2 id="was-du-in-diesem-band-gelernt-hast">Was du in diesem Band gelernt hast</h2>
+<p>Band 8 war der Praxis-Band. Keine neuen Prompting-Techniken, sondern die systematische Anwendung von allem, was du in Band 1-7 gelernt hast, auf echte Business-Probleme.</p>
+<h3 id="die-kern-erkenntnisse">Die Kern-Erkenntnisse</h3>
+<p><strong>1. Automatisierung schlägt Perfektion.</strong>
+Ein mittelmäßiges Template, das du 50 Mal nutzt, spart mehr Zeit als ein perfekter Einzelprompt. Investiere in wiederholbare Workflows.</p>
+<p><strong>2. Die 80/20-Regel gilt auch für KI.</strong>
+80% deiner Zeitersparnis kommt von 20% deiner Aufgaben: E-Mails, Berichte, Protokolle, Dokumentation. Fang dort an.</p>
+<p><strong>3. Team-Standards multiplizieren den Effekt.</strong>
+Ein Mitarbeiter mit KI spart Stunden. Ein Team mit Standards spart Tage. Ein Unternehmen mit Strategie spart Vollzeitstellen.</p>
+<p><strong>4. KI ist ein Denk-Werkzeug, kein Denk-Ersatz.</strong>
+Bei Entscheidungen: Nutze KI als Sparringspartner, nicht als Orakel. Devil&rsquo;s Advocate, Pre-Mortem und Second-Order Thinking machen dich zu einem besseren Entscheider.</p>
+<p><strong>5. Messen, messen, messen.</strong>
+Ohne Messung weißt du nicht, ob KI dir wirklich hilft. Zeitersparnis pro Aufgabe × Häufigkeit × Stundensatz = dein ROI.</p>
+<h2 id="die-band-8-checkliste">Die Band-8-Checkliste</h2>
+<h3 id="sofort-umsetzbar-diese-woche">Sofort umsetzbar (Diese Woche)</h3>
+<ul>
+<li>[ ] Workflow-Audit: Wiederkehrende Aufgaben identifizieren</li>
+<li>[ ] 3 E-Mail-Templates erstellen</li>
+<li>[ ] KI-Morgenroutine starten (5 Min Tagesplanung)</li>
+<li>[ ] Nächstes Meeting-Protokoll mit KI erstellen</li>
+</ul>
+<h3 id="mittelfristig-dieser-monat">Mittelfristig (Dieser Monat)</h3>
+<ul>
+<li>[ ] Prompt-Bibliothek anlegen (mindestens 10 Templates)</li>
+<li>[ ] Wochenbericht-Workflow automatisieren</li>
+<li>[ ] Prompt-Style-Guide für dein Team erstellen</li>
+<li>[ ] ROI für 3 Aufgaben berechnen</li>
+</ul>
+<h3 id="strategisch-dieses-quartal">Strategisch (Dieses Quartal)</h3>
+<ul>
+<li>[ ] KI-Champion im Team bestimmen</li>
+<li>[ ] Basis-Schulung für das Team durchführen</li>
+<li>[ ] Pilotprojekt definieren und starten</li>
+<li>[ ] KI-Policy erstellen</li>
+</ul>
+<h2 id="die-wichtigsten-prompt-patterns-aus-band-8">Die wichtigsten Prompt-Patterns aus Band 8</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Pattern</th>
+<th>Wann nutzen</th>
+<th>Beispiel</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Template mit Platzhaltern</strong></td>
+<td>Wiederkehrende Aufgaben</td>
+<td>E-Mail-Vorlagen, Berichte</td>
+</tr>
+<tr>
+<td><strong>3-Schritt-Kette</strong></td>
+<td>Komplexe Workflows</td>
+<td>Input → Verarbeitung → Output</td>
+</tr>
+<tr>
+<td><strong>Ton-Anpassung</strong></td>
+<td>Verschiedene Empfänger</td>
+<td>3 Versionen derselben Nachricht</td>
+</tr>
+<tr>
+<td><strong>Devil&rsquo;s Advocate</strong></td>
+<td>Entscheidungen</td>
+<td>&ldquo;Argumentiere dagegen&rdquo;</td>
+</tr>
+<tr>
+<td><strong>Pre-Mortem</strong></td>
+<td>Risikoanalyse</td>
+<td>&ldquo;Es ist gescheitert. Warum?&rdquo;</td>
+</tr>
+<tr>
+<td><strong>Eisenhower-Matrix</strong></td>
+<td>Priorisierung</td>
+<td>Aufgaben sortieren</td>
+</tr>
+<tr>
+<td><strong>Wissenstransfer-Interview</strong></td>
+<td>Dokumentation</td>
+<td>KI fragt, du antwortest</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="vorschau-auf-band-9-sicherheit-ethik">Vorschau auf Band 9: Sicherheit &amp; Ethik</h2>
+<p>Du nutzt KI jetzt produktiv – im Alltag, im Team, im Unternehmen. Aber mit großer Macht kommt große Verantwortung. Band 9 behandelt die dunkle Seite:</p>
+<ul>
+<li><strong>Prompt Injection:</strong> Wie Angreifer KI-Systeme manipulieren – und wie du dich schützt</li>
+<li><strong>Bias und Fairness:</strong> Warum KI diskriminieren kann und was du dagegen tust</li>
+<li><strong>Datenschutz und DSGVO:</strong> Was du rechtlich beachten musst</li>
+<li><strong>EU AI Act:</strong> Die neue Regulierung und was sie für dich bedeutet</li>
+<li><strong>Halluzinationen:</strong> Strategien gegen KI-Erfindungen in kritischen Kontexten</li>
+<li><strong>Ethische Richtlinien:</strong> Wie du verantwortungsvoll mit KI arbeitest</li>
+</ul>
+<p>Wir haben in Band 8 gesehen, wie mächtig KI im Business sein kann. Band 9 zeigt, wie du diese Macht verantwortungsvoll nutzt.</p>
+<hr />
+<h2 id="ressourcen">Ressourcen</h2>
+<h3 id="tools-stand-marz-2026">Tools (Stand März 2026)</h3>
+<ul>
+<li><strong>Claude</strong> (claude.ai) – Anthropics KI-Assistent, Projects-Feature für Business</li>
+<li><strong>ChatGPT</strong> (chatgpt.com) – OpenAIs KI, Custom GPTs für Workflows</li>
+<li><strong>Gemini</strong> (gemini.google.com) – Googles KI, Integration in Workspace</li>
+<li><strong>Microsoft Copilot</strong> – In Office 365, Teams, Outlook integriert</li>
+<li><strong>Notion AI</strong> – KI direkt in Notion für Dokumentation und Planung</li>
+</ul>
+<h3 id="weiterfuhrende-lekture">Weiterführende Lektüre</h3>
+<ul>
+<li>Band 1-3 für Grundlagen und Frameworks</li>
+<li>Band 4 für Reasoning-Techniken (Chain-of-Thought für Entscheidungen)</li>
+<li>Band 6 für branchenspezifische Prompts</li>
+<li>Band 7 für die technische Seite (API-Integration, Automatisierung)</li>
+</ul>
+</section>
+</article>
+</main>
+
+<button class="scroll-top" id="scrollTop" type="button" aria-label="Nach oben scrollen">
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4l-8 8h5v8h6v-8h5z"/></svg>
+</button>
+
+<div class="resume-banner" id="resumeBanner" role="dialog" aria-label="Lesezeichen">
+<div class="resume-top">
+<div class="resume-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 3H7c-1.1 0-2 .9-2 2v16l7-3 7 3V5c0-1.1-.9-2-2-2z"/></svg></div>
+<div class="resume-info">
+<div class="resume-label">Weiterlesen</div>
+<div class="resume-chapter" id="resumeChapter">Kapitel</div>
+</div>
+<button class="resume-close" id="resumeClose" type="button" aria-label="Schlie&szlig;en"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></button>
+</div>
+<div class="resume-progress"><div class="resume-progress-bar" id="resumeProgress"></div></div>
+<button class="resume-btn" id="resumeBtn" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>Weiterlesen</button>
+</div>
+
+<div class="update-toast" id="updateToast" role="alert" aria-live="polite">
+<div class="ver" id="toastVer"></div>
+<h3>Neues Update!</h3>
+<ul id="toastChanges"></ul>
+<button id="toastClose" type="button">Verstanden</button>
+</div>
+
+<button class="focus-exit" id="focusExit" type="button" aria-label="Lesemodus beenden">Lesemodus beenden <kbd>Esc</kbd></button>
+
+<script>
+(function(){
+var B=8,K='pe-band'+B;
+var html=document.documentElement;
+
+// Theme
+var stored=localStorage.getItem('theme');
+var dark=stored==='dark'||(!stored&&matchMedia('(prefers-color-scheme:dark)').matches);
+var themeInput=document.getElementById('themeInput');
+if(dark){html.dataset.theme='dark';themeInput.checked=true;}
+themeInput.addEventListener('change',function(){
+html.dataset.theme=this.checked?'dark':'light';
+localStorage.setItem('theme',html.dataset.theme);
+});
+
+// Mobile menu
+var menuBtn=document.getElementById('menuBtn');
+var sidebar=document.getElementById('sidebar');
+var overlay=document.getElementById('overlay');
+function closeSidebar(){sidebar.classList.remove('open');overlay.classList.remove('show');menuBtn.setAttribute('aria-expanded','false')}
+menuBtn.addEventListener('click',function(){
+var open=sidebar.classList.toggle('open');
+overlay.classList.toggle('show');
+menuBtn.setAttribute('aria-expanded',open?'true':'false');
+});
+overlay.addEventListener('click',closeSidebar);
+document.querySelectorAll('.toc-link').forEach(function(l){l.addEventListener('click',function(){if(innerWidth<=900)closeSidebar()})});
+
+// Progress bar + reading position save
+var prog=document.getElementById('progress');
+var saveTimer;
+function onScroll(){
+var h=document.documentElement.scrollHeight-innerHeight;
+var pct=h>0?scrollY/h:0;
+prog.style.width=(pct*100)+'%';
+// Scroll to top button
+scrollBtn.classList.toggle('show',scrollY>600);
+clearTimeout(saveTimer);
+saveTimer=setTimeout(function(){
+localStorage.setItem(K+'-scroll',scrollY);
+var chs=document.querySelectorAll('.chapter');
+for(var i=chs.length-1;i>=0;i--){
+if(chs[i].getBoundingClientRect().top<150){
+localStorage.setItem(K+'-chapter',chs[i].id);
+break;
+}
+}
+},300);
+}
+window.addEventListener('scroll',onScroll,{passive:true});
+
+// Resume reading position
+var savedScroll=parseInt(localStorage.getItem(K+'-scroll'),10);
+var savedChapter=localStorage.getItem(K+'-chapter');
+if(savedScroll>300&&savedChapter){
+var banner=document.getElementById('resumeBanner');
+var chEl=document.getElementById(savedChapter);
+var chapterName='Kapitel';
+if(chEl){
+var chTitle=chEl.querySelector('h1');
+if(chTitle)chapterName=chTitle.textContent;
+}
+document.getElementById('resumeChapter').textContent=chapterName;
+// Calculate reading progress percentage
+var docH=document.documentElement.scrollHeight-window.innerHeight;
+var pct=docH>0?Math.min(Math.round((savedScroll/docH)*100),100):0;
+document.getElementById('resumeProgress').style.width=pct+'%';
+banner.classList.add('show');
+function doResume(){scrollTo({top:savedScroll,behavior:'smooth'});banner.classList.remove('show')}
+function dismissBanner(){banner.classList.remove('show')}
+document.getElementById('resumeBtn').addEventListener('click',doResume);
+document.getElementById('resumeClose').addEventListener('click',dismissBanner);
+banner.addEventListener('keydown',function(e){if(e.key==='Enter')doResume();if(e.key==='Escape')dismissBanner()});
+setTimeout(dismissBanner,12000);
+}
+
+// Scroll to top
+var scrollBtn=document.getElementById('scrollTop');
+scrollBtn.addEventListener('click',function(){scrollTo({top:0,behavior:'smooth'})});
+
+// Active TOC tracking
+var chapters=document.querySelectorAll('.chapter');
+var links=document.querySelectorAll('.toc-link');
+var observer=new IntersectionObserver(function(entries){
+entries.forEach(function(e){
+if(e.isIntersecting){
+links.forEach(function(l){l.classList.remove('active')});
+var active=document.querySelector('.toc-link[data-target="'+e.target.id+'"]');
+if(active)active.classList.add('active');
+}
+});
+},{rootMargin:'-80px 0px -60% 0px'});
+chapters.forEach(function(ch){observer.observe(ch)});
+
+// Focus / Fullscreen reading mode
+var focusBtn=document.getElementById('focusBtn');
+var focusExit=document.getElementById('focusExit');
+function toggleFocus(on){
+var entering=typeof on==='boolean'?on:!document.body.classList.contains('focus-mode');
+document.body.classList.toggle('focus-mode',entering);
+if(entering)closeSidebar();
+}
+focusBtn.addEventListener('click',function(){toggleFocus(true)});
+focusExit.addEventListener('click',function(){toggleFocus(false)});
+document.addEventListener('keydown',function(e){
+if(e.key==='Escape'&&document.body.classList.contains('focus-mode'))toggleFocus(false);
+});
+
+// Service Worker + Version popup
+if('serviceWorker' in navigator){
+navigator.serviceWorker.register('../sw.js').then(function(){
+setTimeout(function(){
+var lastVer=localStorage.getItem('pe-app-version');
+fetch('../version.json?t='+Date.now()).then(function(r){return r.json()}).then(function(data){
+if(lastVer&&lastVer!==data.version){
+var toast=document.getElementById('updateToast');
+document.getElementById('toastVer').textContent='Version '+data.version;
+var ul=document.getElementById('toastChanges');ul.innerHTML='';
+data.changes.forEach(function(c){var li=document.createElement('li');li.textContent=c;ul.appendChild(li)});
+toast.classList.add('show');
+document.getElementById('toastClose').addEventListener('click',function(){toast.classList.remove('show');localStorage.setItem('pe-app-version',data.version)});
+}else{localStorage.setItem('pe-app-version',data.version)}
+}).catch(function(){});
+},1000);
+});
+}
+})();
+</script>
+</body>
+</html>

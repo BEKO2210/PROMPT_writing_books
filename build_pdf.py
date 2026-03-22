@@ -170,6 +170,26 @@ BAND_CONFIG = {
             "10_Zusammenfassung_und_Ausblick.md",
         ],
     },
+    8: {
+        "ordner": "Band_08_Business_und_Produktivitaet",
+        "titel": "Business-und-Produktivitaet",
+        "untertitel": "KI im Arbeitsalltag",
+        "farbe": "#1a4a5c",
+        "akzent": "#4ecdc4",
+        "dateien": [
+            "00_Vorwort.md",
+            "01_Workflow_Automatisierung.md",
+            "02_E_Mail_Meisterklasse.md",
+            "03_Meetings_und_Kommunikation.md",
+            "04_Berichte_und_Dokumentation.md",
+            "05_Projektmanagement.md",
+            "06_Team_Standards.md",
+            "07_Entscheidungsunterstuetzung.md",
+            "08_Persoenliche_Produktivitaet.md",
+            "09_KI_Strategie_fuer_Unternehmen.md",
+            "10_Zusammenfassung_und_Ausblick.md",
+        ],
+    },
 }
 
 AUTOR = "Belkis Aslani"
