@@ -103,7 +103,7 @@ pip3 install weasyprint markdown Pygments
 | Schrift Uberschriften | Liberation Sans |
 | Schrift Code | Liberation Mono, 7.5pt |
 | Features | Titelseite, Copyright, Inhaltsverzeichnis, Seitenzahlen |
-| Verkauf | Gumroad, Amazon KDP, Lulu, Epubli |
+| Verbreitung | Kostenlos via GitHub Pages |
 
 ---
 
