@@ -1,0 +1,11 @@
+{
+  "version": "2.0.0",
+  "date": "2026-03-22",
+  "changes": [
+    "Band 2: Prompt-Frameworks komplett verfügbar",
+    "Neuer animierter Sun/Moon Dark-Mode Toggle",
+    "Leseposition wird automatisch gespeichert",
+    "PWA: App ist jetzt installierbar",
+    "Offline-Lesen möglich dank Service Worker"
+  ]
+}
