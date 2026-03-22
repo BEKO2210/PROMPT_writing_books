@@ -162,6 +162,24 @@ BAND_CONFIG = {
             "10_Zusammenfassung_und_Ausblick.md",
         ],
     },
+    9: {
+        "ordner": "Band_09_Sicherheit_und_Ethik",
+        "titel": "Sicherheit-und-Ethik",
+        "untertitel": "Verantwortungsvolle KI-Nutzung",
+        "dateien": [
+            "00_Vorwort.md",
+            "01_Prompt_Injection.md",
+            "02_Jailbreaking.md",
+            "03_Halluzinationen.md",
+            "04_Bias_und_Fairness.md",
+            "05_Datenschutz_und_DSGVO.md",
+            "06_EU_AI_Act.md",
+            "07_Ethische_KI_Nutzung.md",
+            "08_KI_am_Arbeitsplatz.md",
+            "09_Red_Teaming_und_Testing.md",
+            "10_Zusammenfassung_und_Ausblick.md",
+        ],
+    },
 }
 
 BASE_URL = "https://beko2210.github.io/PROMPT_writing_books"
