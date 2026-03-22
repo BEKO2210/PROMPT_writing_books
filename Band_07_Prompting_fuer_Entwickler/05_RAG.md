@@ -237,7 +237,7 @@ def rag_query(question: str, collection, top_k: int = 5) -> str:
 
     # 4. LLM mit Kontext befragen
     message = anthropic_client.messages.create(
-        model="claude-sonnet-4-20250514",
+        model="claude-sonnet-4-6",
         max_tokens=2048,
         system="""Beantworte Fragen basierend auf dem bereitgestellten Kontext.
 Wenn die Antwort nicht im Kontext steht, sag das ehrlich.
@@ -301,7 +301,7 @@ Die User-Frage umformulieren für bessere Treffer:
 ```python
 # LLM generiert alternative Suchanfragen
 expansion = anthropic_client.messages.create(
-    model="claude-haiku-3-5-20241022",
+    model="claude-haiku-4-5-20251001",
     max_tokens=256,
     messages=[{
         "role": "user",

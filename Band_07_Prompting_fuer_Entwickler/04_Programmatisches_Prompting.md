@@ -39,7 +39,7 @@ from typing import Optional
 class PromptTemplate:
     system: str
     user_template: str
-    model: str = "claude-sonnet-4-20250514"
+    model: str = "claude-sonnet-4-6"
     max_tokens: int = 1024
     temperature: float = 0.0
 
@@ -70,7 +70,7 @@ LLM-APIs sind zustandslos. Für Konversationen musst du die History selbst verwa
 
 ```python
 class Conversation:
-    def __init__(self, client, system: str, model: str = "claude-sonnet-4-20250514"):
+    def __init__(self, client, system: str, model: str = "claude-sonnet-4-6"):
         self.client = client
         self.system = system
         self.model = model
@@ -163,7 +163,7 @@ async def process_batch(
     async def process_one(item: str) -> str:
         async with semaphore:
             message = await client.messages.create(
-                model="claude-haiku-3-5-20241022",
+                model="claude-haiku-4-5-20251001",
                 max_tokens=256,
                 messages=[{
                     "role": "user",
@@ -228,7 +228,7 @@ async def research_and_write(topic: str) -> str:
 
     # Schritt 1: Recherche
     research = await client.messages.create(
-        model="claude-sonnet-4-20250514",
+        model="claude-sonnet-4-6",
         max_tokens=2048,
         messages=[{
             "role": "user",
@@ -239,7 +239,7 @@ async def research_and_write(topic: str) -> str:
 
     # Schritt 2: Outline erstellen
     outline = await client.messages.create(
-        model="claude-sonnet-4-20250514",
+        model="claude-sonnet-4-6",
         max_tokens=1024,
         messages=[{
             "role": "user",
@@ -253,7 +253,7 @@ Erstelle ein Outline für einen Artikel (5 Abschnitte)."""
 
     # Schritt 3: Artikel schreiben
     article = await client.messages.create(
-        model="claude-sonnet-4-20250514",
+        model="claude-sonnet-4-6",
         max_tokens=4096,
         messages=[{
             "role": "user",

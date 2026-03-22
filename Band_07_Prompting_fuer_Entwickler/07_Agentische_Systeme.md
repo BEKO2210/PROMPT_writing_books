@@ -69,7 +69,7 @@ def run_agent(user_task: str, tools: list, max_steps: int = 10) -> str:
 
     for step in range(max_steps):
         response = client.messages.create(
-            model="claude-sonnet-4-20250514",
+            model="claude-sonnet-4-6",
             max_tokens=4096,
             system=SYSTEM_PROMPT,
             tools=tools,
@@ -104,7 +104,7 @@ def run_agent(user_task: str, tools: list, max_steps: int = 10) -> str:
 
 ## MCP – Model Context Protocol
 
-MCP ist Anthropics offener Standard, der Agenten mit externen Systemen verbindet. Statt für jedes Tool eigenen Code zu schreiben, definiert MCP ein einheitliches Protokoll.
+MCP (Model Context Protocol) ist der offene Standard für die Verbindung von Agenten mit externen Systemen. Im November 2024 von Anthropic eingeführt, im Dezember 2025 an die Linux Foundation übergeben. Stand März 2026: 97 Millionen monatliche SDK-Downloads, adoptiert von Anthropic, OpenAI, Google, Microsoft und Amazon.
 
 ### Was MCP löst
 
@@ -261,7 +261,7 @@ from claude_agent_sdk import Agent, tool
 class ResearchAgent(Agent):
     """Agent für Recherche-Aufgaben."""
 
-    model = "claude-sonnet-4-20250514"
+    model = "claude-sonnet-4-6"
     system_prompt = """Du bist ein Recherche-Agent.
     Du suchst nach Informationen und fasst sie zusammen.
     Nutze die verfügbaren Tools systematisch."""

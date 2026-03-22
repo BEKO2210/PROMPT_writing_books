@@ -1034,33 +1034,35 @@ aider<span class="w"> </span>--model<span class="w"> </span>claude-sonnet-4-2025
 </thead>
 <tbody>
 <tr>
-<td>Claude Opus 4</td>
-<td>200K</td>
-<td>Reasoning, komplexe Aufgaben, Code</td>
-<td>$15 / $75</td>
+<td>Claude Opus 4.6</td>
+<td>200K (1M beta)</td>
+<td>#1 Reasoning, 80.8% SWE-bench, Code</td>
+<td>$5 / $25</td>
 </tr>
 <tr>
-<td>Claude Sonnet 4</td>
+<td>Claude Sonnet 4.5</td>
 <td>200K</td>
-<td>Bestes Preis-Leistung, schnell, gut in Code</td>
+<td>Bestes Preis-Leistung, 77-82% SWE-bench</td>
 <td>$3 / $15</td>
 </tr>
 <tr>
-<td>Claude Haiku 3.5</td>
+<td>Claude Haiku 4.5</td>
 <td>200K</td>
-<td>Schnell, günstig, einfache Aufgaben</td>
-<td>$0.80 / $4</td>
+<td>Schnell, günstig, agentic Loops</td>
+<td>$0.25 / $1.25</td>
 </tr>
 </tbody>
 </table></div>
 <p><strong>Besondere Features:</strong>
-- <strong>Extended Thinking</strong> – Das Modell &ldquo;denkt nach&rdquo; bevor es antwortet (Chain-of-Thought intern). Ideal für komplexe Aufgaben.
-- <strong>Tool Use</strong> – Natives Function Calling mit JSON-Schema-Definitionen.
+- <strong>Extended Thinking</strong> – Das Modell &ldquo;denkt nach&rdquo; bevor es antwortet. Steuerbar über <code>effort</code>-Parameter. Thinking-Tokens als Output abgerechnet.
+- <strong>Tool Use</strong> – Natives Function Calling mit JSON-Schema. Plus: Web Search, Code Execution, Computer Use, programmatic Tool Calling.
 - <strong>Computer Use</strong> – Claude kann einen Computer steuern (Screenshots, Klicks, Tippen).
 - <strong>Prompt Caching</strong> – Wiederholt genutzte Prompt-Teile werden gecacht (90% günstiger).
 - <strong>Batches API</strong> – Massenhaft Requests mit 50% Rabatt (24h SLA).
-- <strong>Vision</strong> – Bilder und PDFs als Input.
-- <strong>Citationen</strong> – Claude kann Quellenangaben in Dokumenten referenzieren.</p>
+- <strong>Vision</strong> – Bilder, PDFs, Charts, Diagramme als Input.
+- <strong>Citationen</strong> – Claude kann Quellenangaben in Dokumenten referenzieren.
+- <strong>Compaction API</strong> (beta) – Server-seitige Kontext-Zusammenfassung für endlose Konversationen.
+- <strong>1M Token Context Window</strong> (beta für Opus 4.6).</p>
 <h3 id="openai-gpt">OpenAI (GPT)</h3>
 <div class="table-wrap"><table>
 <thead>
@@ -1073,10 +1075,22 @@ aider<span class="w"> </span>--model<span class="w"> </span>claude-sonnet-4-2025
 </thead>
 <tbody>
 <tr>
-<td>GPT-4.1</td>
+<td>GPT-5.2 (xhigh)</td>
 <td>1M</td>
-<td>Coding, Instruction Following</td>
-<td>$2 / $8</td>
+<td>#1 Coding-Benchmarks (89% LiveCodeBench)</td>
+<td>$1.75 / $14</td>
+</tr>
+<tr>
+<td>GPT-5 mini</td>
+<td>200K</td>
+<td>Schnell, günstig, starkes Allround</td>
+<td>$0.25 / $2</td>
+</tr>
+<tr>
+<td>GPT-5 nano</td>
+<td>128K</td>
+<td>Ultra-günstig, Edge-Deployment</td>
+<td>$0.05 / $0.40</td>
 </tr>
 <tr>
 <td>GPT-4o</td>
@@ -1090,26 +1104,15 @@ aider<span class="w"> </span>--model<span class="w"> </span>claude-sonnet-4-2025
 <td>Deep Reasoning, Mathematik</td>
 <td>$10 / $40</td>
 </tr>
-<tr>
-<td>o4-mini</td>
-<td>200K</td>
-<td>Schnelles Reasoning</td>
-<td>$1.10 / $4.40</td>
-</tr>
-<tr>
-<td>GPT-4o-mini</td>
-<td>128K</td>
-<td>Günstig, schnell, gutes Allround</td>
-<td>$0.15 / $0.60</td>
-</tr>
 </tbody>
 </table></div>
 <p><strong>Besondere Features:</strong>
-- <strong>Structured Outputs</strong> – Garantiert valides JSON nach JSON-Schema.
+- <strong>Responses API</strong> – Ersetzt Chat Completions für neue Projekte. Agentic by default, Multi-Tool-Loop in einer Anfrage.
+- <strong>Structured Outputs</strong> – Garantiert valides JSON mit <code>strict: true</code>.
 - <strong>Function Calling</strong> – Nativ, parallel (mehrere Tools gleichzeitig).
+- <strong>Agents SDK</strong> – Open-Source Multi-Agent-Orchestrierung mit MCP-Support.
 - <strong>Realtime API</strong> – Audio-Input und -Output in Echtzeit.
-- <strong>Assistants API</strong> – Persistente Threads mit Code Interpreter und File Search.
-- <strong>Fine-tuning</strong> – Für GPT-4o-mini und GPT-4o verfügbar.</p>
+- <strong>Fine-tuning</strong> – Für GPT-5 mini und GPT-4o verfügbar.</p>
 <h3 id="google-gemini">Google (Gemini)</h3>
 <div class="table-wrap"><table>
 <thead>
@@ -1122,30 +1125,38 @@ aider<span class="w"> </span>--model<span class="w"> </span>claude-sonnet-4-2025
 </thead>
 <tbody>
 <tr>
+<td>Gemini 3.1 Pro</td>
+<td>1M</td>
+<td>Reasoning, Cross-Language</td>
+<td>$2 / $12</td>
+</tr>
+<tr>
+<td>Gemini 3 Flash</td>
+<td>1M</td>
+<td>Schnell, günstig</td>
+<td>$0.50 / $3</td>
+</tr>
+<tr>
 <td>Gemini 2.5 Pro</td>
 <td>1M</td>
-<td>Reasoning, riesiger Kontext</td>
-<td>$1.25-$2.50 / $10-$15</td>
+<td>Bewährt, riesiger Kontext</td>
+<td>$1.25 / $10</td>
 </tr>
 <tr>
-<td>Gemini 2.5 Flash</td>
+<td>Gemini 2.0 Flash-Lite</td>
 <td>1M</td>
-<td>Schnell, günstig, Thinking-Budget</td>
-<td>$0.15-$0.60 / $0.60-$3.50</td>
-</tr>
-<tr>
-<td>Gemini 2.0 Flash</td>
-<td>1M</td>
-<td>Multimodal, Agentic</td>
-<td>Kostenloser Tier verfügbar</td>
+<td>Ultra-günstig</td>
+<td>$0.075 / $0.30</td>
 </tr>
 </tbody>
 </table></div>
 <p><strong>Besondere Features:</strong>
 - <strong>1M Token Kontext</strong> – Gesamte Codebases in einem Request.
+- <strong>Großzügigstes Free Tier</strong> – Bis zu 1.000 Anfragen/Tag kostenlos.
 - <strong>Grounding mit Google Search</strong> – Modell kann googeln.
 - <strong>Code Execution</strong> – Führt Python-Code in Sandbox aus.
-- <strong>Thinking Budget</strong> – Steuere, wie viel das Modell &ldquo;nachdenken&rdquo; soll.</p>
+- <strong>Thinking Budget</strong> – Steuere, wie viel das Modell &ldquo;nachdenken&rdquo; soll.
+- <strong>MCP-Support</strong> – Nativ integriert.</p>
 <h3 id="open-source-alternative">Open Source / Alternative</h3>
 <div class="table-wrap"><table>
 <thead>
@@ -1164,9 +1175,9 @@ aider<span class="w"> </span>--model<span class="w"> </span>claude-sonnet-4-2025
 <td>Lokal / Together / Groq</td>
 </tr>
 <tr>
-<td>DeepSeek-V3</td>
+<td>DeepSeek-V3.2</td>
 <td>685B (37B aktiv)</td>
-<td>Coding, Reasoning, günstig</td>
+<td>Coding, Reasoning, $0.28/1M In</td>
 <td>API / Lokal</td>
 </tr>
 <tr>
@@ -1202,7 +1213,7 @@ aider<span class="w"> </span>--model<span class="w"> </span>claude-sonnet-4-2025
 <span class="n">client</span> <span class="o">=</span> <span class="n">anthropic</span><span class="o">.</span><span class="n">Anthropic</span><span class="p">()</span>  <span class="c1"># ANTHROPIC_API_KEY aus Env</span>
 
 <span class="n">message</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">messages</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
-    <span class="n">model</span><span class="o">=</span><span class="s2">&quot;claude-sonnet-4-20250514&quot;</span><span class="p">,</span>
+    <span class="n">model</span><span class="o">=</span><span class="s2">&quot;claude-sonnet-4-6&quot;</span><span class="p">,</span>
     <span class="n">max_tokens</span><span class="o">=</span><span class="mi">1024</span><span class="p">,</span>
     <span class="n">messages</span><span class="o">=</span><span class="p">[</span>
         <span class="p">{</span>
@@ -1236,7 +1247,7 @@ aider<span class="w"> </span>--model<span class="w"> </span>claude-sonnet-4-2025
 <span class="kd">const</span><span class="w"> </span><span class="nx">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Anthropic</span><span class="p">();</span>
 
 <span class="kd">const</span><span class="w"> </span><span class="nx">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">messages</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
-<span class="w">  </span><span class="nx">model</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;claude-sonnet-4-20250514&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">model</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;claude-sonnet-4-6&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">max_tokens</span><span class="o">:</span><span class="w"> </span><span class="kt">1024</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">messages</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">    </span><span class="p">{</span>
@@ -1252,7 +1263,7 @@ aider<span class="w"> </span>--model<span class="w"> </span>claude-sonnet-4-2025
 <h2 id="system-prompts">System-Prompts</h2>
 <p>System-Prompts definieren das Verhalten des Modells über die gesamte Konversation:</p>
 <div class="highlight"><pre><span></span><code><span class="n">message</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">messages</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
-    <span class="n">model</span><span class="o">=</span><span class="s2">&quot;claude-sonnet-4-20250514&quot;</span><span class="p">,</span>
+    <span class="n">model</span><span class="o">=</span><span class="s2">&quot;claude-sonnet-4-6&quot;</span><span class="p">,</span>
     <span class="n">max_tokens</span><span class="o">=</span><span class="mi">2048</span><span class="p">,</span>
     <span class="n">system</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;Du bist ein Senior Python Developer mit 15 Jahren Erfahrung.</span>
 <span class="s2">Du schreibst sauberen, typisierten Python-Code nach PEP 8.</span>
@@ -1269,7 +1280,7 @@ aider<span class="w"> </span>--model<span class="w"> </span>claude-sonnet-4-2025
 <p>Für UX-freundliche Responses – Text erscheint Wort für Wort:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Anthropic Streaming</span>
 <span class="k">with</span> <span class="n">client</span><span class="o">.</span><span class="n">messages</span><span class="o">.</span><span class="n">stream</span><span class="p">(</span>
-    <span class="n">model</span><span class="o">=</span><span class="s2">&quot;claude-sonnet-4-20250514&quot;</span><span class="p">,</span>
+    <span class="n">model</span><span class="o">=</span><span class="s2">&quot;claude-sonnet-4-6&quot;</span><span class="p">,</span>
     <span class="n">max_tokens</span><span class="o">=</span><span class="mi">1024</span><span class="p">,</span>
     <span class="n">messages</span><span class="o">=</span><span class="p">[{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;Schreibe eine Kurzgeschichte.&quot;</span><span class="p">}]</span>
 <span class="p">)</span> <span class="k">as</span> <span class="n">stream</span><span class="p">:</span>
@@ -1296,7 +1307,7 @@ aider<span class="w"> </span>--model<span class="w"> </span>claude-sonnet-4-2025
 <span class="n">client</span> <span class="o">=</span> <span class="n">anthropic</span><span class="o">.</span><span class="n">Anthropic</span><span class="p">()</span>
 
 <span class="n">message</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">messages</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
-    <span class="n">model</span><span class="o">=</span><span class="s2">&quot;claude-sonnet-4-20250514&quot;</span><span class="p">,</span>
+    <span class="n">model</span><span class="o">=</span><span class="s2">&quot;claude-sonnet-4-6&quot;</span><span class="p">,</span>
     <span class="n">max_tokens</span><span class="o">=</span><span class="mi">1024</span><span class="p">,</span>
     <span class="n">tools</span><span class="o">=</span><span class="p">[{</span>
         <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;analyze_sentiment&quot;</span><span class="p">,</span>
@@ -1336,7 +1347,7 @@ aider<span class="w"> </span>--model<span class="w"> </span>claude-sonnet-4-2025
 <h2 id="prompt-caching-anthropic">Prompt Caching (Anthropic)</h2>
 <p>Spart bis zu 90% bei wiederholten Prompts:</p>
 <div class="highlight"><pre><span></span><code><span class="n">message</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">messages</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
-    <span class="n">model</span><span class="o">=</span><span class="s2">&quot;claude-sonnet-4-20250514&quot;</span><span class="p">,</span>
+    <span class="n">model</span><span class="o">=</span><span class="s2">&quot;claude-sonnet-4-6&quot;</span><span class="p">,</span>
     <span class="n">max_tokens</span><span class="o">=</span><span class="mi">1024</span><span class="p">,</span>
     <span class="n">system</span><span class="o">=</span><span class="p">[</span>
         <span class="p">{</span>
@@ -1360,7 +1371,7 @@ aider<span class="w"> </span>--model<span class="w"> </span>claude-sonnet-4-2025
     <span class="n">image_data</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">standard_b64encode</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
 
 <span class="n">message</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">messages</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
-    <span class="n">model</span><span class="o">=</span><span class="s2">&quot;claude-sonnet-4-20250514&quot;</span><span class="p">,</span>
+    <span class="n">model</span><span class="o">=</span><span class="s2">&quot;claude-sonnet-4-6&quot;</span><span class="p">,</span>
     <span class="n">max_tokens</span><span class="o">=</span><span class="mi">1024</span><span class="p">,</span>
     <span class="n">messages</span><span class="o">=</span><span class="p">[{</span>
         <span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span>
@@ -1442,7 +1453,7 @@ Komplexe Aufgaben (Reasoning, Architektur) → Opus / o3
 <span class="k">class</span><span class="w"> </span><span class="nc">PromptTemplate</span><span class="p">:</span>
     <span class="n">system</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">user_template</span><span class="p">:</span> <span class="nb">str</span>
-    <span class="n">model</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;claude-sonnet-4-20250514&quot;</span>
+    <span class="n">model</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;claude-sonnet-4-6&quot;</span>
     <span class="n">max_tokens</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1024</span>
     <span class="n">temperature</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span>
 
@@ -1470,7 +1481,7 @@ Komplexe Aufgaben (Reasoning, Architektur) → Opus / o3
 <h2 id="multi-turn-konversationen">Multi-Turn-Konversationen</h2>
 <p>LLM-APIs sind zustandslos. Für Konversationen musst du die History selbst verwalten:</p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Conversation</span><span class="p">:</span>
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">,</span> <span class="n">system</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;claude-sonnet-4-20250514&quot;</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">,</span> <span class="n">system</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;claude-sonnet-4-6&quot;</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">client</span> <span class="o">=</span> <span class="n">client</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">system</span> <span class="o">=</span> <span class="n">system</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">model</span>
@@ -1557,7 +1568,7 @@ Komplexe Aufgaben (Reasoning, Architektur) → Opus / o3
     <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">process_one</span><span class="p">(</span><span class="n">item</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="k">async</span> <span class="k">with</span> <span class="n">semaphore</span><span class="p">:</span>
             <span class="n">message</span> <span class="o">=</span> <span class="k">await</span> <span class="n">client</span><span class="o">.</span><span class="n">messages</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
-                <span class="n">model</span><span class="o">=</span><span class="s2">&quot;claude-haiku-3-5-20241022&quot;</span><span class="p">,</span>
+                <span class="n">model</span><span class="o">=</span><span class="s2">&quot;claude-haiku-4-5-20251001&quot;</span><span class="p">,</span>
                 <span class="n">max_tokens</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span>
                 <span class="n">messages</span><span class="o">=</span><span class="p">[{</span>
                     <span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span>
@@ -1614,7 +1625,7 @@ Komplexe Aufgaben (Reasoning, Architektur) → Opus / o3
 
     <span class="c1"># Schritt 1: Recherche</span>
     <span class="n">research</span> <span class="o">=</span> <span class="k">await</span> <span class="n">client</span><span class="o">.</span><span class="n">messages</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
-        <span class="n">model</span><span class="o">=</span><span class="s2">&quot;claude-sonnet-4-20250514&quot;</span><span class="p">,</span>
+        <span class="n">model</span><span class="o">=</span><span class="s2">&quot;claude-sonnet-4-6&quot;</span><span class="p">,</span>
         <span class="n">max_tokens</span><span class="o">=</span><span class="mi">2048</span><span class="p">,</span>
         <span class="n">messages</span><span class="o">=</span><span class="p">[{</span>
             <span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span>
@@ -1625,7 +1636,7 @@ Komplexe Aufgaben (Reasoning, Architektur) → Opus / o3
 
     <span class="c1"># Schritt 2: Outline erstellen</span>
     <span class="n">outline</span> <span class="o">=</span> <span class="k">await</span> <span class="n">client</span><span class="o">.</span><span class="n">messages</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
-        <span class="n">model</span><span class="o">=</span><span class="s2">&quot;claude-sonnet-4-20250514&quot;</span><span class="p">,</span>
+        <span class="n">model</span><span class="o">=</span><span class="s2">&quot;claude-sonnet-4-6&quot;</span><span class="p">,</span>
         <span class="n">max_tokens</span><span class="o">=</span><span class="mi">1024</span><span class="p">,</span>
         <span class="n">messages</span><span class="o">=</span><span class="p">[{</span>
             <span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span>
@@ -1639,7 +1650,7 @@ Komplexe Aufgaben (Reasoning, Architektur) → Opus / o3
 
     <span class="c1"># Schritt 3: Artikel schreiben</span>
     <span class="n">article</span> <span class="o">=</span> <span class="k">await</span> <span class="n">client</span><span class="o">.</span><span class="n">messages</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
-        <span class="n">model</span><span class="o">=</span><span class="s2">&quot;claude-sonnet-4-20250514&quot;</span><span class="p">,</span>
+        <span class="n">model</span><span class="o">=</span><span class="s2">&quot;claude-sonnet-4-6&quot;</span><span class="p">,</span>
         <span class="n">max_tokens</span><span class="o">=</span><span class="mi">4096</span><span class="p">,</span>
         <span class="n">messages</span><span class="o">=</span><span class="p">[{</span>
             <span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span>
@@ -2053,7 +2064,7 @@ Komplexe Aufgaben (Reasoning, Architektur) → Opus / o3
 
     <span class="c1"># 4. LLM mit Kontext befragen</span>
     <span class="n">message</span> <span class="o">=</span> <span class="n">anthropic_client</span><span class="o">.</span><span class="n">messages</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
-        <span class="n">model</span><span class="o">=</span><span class="s2">&quot;claude-sonnet-4-20250514&quot;</span><span class="p">,</span>
+        <span class="n">model</span><span class="o">=</span><span class="s2">&quot;claude-sonnet-4-6&quot;</span><span class="p">,</span>
         <span class="n">max_tokens</span><span class="o">=</span><span class="mi">2048</span><span class="p">,</span>
         <span class="n">system</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;Beantworte Fragen basierend auf dem bereitgestellten Kontext.</span>
 <span class="s2">Wenn die Antwort nicht im Kontext steht, sag das ehrlich.</span>
@@ -2107,7 +2118,7 @@ Komplexe Aufgaben (Reasoning, Architektur) → Opus / o3
 <p>Die User-Frage umformulieren für bessere Treffer:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># LLM generiert alternative Suchanfragen</span>
 <span class="n">expansion</span> <span class="o">=</span> <span class="n">anthropic_client</span><span class="o">.</span><span class="n">messages</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
-    <span class="n">model</span><span class="o">=</span><span class="s2">&quot;claude-haiku-3-5-20241022&quot;</span><span class="p">,</span>
+    <span class="n">model</span><span class="o">=</span><span class="s2">&quot;claude-haiku-4-5-20251001&quot;</span><span class="p">,</span>
     <span class="n">max_tokens</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span>
     <span class="n">messages</span><span class="o">=</span><span class="p">[{</span>
         <span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span>
@@ -2257,7 +2268,7 @@ LLM: &quot;In Berlin sind es 12°C und bewölkt.&quot;
 
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
         <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">messages</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
-            <span class="n">model</span><span class="o">=</span><span class="s2">&quot;claude-sonnet-4-20250514&quot;</span><span class="p">,</span>
+            <span class="n">model</span><span class="o">=</span><span class="s2">&quot;claude-sonnet-4-6&quot;</span><span class="p">,</span>
             <span class="n">max_tokens</span><span class="o">=</span><span class="mi">1024</span><span class="p">,</span>
             <span class="n">tools</span><span class="o">=</span><span class="n">tools</span><span class="p">,</span>
             <span class="n">messages</span><span class="o">=</span><span class="n">messages</span>
@@ -2514,7 +2525,7 @@ LLM generiert 3 parallele Tool-Calls:
 
     <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_steps</span><span class="p">):</span>
         <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">messages</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
-            <span class="n">model</span><span class="o">=</span><span class="s2">&quot;claude-sonnet-4-20250514&quot;</span><span class="p">,</span>
+            <span class="n">model</span><span class="o">=</span><span class="s2">&quot;claude-sonnet-4-6&quot;</span><span class="p">,</span>
             <span class="n">max_tokens</span><span class="o">=</span><span class="mi">4096</span><span class="p">,</span>
             <span class="n">system</span><span class="o">=</span><span class="n">SYSTEM_PROMPT</span><span class="p">,</span>
             <span class="n">tools</span><span class="o">=</span><span class="n">tools</span><span class="p">,</span>
@@ -2548,7 +2559,7 @@ LLM generiert 3 parallele Tool-Calls:
 </code></pre></div>
 
 <h2 id="mcp-model-context-protocol">MCP – Model Context Protocol</h2>
-<p>MCP ist Anthropics offener Standard, der Agenten mit externen Systemen verbindet. Statt für jedes Tool eigenen Code zu schreiben, definiert MCP ein einheitliches Protokoll.</p>
+<p>MCP (Model Context Protocol) ist der offene Standard für die Verbindung von Agenten mit externen Systemen. Im November 2024 von Anthropic eingeführt, im Dezember 2025 an die Linux Foundation übergeben. Stand März 2026: 97 Millionen monatliche SDK-Downloads, adoptiert von Anthropic, OpenAI, Google, Microsoft und Amazon.</p>
 <h3 id="was-mcp-lost">Was MCP löst</h3>
 <p>Ohne MCP:</p>
 <div class="highlight"><pre><span></span><code>Agent ──&gt; Custom Code ──&gt; Datenbank
@@ -2685,7 +2696,7 @@ Agent ──&gt; Custom Code ──&gt; Slack API
 <span class="k">class</span><span class="w"> </span><span class="nc">ResearchAgent</span><span class="p">(</span><span class="n">Agent</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Agent für Recherche-Aufgaben.&quot;&quot;&quot;</span>
 
-    <span class="n">model</span> <span class="o">=</span> <span class="s2">&quot;claude-sonnet-4-20250514&quot;</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="s2">&quot;claude-sonnet-4-6&quot;</span>
     <span class="n">system_prompt</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;Du bist ein Recherche-Agent.</span>
 <span class="s2">    Du suchst nach Informationen und fasst sie zusammen.</span>
 <span class="s2">    Nutze die verfügbaren Tools systematisch.&quot;&quot;&quot;</span>
@@ -3319,7 +3330,7 @@ Beispiel-Queries: &#39;Rückgabe einleiten&#39;, &#39;Garantiebedingungen Laptop
 <span class="c1"># Mit Caching: Erster Call zahlt voll, alle weiteren 90% günstiger</span>
 
 <span class="n">message</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">messages</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
-    <span class="n">model</span><span class="o">=</span><span class="s2">&quot;claude-sonnet-4-20250514&quot;</span><span class="p">,</span>
+    <span class="n">model</span><span class="o">=</span><span class="s2">&quot;claude-sonnet-4-6&quot;</span><span class="p">,</span>
     <span class="n">max_tokens</span><span class="o">=</span><span class="mi">1024</span><span class="p">,</span>
     <span class="n">system</span><span class="o">=</span><span class="p">[</span>
         <span class="p">{</span>

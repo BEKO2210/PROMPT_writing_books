@@ -8,56 +8,62 @@ Bisher hast du KI über Chat-Interfaces genutzt. Jetzt nutzt du sie programmatis
 
 | Modell | Kontext | Stärke | Input / Output (pro 1M Token) |
 |---|---|---|---|
-| Claude Opus 4 | 200K | Reasoning, komplexe Aufgaben, Code | $15 / $75 |
-| Claude Sonnet 4 | 200K | Bestes Preis-Leistung, schnell, gut in Code | $3 / $15 |
-| Claude Haiku 3.5 | 200K | Schnell, günstig, einfache Aufgaben | $0.80 / $4 |
+| Claude Opus 4.6 | 200K (1M beta) | #1 Reasoning, 80.8% SWE-bench, Code | $5 / $25 |
+| Claude Sonnet 4.5 | 200K | Bestes Preis-Leistung, 77-82% SWE-bench | $3 / $15 |
+| Claude Haiku 4.5 | 200K | Schnell, günstig, agentic Loops | $0.25 / $1.25 |
 
 **Besondere Features:**
-- **Extended Thinking** – Das Modell "denkt nach" bevor es antwortet (Chain-of-Thought intern). Ideal für komplexe Aufgaben.
-- **Tool Use** – Natives Function Calling mit JSON-Schema-Definitionen.
+- **Extended Thinking** – Das Modell "denkt nach" bevor es antwortet. Steuerbar über `effort`-Parameter. Thinking-Tokens als Output abgerechnet.
+- **Tool Use** – Natives Function Calling mit JSON-Schema. Plus: Web Search, Code Execution, Computer Use, programmatic Tool Calling.
 - **Computer Use** – Claude kann einen Computer steuern (Screenshots, Klicks, Tippen).
 - **Prompt Caching** – Wiederholt genutzte Prompt-Teile werden gecacht (90% günstiger).
 - **Batches API** – Massenhaft Requests mit 50% Rabatt (24h SLA).
-- **Vision** – Bilder und PDFs als Input.
+- **Vision** – Bilder, PDFs, Charts, Diagramme als Input.
 - **Citationen** – Claude kann Quellenangaben in Dokumenten referenzieren.
+- **Compaction API** (beta) – Server-seitige Kontext-Zusammenfassung für endlose Konversationen.
+- **1M Token Context Window** (beta für Opus 4.6).
 
 ### OpenAI (GPT)
 
 | Modell | Kontext | Stärke | Input / Output (pro 1M Token) |
 |---|---|---|---|
-| GPT-4.1 | 1M | Coding, Instruction Following | $2 / $8 |
+| GPT-5.2 (xhigh) | 1M | #1 Coding-Benchmarks (89% LiveCodeBench) | $1.75 / $14 |
+| GPT-5 mini | 200K | Schnell, günstig, starkes Allround | $0.25 / $2 |
+| GPT-5 nano | 128K | Ultra-günstig, Edge-Deployment | $0.05 / $0.40 |
 | GPT-4o | 128K | Multimodal (Text + Bild + Audio) | $2.50 / $10 |
 | o3 | 200K | Deep Reasoning, Mathematik | $10 / $40 |
-| o4-mini | 200K | Schnelles Reasoning | $1.10 / $4.40 |
-| GPT-4o-mini | 128K | Günstig, schnell, gutes Allround | $0.15 / $0.60 |
 
 **Besondere Features:**
-- **Structured Outputs** – Garantiert valides JSON nach JSON-Schema.
+- **Responses API** – Ersetzt Chat Completions für neue Projekte. Agentic by default, Multi-Tool-Loop in einer Anfrage.
+- **Structured Outputs** – Garantiert valides JSON mit `strict: true`.
 - **Function Calling** – Nativ, parallel (mehrere Tools gleichzeitig).
+- **Agents SDK** – Open-Source Multi-Agent-Orchestrierung mit MCP-Support.
 - **Realtime API** – Audio-Input und -Output in Echtzeit.
-- **Assistants API** – Persistente Threads mit Code Interpreter und File Search.
-- **Fine-tuning** – Für GPT-4o-mini und GPT-4o verfügbar.
+- **Fine-tuning** – Für GPT-5 mini und GPT-4o verfügbar.
 
 ### Google (Gemini)
 
 | Modell | Kontext | Stärke | Input / Output (pro 1M Token) |
 |---|---|---|---|
-| Gemini 2.5 Pro | 1M | Reasoning, riesiger Kontext | $1.25-$2.50 / $10-$15 |
-| Gemini 2.5 Flash | 1M | Schnell, günstig, Thinking-Budget | $0.15-$0.60 / $0.60-$3.50 |
-| Gemini 2.0 Flash | 1M | Multimodal, Agentic | Kostenloser Tier verfügbar |
+| Gemini 3.1 Pro | 1M | Reasoning, Cross-Language | $2 / $12 |
+| Gemini 3 Flash | 1M | Schnell, günstig | $0.50 / $3 |
+| Gemini 2.5 Pro | 1M | Bewährt, riesiger Kontext | $1.25 / $10 |
+| Gemini 2.0 Flash-Lite | 1M | Ultra-günstig | $0.075 / $0.30 |
 
 **Besondere Features:**
 - **1M Token Kontext** – Gesamte Codebases in einem Request.
+- **Großzügigstes Free Tier** – Bis zu 1.000 Anfragen/Tag kostenlos.
 - **Grounding mit Google Search** – Modell kann googeln.
 - **Code Execution** – Führt Python-Code in Sandbox aus.
 - **Thinking Budget** – Steuere, wie viel das Modell "nachdenken" soll.
+- **MCP-Support** – Nativ integriert.
 
 ### Open Source / Alternative
 
 | Modell | Parameter | Stärke | Zugang |
 |---|---|---|---|
 | Llama 4 (Meta) | Scout: 17B aktiv (109B gesamt), Maverick: 17B aktiv (400B gesamt) | Multimodal, Open Source | Lokal / Together / Groq |
-| DeepSeek-V3 | 685B (37B aktiv) | Coding, Reasoning, günstig | API / Lokal |
+| DeepSeek-V3.2 | 685B (37B aktiv) | Coding, Reasoning, $0.28/1M In | API / Lokal |
 | DeepSeek-R1 | 685B | Reasoning (o1-Level) | API / Lokal |
 | Qwen 3 | Diverse | Multimodal, mehrsprachig | API / Lokal |
 | Mistral Large 2 | 123B | Europa, mehrsprachig, Code | API / Lokal |
@@ -73,7 +79,7 @@ import anthropic
 client = anthropic.Anthropic()  # ANTHROPIC_API_KEY aus Env
 
 message = client.messages.create(
-    model="claude-sonnet-4-20250514",
+    model="claude-sonnet-4-6",
     max_tokens=1024,
     messages=[
         {
@@ -111,7 +117,7 @@ import Anthropic from "@anthropic-ai/sdk";
 const client = new Anthropic();
 
 const message = await client.messages.create({
-  model: "claude-sonnet-4-20250514",
+  model: "claude-sonnet-4-6",
   max_tokens: 1024,
   messages: [
     {
@@ -130,7 +136,7 @@ System-Prompts definieren das Verhalten des Modells über die gesamte Konversati
 
 ```python
 message = client.messages.create(
-    model="claude-sonnet-4-20250514",
+    model="claude-sonnet-4-6",
     max_tokens=2048,
     system="""Du bist ein Senior Python Developer mit 15 Jahren Erfahrung.
 Du schreibst sauberen, typisierten Python-Code nach PEP 8.
@@ -150,7 +156,7 @@ Für UX-freundliche Responses – Text erscheint Wort für Wort:
 ```python
 # Anthropic Streaming
 with client.messages.stream(
-    model="claude-sonnet-4-20250514",
+    model="claude-sonnet-4-6",
     max_tokens=1024,
     messages=[{"role": "user", "content": "Schreibe eine Kurzgeschichte."}]
 ) as stream:
@@ -182,7 +188,7 @@ import anthropic
 client = anthropic.Anthropic()
 
 message = client.messages.create(
-    model="claude-sonnet-4-20250514",
+    model="claude-sonnet-4-6",
     max_tokens=1024,
     tools=[{
         "name": "analyze_sentiment",
@@ -225,7 +231,7 @@ Spart bis zu 90% bei wiederholten Prompts:
 
 ```python
 message = client.messages.create(
-    model="claude-sonnet-4-20250514",
+    model="claude-sonnet-4-6",
     max_tokens=1024,
     system=[
         {
@@ -251,7 +257,7 @@ with open("screenshot.png", "rb") as f:
     image_data = base64.standard_b64encode(f.read()).decode("utf-8")
 
 message = client.messages.create(
-    model="claude-sonnet-4-20250514",
+    model="claude-sonnet-4-6",
     max_tokens=1024,
     messages=[{
         "role": "user",
