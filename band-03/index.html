@@ -253,9 +253,25 @@ box-shadow:0 12px 40px rgba(0,0,0,.4);
 .topbar-actions .btn-sm span{display:none}
 .main{padding:70px 14px 80px}
 }
+
+/* Paywall */
+.paywall{display:none;position:fixed;inset:0;z-index:9999;background:var(--bg);flex-direction:column;align-items:center;justify-content:center;padding:20px;text-align:center}
+.paywall.active{display:flex}
+.paywall-card{background:var(--card,#161b22);border:1px solid var(--border);border-radius:20px;padding:40px 30px;max-width:440px;width:100%}
+.paywall h2{font-size:1.6rem;margin-bottom:8px}
+.paywall p{color:var(--text2);font-size:14px;margin-bottom:24px}
+.paywall input{width:100%;padding:14px 18px;background:var(--bg);border:1px solid var(--border);border-radius:12px;color:var(--text);font-size:18px;font-family:'Courier New',monospace;letter-spacing:3px;text-align:center;outline:none;transition:border-color .2s}
+.paywall input:focus{border-color:var(--accent)}
+.paywall .pw-btn{margin-top:16px;width:100%;padding:14px;background:linear-gradient(135deg,#8ab4f8,#6a9af8);color:#0d1117;border:none;border-radius:12px;font-size:16px;font-weight:700;cursor:pointer;transition:all .3s;font-family:inherit}
+.paywall .pw-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(138,180,248,.3)}
+.paywall .pw-error{color:#f85149;font-size:13px;margin-top:10px;display:none}
+.paywall .pw-back{margin-top:20px;font-size:13px}
+.paywall .pw-back a{color:var(--accent);text-decoration:none}
+.content-locked .chapter:nth-child(n+2){filter:blur(8px);user-select:none;pointer-events:none}
 </style>
 </head>
 <body>
+
 <div class="progress" id="progress" role="progressbar" aria-label="Lesefortschritt"></div>
 <div class="overlay" id="overlay"></div>
 
@@ -2768,6 +2784,7 @@ document.querySelectorAll('.chapter pre').forEach(function(pre){
   });
   pre.style.position='relative';pre.appendChild(btn);
 });
+
 </script>
 </body>
 </html>

@@ -138,6 +138,9 @@ display:inline-block;font-size:11px;font-weight:600;text-transform:uppercase;
 letter-spacing:1px;padding:5px 14px;border-radius:100px;
 }
 .card.available .card-status{background:rgba(78,205,196,.15);color:var(--accent2);border:1px solid rgba(78,205,196,.3)}
+.card.locked .card-status{background:rgba(138,180,248,.1);color:var(--accent);border:1px solid rgba(138,180,248,.2)}
+.card.locked .card-arrow{background:rgba(138,180,248,.1);border-color:rgba(138,180,248,.2)}
+.card.locked:hover .card-arrow{background:rgba(138,180,248,.2)}
 .card.coming .card-status{background:rgba(136,153,170,.1);color:var(--text2);border:1px solid rgba(136,153,170,.15)}
 .card-arrow{
 position:absolute;right:20px;bottom:20px;width:36px;height:36px;border-radius:50%;
@@ -227,27 +230,27 @@ padding:8px 20px;font-size:13px;font-weight:600;cursor:pointer;width:100%;
 <div class="level-label" role="heading" aria-level="2">Anf&auml;nger</div>
 <div class="grid">
 
-<a href="band-01/" class="card available" aria-label="Band 1: Grundlagen – Jetzt lesen">
+<a href="band-01/" class="card available" aria-label="Band 1: Grundlagen – Kostenlos lesen">
 <div class="card-band">Band 1</div>
 <div class="card-title">Grundlagen</div>
 <div class="card-desc">Dein Einstieg in die Welt der KI-Kommunikation</div>
-<div class="card-status">Jetzt lesen</div>
+<div class="card-status">Kostenlos</div>
 <div class="card-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></div>
 </a>
 
-<a href="band-02/" class="card available" aria-label="Band 2: Prompt-Frameworks – Jetzt lesen">
+<a href="band-02/" class="card available" aria-label="Band 2: Prompt-Frameworks – Kostenlos lesen">
 <div class="card-band">Band 2</div>
 <div class="card-title">Prompt-Frameworks</div>
 <div class="card-desc">CRAFT, RTF, RISEN &ndash; strukturiert zum perfekten Prompt</div>
-<div class="card-status">Jetzt lesen</div>
+<div class="card-status">Kostenlos</div>
 <div class="card-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></div>
 </a>
 
-<a href="band-03/" class="card available" aria-label="Band 3: Fortgeschrittene Basics – Jetzt lesen">
+<a href="band-03/" class="card available" aria-label="Band 3: Fortgeschrittene Basics – Kostenlos lesen">
 <div class="card-band">Band 3</div>
 <div class="card-title">Fortgeschrittene Basics</div>
 <div class="card-desc">Prompt-Chaining, Parameter &amp; System-Prompts</div>
-<div class="card-status">Jetzt lesen</div>
+<div class="card-status">Kostenlos</div>
 <div class="card-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></div>
 </a>
 
@@ -256,27 +259,27 @@ padding:8px 20px;font-size:13px;font-weight:600;cursor:pointer;width:100%;
 <div class="level-label" role="heading" aria-level="2">Fortgeschritten</div>
 <div class="grid">
 
-<a href="band-04/" class="card available" aria-label="Band 4: Reasoning-Techniken – Jetzt lesen">
+<a href="band-04/" class="card locked" aria-label="Band 4: Reasoning-Techniken – Schl&uuml;ssel n&ouml;tig">
 <div class="card-band">Band 4</div>
 <div class="card-title">Reasoning-Techniken</div>
 <div class="card-desc">Chain-of-Thought, Tree-of-Thought &amp; Co.</div>
-<div class="card-status">Jetzt lesen</div>
+<div class="card-status">&#128274; Schl&uuml;ssel n&ouml;tig</div>
 <div class="card-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></div>
 </a>
 
-<a href="band-05/" class="card available" aria-label="Band 5: Kreatives Prompting – Jetzt lesen">
+<a href="band-05/" class="card locked" aria-label="Band 5: Kreatives Prompting – Schl&uuml;ssel n&ouml;tig">
 <div class="card-band">Band 5</div>
 <div class="card-title">Kreatives Prompting</div>
 <div class="card-desc">Storytelling, Bilder &amp; Multimedia</div>
-<div class="card-status">Jetzt lesen</div>
+<div class="card-status">&#128274; Schl&uuml;ssel n&ouml;tig</div>
 <div class="card-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></div>
 </a>
 
-<a href="band-06/" class="card available" aria-label="Band 6: Spezialisiertes Prompting – Jetzt lesen">
+<a href="band-06/" class="card locked" aria-label="Band 6: Spezialisiertes Prompting – Schl&uuml;ssel n&ouml;tig">
 <div class="card-band">Band 6</div>
 <div class="card-title">Spezialisiertes Prompting</div>
 <div class="card-desc">Marketing, Bildung, Wissenschaft &amp; mehr</div>
-<div class="card-status">Jetzt lesen</div>
+<div class="card-status">&#128274; Schl&uuml;ssel n&ouml;tig</div>
 <div class="card-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></div>
 </a>
 
@@ -285,27 +288,27 @@ padding:8px 20px;font-size:13px;font-weight:600;cursor:pointer;width:100%;
 <div class="level-label" role="heading" aria-level="2">Profi</div>
 <div class="grid">
 
-<a href="band-07/" class="card available" aria-label="Band 7: Prompting für Entwickler – Jetzt lesen">
+<a href="band-07/" class="card locked" aria-label="Band 7: Prompting f&uuml;r Entwickler – Schl&uuml;ssel n&ouml;tig">
 <div class="card-band">Band 7</div>
 <div class="card-title">Prompting f&uuml;r Entwickler</div>
 <div class="card-desc">Code, APIs &amp; Automatisierung</div>
-<div class="card-status">Jetzt lesen</div>
+<div class="card-status">&#128274; Schl&uuml;ssel n&ouml;tig</div>
 <div class="card-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></div>
 </a>
 
-<a href="band-08/" class="card available" aria-label="Band 8: Business & Produktivität – Jetzt lesen">
+<a href="band-08/" class="card locked" aria-label="Band 8: Business &amp; Produktivit&auml;t – Schl&uuml;ssel n&ouml;tig">
 <div class="card-band">Band 8</div>
 <div class="card-title">Business &amp; Produktivit&auml;t</div>
 <div class="card-desc">Workflows, Reports &amp; Team-Standards</div>
-<div class="card-status">Jetzt lesen</div>
+<div class="card-status">&#128274; Schl&uuml;ssel n&ouml;tig</div>
 <div class="card-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></div>
 </a>
 
-<a href="band-09/" class="card available" aria-label="Band 9: Sicherheit & Ethik – Jetzt lesen">
+<a href="band-09/" class="card locked" aria-label="Band 9: Sicherheit &amp; Ethik – Schl&uuml;ssel n&ouml;tig">
 <div class="card-band">Band 9</div>
 <div class="card-title">Sicherheit &amp; Ethik</div>
 <div class="card-desc">Prompt Injection, Bias &amp; DSGVO</div>
-<div class="card-status">Jetzt lesen</div>
+<div class="card-status">&#128274; Schl&uuml;ssel n&ouml;tig</div>
 <div class="card-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></div>
 </a>
 
@@ -314,11 +317,11 @@ padding:8px 20px;font-size:13px;font-weight:600;cursor:pointer;width:100%;
 <div class="level-label" role="heading" aria-level="2">Experte</div>
 <div class="grid">
 
-<a href="band-10/" class="card available" aria-label="Band 10: Die Zukunft – Jetzt lesen">
+<a href="band-10/" class="card locked" aria-label="Band 10: Die Zukunft – Schl&uuml;ssel n&ouml;tig">
 <div class="card-band">Band 10</div>
 <div class="card-title">Die Zukunft</div>
 <div class="card-desc">Agenten, Context Engineering &amp; Automated Prompting</div>
-<div class="card-status">Jetzt lesen</div>
+<div class="card-status">&#128274; Schl&uuml;ssel n&ouml;tig</div>
 <div class="card-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></div>
 </a>
 
@@ -327,11 +330,11 @@ padding:8px 20px;font-size:13px;font-weight:600;cursor:pointer;width:100%;
 <div class="level-label" role="heading" aria-level="2">Bonus</div>
 <div class="grid">
 
-<a href="band-bonus/" class="card available" aria-label="Bonusband: Die ultimative Prompt-Sammlung – Jetzt lesen" style="border-color:rgba(78,205,196,.25);background:linear-gradient(135deg,rgba(78,205,196,.04),transparent 60%)">
-<div class="card-band" style="color:var(--accent2)">Bonusband</div>
+<a href="band-bonus/" class="card locked" aria-label="Bonusband: Die ultimative Prompt-Sammlung – Schl&uuml;ssel n&ouml;tig" style="border-color:rgba(138,180,248,.2);background:linear-gradient(135deg,rgba(138,180,248,.04),transparent 60%)">
+<div class="card-band" style="color:var(--accent)">Bonusband</div>
 <div class="card-title">Die ultimative Prompt-Sammlung</div>
 <div class="card-desc">200+ fertige Prompts f&uuml;r jeden Bereich &ndash; Alltag, Business, Kreativ, Code, Bildung, Marketing &amp; mehr. Sofort einsetzbar.</div>
-<div class="card-status">Jetzt lesen</div>
+<div class="card-status">&#128274; Schl&uuml;ssel n&ouml;tig</div>
 <div class="card-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></div>
 </a>
 
@@ -343,17 +346,8 @@ padding:8px 20px;font-size:13px;font-weight:600;cursor:pointer;width:100%;
 <footer>
 <div class="footer-copy">&copy; 2026 Belkis Aslani</div>
 <div class="footer-links">
-<a href="band-01/">Band 1</a>
-<a href="band-02/">Band 2</a>
-<a href="band-03/">Band 3</a>
-<a href="band-04/">Band 4</a>
-<a href="band-05/">Band 5</a>
-<a href="band-06/">Band 6</a>
-<a href="band-07/">Band 7</a>
-<a href="band-08/">Band 8</a>
-<a href="band-09/">Band 9</a>
-<a href="band-10/">Band 10</a>
-<a href="band-bonus/">Bonus</a>
+<a href="agb.html">AGB</a>
+<a href="datenschutz.html">Datenschutzerkl&auml;rung</a>
 </div>
 </footer>
 
@@ -435,6 +429,26 @@ var io=new IntersectionObserver(function(entries){
 entries.forEach(function(e){if(e.isIntersecting)animateCounters()});
 },{threshold:0.5});
 io.observe(stats);
+})();
+
+// Unlock cards if user has valid key in localStorage
+(function(){
+var stored=localStorage.getItem('pe-key-validated');
+if(!stored)return;
+try{
+var d=JSON.parse(stored);
+if(!d.bands)return;
+var bandMap={4:'band-04',5:'band-05',6:'band-06',7:'band-07',8:'band-08',9:'band-09',10:'band-10',11:'band-bonus'};
+d.bands.forEach(function(b){
+var slug=bandMap[b];if(!slug)return;
+var link=document.querySelector('a[href="'+slug+'/"]');
+if(link){
+link.classList.remove('locked');link.classList.add('available');
+var status=link.querySelector('.card-status');
+if(status)status.textContent='Freigeschaltet';
+}
+});
+}catch(e){}
 })();
 </script>
 </body>
