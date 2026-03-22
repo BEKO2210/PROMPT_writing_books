@@ -45,8 +45,8 @@
 --accent:#8ab4f8;--accent-light:#8ab4f8;
 --border:#2a3444;--code-bg:#161b22;--sidebar-bg:#0d1117;
 }
-html{scroll-behavior:smooth;scroll-padding-top:70px}
-body{font-family:var(--font);background:var(--bg);color:var(--text);transition:background .3s,color .3s}
+html{scroll-behavior:smooth;scroll-padding-top:70px;overflow-x:hidden}
+body{font-family:var(--font);background:var(--bg);color:var(--text);transition:background .3s,color .3s;overflow-x:hidden}
 
 /* Progress */
 .progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent-light));z-index:1000;width:0;transition:width .15s}
@@ -124,7 +124,7 @@ text-decoration:none;border-left:2px solid transparent;transition:all .2s;line-h
 /* Main */
 .main{margin-left:280px;padding:80px 24px 100px;transition:margin .3s}
 @media(max-width:900px){.main{margin-left:0}}
-.content{max-width:var(--max-w);margin:0 auto}
+.content{max-width:var(--max-w);margin:0 auto;overflow-x:hidden}
 
 /* Typography */
 .chapter{padding-bottom:60px;margin-bottom:40px;border-bottom:1px solid var(--border)}
@@ -139,14 +139,16 @@ text-decoration:none;border-left:2px solid transparent;transition:all .2s;line-h
 .chapter li{margin-bottom:8px}.chapter li>ul,.chapter li>ol{margin-top:6px}
 
 /* Code */
-.chapter pre{background:var(--code-bg);border:1px solid var(--border);border-radius:10px;padding:18px 20px;margin:20px 0;overflow-x:auto;font-family:var(--font-mono);font-size:14px;line-height:1.55}
+.chapter pre{background:var(--code-bg);border:1px solid var(--border);border-radius:10px;padding:18px 20px;margin:20px 0;overflow-x:auto;font-family:var(--font-mono);font-size:14px;line-height:1.55;max-width:100%;white-space:pre-wrap;word-wrap:break-word}
 .chapter code{font-family:var(--font-mono);font-size:15px;background:var(--code-bg);padding:2px 6px;border-radius:5px;color:var(--accent)}
 .chapter pre code{background:none;padding:0;color:var(--text);font-size:14px}
 
+/* Table wrapper for scroll */
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:20px 0;border-radius:8px;max-width:100%}
 /* Tables */
-.chapter table{width:100%;border-collapse:collapse;margin:20px 0;font-size:15px;border-radius:8px;overflow:hidden}
+.chapter table{width:100%;border-collapse:collapse;font-size:15px;border-radius:8px;min-width:320px;margin:0}
 .chapter thead{background:var(--accent);color:#fff}
-.chapter th{padding:10px 14px;text-align:left;font-size:13px;font-weight:600}
+.chapter th{padding:10px 14px;text-align:left;font-size:13px;font-weight:600;white-space:nowrap}
 .chapter td{padding:10px 14px;border-bottom:1px solid var(--border);font-family:var(--font-reading)}
 .chapter tr:nth-child(even){background:var(--bg2)}
 
@@ -223,8 +225,10 @@ box-shadow:0 12px 40px rgba(0,0,0,.4);
 /* Responsive */
 @media(max-width:600px){
 .chapter table{font-size:13px}.chapter th,.chapter td{padding:8px 10px}
-.chapter p{font-size:16px}.chapter pre{font-size:13px;padding:14px 16px}
+.chapter p{font-size:16px}.chapter pre{font-size:13px;padding:14px 12px}
+.chapter ul,.chapter ol{padding-left:20px}
 .topbar-actions .btn-sm span{display:none}
+.main{padding:70px 14px 80px}
 }
 </style>
 </head>
@@ -419,7 +423,7 @@ box-shadow:0 12px 40px rgba(0,0,0,.4);
 <p>In jedem Schritt bist DU die treibende Kraft. Die KI ist das Werkzeug. Das Ergebnis ist deins – weil du die Entscheidungen getroffen hast.</p>
 <h2 id="kreativitat-und-die-techniken-aus-band-1-4">Kreativität und die Techniken aus Band 1-4</h2>
 <p>Hier ist etwas Wichtiges: Alles, was du in den vorherigen Bänden gelernt hast, gilt auch für kreative Prompts. Aber die Gewichtung verschiebt sich:</p>
-<table>
+<div class="table-wrap"><table>
 <thead>
 <tr>
 <th>Technik</th>
@@ -469,7 +473,7 @@ box-shadow:0 12px 40px rgba(0,0,0,.4);
 <td>Stil verfeinern</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p>Die wichtigste Verschiebung: Bei analytischen Aufgaben willst du Kontrolle. Bei kreativen Aufgaben willst du kontrolliertes Chaos. Du gibst eine Richtung vor, aber lässt Raum für Überraschungen.</p>
 <h2 id="ein-erstes-experiment">Ein erstes Experiment</h2>
 <p>Bevor wir in die einzelnen Kapitel eintauchen, probier Folgendes:</p>
@@ -773,7 +777,7 @@ Suchanfragen einer Person über ein Jahr.
 <p>Constraints klingen einschränkend, aber sie erzwingen Kreativität. Die KI muss ungewöhnliche Lösungen finden – und genau das macht die Ergebnisse interessant.</p>
 <h2 id="den-ki-sound-loswerden">Den KI-Sound loswerden</h2>
 <p>KI-Texte haben einen erkennbaren Sound. Hier sind die häufigsten Muster und wie du sie vermeidest:</p>
-<table>
+<div class="table-wrap"><table>
 <thead>
 <tr>
 <th>KI-Klischee</th>
@@ -810,7 +814,7 @@ Suchanfragen einer Person über ein Jahr.
 <td>&ldquo;Max. 20% Beschreibung, 80% Handlung und Dialog&rdquo;</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p>Der beste Anti-KI-Sound-Prompt:</p>
 <div class="highlight"><pre><span></span><code>Schreibe wie ein Mensch, nicht wie eine KI.
 Das bedeutet: Unperfekt. Mit Eigenheiten. Mit
@@ -1190,7 +1194,7 @@ einen Freund, den man seit 10 Jahren nicht gesehen hat.
 <p>Bild-Generierung ist der Bereich, in dem KI-Kreativität am sichtbarsten geworden ist. DALL-E, Midjourney, Stable Diffusion, Flux, Adobe Firefly – in den letzten drei Jahren ist eine ganze Industrie entstanden. Und die Qualität ist von &ldquo;lustige Verzerrungen&rdquo; zu &ldquo;ist das ein Foto?&rdquo; gesprungen.</p>
 <p>In diesem Kapitel lernst du, wie du Bild-Prompts schreibst, die mehr produzieren als generische Stock-Fotos.</p>
 <h2 id="die-bild-ki-landschaft-stand-2026">Die Bild-KI-Landschaft (Stand 2026)</h2>
-<table>
+<div class="table-wrap"><table>
 <thead>
 <tr>
 <th>Tool</th>
@@ -1237,7 +1241,7 @@ einen Freund, den man seit 10 Jahren nicht gesehen hat.
 <td>Google AI Studio</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p>Welches Tool du nutzt, ist weniger wichtig als <em>wie</em> du deine Prompts schreibst. Die Grundprinzipien gelten überall.</p>
 <h2 id="die-anatomie-eines-bild-prompts">Die Anatomie eines Bild-Prompts</h2>
 <p>Ein guter Bild-Prompt besteht aus fünf Bausteinen:</p>
@@ -1296,7 +1300,7 @@ ein Geheimnis hüten. Hyperdetailliert.
 <h2 id="stil-vokabular">Stil-Vokabular</h2>
 <p>Das richtige Wort macht den Unterschied. Hier ist dein Stil-Wörterbuch:</p>
 <h3 id="kunstrichtungen">Kunstrichtungen</h3>
-<table>
+<div class="table-wrap"><table>
 <thead>
 <tr>
 <th>Begriff</th>
@@ -1329,9 +1333,9 @@ ein Geheimnis hüten. Hyperdetailliert.
 <td>Geometrisch, luxuriös, Gold, Symmetrie</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h3 id="fotografie-begriffe">Fotografie-Begriffe</h3>
-<table>
+<div class="table-wrap"><table>
 <thead>
 <tr>
 <th>Begriff</th>
@@ -1364,9 +1368,9 @@ ein Geheimnis hüten. Hyperdetailliert.
 <td>Körnig, analog, Retro-Feeling</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h3 id="render-begriffe-fur-3ddigital">Render-Begriffe (für 3D/Digital)</h3>
-<table>
+<div class="table-wrap"><table>
 <thead>
 <tr>
 <th>Begriff</th>
@@ -1399,7 +1403,7 @@ ein Geheimnis hüten. Hyperdetailliert.
 <td>Perfekte Reflektionen und Lichtbrechung</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h2 id="negative-prompts-fur-bilder">Negative Prompts für Bilder</h2>
 <p>Du kennst negative Prompts aus Band 3. Bei Bildern sind sie besonders wichtig:</p>
 <div class="highlight"><pre><span></span><code>Negative Prompt: Verschwommene Hände, deformierte Finger,
@@ -1409,7 +1413,7 @@ niedriger Detailgrad
 </code></pre></div>
 
 <h3 id="die-haufigsten-bild-probleme-und-ihre-negativ-prompts">Die häufigsten Bild-Probleme und ihre Negativ-Prompts</h3>
-<table>
+<div class="table-wrap"><table>
 <thead>
 <tr>
 <th>Problem</th>
@@ -1438,7 +1442,7 @@ niedriger Detailgrad
 <td>&ldquo;uncanny valley, distorted face, asymmetric eyes&rdquo;</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h2 id="fortgeschrittene-bild-techniken">Fortgeschrittene Bild-Techniken</h2>
 <h3 id="technik-1-referenz-stacking">Technik 1: Referenz-Stacking</h3>
 <p>Statt einem Stil kombinierst du mehrere Referenzen:</p>
@@ -1572,7 +1576,7 @@ du sehen möchtest]
 <p>2024 hat KI-generierte Musik einen Wendepunkt erreicht. Tools wie Suno und Udio produzieren Songs, die klingen, als kämen sie aus einem professionellen Studio. Nicht perfekt, aber gut genug, um auf Spotify nicht sofort als KI erkannt zu werden.</p>
 <p>In diesem Kapitel lernst du, wie du KI-Musik, Soundeffekte und Sprache promptest.</p>
 <h2 id="die-audio-ki-landschaft-stand-2026">Die Audio-KI-Landschaft (Stand 2026)</h2>
-<table>
+<div class="table-wrap"><table>
 <thead>
 <tr>
 <th>Tool</th>
@@ -1625,7 +1629,7 @@ du sehen möchtest]
 <td>Research</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h2 id="musik-prompts-schreiben">Musik-Prompts schreiben</h2>
 <p>Musik-Prompts funktionieren anders als Text-Prompts. Du beschreibst nicht WAS gespielt wird (Note für Note), sondern WIE es klingen soll.</p>
 <h3 id="die-bausteine-eines-musik-prompts">Die Bausteine eines Musik-Prompts</h3>
@@ -1756,7 +1760,7 @@ TEXT:
 </code></pre></div>
 
 <h3 id="anwendungen-fur-text-to-speech">Anwendungen für Text-to-Speech</h3>
-<table>
+<div class="table-wrap"><table>
 <thead>
 <tr>
 <th>Anwendung</th>
@@ -1785,7 +1789,7 @@ TEXT:
 <td>Energisch, überzeugend, mit Pausen</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h2 id="musik-fur-verschiedene-zwecke">Musik für verschiedene Zwecke</h2>
 <h3 id="hintergrundmusik-fur-videos">Hintergrundmusik für Videos</h3>
 <div class="highlight"><pre><span></span><code>Hintergrundmusik für ein YouTube-Tutorial (Tech).
@@ -1857,7 +1861,7 @@ Keine Überraschungen. Fließend.
 <h1 id="kapitel-6-video-und-animation-bewegte-bilder-aus-text">Kapitel 6: Video und Animation – Bewegte Bilder aus Text</h1>
 <p>Das ist das Kapitel, das in einem Jahr komplett veraltet sein könnte. Video-KI entwickelt sich so schnell, dass jeder Monat neue Möglichkeiten bringt. Was ich dir hier zeige, ist der Stand März 2026 – und es ist bereits beeindruckend.</p>
 <h2 id="die-video-ki-landschaft-stand-2026">Die Video-KI-Landschaft (Stand 2026)</h2>
-<table>
+<div class="table-wrap"><table>
 <thead>
 <tr>
 <th>Tool</th>
@@ -1904,7 +1908,7 @@ Keine Überraschungen. Fließend.
 <td>bis 120s</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h2 id="video-prompts-grundlagen">Video-Prompts: Grundlagen</h2>
 <p>Video-Prompts sind wie Bild-Prompts plus zwei Dimensionen: Zeit und Bewegung.</p>
 <h3 id="die-bausteine">Die Bausteine</h3>
@@ -1918,7 +1922,7 @@ STIMMUNG: [Welches Gefühl?]
 
 <h3 id="kamera-vokabular">Kamera-Vokabular</h3>
 <p>Das richtige Kamera-Vokabular macht den Unterschied zwischen &ldquo;KI-Video&rdquo; und &ldquo;könnte ein Filmclip sein&rdquo;:</p>
-<table>
+<div class="table-wrap"><table>
 <thead>
 <tr>
 <th>Begriff</th>
@@ -1973,7 +1977,7 @@ STIMMUNG: [Welches Gefühl?]
 <td>Drama, Schönheit</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h3 id="beispiel-prompts">Beispiel-Prompts</h3>
 <p><strong>Naturszene:</strong></p>
 <div class="highlight"><pre><span></span><code>Aerial drone shot über einen nebligen Bergsee bei
@@ -2343,7 +2347,7 @@ einen Songtext, der die Stimmung dieses Bildes einfängt.
 <p>Mit Framework fragt man gezielt aus ungewöhnlichen Richtungen. Und da werden die Ideen spannend.</p>
 <h2 id="framework-1-scamper">Framework 1: SCAMPER</h2>
 <p>SCAMPER ist ein Kreativitäts-Klassiker. Es steht für sieben Denkoperationen, die du auf jedes Thema, Produkt oder Konzept anwenden kannst:</p>
-<table>
+<div class="table-wrap"><table>
 <thead>
 <tr>
 <th>Buchstabe</th>
@@ -2388,7 +2392,7 @@ einen Songtext, der die Stimmung dieses Bildes einfängt.
 <td>Was passiert, wenn ich es umdrehe?</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h3 id="der-scamper-prompt">Der SCAMPER-Prompt</h3>
 <div class="highlight"><pre><span></span><code>Ich habe folgendes [Produkt/Konzept/Projekt]:
 [Beschreibung]
@@ -2424,7 +2428,7 @@ Wende SCAMPER an...
 - <strong>R:</strong> Umkehren: Statt &ldquo;Was koche ich?&rdquo; → &ldquo;Was mache ich mit dem, was ich habe?&rdquo;</p>
 <h2 id="framework-2-die-sechs-hute-de-bono">Framework 2: Die Sechs Hüte (De Bono)</h2>
 <p>Edward de Bonos &ldquo;Six Thinking Hats&rdquo; teilt Denken in sechs Perspektiven auf:</p>
-<table>
+<div class="table-wrap"><table>
 <thead>
 <tr>
 <th>Hut</th>
@@ -2464,7 +2468,7 @@ Wende SCAMPER an...
 <td>Wie gehen wir vor? Was ist der nächste Schritt?</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h3 id="der-sechs-hute-prompt">Der Sechs-Hüte-Prompt</h3>
 <div class="highlight"><pre><span></span><code>Thema: [Dein Thema/Idee/Problem]
 
@@ -2625,7 +2629,7 @@ in the Dark → gibt es tatsächlich als Konzept!)
 </code></pre></div>
 
 <h2 id="wann-welches-framework">Wann welches Framework?</h2>
-<table>
+<div class="table-wrap"><table>
 <thead>
 <tr>
 <th>Situation</th>
@@ -2662,7 +2666,7 @@ in the Dark → gibt es tatsächlich als Konzept!)
 <td>Provokation</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <hr />
 <h2 id="ubungen">Übungen</h2>
 <h3 id="ubung-1-scamper-in-aktion">Übung 1: SCAMPER in Aktion</h3>

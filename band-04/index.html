@@ -45,8 +45,8 @@
 --accent:#8ab4f8;--accent-light:#8ab4f8;
 --border:#2a3444;--code-bg:#161b22;--sidebar-bg:#0d1117;
 }
-html{scroll-behavior:smooth;scroll-padding-top:70px}
-body{font-family:var(--font);background:var(--bg);color:var(--text);transition:background .3s,color .3s}
+html{scroll-behavior:smooth;scroll-padding-top:70px;overflow-x:hidden}
+body{font-family:var(--font);background:var(--bg);color:var(--text);transition:background .3s,color .3s;overflow-x:hidden}
 
 /* Progress */
 .progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent-light));z-index:1000;width:0;transition:width .15s}
@@ -124,7 +124,7 @@ text-decoration:none;border-left:2px solid transparent;transition:all .2s;line-h
 /* Main */
 .main{margin-left:280px;padding:80px 24px 100px;transition:margin .3s}
 @media(max-width:900px){.main{margin-left:0}}
-.content{max-width:var(--max-w);margin:0 auto}
+.content{max-width:var(--max-w);margin:0 auto;overflow-x:hidden}
 
 /* Typography */
 .chapter{padding-bottom:60px;margin-bottom:40px;border-bottom:1px solid var(--border)}
@@ -139,14 +139,16 @@ text-decoration:none;border-left:2px solid transparent;transition:all .2s;line-h
 .chapter li{margin-bottom:8px}.chapter li>ul,.chapter li>ol{margin-top:6px}
 
 /* Code */
-.chapter pre{background:var(--code-bg);border:1px solid var(--border);border-radius:10px;padding:18px 20px;margin:20px 0;overflow-x:auto;font-family:var(--font-mono);font-size:14px;line-height:1.55}
+.chapter pre{background:var(--code-bg);border:1px solid var(--border);border-radius:10px;padding:18px 20px;margin:20px 0;overflow-x:auto;font-family:var(--font-mono);font-size:14px;line-height:1.55;max-width:100%;white-space:pre-wrap;word-wrap:break-word}
 .chapter code{font-family:var(--font-mono);font-size:15px;background:var(--code-bg);padding:2px 6px;border-radius:5px;color:var(--accent)}
 .chapter pre code{background:none;padding:0;color:var(--text);font-size:14px}
 
+/* Table wrapper for scroll */
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:20px 0;border-radius:8px;max-width:100%}
 /* Tables */
-.chapter table{width:100%;border-collapse:collapse;margin:20px 0;font-size:15px;border-radius:8px;overflow:hidden}
+.chapter table{width:100%;border-collapse:collapse;font-size:15px;border-radius:8px;min-width:320px;margin:0}
 .chapter thead{background:var(--accent);color:#fff}
-.chapter th{padding:10px 14px;text-align:left;font-size:13px;font-weight:600}
+.chapter th{padding:10px 14px;text-align:left;font-size:13px;font-weight:600;white-space:nowrap}
 .chapter td{padding:10px 14px;border-bottom:1px solid var(--border);font-family:var(--font-reading)}
 .chapter tr:nth-child(even){background:var(--bg2)}
 
@@ -223,8 +225,10 @@ box-shadow:0 12px 40px rgba(0,0,0,.4);
 /* Responsive */
 @media(max-width:600px){
 .chapter table{font-size:13px}.chapter th,.chapter td{padding:8px 10px}
-.chapter p{font-size:16px}.chapter pre{font-size:13px;padding:14px 16px}
+.chapter p{font-size:16px}.chapter pre{font-size:13px;padding:14px 12px}
+.chapter ul,.chapter ol{padding-left:20px}
 .topbar-actions .btn-sm span{display:none}
+.main{padding:70px 14px 80px}
 }
 </style>
 </head>
@@ -346,7 +350,7 @@ box-shadow:0 12px 40px rgba(0,0,0,.4);
 <h2 id="reasoning-vs-prompting-der-unterschied">Reasoning vs. Prompting – der Unterschied</h2>
 <p>In den ersten drei Bänden hast du Prompting gelernt. Du gibst dem Modell eine Aufgabe und optimierst, wie du sie formulierst.</p>
 <p>Reasoning geht einen Schritt weiter. Du optimierst nicht nur die Aufgabe, sondern den <strong>Denkprozess</strong>, den das Modell durchläuft, um zur Antwort zu kommen.</p>
-<table>
+<div class="table-wrap"><table>
 <thead>
 <tr>
 <th>Prompting (Band 1-3)</th>
@@ -375,7 +379,7 @@ box-shadow:0 12px 40px rgba(0,0,0,.4);
 <td>&ldquo;Analysiere das Problem Schritt für Schritt, wäge Optionen ab und empfiehl die beste Lösung&rdquo;</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p>Das heißt nicht, dass Prompting überflüssig wird. Reasoning-Techniken <em>bauen</em> auf gutem Prompting auf. Du brauchst weiterhin klare Aufgaben, guten Kontext, passende Rollen und saubere Struktur. Reasoning kommt obendrauf.</p>
 <h2 id="warum-llms-ohne-reasoning-scheitern">Warum LLMs ohne Reasoning scheitern</h2>
 <p>Lass mich dir zeigen, wo Standard-Prompting an seine Grenzen stößt.</p>
@@ -955,7 +959,7 @@ dass die EU maximal 30 Mitgliedsstaaten haben darf...
 
 <p>Der letzte Satz ist erfunden. CoT kann Halluzinationen in Denkschritten verstecken.</p>
 <h2 id="cot-best-practices-zusammenfassung">CoT Best Practices – Zusammenfassung</h2>
-<table>
+<div class="table-wrap"><table>
 <thead>
 <tr>
 <th>Tipp</th>
@@ -992,7 +996,7 @@ dass die EU maximal 30 Mitgliedsstaaten haben darf...
 <td>&ldquo;Du bist ein Experte für X. Denke Schritt für Schritt&hellip;&rdquo;</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <hr />
 <h2 id="ubungen">Übungen</h2>
 <h3 id="ubung-1-cot-varianten-vergleichen">Übung 1: CoT-Varianten vergleichen</h3>
@@ -1027,7 +1031,7 @@ dass die EU maximal 30 Mitgliedsstaaten haben darf...
 <h2 id="die-besten-zero-shot-cot-trigger">Die besten Zero-Shot-CoT-Trigger</h2>
 <p>&ldquo;Denke Schritt für Schritt&rdquo; ist die bekannteste Formulierung, aber nicht die einzige. Hier sind die effektivsten Varianten, die ich getestet habe:</p>
 <h3 id="die-klassiker">Die Klassiker</h3>
-<table>
+<div class="table-wrap"><table>
 <thead>
 <tr>
 <th>Trigger</th>
@@ -1060,9 +1064,9 @@ dass die EU maximal 30 Mitgliedsstaaten haben darf...
 <td>Für analytische Aufgaben</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h3 id="die-spezialisten">Die Spezialisten</h3>
-<table>
+<div class="table-wrap"><table>
 <thead>
 <tr>
 <th>Trigger</th>
@@ -1091,7 +1095,7 @@ dass die EU maximal 30 Mitgliedsstaaten haben darf...
 <td>Risikobewertung</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h3 id="die-power-kombinationen">Die Power-Kombinationen</h3>
 <p>Manchmal reicht ein einzelner Trigger nicht. Hier sind Kombinationen, die ich regelmäßig nutze:</p>
 <p><strong>Für Analyse:</strong></p>
@@ -1339,7 +1343,7 @@ die eigentliche Herausforderung? Dann löse es.
 <p>Er bewertet jeden Pfad und wählt den besten. Tree-of-Thought macht genau das mit LLMs.</p>
 <p>Das Paper von Yao et al. (2023) – &ldquo;Tree of Thoughts: Deliberate Problem Solving with Large Language Models&rdquo; – formalisierte diese Idee. Statt einem linearen Denkpfad erstellt das Modell einen Baum aus möglichen Gedanken, bewertet jeden Zweig und verfolgt die vielversprechendsten weiter.</p>
 <h2 id="cot-vs-tot-der-unterschied">CoT vs. ToT – Der Unterschied</h2>
-<table>
+<div class="table-wrap"><table>
 <thead>
 <tr>
 <th>Chain-of-Thought</th>
@@ -1372,7 +1376,7 @@ die eigentliche Herausforderung? Dann löse es.
 <td>Kann aus Sackgassen zurückkehren</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p>Der entscheidende Unterschied: CoT ist ein Zug. ToT ist eine Partie.</p>
 <h2 id="der-tot-prozess">Der ToT-Prozess</h2>
 <p>Tree-of-Thought besteht aus vier Phasen:</p>
@@ -2195,7 +2199,7 @@ Dann: Beste verfügbare Antwort.
 </code></pre></div>
 
 <h2 id="react-vs-chain-of-thought">ReAct vs. Chain-of-Thought</h2>
-<table>
+<div class="table-wrap"><table>
 <thead>
 <tr>
 <th>CoT</th>
@@ -2228,7 +2232,7 @@ Dann: Beste verfügbare Antwort.
 <td>Infos werden unterwegs gesammelt</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p>Die Faustregel: Wenn das Modell alle Informationen hat, die es braucht → CoT. Wenn es zusätzliche Informationen braucht → ReAct.</p>
 <h2 id="haufige-fehler-bei-react">Häufige Fehler bei ReAct</h2>
 <h3 id="fehler-1-aktionen-ohne-mehrwert">Fehler 1: Aktionen ohne Mehrwert</h3>
@@ -2913,7 +2917,7 @@ explizit und erkläre, warum du unsicher bist.
 <p>Reflexion verdoppelt (oder verdreifacht) die Antwortlänge. Bei API-Nutzung heißt das: doppelte Kosten. Nutze Reflexion gezielt, nicht bei jeder Antwort.</p>
 <h2 id="reflexion-vs-self-consistency">Reflexion vs. Self-Consistency</h2>
 <p>Beides sind Methoden, um die Qualität zu erhöhen. Aber sie arbeiten unterschiedlich:</p>
-<table>
+<div class="table-wrap"><table>
 <thead>
 <tr>
 <th>Reflexion</th>
@@ -2942,7 +2946,7 @@ explizit und erkläre, warum du unsicher bist.
 <td>Kostet 3-5x Tokens</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p>Ideal: Kombiniere beide. Self-Consistency für die Antwort, Reflexion für die Qualität.</p>
 <hr />
 <h2 id="ubungen">Übungen</h2>
@@ -2961,7 +2965,7 @@ explizit und erkläre, warum du unsicher bist.
 <p>Ein Orchester klingt nicht großartig, weil jedes Instrument einzeln gut ist. Es klingt großartig, weil die Instrumente zusammenspielen.</p>
 <h2 id="die-kombinations-matrix">Die Kombinations-Matrix</h2>
 <p>Nicht jede Kombination macht Sinn. Hier ist meine Matrix:</p>
-<table>
+<div class="table-wrap"><table>
 <thead>
 <tr>
 <th>Kombination</th>
@@ -3011,7 +3015,7 @@ explizit und erkläre, warum du unsicher bist.
 <td>Overkill für die meisten Aufgaben</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h2 id="kombination-1-cot-reflexion-der-standard">Kombination 1: CoT + Reflexion (Der Standard)</h2>
 <p>Die häufigste und nützlichste Kombination. Das Modell denkt Schritt für Schritt und überprüft dann seine Arbeit.</p>
 <div class="highlight"><pre><span></span><code>Aufgabe: [Deine Aufgabe]
@@ -3286,7 +3290,7 @@ da persönliche Faktoren den Break-Even verschieben können.
 
 <h2 id="die-kosten-nutzen-rechnung">Die Kosten-Nutzen-Rechnung</h2>
 <p>Jede zusätzliche Technik kostet Tokens. Hier sind ungefähre Faktoren:</p>
-<table>
+<div class="table-wrap"><table>
 <thead>
 <tr>
 <th>Technik</th>
@@ -3326,7 +3330,7 @@ da persönliche Faktoren den Break-Even verschieben können.
 <td>+50-80%</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p>Die volle Pipeline lohnt sich nicht für eine Alltagsfrage. Aber für eine Geschäftsentscheidung, die zehntausende Euro beeinflusst? Absolut.</p>
 <h2 id="eigene-pipelines-bauen">Eigene Pipelines bauen</h2>
 <p>Du musst nicht meine Pipelines nutzen. Bau deine eigenen. Hier ist das Framework:</p>

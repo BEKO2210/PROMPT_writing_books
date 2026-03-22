@@ -45,8 +45,8 @@
 --accent:#8ab4f8;--accent-light:#8ab4f8;
 --border:#2a3444;--code-bg:#161b22;--sidebar-bg:#0d1117;
 }
-html{scroll-behavior:smooth;scroll-padding-top:70px}
-body{font-family:var(--font);background:var(--bg);color:var(--text);transition:background .3s,color .3s}
+html{scroll-behavior:smooth;scroll-padding-top:70px;overflow-x:hidden}
+body{font-family:var(--font);background:var(--bg);color:var(--text);transition:background .3s,color .3s;overflow-x:hidden}
 
 /* Progress */
 .progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent-light));z-index:1000;width:0;transition:width .15s}
@@ -124,7 +124,7 @@ text-decoration:none;border-left:2px solid transparent;transition:all .2s;line-h
 /* Main */
 .main{margin-left:280px;padding:80px 24px 100px;transition:margin .3s}
 @media(max-width:900px){.main{margin-left:0}}
-.content{max-width:var(--max-w);margin:0 auto}
+.content{max-width:var(--max-w);margin:0 auto;overflow-x:hidden}
 
 /* Typography */
 .chapter{padding-bottom:60px;margin-bottom:40px;border-bottom:1px solid var(--border)}
@@ -139,14 +139,16 @@ text-decoration:none;border-left:2px solid transparent;transition:all .2s;line-h
 .chapter li{margin-bottom:8px}.chapter li>ul,.chapter li>ol{margin-top:6px}
 
 /* Code */
-.chapter pre{background:var(--code-bg);border:1px solid var(--border);border-radius:10px;padding:18px 20px;margin:20px 0;overflow-x:auto;font-family:var(--font-mono);font-size:14px;line-height:1.55}
+.chapter pre{background:var(--code-bg);border:1px solid var(--border);border-radius:10px;padding:18px 20px;margin:20px 0;overflow-x:auto;font-family:var(--font-mono);font-size:14px;line-height:1.55;max-width:100%;white-space:pre-wrap;word-wrap:break-word}
 .chapter code{font-family:var(--font-mono);font-size:15px;background:var(--code-bg);padding:2px 6px;border-radius:5px;color:var(--accent)}
 .chapter pre code{background:none;padding:0;color:var(--text);font-size:14px}
 
+/* Table wrapper for scroll */
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:20px 0;border-radius:8px;max-width:100%}
 /* Tables */
-.chapter table{width:100%;border-collapse:collapse;margin:20px 0;font-size:15px;border-radius:8px;overflow:hidden}
+.chapter table{width:100%;border-collapse:collapse;font-size:15px;border-radius:8px;min-width:320px;margin:0}
 .chapter thead{background:var(--accent);color:#fff}
-.chapter th{padding:10px 14px;text-align:left;font-size:13px;font-weight:600}
+.chapter th{padding:10px 14px;text-align:left;font-size:13px;font-weight:600;white-space:nowrap}
 .chapter td{padding:10px 14px;border-bottom:1px solid var(--border);font-family:var(--font-reading)}
 .chapter tr:nth-child(even){background:var(--bg2)}
 
@@ -223,8 +225,10 @@ box-shadow:0 12px 40px rgba(0,0,0,.4);
 /* Responsive */
 @media(max-width:600px){
 .chapter table{font-size:13px}.chapter th,.chapter td{padding:8px 10px}
-.chapter p{font-size:16px}.chapter pre{font-size:13px;padding:14px 16px}
+.chapter p{font-size:16px}.chapter pre{font-size:13px;padding:14px 12px}
+.chapter ul,.chapter ol{padding-left:20px}
 .topbar-actions .btn-sm span{display:none}
+.main{padding:70px 14px 80px}
 }
 </style>
 </head>
@@ -656,7 +660,7 @@ von kleinen Chihuahuas bis zu großen Deutschen Doggen.
 <h2 id="one-shot-vs-langere-anweisungen">One-Shot vs. Längere Anweisungen</h2>
 <p>Manchmal fragen sich Leute: &ldquo;Soll ich lieber ein Beispiel geben oder lieber genauer beschreiben, was ich will?&rdquo;</p>
 <p>Die Antwort: Es kommt drauf an.</p>
-<table>
+<div class="table-wrap"><table>
 <thead>
 <tr>
 <th>Situation</th>
@@ -681,7 +685,7 @@ von kleinen Chihuahuas bis zu großen Deutschen Doggen.
 <td>Kombination (Regeln + Beispiel)</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p>Und ja, du kannst beides kombinieren. Ein Prompt mit klaren Anweisungen UND einem Beispiel ist oft die beste Lösung.</p>
 <h2 id="zusammenfassung">Zusammenfassung</h2>
 <ul>
@@ -821,7 +825,7 @@ Beschreibung:
 <h2 id="wie-viele-beispiele-sind-genug">Wie viele Beispiele sind genug?</h2>
 <p>Die kurze Antwort: Zwischen 2 und 5.</p>
 <p>Die längere Antwort:</p>
-<table>
+<div class="table-wrap"><table>
 <thead>
 <tr>
 <th>Anzahl</th>
@@ -846,7 +850,7 @@ Beschreibung:
 <td>Selten nötig, kann sogar kontraproduktiv sein</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p>Warum nicht mehr? Zwei Gründe:</p>
 <ol>
 <li>
@@ -1018,7 +1022,7 @@ technisch korrekt, aber nicht trocken.
 <li>Datenaufgabe? C + A + F, ohne R und T.</li>
 </ul>
 <p>Die Faustregel: Je komplexer die Aufgabe, desto mehr CRAFT-Elemente brauchst du.</p>
-<table>
+<div class="table-wrap"><table>
 <thead>
 <tr>
 <th>Komplexität</th>
@@ -1039,7 +1043,7 @@ technisch korrekt, aber nicht trocken.
 <td>Alle + Einschränkungen</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h2 id="craft-kombiniert-mit-shot-typen">CRAFT kombiniert mit Shot-Typen</h2>
 <p>Und hier wird&rsquo;s richtig mächtig: Du kannst CRAFT mit Zero-Shot, One-Shot oder Few-Shot kombinieren.</p>
 <p><strong>CRAFT + Zero-Shot:</strong> Der Prompt oben. Klare Struktur, keine Beispiele.</p>
@@ -1130,7 +1134,7 @@ empfohlenes Format (Reel/Karussell/Einzelbild)
 
 <h2 id="rtf-vs-craft-wann-was">RTF vs. CRAFT: Wann was?</h2>
 <p>Die ehrliche Antwort: RTF ist CRAFT ohne Kontext und Ton. Das macht es schneller, aber auch weniger präzise.</p>
-<table>
+<div class="table-wrap"><table>
 <thead>
 <tr>
 <th>Kriterium</th>
@@ -1165,7 +1169,7 @@ empfohlenes Format (Reel/Karussell/Einzelbild)
 <td>Wichtige Texte, wiederkehrende Workflows</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p><strong>Nutze RTF, wenn:</strong>
 - Du schnell ein Ergebnis brauchst
 - Die Aufgabe eindeutig ist
@@ -1335,7 +1339,7 @@ Narrowing:
 - Welche Grenzen gelten</p>
 <p>Die Ergebnisse solcher Prompts sind regelmäßig so gut, dass sie mit minimalem Aufwand direkt verwendbar sind.</p>
 <h2 id="risen-vs-craft-der-direkte-vergleich">RISEN vs. CRAFT: Der direkte Vergleich</h2>
-<table>
+<div class="table-wrap"><table>
 <thead>
 <tr>
 <th>Aspekt</th>
@@ -1375,7 +1379,7 @@ Narrowing:
 <td>Mittel</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h2 id="wann-du-risen-brauchst-und-wann-nicht">Wann du RISEN brauchst – und wann nicht</h2>
 <p><strong>RISEN ist zu viel für:</strong>
 - Einfache Texte (E-Mails, kurze Beschreibungen)
@@ -1515,7 +1519,7 @@ Narrowing:
 <p>Dauer: 5 Minuten. Ergebnis: Exzellent. Direkt verwendbar.</p>
 <h2 id="der-zeitaufwand-qualitat-tradeoff">Der Zeitaufwand-Qualität-Tradeoff</h2>
 <p>Ich habe das gerade angedeutet, und es ist der wichtigste Punkt dieses Kapitels:</p>
-<table>
+<div class="table-wrap"><table>
 <thead>
 <tr>
 <th>Framework</th>
@@ -1544,7 +1548,7 @@ Narrowing:
 <td>0-2 Minuten</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p>Wenn du rechnest: RTF braucht insgesamt ~15 Minuten (30 Sek. schreiben + 15 Min. überarbeiten). RISEN braucht insgesamt ~10 Minuten (7 Min. schreiben + 2 Min. überarbeiten). RISEN ist also oft <em>schneller</em>, obwohl der Prompt länger dauert.</p>
 <p>Aber das gilt nur für komplexe Aufgaben. Für eine einfache Übersetzung wäre ein RISEN-Prompt absurder Overkill.</p>
 <h2 id="frameworks-mischen">Frameworks mischen</h2>
