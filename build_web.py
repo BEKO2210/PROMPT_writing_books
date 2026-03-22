@@ -132,11 +132,6 @@ def build_band_page(band_nr, config):
 --font:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
 --font-reading:'Georgia','Liberation Serif',serif;
 --font-mono:'SF Mono','Liberation Mono','Cascadia Code',monospace;
---toggle-bg:rgba(0,0,0,.06);
---toggle-text:#555;
---toggle-active-bg:linear-gradient(135deg,#2d4a7a,#4a7ab5);
---toggle-active-shadow:0 0 14px rgba(45,74,122,.4),0 0 8px rgba(138,180,248,.3) inset;
---toggle-active-text:#fff;
 }}
 
 [data-theme="dark"]{{
@@ -145,11 +140,6 @@ def build_band_page(band_nr, config):
 --accent:#8ab4f8;--accent-light:#8ab4f8;
 --border:#2a3444;--code-bg:#161b22;
 --sidebar-bg:#0d1117;
---toggle-bg:rgba(255,255,255,.06);
---toggle-text:#8899aa;
---toggle-active-bg:linear-gradient(135deg,#8ab4f855,#8ab4f8);
---toggle-active-shadow:0 0 14px rgba(138,180,248,.4),0 0 8px rgba(200,230,255,.3) inset;
---toggle-active-text:#fff;
 }}
 
 html{{scroll-behavior:smooth;scroll-padding-top:70px}}
@@ -205,43 +195,49 @@ display:inline-flex;align-items:center;gap:6px;
 .btn-sm:hover{{border-color:var(--accent);color:var(--accent)}}
 .btn-sm svg{{width:14px;height:14px;fill:currentColor}}
 
-/* ===== GLASS RADIO TOGGLE ===== */
-.glass-radio-group{{
-display:flex;
-position:relative;
-background:var(--toggle-bg);
-border-radius:.6rem;
-backdrop-filter:blur(12px);
-box-shadow:inset 1px 1px 3px rgba(255,255,255,.12),inset -1px -1px 4px rgba(0,0,0,.15);
-overflow:hidden;
-width:fit-content;
-height:34px;
+/* ===== SUN/MOON TOGGLE ===== */
+.switch{{position:relative;display:inline-block;width:54px;height:30px}}
+.switch input{{opacity:0;width:0;height:0}}
+.slider{{position:absolute;cursor:pointer;inset:0;background:#2196f3;transition:.4s;z-index:0;overflow:hidden}}
+.slider.round{{border-radius:30px}}
+.slider.round .sun-moon{{border-radius:50%}}
+.sun-moon{{
+position:absolute;height:22px;width:22px;left:4px;bottom:4px;
+background:yellow;transition:.4s;
 }}
-.glass-radio-group input{{display:none}}
-.glass-radio-group label{{
-flex:1;display:flex;align-items:center;justify-content:center;
-font-size:12px;padding:0 14px;cursor:pointer;font-weight:600;
-letter-spacing:.3px;color:var(--toggle-text);
-position:relative;z-index:2;transition:color .3s ease-in-out;
-white-space:nowrap;
+.switch input:checked+.slider{{background:#111827}}
+.switch input:checked+.slider .sun-moon{{
+transform:translateX(24px);background:#e2e8f0;
+animation:rotate-center .6s ease-in-out both;
 }}
-.glass-radio-group label:hover{{color:var(--text)}}
-.glass-radio-group input:checked+label{{color:var(--toggle-active-text)}}
-.glass-glider{{
-position:absolute;top:0;bottom:0;width:50%;
-border-radius:.6rem;z-index:1;
-transition:transform .4s cubic-bezier(.37,1.95,.66,.56),background .3s,box-shadow .3s;
-}}
-#theme-light:checked~.glass-glider{{
-transform:translateX(0);
-background:var(--toggle-active-bg);
-box-shadow:var(--toggle-active-shadow);
-}}
-#theme-dark:checked~.glass-glider{{
-transform:translateX(100%);
-background:var(--toggle-active-bg);
-box-shadow:var(--toggle-active-shadow);
-}}
+@keyframes rotate-center{{0%{{transform:translateX(24px) rotate(0)}}100%{{transform:translateX(24px) rotate(360deg)}}}}
+.moon-dot{{opacity:0;transition:.4s;fill:#94a3b8;position:absolute;z-index:4}}
+.switch input:checked+.slider .moon-dot{{opacity:1}}
+#moon-dot-1{{left:9px;top:3px;width:5px;height:5px}}
+#moon-dot-2{{left:2px;top:9px;width:8px;height:8px}}
+#moon-dot-3{{left:14px;top:16px;width:3px;height:3px}}
+.light-ray{{position:absolute;z-index:-1;fill:white;opacity:.1}}
+#light-ray-1{{left:-7px;top:-7px;width:36px;height:36px}}
+#light-ray-2{{left:-50%;top:-50%;width:44px;height:44px}}
+#light-ray-3{{left:-14px;top:-14px;width:50px;height:50px}}
+.cloud-light,.cloud-dark{{position:absolute;animation:cloud-mv 6s infinite}}
+.cloud-light{{fill:#eee}}
+.cloud-dark{{fill:#ccc;animation-delay:1s}}
+#cloud-1{{left:26px;top:13px;width:34px}}
+#cloud-2{{left:38px;top:8px;width:17px}}
+#cloud-3{{left:15px;top:20px;width:26px}}
+#cloud-4{{left:30px;top:15px;width:34px}}
+#cloud-5{{left:42px;top:11px;width:17px}}
+#cloud-6{{left:18px;top:22px;width:26px}}
+@keyframes cloud-mv{{0%,100%{{transform:translateX(0)}}40%{{transform:translateX(3px)}}80%{{transform:translateX(-3px)}}}}
+.stars{{transform:translateY(-28px);opacity:0;transition:.4s}}
+.star{{fill:white;position:absolute;transition:.4s;animation:star-tw 2s infinite}}
+.switch input:checked+.slider .stars{{transform:translateY(0);opacity:1}}
+#star-1{{width:16px;top:2px;left:3px;animation-delay:.3s}}
+#star-2{{width:5px;top:14px;left:3px}}
+#star-3{{width:10px;top:17px;left:9px;animation-delay:.6s}}
+#star-4{{width:14px;top:0;left:15px;animation-delay:1.3s}}
+@keyframes star-tw{{0%,100%{{transform:scale(1)}}40%{{transform:scale(1.2)}}80%{{transform:scale(.8)}}}}
 
 /* ===== SIDEBAR ===== */
 .sidebar{{
@@ -473,13 +469,31 @@ white-space:nowrap;
 <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
 <span>PDF</span>
 </a>
-<div class="glass-radio-group" role="radiogroup" aria-label="Farbmodus">
-<input type="radio" name="theme" id="theme-light" value="light">
-<label for="theme-light">Hell</label>
-<input type="radio" name="theme" id="theme-dark" value="dark">
-<label for="theme-dark">Dunkel</label>
-<div class="glass-glider"></div>
+<label class="switch" aria-label="Farbmodus umschalten">
+<input id="themeInput" type="checkbox">
+<div class="slider round">
+<div class="sun-moon">
+<svg id="moon-dot-1" class="moon-dot" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50"/></svg>
+<svg id="moon-dot-2" class="moon-dot" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50"/></svg>
+<svg id="moon-dot-3" class="moon-dot" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50"/></svg>
+<svg id="light-ray-1" class="light-ray" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50"/></svg>
+<svg id="light-ray-2" class="light-ray" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50"/></svg>
+<svg id="light-ray-3" class="light-ray" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50"/></svg>
+<svg id="cloud-1" class="cloud-dark" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50"/></svg>
+<svg id="cloud-2" class="cloud-dark" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50"/></svg>
+<svg id="cloud-3" class="cloud-dark" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50"/></svg>
+<svg id="cloud-4" class="cloud-light" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50"/></svg>
+<svg id="cloud-5" class="cloud-light" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50"/></svg>
+<svg id="cloud-6" class="cloud-light" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50"/></svg>
 </div>
+<div class="stars">
+<svg id="star-1" class="star" viewBox="0 0 20 20"><path d="M0 10C10 10 10 10 0 10 10 10 10 10 10 20 10 10 10 10 20 10 10 10 10 10 10 0 10 10 10 10 0 10Z"/></svg>
+<svg id="star-2" class="star" viewBox="0 0 20 20"><path d="M0 10C10 10 10 10 0 10 10 10 10 10 10 20 10 10 10 10 20 10 10 10 10 10 10 0 10 10 10 10 0 10Z"/></svg>
+<svg id="star-3" class="star" viewBox="0 0 20 20"><path d="M0 10C10 10 10 10 0 10 10 10 10 10 10 20 10 10 10 10 20 10 10 10 10 10 10 0 10 10 10 10 0 10Z"/></svg>
+<svg id="star-4" class="star" viewBox="0 0 20 20"><path d="M0 10C10 10 10 10 0 10 10 10 10 10 10 20 10 10 10 10 20 10 10 10 10 10 10 0 10 10 10 10 0 10Z"/></svg>
+</div>
+</div>
+</label>
 </div>
 </header>
 
@@ -508,14 +522,12 @@ var html=document.documentElement;
 // Theme
 var stored=localStorage.getItem('theme');
 var dark=stored==='dark'||(!stored&&matchMedia('(prefers-color-scheme:dark)').matches);
-if(dark)html.dataset.theme='dark';
-document.getElementById(dark?'theme-dark':'theme-light').checked=true;
+var themeInput=document.getElementById('themeInput');
+if(dark){{html.dataset.theme='dark';themeInput.checked=true;}}
 
-document.querySelectorAll('.glass-radio-group input').forEach(function(r){{
-r.addEventListener('change',function(){{
-html.dataset.theme=this.value==='dark'?'dark':'light';
+themeInput.addEventListener('change',function(){{
+html.dataset.theme=this.checked?'dark':'light';
 localStorage.setItem('theme',html.dataset.theme);
-}});
 }});
 
 // Mobile menu
