@@ -130,6 +130,26 @@ BAND_CONFIG = {
             "10_Zusammenfassung_und_Ausblick.md",
         ],
     },
+    6: {
+        "ordner": "Band_06_Spezialisiertes_Prompting",
+        "titel": "Spezialisiertes-Prompting",
+        "untertitel": "Für jede Branche das Richtige",
+        "farbe": "#1a5c3a",
+        "akzent": "#4ecdc4",
+        "dateien": [
+            "00_Vorwort.md",
+            "01_Bildung_und_E_Learning.md",
+            "02_Marketing_und_Kommunikation.md",
+            "03_Datenanalyse.md",
+            "04_Wissenschaft_und_Forschung.md",
+            "05_Recht_und_Compliance.md",
+            "06_Medizin_und_Gesundheit.md",
+            "07_Personalwesen_und_Recruiting.md",
+            "08_Finanzen_und_Buchhaltung.md",
+            "09_Branchenuebergreifende_Prinzipien.md",
+            "10_Zusammenfassung_und_Ausblick.md",
+        ],
+    },
 }
 
 AUTOR = "Belkis Aslani"

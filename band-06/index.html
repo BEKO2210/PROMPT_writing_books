@@ -1,0 +1,2835 @@
+<!DOCTYPE html>
+<html lang="de" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Band 6: Spezialisiertes-Prompting &ndash; Prompt Engineering Meistern</title>
+<meta name="description" content="Für jede Branche das Richtige &ndash; Band 6 der Buchreihe Prompt Engineering Meistern von Belkis Aslani. Kostenlos online lesen.">
+<meta name="author" content="Belkis Aslani">
+<meta name="theme-color" content="#0a1628" media="(prefers-color-scheme:dark)">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme:light)">
+<meta name="color-scheme" content="light dark">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://beko2210.github.io/PROMPT_writing_books/band-06/">
+<link rel="manifest" href="../manifest.json">
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../icon-192.png">
+<meta property="og:type" content="book">
+<meta property="og:title" content="Band 6: Spezialisiertes-Prompting &ndash; Prompt Engineering Meistern">
+<meta property="og:description" content="Für jede Branche das Richtige. Kostenlos online lesen.">
+<meta property="og:url" content="https://beko2210.github.io/PROMPT_writing_books/band-06/">
+<meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="Prompt Engineering Meistern">
+<meta property="og:image" content="https://beko2210.github.io/PROMPT_writing_books/icon-512.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Band 6: Spezialisiertes-Prompting">
+<meta name="twitter:description" content="Für jede Branche das Richtige">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Book","name":"Prompt Engineering Meistern – Band 6: Spezialisiertes-Prompting","author":{"@type":"Person","name":"Belkis Aslani"},"bookEdition":"1. Auflage","inLanguage":"de","url":"https://beko2210.github.io/PROMPT_writing_books/band-06/","isPartOf":{"@type":"BookSeries","name":"Prompt Engineering Meistern"}}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+--bg:#fff;--bg2:#f8f9fb;--card:#fff;
+--text:#1a1a1a;--text2:#555;--text3:#888;
+--accent:#2d4a7a;--accent-light:#8ab4f8;
+--border:#e5e7eb;--code-bg:#f5f7fa;
+--sidebar-bg:#fafbfc;--max-w:680px;
+--font:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+--font-reading:'Georgia','Liberation Serif',serif;
+--font-mono:'SF Mono','Liberation Mono','Cascadia Code',monospace;
+}
+[data-theme="dark"]{
+--bg:#0d1117;--bg2:#161b22;--card:#1c2333;
+--text:#e4e8ef;--text2:#8899aa;--text3:#556677;
+--accent:#8ab4f8;--accent-light:#8ab4f8;
+--border:#2a3444;--code-bg:#161b22;--sidebar-bg:#0d1117;
+}
+html{scroll-behavior:smooth;scroll-padding-top:70px;overflow-x:hidden}
+body{font-family:var(--font);background:var(--bg);color:var(--text);transition:background .3s,color .3s;overflow-x:hidden}
+
+/* Progress */
+.progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent-light));z-index:1000;width:0;transition:width .15s}
+
+/* Topbar */
+.topbar{
+position:fixed;top:0;left:0;right:0;height:56px;
+border-bottom:1px solid var(--border);display:flex;align-items:center;
+padding:0 16px;z-index:100;transition:background .3s,border-color .3s;
+backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+background:color-mix(in srgb,var(--bg) 85%,transparent);
+}
+.topbar-left{display:flex;align-items:center;gap:12px;flex:1;min-width:0}
+.menu-btn{background:none;border:none;cursor:pointer;padding:8px;color:var(--text);display:none}
+@media(max-width:900px){.menu-btn{display:block}}
+.topbar-title{font-size:14px;font-weight:600;color:var(--text2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.topbar-title a{color:inherit;text-decoration:none}
+.topbar-title a:hover{color:var(--accent)}
+.topbar-actions{display:flex;align-items:center;gap:8px}
+.btn-sm{
+font-size:12px;font-weight:600;padding:7px 14px;border-radius:8px;
+border:1px solid var(--border);background:var(--bg2);color:var(--text);
+cursor:pointer;text-decoration:none;transition:all .2s;
+display:inline-flex;align-items:center;gap:6px;
+}
+.btn-sm:hover{border-color:var(--accent);color:var(--accent)}
+.btn-sm svg{width:14px;height:14px;fill:currentColor}
+
+/* Sun/Moon Toggle */
+.switch{position:relative;display:inline-block;width:54px;height:30px}
+.switch input{opacity:0;width:0;height:0;position:absolute}
+.tm-slider{position:absolute;cursor:pointer;inset:0;background:#2196f3;transition:.4s;overflow:hidden;border-radius:30px}
+.sun-moon{position:absolute;height:22px;width:22px;left:4px;bottom:4px;background:yellow;transition:.4s;border-radius:50%}
+.switch input:checked+.tm-slider{background:#111827}
+.switch input:checked+.tm-slider .sun-moon{transform:translateX(24px);background:#e2e8f0;animation:smRotate .6s ease-in-out both}
+@keyframes smRotate{0%{transform:translateX(24px) rotate(0)}100%{transform:translateX(24px) rotate(360deg)}}
+.moon-dot{opacity:0;transition:.4s;fill:#94a3b8;position:absolute;z-index:4}
+.switch input:checked+.tm-slider .moon-dot{opacity:1}
+.md1{left:9px;top:3px;width:5px;height:5px}.md2{left:2px;top:9px;width:8px;height:8px}.md3{left:14px;top:16px;width:3px;height:3px}
+.light-ray{position:absolute;z-index:-1;fill:white;opacity:.1}
+.lr1{left:-7px;top:-7px;width:36px;height:36px}.lr2{left:-50%;top:-50%;width:44px;height:44px}.lr3{left:-14px;top:-14px;width:50px;height:50px}
+.cloud-l,.cloud-d{position:absolute;animation:cMv 6s infinite}
+.cloud-l{fill:#eee}.cloud-d{fill:#ccc;animation-delay:1s}
+.c1{left:26px;top:13px;width:34px}.c2{left:38px;top:8px;width:17px}.c3{left:15px;top:20px;width:26px}
+.c4{left:30px;top:15px;width:34px}.c5{left:42px;top:11px;width:17px}.c6{left:18px;top:22px;width:26px}
+@keyframes cMv{0%,100%{transform:translateX(0)}40%{transform:translateX(3px)}80%{transform:translateX(-3px)}}
+.stars{transform:translateY(-28px);opacity:0;transition:.4s}
+.star{fill:white;position:absolute;transition:.4s;animation:stTw 2s infinite}
+.switch input:checked+.tm-slider .stars{transform:translateY(0);opacity:1}
+.s1{width:16px;top:2px;left:3px;animation-delay:.3s}.s2{width:5px;top:14px;left:3px}
+.s3{width:10px;top:17px;left:9px;animation-delay:.6s}.s4{width:14px;top:0;left:15px;animation-delay:1.3s}
+@keyframes stTw{0%,100%{transform:scale(1)}40%{transform:scale(1.2)}80%{transform:scale(.8)}}
+
+/* Sidebar */
+.sidebar{
+position:fixed;top:56px;left:0;bottom:0;width:280px;
+background:var(--sidebar-bg);border-right:1px solid var(--border);
+overflow-y:auto;padding:20px 0;z-index:90;
+transition:transform .3s,background .3s,border-color .3s;
+}
+@media(max-width:900px){
+.sidebar{transform:translateX(-100%);width:300px;z-index:200;box-shadow:4px 0 30px rgba(0,0,0,.2)}
+.sidebar.open{transform:translateX(0)}
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:150}
+.overlay.show{display:block}
+}
+.sidebar-header{padding:0 20px 16px;font-size:12px;text-transform:uppercase;letter-spacing:2px;color:var(--text3);font-weight:600}
+.toc-link{
+display:block;padding:8px 20px 8px 24px;font-size:14px;color:var(--text2);
+text-decoration:none;border-left:2px solid transparent;transition:all .2s;line-height:1.4;
+}
+.toc-link:hover{color:var(--accent);background:var(--bg2)}
+.toc-link.active{color:var(--accent);border-left-color:var(--accent);background:var(--bg2);font-weight:600}
+
+/* Main */
+.main{margin-left:280px;padding:80px 24px 100px;transition:margin .3s}
+@media(max-width:900px){.main{margin-left:0}}
+.content{max-width:var(--max-w);margin:0 auto;overflow-x:hidden}
+
+/* Typography */
+.chapter{padding-bottom:60px;margin-bottom:40px;border-bottom:1px solid var(--border)}
+.chapter:last-child{border-bottom:none}
+.chapter h1{font-family:var(--font);font-size:clamp(1.6rem,4vw,2.2rem);font-weight:800;color:var(--text);margin:0 0 24px;line-height:1.15;letter-spacing:-.02em}
+.chapter h2{font-family:var(--font);font-size:clamp(1.2rem,3vw,1.5rem);font-weight:700;color:var(--text);margin:40px 0 16px;line-height:1.2}
+.chapter h3{font-family:var(--font);font-size:1.1rem;font-weight:600;color:var(--text);margin:32px 0 12px}
+.chapter h4{font-size:1rem;font-weight:600;color:var(--text2);margin:24px 0 8px}
+.chapter p{font-family:var(--font-reading);font-size:17px;line-height:1.75;margin-bottom:18px;color:var(--text)}
+.chapter strong{font-weight:700}.chapter em{font-style:italic}
+.chapter ul,.chapter ol{font-family:var(--font-reading);font-size:17px;line-height:1.7;margin:12px 0 18px;padding-left:28px}
+.chapter li{margin-bottom:8px}.chapter li>ul,.chapter li>ol{margin-top:6px}
+
+/* Code */
+.chapter pre{background:var(--code-bg);border:1px solid var(--border);border-radius:10px;padding:18px 20px;margin:20px 0;overflow-x:auto;font-family:var(--font-mono);font-size:14px;line-height:1.55;max-width:100%;white-space:pre-wrap;word-wrap:break-word}
+.chapter code{font-family:var(--font-mono);font-size:15px;background:var(--code-bg);padding:2px 6px;border-radius:5px;color:var(--accent)}
+.chapter pre code{background:none;padding:0;color:var(--text);font-size:14px}
+
+/* Table wrapper for scroll */
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:20px 0;border-radius:8px;max-width:100%}
+/* Tables */
+.chapter table{width:100%;border-collapse:collapse;font-size:15px;border-radius:8px;min-width:320px;margin:0}
+.chapter thead{background:var(--accent);color:#fff}
+.chapter th{padding:10px 14px;text-align:left;font-size:13px;font-weight:600;white-space:nowrap}
+.chapter td{padding:10px 14px;border-bottom:1px solid var(--border);font-family:var(--font-reading)}
+.chapter tr:nth-child(even){background:var(--bg2)}
+
+/* Blockquote */
+.chapter blockquote{border-left:3px solid var(--accent-light);background:var(--bg2);padding:16px 20px;margin:20px 0;border-radius:0 8px 8px 0;font-style:italic}
+.chapter blockquote p{margin-bottom:8px;font-size:16px}
+
+/* HR */
+.chapter hr{border:none;border-top:2px solid var(--border);margin:40px 60px}
+
+/* Scroll to top */
+.scroll-top{
+position:fixed;bottom:24px;right:24px;width:44px;height:44px;border-radius:12px;
+background:var(--accent);color:#fff;border:none;cursor:pointer;
+display:none;align-items:center;justify-content:center;
+box-shadow:0 4px 20px rgba(0,0,0,.2);z-index:50;transition:all .3s;
+}
+.scroll-top:hover{transform:translateY(-2px)}
+.scroll-top.show{display:flex}
+.scroll-top svg{width:20px;height:20px;fill:currentColor}
+
+/* Fullscreen / Focus Mode */
+.focus-btn{
+background:none;border:1px solid var(--border);width:34px;height:34px;
+border-radius:8px;cursor:pointer;color:var(--text);
+display:inline-flex;align-items:center;justify-content:center;transition:all .2s;
+}
+.focus-btn:hover{border-color:var(--accent);color:var(--accent)}
+.focus-btn svg{width:16px;height:16px;fill:currentColor}
+body.focus-mode .topbar{transform:translateY(-100%)}
+body.focus-mode .sidebar{transform:translateX(-100%)}
+body.focus-mode .main{margin-left:0;padding-top:40px}
+body.focus-mode .scroll-top,.body.focus-mode .resume-banner{display:none!important}
+body.focus-mode .progress{opacity:0}
+body.focus-mode .focus-exit{display:flex}
+.focus-exit{
+display:none;position:fixed;top:16px;right:16px;z-index:200;
+background:var(--bg);border:1px solid var(--border);border-radius:10px;
+padding:8px 16px;font-size:13px;font-weight:600;color:var(--text2);
+cursor:pointer;align-items:center;gap:6px;
+box-shadow:0 4px 20px rgba(0,0,0,.15);transition:all .2s;
+}
+.focus-exit:hover{color:var(--accent);border-color:var(--accent)}
+.focus-exit kbd{
+background:var(--bg2);border:1px solid var(--border);border-radius:4px;
+padding:1px 6px;font-size:11px;font-family:var(--font-mono);
+}
+
+/* Resume banner (mobile-first popup) */
+.resume-banner{
+display:none;position:fixed;bottom:16px;left:16px;right:16px;
+background:var(--card);border:1px solid var(--border);border-radius:16px;
+padding:16px;z-index:60;
+box-shadow:0 8px 32px rgba(0,0,0,.25);
+transition:all .3s;
+max-width:420px;margin:0 auto;
+}
+.resume-banner.show{display:block;animation:resumeIn .4s ease}
+@keyframes resumeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.resume-top{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.resume-icon{width:36px;height:36px;border-radius:10px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.resume-icon svg{width:18px;height:18px;fill:currentColor}
+.resume-info{flex:1;min-width:0}
+.resume-label{font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:var(--text3);font-weight:600;margin-bottom:2px}
+.resume-chapter{font-size:14px;font-weight:700;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.resume-close{background:none;border:none;color:var(--text3);cursor:pointer;padding:4px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:color .2s}
+.resume-close:hover{color:var(--text)}
+.resume-close svg{width:16px;height:16px;fill:currentColor}
+.resume-progress{height:4px;background:var(--border);border-radius:2px;margin-bottom:12px;overflow:hidden}
+.resume-progress-bar{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-light));border-radius:2px;transition:width .3s}
+.resume-btn{
+width:100%;padding:10px;border:none;border-radius:10px;
+background:var(--accent);color:#fff;font-size:14px;font-weight:600;
+cursor:pointer;transition:opacity .2s;display:flex;align-items:center;justify-content:center;gap:8px;
+}
+.resume-btn:hover{opacity:.9}
+.resume-btn svg{width:16px;height:16px;fill:currentColor}
+
+/* Update toast */
+.update-toast{
+display:none;position:fixed;bottom:24px;left:50%;transform:translateX(-50%);
+background:var(--card);border:1px solid var(--border);border-radius:16px;
+padding:20px 24px;z-index:999;max-width:420px;width:calc(100% - 32px);
+box-shadow:0 12px 40px rgba(0,0,0,.4);
+}
+.update-toast.show{display:block;animation:toastIn .4s ease}
+@keyframes toastIn{from{opacity:0;transform:translateX(-50%) translateY(20px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+.update-toast h3{font-size:15px;color:var(--text);margin-bottom:8px}
+.update-toast ul{padding-left:18px;margin:8px 0 14px;font-size:13px;color:var(--text2);line-height:1.6}
+.update-toast .ver{font-size:12px;color:var(--accent);margin-bottom:6px;letter-spacing:1px}
+.update-toast button{background:var(--accent);color:#fff;border:none;border-radius:8px;padding:8px 20px;font-size:13px;font-weight:600;cursor:pointer;width:100%}
+.update-toast button:hover{opacity:.9}
+
+/* Responsive */
+@media(max-width:600px){
+.chapter table{font-size:13px}.chapter th,.chapter td{padding:8px 10px}
+.chapter p{font-size:16px}.chapter pre{font-size:13px;padding:14px 12px}
+.chapter ul,.chapter ol{padding-left:20px}
+.topbar-actions .btn-sm span{display:none}
+.main{padding:70px 14px 80px}
+}
+</style>
+</head>
+<body>
+<div class="progress" id="progress" role="progressbar" aria-label="Lesefortschritt"></div>
+<div class="overlay" id="overlay"></div>
+
+<header class="topbar">
+<div class="topbar-left">
+<button class="menu-btn" id="menuBtn" type="button" aria-label="Inhaltsverzeichnis &ouml;ffnen" aria-expanded="false" aria-controls="sidebar">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+</button>
+<div class="topbar-title"><a href="../">Prompt Engineering Meistern</a> &middot; Band 6</div>
+</div>
+<div class="topbar-actions">
+<a href="../output/Band_06_Spezialisiertes-Prompting.pdf" class="btn-sm" download aria-label="PDF herunterladen">
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+<span>PDF</span>
+</a>
+<button class="focus-btn" id="focusBtn" type="button" aria-label="Vollbild-Lesemodus">
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
+</button>
+<label class="switch" aria-label="Farbmodus umschalten">
+<input id="themeInput" type="checkbox" role="switch" aria-label="Dark Mode">
+<div class="tm-slider">
+<div class="sun-moon">
+<svg class="moon-dot md1" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="50"/></svg>
+<svg class="moon-dot md2" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="50"/></svg>
+<svg class="moon-dot md3" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="50"/></svg>
+<svg class="light-ray lr1" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="50"/></svg>
+<svg class="light-ray lr2" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="50"/></svg>
+<svg class="light-ray lr3" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="50"/></svg>
+<svg class="cloud-d c1" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="50"/></svg>
+<svg class="cloud-d c2" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="50"/></svg>
+<svg class="cloud-d c3" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="50"/></svg>
+<svg class="cloud-l c4" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="50"/></svg>
+<svg class="cloud-l c5" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="50"/></svg>
+<svg class="cloud-l c6" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="50"/></svg>
+</div>
+<div class="stars">
+<svg class="star s1" viewBox="0 0 20 20" aria-hidden="true"><path d="M0 10C10 10 10 10 0 10 10 10 10 10 10 20 10 10 10 10 20 10 10 10 10 10 10 0 10 10 10 10 0 10Z"/></svg>
+<svg class="star s2" viewBox="0 0 20 20" aria-hidden="true"><path d="M0 10C10 10 10 10 0 10 10 10 10 10 10 20 10 10 10 10 20 10 10 10 10 10 10 0 10 10 10 10 0 10Z"/></svg>
+<svg class="star s3" viewBox="0 0 20 20" aria-hidden="true"><path d="M0 10C10 10 10 10 0 10 10 10 10 10 10 20 10 10 10 10 20 10 10 10 10 10 10 0 10 10 10 10 0 10Z"/></svg>
+<svg class="star s4" viewBox="0 0 20 20" aria-hidden="true"><path d="M0 10C10 10 10 10 0 10 10 10 10 10 10 20 10 10 10 10 20 10 10 10 10 10 10 0 10 10 10 10 0 10Z"/></svg>
+</div>
+</div>
+</label>
+</div>
+</header>
+
+<nav class="sidebar" id="sidebar" aria-label="Inhaltsverzeichnis">
+<div class="sidebar-header">Kapitel</div>
+<a href="#ch-0" class="toc-link" data-target="ch-0">Vorwort</a>
+<a href="#ch-1" class="toc-link" data-target="ch-1">Bildung und E-Learning – KI im Klassenzimmer</a>
+<a href="#ch-2" class="toc-link" data-target="ch-2">Marketing und Kommunikation – KI als Marketingabteilung</a>
+<a href="#ch-3" class="toc-link" data-target="ch-3">Datenanalyse – KI als Data Analyst</a>
+<a href="#ch-4" class="toc-link" data-target="ch-4">Wissenschaft und Forschung – KI als Forschungsassistent</a>
+<a href="#ch-5" class="toc-link" data-target="ch-5">Recht und Compliance – KI als juristischer Assistent</a>
+<a href="#ch-6" class="toc-link" data-target="ch-6">Medizin und Gesundheit – KI im Kittel</a>
+<a href="#ch-7" class="toc-link" data-target="ch-7">Personalwesen und Recruiting – KI als HR-Partner</a>
+<a href="#ch-8" class="toc-link" data-target="ch-8">Finanzen und Buchhaltung – KI rechnet mit</a>
+<a href="#ch-9" class="toc-link" data-target="ch-9">Branchenübergreifende Prinzipien – Was überall gilt</a>
+<a href="#ch-10" class="toc-link" data-target="ch-10">Zusammenfassung und Ausblick</a>
+</nav>
+
+<main class="main" id="main">
+<article class="content">
+<section class="chapter" id="ch-0">
+<h1 id="vorwort">Vorwort</h1>
+<p>Fünf Bände Allgemeinwissen. Jetzt wird&rsquo;s spezifisch.</p>
+<p>Du weißt, wie man promptet. Du kennst die Bausteine, die Frameworks, die Reasoning-Techniken, die kreativen Möglichkeiten. Du kannst Chain-of-Thought, SCAMPER und Bildgenerierung. Du bist – was Prompt Engineering angeht – ein Generalist.</p>
+<p>Aber Generalisten stoßen irgendwann an Grenzen. Weil jede Branche ihre eigene Sprache hat. Ihre eigenen Anforderungen. Ihre eigenen Fallstricke.</p>
+<p>Ein Prompt, der für einen Blogpost perfekt ist, versagt bei einer juristischen Analyse. Ein Prompt, der Marketing-Headlines liefert, ist nutzlos für eine wissenschaftliche Literaturrecherche. Und ein Prompt, der medizinische Symptome abfragt, muss Verantwortung tragen, die ein kreativer Schreibprompt nie hat.</p>
+<h2 id="warum-dieses-buch">Warum dieses Buch?</h2>
+<p>Ich habe in den letzten zwei Jahren mit Menschen aus den unterschiedlichsten Branchen gesprochen. Lehrer, Marketingmanager, Data Scientists, Ärztinnen, Anwälte, HR-Leiter, Steuerberater. Alle nutzen KI. Und alle machen dieselben Fehler: Sie prompten generisch.</p>
+<p>&ldquo;Fasse diesen Text zusammen.&rdquo; Ja, das funktioniert. Aber es ist, als würdest du mit einem Schweizer Taschenmesser operieren. Es geht – aber es gibt bessere Werkzeuge.</p>
+<p>Dieses Buch gibt dir die besseren Werkzeuge. Für jede Branche spezifische Prompts, Frameworks und Workflows.</p>
+<h2 id="was-dich-erwartet">Was dich erwartet</h2>
+<p>Acht Branchen, acht Kapitel:</p>
+<p><strong>Bildung und E-Learning</strong> – Unterrichtsvorbereitung, Lernmaterialien, Quizzes, differenzierter Unterricht, Feedback. KI als Lehrassistent, der nie müde wird.</p>
+<p><strong>Marketing und Kommunikation</strong> – Kampagnenplanung, Zielgruppenanalyse, A/B-Testing von Headlines, Social-Media-Strategien, SEO. KI als Marketing-Abteilung für Solopreneure.</p>
+<p><strong>Datenanalyse</strong> – CSV hochladen, Muster erkennen, Visualisierungen beschreiben, Berichte schreiben. KI als Data Analyst, der erklärt statt nur rechnet.</p>
+<p><strong>Wissenschaft und Forschung</strong> – Literaturrecherche, Hypothesenbildung, statistische Auswertung, Paper zusammenfassen und kritisieren. KI als Forschungsassistent.</p>
+<p><strong>Recht und Compliance</strong> – Verträge prüfen, Klauseln erklären, DSGVO-Checklisten, Risiken identifizieren. Mit einem wichtigen Vorbehalt: KI ist kein Anwalt.</p>
+<p><strong>Medizin und Gesundheit</strong> – Patientenkommunikation, medizinische Texte vereinfachen, Differentialdiagnosen strukturieren, Aufklärungsbögen. Mit einem noch wichtigeren Vorbehalt: KI ist kein Arzt.</p>
+<p><strong>Personalwesen und Recruiting</strong> – Stellenausschreibungen, Interviewfragen, Onboarding-Materialien, Mitarbeiterfeedback. KI als HR-Partner.</p>
+<p><strong>Finanzen und Buchhaltung</strong> – Finanzberichte analysieren, Steuerfragen strukturieren, Investitionsanalysen, Budgetplanung. KI als Finanzassistent.</p>
+<p>Plus ein Kapitel über branchenübergreifende Prinzipien – was in JEDER Branche gilt, wenn du KI für Fachthemen nutzt.</p>
+<h2 id="fur-wen-ist-dieser-band">Für wen ist dieser Band?</h2>
+<p>Für dich, wenn du in einer dieser Branchen arbeitest und KI über &ldquo;Fasse zusammen&rdquo; und &ldquo;Schreibe mir eine E-Mail&rdquo; hinaus nutzen willst. Oder wenn du in einer ganz anderen Branche arbeitest und sehen willst, wie du die Prinzipien auf deinen Bereich übertragen kannst.</p>
+<p>Du musst nicht alle Kapitel lesen. Spring zu deiner Branche. Lies das Kapitel über branchenübergreifende Prinzipien. Und nimm mit, was du brauchst.</p>
+<h2 id="ein-wort-der-warnung">Ein Wort der Warnung</h2>
+<p>In einigen der folgenden Kapitel geht es um Bereiche, in denen Fehler Konsequenzen haben. Rechtliche Beratung. Medizinische Einschätzungen. Finanzentscheidungen.</p>
+<p>KI ist in diesen Bereichen ein Werkzeug – kein Ersatz für Fachleute. Ich sage das nicht als rechtliche Absicherung, sondern weil es stimmt. Ein LLM kann halluzinieren, kann veraltete Informationen haben, kann Kontext falsch interpretieren. In Bereichen, wo Fehler Menschen schaden können, ist menschliche Expertise nicht optional.</p>
+<p>Nutze KI als Assistenten. Nicht als Entscheider. Dieser Grundsatz zieht sich durch das gesamte Buch.</p>
+<p>Los geht&rsquo;s.</p>
+<p><em>Belkis Aslani, März 2026</em></p>
+</section>
+<section class="chapter" id="ch-1">
+<h1 id="kapitel-1-bildung-und-e-learning-ki-im-klassenzimmer">Kapitel 1: Bildung und E-Learning – KI im Klassenzimmer</h1>
+<p>Lehrer arbeiten zu viel. Das ist keine Übertreibung, das ist Fakt. Unterrichtsvorbereitung, Materialerstellung, Differenzierung, Korrekturen, Elternbriefe, Verwaltung. Ein 45-Minuten-Unterricht kostet oft 90 Minuten Vorbereitung.</p>
+<p>KI kann das nicht alles lösen. Aber sie kann einen erheblichen Teil der Vorbereitungsarbeit übernehmen – wenn du weißt, wie.</p>
+<h2 id="unterrichtsvorbereitung">Unterrichtsvorbereitung</h2>
+<h3 id="der-stundenplan-prompt">Der Stundenplan-Prompt</h3>
+<div class="highlight"><pre><span></span><code>Erstelle einen Unterrichtsentwurf für eine Einzelstunde (45 Min).
+
+FACH: [Fach]
+KLASSE: [Jahrgangsstufe, Schulform]
+THEMA: [Thema der Stunde]
+LERNZIEL: [Was sollen die SuS am Ende können?]
+VORWISSEN: [Was wissen die SuS bereits?]
+
+STRUKTUR:
+1. Einstieg (5-8 Min): [Methode zur Aktivierung]
+2. Erarbeitung (15-20 Min): [Kernphase]
+3. Sicherung (10 Min): [Ergebnissicherung]
+4. Transfer/Vertiefung (5-10 Min): [Anwendung]
+5. Abschluss (3-5 Min): [Reflexion/Ausblick]
+
+Für jede Phase: Lehreraktivität, Schüleraktivität,
+Sozialform (EA/PA/GA/Plenum), Material/Medien.
+
+DIFFERENZIERUNG: Gib für jede Kernphase Hinweise
+für leistungsstarke und leistungsschwache SuS.
+</code></pre></div>
+
+<h3 id="beispiel-geschichtsunterricht">Beispiel: Geschichtsunterricht</h3>
+<div class="highlight"><pre><span></span><code>Erstelle einen Unterrichtsentwurf für eine Einzelstunde (45 Min).
+
+FACH: Geschichte
+KLASSE: 9. Klasse, Gymnasium
+THEMA: Der Mauerbau 1961 – Ursachen und unmittelbare Folgen
+LERNZIEL: SuS können die politischen Ursachen des Mauerbaus
+benennen und die Auswirkungen auf die Berliner Bevölkerung
+anhand von Quellen beurteilen.
+VORWISSEN: Nachkriegsordnung, Teilung Deutschlands,
+Gründung von BRD und DDR.
+
+Einstieg: Bildimpuls (Foto vom 13. August 1961)
+Erarbeitung: Quellenarbeit in Gruppen (3 verschiedene Quellen)
+Sicherung: Gruppenpräsentation + Tafelanschrieb
+Transfer: Diskussion: &quot;Hätte der Mauerbau verhindert werden können?&quot;
+
+DIFFERENZIERUNG:
+- Leistungsstark: Zusätzliche Quelle mit Gegenperspektive
+- Leistungsschwach: Vorstrukturierter Analysebogen
+</code></pre></div>
+
+<h2 id="arbeitsblatter-und-materialien">Arbeitsblätter und Materialien</h2>
+<h3 id="der-arbeitsblatt-prompt">Der Arbeitsblatt-Prompt</h3>
+<div class="highlight"><pre><span></span><code>Erstelle ein Arbeitsblatt für [FACH], [KLASSE].
+
+THEMA: [Thema]
+DAUER: [Bearbeitungszeit]
+AUFBAU:
+1. Einstiegsaufgabe (leicht, Aktivierung)
+2. Hauptteil (3-4 Aufgaben, aufsteigend in der Schwierigkeit)
+3. Zusatzaufgabe (für Schnelle)
+
+AUFGABENTYPEN: [Mischung aus]
+- Lückentext / Multiple Choice / Zuordnung
+- Offene Fragen (kurz)
+- Analyse/Beurteilung (eine komplexere Aufgabe)
+
+FORMATIERUNG:
+- Klare Nummerierung
+- Platz für Antworten (markiert mit Linien)
+- Punkteangabe pro Aufgabe
+- Erwartungshorizont separat (für die Lehrkraft)
+</code></pre></div>
+
+<h3 id="differenzierte-materialien">Differenzierte Materialien</h3>
+<div class="highlight"><pre><span></span><code>Erstelle dasselbe Arbeitsblatt in 3 Niveaustufen:
+
+NIVEAU A (Grundlegend):
+- Einfachere Sprache
+- Mehr Hilfestellungen und Beispiele
+- Geschlossene Aufgabenformate (MC, Lücke)
+- Weniger Aufgaben
+
+NIVEAU B (Erweitert):
+- Standardformulierung
+- Mix aus geschlossenen und offenen Aufgaben
+- Transferaufgabe
+
+NIVEAU C (Anspruchsvoll):
+- Komplexere Sprache und Quellen
+- Offene Aufgabenformate
+- Beurteilungs- und Reflexionsaufgabe
+- Zusätzliches Material
+
+Kennzeichne die Niveaus NICHT auf dem Blatt
+(keine Stigmatisierung). Nutze Farben oder Symbole.
+</code></pre></div>
+
+<h2 id="quiz-und-prufungen">Quiz und Prüfungen</h2>
+<h3 id="der-quiz-generator">Der Quiz-Generator</h3>
+<div class="highlight"><pre><span></span><code>Erstelle ein Quiz mit [ANZAHL] Fragen zum Thema [THEMA].
+
+FACH: [Fach]
+KLASSE: [Klasse]
+FRAGENTYPEN:
+- [X] Multiple Choice (4 Optionen, 1 richtig)
+- [X] Wahr/Falsch
+- [X] Lückentext
+- [X] Kurzantwort (1-2 Sätze)
+- [X] Zuordnung
+
+SCHWIERIGKEIT: [Mischung angeben, z.B. 30% leicht,
+50% mittel, 20% schwer]
+
+ANFORDERUNG:
+- Bloom-Taxonomie-Level angeben (Wissen/Verstehen/
+  Anwenden/Analysieren/Bewerten/Erschaffen)
+- Keine Fangfragen
+- Distraktoren bei MC sollen plausibel sein,
+  aber klar falsch
+- Lösungsschlüssel am Ende
+</code></pre></div>
+
+<h3 id="klausur-prompt-oberstufeuniversitat">Klausur-Prompt (Oberstufe/Universität)</h3>
+<div class="highlight"><pre><span></span><code>Erstelle eine Klausur (90 Min) für [FACH/KURS].
+
+THEMA: [Themengebiet]
+ANFORDERUNGSBEREICHE:
+- AFB I (Reproduktion): ~30% → Definieren, Benennen, Beschreiben
+- AFB II (Transfer): ~40% → Erklären, Analysieren, Vergleichen
+- AFB III (Reflexion): ~30% → Beurteilen, Diskutieren, Stellung nehmen
+
+STRUKTUR:
+- Teil A: Kurzfragen (30 Punkte)
+- Teil B: Quellenanalyse/Textarbeit (40 Punkte)
+- Teil C: Erörterung/Essay (30 Punkte)
+
+Erstelle:
+1. Die Klausur (Schülerversion)
+2. Den Erwartungshorizont (mit Punkteverteilung)
+3. Bewertungskriterien für den Essay-Teil
+</code></pre></div>
+
+<h2 id="feedback-und-korrekturen">Feedback und Korrekturen</h2>
+<h3 id="der-feedback-prompt">Der Feedback-Prompt</h3>
+<div class="highlight"><pre><span></span><code>Hier ist ein Schülertext:
+&quot;&quot;&quot;[Text einfügen]&quot;&quot;&quot;
+
+AUFGABENSTELLUNG war: [Original-Aufgabe]
+KLASSE: [Klasse]
+
+Gib Feedback in folgendem Format:
+
+STÄRKEN (2-3 Punkte):
+Was hat der/die Schüler/in gut gemacht?
+
+VERBESSERUNGSPOTENZIAL (2-3 Punkte):
+Was kann verbessert werden? Konkret und konstruktiv.
+Keine vagen Aussagen wie &quot;Mehr Tiefe&quot; – sondern
+&quot;In Absatz 2 könnte ein Beispiel die These stützen.&quot;
+
+NÄCHSTER SCHRITT (1 Punkt):
+Was sollte der/die Schüler/in als Nächstes üben?
+
+TON: Ermutigend aber ehrlich. Altersangemessen.
+Wie eine Lehrkraft, die an den Schüler glaubt.
+</code></pre></div>
+
+<h3 id="massenkorrektur-assistent">Massenkorrektur-Assistent</h3>
+<div class="highlight"><pre><span></span><code>Ich korrigiere [ANZAHL] Arbeiten zum Thema [THEMA].
+
+Hier ist der Erwartungshorizont:
+&quot;&quot;&quot;[Erwartungshorizont]&quot;&quot;&quot;
+
+Für jeden der folgenden Schülertexte:
+1. Punkte vergeben (nach Erwartungshorizont)
+2. Zwei Stärken nennen
+3. Zwei Verbesserungsvorschläge
+4. Gesamtnote vorschlagen
+
+WICHTIG: Ich prüfe und korrigiere dein Feedback.
+Du bist der Vorschlag, nicht die finale Bewertung.
+
+Schülertext 1:
+&quot;&quot;&quot;[Text]&quot;&quot;&quot;
+</code></pre></div>
+
+<h2 id="erklarungen-und-vereinfachungen">Erklärungen und Vereinfachungen</h2>
+<h3 id="komplexe-themen-erklaren">Komplexe Themen erklären</h3>
+<div class="highlight"><pre><span></span><code>Erkläre [KONZEPT] für Schüler der [KLASSE].
+
+REGELN:
+- Fachbegriffe beim ersten Auftreten erklären
+- Maximal 1 neuer Fachbegriff pro Absatz
+- Alltagsbeispiele und Analogien verwenden
+- Absätze max. 4 Sätze lang
+- Am Ende: 3 Kontrollfragen zum Selbsttest
+
+ANALOGIE-VORGABE: Vergleiche [KONZEPT] mit etwas
+aus der Lebenswelt von [ALTER]-Jährigen.
+</code></pre></div>
+
+<h3 id="texte-vereinfachen">Texte vereinfachen</h3>
+<div class="highlight"><pre><span></span><code>Vereinfache den folgenden Fachtext für [ZIELGRUPPE]:
+
+&quot;&quot;&quot;[Originaltext]&quot;&quot;&quot;
+
+REGELN:
+- Satzlänge: max. 15 Wörter
+- Keine Passivkonstruktionen
+- Fremdwörter ersetzen oder in Klammern erklären
+- Kernaussagen erhalten, Details weglassen
+- Leseniveau: [z.B. B1 Deutsch, 6. Klasse, Einfache Sprache]
+
+Erstelle zwei Versionen:
+1. Vereinfacht (leicht verständlich)
+2. Stark vereinfacht (Einfache Sprache / Leichte Sprache)
+</code></pre></div>
+
+<h2 id="e-learning-und-digitale-formate">E-Learning und digitale Formate</h2>
+<h3 id="lernpfad-erstellen">Lernpfad erstellen</h3>
+<div class="highlight"><pre><span></span><code>Erstelle einen Lernpfad (Selbstlernmaterial) für [THEMA].
+
+ZIELGRUPPE: [Wer lernt?]
+VORWISSEN: [Was wird vorausgesetzt?]
+LERNZIEL: [Was können die Lernenden am Ende?]
+DAUER: [Gesamtzeit, z.B. 4 Stunden]
+
+STRUKTUR (pro Modul):
+1. Einführungstext (max. 300 Wörter)
+2. Kerninhalt (Erklärung + Beispiele)
+3. Interaktive Elemente (Quiz, Zuordnung, Lückentext)
+4. Zusammenfassung (Kernpunkte als Bullet-Liste)
+5. Übergang zum nächsten Modul
+
+MODULE:
+- Modul 1: [Titel] (Grundlagen)
+- Modul 2: [Titel] (Vertiefung)
+- Modul 3: [Titel] (Anwendung)
+- Modul 4: [Titel] (Zusammenfassung + Abschlusstest)
+</code></pre></div>
+
+<h3 id="karteikarten-flashcards">Karteikarten / Flashcards</h3>
+<div class="highlight"><pre><span></span><code>Erstelle [ANZAHL] Karteikarten zum Thema [THEMA].
+
+FORMAT:
+Vorderseite: Frage oder Begriff
+Rückseite: Antwort oder Definition (max. 2 Sätze)
+
+VERTEILUNG:
+- 40% Definitionen/Fakten
+- 30% Verständnisfragen (&quot;Warum...?&quot;)
+- 20% Anwendungsfragen (&quot;Was passiert, wenn...?&quot;)
+- 10% Vergleiche (&quot;Unterschied zwischen X und Y?&quot;)
+
+EXPORT: Formatiere als CSV (kompatibel mit Anki):
+Frage;Antwort;Tag
+</code></pre></div>
+
+<h2 id="elternkommunikation">Elternkommunikation</h2>
+<h3 id="elternbrief">Elternbrief</h3>
+<div class="highlight"><pre><span></span><code>Schreibe einen Elternbrief für [ANLASS].
+
+SCHULFORM: [Grundschule/Gymnasium/...]
+KLASSE: [Klasse]
+INHALT: [Was soll kommuniziert werden?]
+
+TON: Freundlich, professionell, klar.
+Keine Fachsprache. Kurze Sätze.
+
+STRUKTUR:
+1. Begrüßung
+2. Anlass (1-2 Sätze, kein Drumherumreden)
+3. Details (Was, Wann, Wo, Was mitbringen?)
+4. Rückmeldung (Abschnitt zum Unterschreiben)
+5. Kontakt für Fragen
+
+SPRACHE: [Deutsch / Einfaches Deutsch /
+Optional: Zweisprachig Deutsch-Türkisch/Arabisch/...]
+</code></pre></div>
+
+<h2 id="inklusion-und-forderung">Inklusion und Förderung</h2>
+<h3 id="individueller-forderplan">Individueller Förderplan</h3>
+<div class="highlight"><pre><span></span><code>Erstelle einen Vorschlag für einen Förderplan.
+
+SCHÜLER/IN: [Beschreibung ohne echten Namen]
+ALTER/KLASSE: [Klasse]
+FÖRDERBEDARF: [z.B. Lese-Rechtschreib-Schwäche,
+Dyskalkulie, DaZ, emotional-sozial, Hochbegabung]
+STÄRKEN: [Was kann der/die Schüler/in gut?]
+SCHWÄCHEN: [Wo liegt der Förderbedarf konkret?]
+
+ERSTELLE:
+1. 3 konkrete Förderziele (SMART formuliert)
+2. Für jedes Ziel: 2 Maßnahmen (im Unterricht umsetzbar)
+3. Materialvorschläge (konkrete Übungen)
+4. Beobachtungskriterien (Woran erkenne ich Fortschritt?)
+5. Evaluationszeitraum (Wann prüfe ich den Fortschritt?)
+
+WICHTIG: Der Förderplan ist ein Vorschlag. Er ersetzt
+keine sonderpädagogische Diagnostik.
+</code></pre></div>
+
+<hr />
+<h2 id="ubungen">Übungen</h2>
+<h3 id="ubung-1-unterrichtsentwurf">Übung 1: Unterrichtsentwurf</h3>
+<p>Erstelle einen Unterrichtsentwurf für dein Fach (oder ein Fach deiner Wahl). Nutze den vollständigen Prompt. Ist das Ergebnis direkt einsetzbar oder braucht es Anpassungen?</p>
+<h3 id="ubung-2-differenziertes-arbeitsblatt">Übung 2: Differenziertes Arbeitsblatt</h3>
+<p>Erstelle ein Arbeitsblatt in 3 Niveaustufen für ein Thema deiner Wahl. Vergleiche die Stufen – sind sie wirklich unterschiedlich oder nur oberflächlich angepasst?</p>
+<h3 id="ubung-3-quiz-generator">Übung 3: Quiz-Generator</h3>
+<p>Generiere ein 10-Fragen-Quiz mit verschiedenen Fragetypen. Prüfe die Distraktoren bei den MC-Fragen: Sind sie plausibel genug?</p>
+<h3 id="ubung-4-feedback-schreiben">Übung 4: Feedback schreiben</h3>
+<p>Nimm einen (eigenen oder fiktiven) Schülertext und lass KI-Feedback generieren. Ist der Ton angemessen? Sind die Vorschläge konkret genug?</p>
+</section>
+<section class="chapter" id="ch-2">
+<h1 id="kapitel-2-marketing-und-kommunikation-ki-als-marketingabteilung">Kapitel 2: Marketing und Kommunikation – KI als Marketingabteilung</h1>
+<p>Marketing ist das Feld, in dem KI am schnellsten adoptiert wurde. Kein Wunder: Marketing produziert ständig Text, braucht endlos Variationen und muss auf Daten reagieren. Alles Dinge, die KI gut kann.</p>
+<p>Aber &ldquo;Schreib mir einen Instagram-Post&rdquo; ist kein Marketing. Marketing ist Strategie. Und dafür brauchst du spezifische Prompts.</p>
+<h2 id="zielgruppenanalyse">Zielgruppenanalyse</h2>
+<p>Alles beginnt mit der Zielgruppe. Bevor du einen einzigen Post schreibst, musst du wissen, für wen.</p>
+<h3 id="persona-erstellen">Persona erstellen</h3>
+<div class="highlight"><pre><span></span><code>Erstelle eine detaillierte Marketing-Persona für [PRODUKT/DIENSTLEISTUNG].
+
+BASISINFO:
+- Branche: [Deine Branche]
+- Produkt/Dienstleistung: [Was bietest du an?]
+- Preissegment: [Budget/Mittel/Premium]
+
+FÜR DIE PERSONA:
+1. Demografisch: Name, Alter, Beruf, Einkommen, Wohnort
+2. Psychografisch: Werte, Interessen, Lebensstil
+3. Pain Points: 3 konkrete Probleme, die dein Produkt löst
+4. Ziele: Was will diese Person erreichen?
+5. Medienverhalten: Welche Plattformen nutzt sie? Wann?
+6. Kaufentscheidung: Was überzeugt sie? Was schreckt ab?
+7. Einwände: 3 typische Einwände gegen dein Produkt
+8. Sprache: Wie redet diese Person? Fachsprache? Slang? Sachlich?
+
+Erstelle 2 verschiedene Personas (primär und sekundär).
+</code></pre></div>
+
+<h3 id="wettbewerbsanalyse">Wettbewerbsanalyse</h3>
+<div class="highlight"><pre><span></span><code>Analysiere die Positionierung meines Unternehmens im Vergleich zu Wettbewerbern.
+
+MEIN UNTERNEHMEN: [Beschreibung, USP, Preise]
+WETTBEWERBER:
+1. [Name + was sie anbieten]
+2. [Name + was sie anbieten]
+3. [Name + was sie anbieten]
+
+ANALYSIERE:
+| Kriterium | Wir | Wettbewerber 1 | Wettbewerber 2 | Wettbewerber 3 |
+|---|---|---|---|---|
+| Preispositionierung | | | | |
+| USP | | | | |
+| Zielgruppe | | | | |
+| Stärke | | | | |
+| Schwäche | | | | |
+
+Am Ende: Wo ist unsere Nische? Was können wir besser?
+Wo sollten wir uns NICHT positionieren?
+</code></pre></div>
+
+<h2 id="content-strategie">Content-Strategie</h2>
+<h3 id="content-kalender">Content-Kalender</h3>
+<div class="highlight"><pre><span></span><code>Erstelle einen Content-Kalender für [MONAT/QUARTAL].
+
+UNTERNEHMEN: [Beschreibung]
+PLATTFORMEN: [Instagram, LinkedIn, Blog, Newsletter, ...]
+POSTING-FREQUENZ: [z.B. 3x/Woche Instagram, 1x/Woche Blog]
+ZIELGRUPPE: [Persona-Zusammenfassung]
+ZIELE: [Awareness/Engagement/Conversion/Loyalty]
+
+FÜR JEDEN POST:
+- Datum und Plattform
+- Content-Typ (Educational/Entertaining/Promotional/Community)
+- Thema + Hook (erster Satz)
+- CTA (Call to Action)
+- Hashtags (plattformspezifisch)
+
+VERTEILUNG (80/20-Regel):
+- 80% Mehrwert (Educational, Entertaining, Community)
+- 20% Promotion (Produkt, Angebot, CTA)
+
+Berücksichtige saisonale Events und Feiertage.
+</code></pre></div>
+
+<h3 id="blog-strategie">Blog-Strategie</h3>
+<div class="highlight"><pre><span></span><code>Erstelle eine Blog-Content-Strategie für [QUARTAL].
+
+BRANCHE: [Deine Branche]
+ZIELGRUPPE: [Wer liest den Blog?]
+ZIEL: [SEO/Thought Leadership/Lead Generation]
+
+Für jeden Artikel (mind. 8 pro Quartal):
+1. Titel (SEO-optimiert, max. 60 Zeichen)
+2. Keyword-Cluster (1 Hauptkeyword + 3 Nebenkeywords)
+3. Suchintention (Informational/Navigational/Transactional)
+4. Gliederung (H2/H3-Struktur)
+5. Geschätzte Wortanzahl
+6. Internes Verlinkungspotenzial (welche anderen Artikel?)
+7. CTA am Ende
+
+Ordne die Artikel nach Priorität (Quick Wins zuerst).
+</code></pre></div>
+
+<h2 id="seo-prompts">SEO-Prompts</h2>
+<h3 id="seo-textoptimierung">SEO-Textoptimierung</h3>
+<div class="highlight"><pre><span></span><code>Optimiere folgenden Text für SEO:
+&quot;&quot;&quot;[Dein Text]&quot;&quot;&quot;
+
+HAUPTKEYWORD: [Keyword]
+NEBENKEYWORDS: [3-5 Keywords]
+
+OPTIMIERE:
+1. Title Tag (max. 60 Zeichen, Keyword vorne)
+2. Meta Description (max. 155 Zeichen, mit CTA)
+3. H1 (genau 1, mit Keyword)
+4. H2-Struktur (3-5 Zwischenüberschriften mit Keywords)
+5. Keyword-Dichte (1-2%, natürlich eingebaut)
+6. Erster Absatz (Keyword in den ersten 100 Wörtern)
+7. Alt-Texte für Bilder (beschreibend + Keyword)
+8. Interne Links (3-5 Vorschläge)
+
+WICHTIG: Der Text muss zuerst für Menschen geschrieben
+sein, dann für Google. Kein Keyword-Stuffing.
+</code></pre></div>
+
+<h3 id="faq-schema-generieren">FAQ-Schema generieren</h3>
+<div class="highlight"><pre><span></span><code>Erstelle 10 FAQ-Einträge für [THEMA/PRODUKT].
+
+REGELN:
+- Fragen so formulieren, wie echte Menschen sie googeln
+  (nicht &quot;Was ist X?&quot; sondern &quot;Wie funktioniert X?&quot; oder
+  &quot;Warum brauche ich X?&quot;)
+- Antworten: 2-4 Sätze, direkt und hilfreich
+- Mindestens 2 Fragen mit Vergleich (&quot;X vs. Y?&quot;)
+- Mindestens 2 Fragen mit &quot;Wie viel kostet...?&quot; / &quot;Lohnt sich...?&quot;
+- Im FAQ-Schema-Format (für structured data)
+</code></pre></div>
+
+<h2 id="e-mail-marketing">E-Mail-Marketing</h2>
+<h3 id="newsletter">Newsletter</h3>
+<div class="highlight"><pre><span></span><code>Schreibe einen Newsletter für [ANLASS/THEMA].
+
+ZIELGRUPPE: [Abonnenten-Beschreibung]
+ZIEL: [Informieren/Verkaufen/Engagieren]
+TON: [Professionell/Locker/Persönlich]
+
+STRUKTUR:
+1. Betreffzeile (3 Varianten zum Testen)
+2. Preheader-Text (40-90 Zeichen)
+3. Begrüßung (persönlich, nicht &quot;Liebe Leser&quot;)
+4. Hook (erster Absatz: Warum sollte man weiterlesen?)
+5. Hauptinhalt (max. 300 Wörter)
+6. CTA (klar, ein einziger, prominent)
+7. P.S. (optional, für zweites Angebot oder persönliche Note)
+
+DESIGN-HINWEISE:
+- Absätze max. 3 Sätze
+- Mindestens 1 visuelles Element (Bild-Beschreibung)
+- Mobile-first (60%+ öffnen auf dem Handy)
+</code></pre></div>
+
+<h3 id="e-mail-sequenz-automation">E-Mail-Sequenz (Automation)</h3>
+<div class="highlight"><pre><span></span><code>Erstelle eine E-Mail-Sequenz (5 E-Mails) für [ANLASS].
+
+TRIGGER: [Was löst die Sequenz aus?]
+ZIEL: [Was soll am Ende passieren?]
+ZEITABSTÄNDE: [z.B. Tag 0, Tag 2, Tag 5, Tag 8, Tag 12]
+
+E-MAIL 1 (Tag 0): Willkommen + sofortiger Mehrwert
+E-MAIL 2 (Tag 2): Problem adressieren + Lösung andeuten
+E-MAIL 3 (Tag 5): Social Proof (Testimonials, Zahlen)
+E-MAIL 4 (Tag 8): Einwände entkräften + FAQ
+E-MAIL 5 (Tag 12): Finaler CTA + Dringlichkeit (echt, nicht künstlich)
+
+Für jede E-Mail: Betreffzeile, Inhalt, CTA.
+Gesamter Ton: Hilfreich, nicht aufdringlich.
+</code></pre></div>
+
+<h2 id="social-media">Social Media</h2>
+<h3 id="plattformspezifische-prompts">Plattformspezifische Prompts</h3>
+<h4 id="linkedin">LinkedIn</h4>
+<div class="highlight"><pre><span></span><code>Schreibe einen LinkedIn-Post zu [THEMA].
+
+FORMAT: Text-Post (kein Artikel)
+LÄNGE: 150-300 Wörter (sweet spot für Engagement)
+STRUKTUR:
+- Hook (erste 2 Zeilen = alles, was man vor &quot;...mehr&quot; sieht)
+- Story oder Insight (mit Absätzen, Zeilenumbrüchen)
+- Takeaway (was lernt der Leser?)
+- CTA (Frage an die Community)
+
+TON: Professionell aber menschlich. Keine Buzzwords.
+Kein &quot;Ich freue mich, bekannt zu geben, dass...&quot;
+Keine Emoji-Übertreibung. Max. 3 Emojis gesamt.
+Keine Hashtags im Text, sondern am Ende (3-5).
+</code></pre></div>
+
+<h4 id="instagram">Instagram</h4>
+<div class="highlight"><pre><span></span><code>Schreibe eine Instagram-Caption für [THEMA/BILD].
+
+LÄNGE: 150-250 Wörter (Carousel: kürzer, Story: noch kürzer)
+HOOK: Erste Zeile muss zum Weiterlesen motivieren
+FORMAT: Kurze Absätze, Bullet Points erlaubt
+CTA: [Speichern/Kommentieren/Link in Bio/Teilen]
+HASHTAGS: 15-20, Mischung aus:
+- 5 große (&gt;500k Posts)
+- 5 mittlere (50k-500k)
+- 5 nischenspezifische (&lt;50k)
+
+TON: [Inspirierend/Edgy/Informativ/Persönlich]
+
+Erstelle auch:
+- 3 Story-Slides als Begleitcontent
+- 1 Reel-Idee zum selben Thema (Skript, 30 Sek)
+</code></pre></div>
+
+<h2 id="ab-testing">A/B-Testing</h2>
+<div class="highlight"><pre><span></span><code>Ich möchte folgendes testen: [Was? z.B. E-Mail-Betreffzeile,
+Landing-Page-Headline, CTA-Button-Text]
+
+AKTUELL: [Aktuelle Version]
+ZIEL: [Was soll verbessert werden? Öffnungsrate/CTR/Conversion]
+
+Erstelle 5 Varianten:
+1. Nutzen-fokussiert (Was bekommt der User?)
+2. Neugier-fokussiert (Was wird nicht verraten?)
+3. Dringlichkeit-fokussiert (Warum jetzt?)
+4. Social-Proof-fokussiert (Was machen andere?)
+5. Konträr (das Gegenteil der üblichen Ansprache)
+
+Für jede Variante:
+- Der Text
+- Warum er funktionieren könnte
+- Welche Hypothese er testet
+</code></pre></div>
+
+<h2 id="kampagnenplanung">Kampagnenplanung</h2>
+<div class="highlight"><pre><span></span><code>Erstelle ein Kampagnenkonzept für [PRODUKT/ANLASS].
+
+ZEITRAUM: [Start- bis Enddatum]
+BUDGET: [Grobe Größenordnung]
+KANÄLE: [Social Media, E-Mail, Blog, Paid Ads, ...]
+ZIEL: [KPI: z.B. 500 Newsletter-Anmeldungen, 50 Verkäufe]
+
+PHASEN:
+1. TEASER (Woche 1): Aufmerksamkeit erzeugen
+   - Content pro Kanal
+   - Botschaft
+2. LAUNCH (Woche 2): Hauptkampagne
+   - Kerncontent
+   - Paid Ads Vorschläge (Zielgruppe, Budget-Split)
+3. SUSTAIN (Woche 3-4): Nachfassen
+   - Retargeting-Inhalte
+   - Testimonials/Social Proof
+4. CLOSE (letzte Tage): Abschluss
+   - Letzte-Chance-Messaging
+   - Zusammenfassung der Ergebnisse
+
+Für jeden Kanal und jede Phase: Konkreter Content-Vorschlag.
+</code></pre></div>
+
+<hr />
+<h2 id="ubungen">Übungen</h2>
+<h3 id="ubung-1-persona-erstellen">Übung 1: Persona erstellen</h3>
+<p>Erstelle eine Marketing-Persona für ein Produkt deiner Wahl (oder dein eigenes). Ist die Persona spezifisch genug, um Content-Entscheidungen zu treffen?</p>
+<h3 id="ubung-2-content-kalender">Übung 2: Content-Kalender</h3>
+<p>Generiere einen Content-Kalender für 2 Wochen. Für eine reale oder fiktive Marke. Überprüfe: Stimmt die 80/20-Verteilung?</p>
+<h3 id="ubung-3-ab-test">Übung 3: A/B-Test</h3>
+<p>Nimm eine aktuelle E-Mail-Betreffzeile oder Headline und lass 5 Varianten generieren. Welche würdest du tatsächlich testen?</p>
+<h3 id="ubung-4-plattform-anpassung">Übung 4: Plattform-Anpassung</h3>
+<p>Schreibe einen Inhalt und lass ihn für LinkedIn, Instagram und Newsletter anpassen. Sind die Versionen wirklich unterschiedlich oder nur formatiert?</p>
+</section>
+<section class="chapter" id="ch-3">
+<h1 id="kapitel-3-datenanalyse-ki-als-data-analyst">Kapitel 3: Datenanalyse – KI als Data Analyst</h1>
+<p>Du hast Daten. Vielleicht eine Excel-Tabelle mit Verkaufszahlen. Vielleicht einen CSV-Export aus deinem CRM. Vielleicht eine Umfrage mit 500 Antworten. Und du brauchst Erkenntnisse daraus.</p>
+<p>Früher hättest du dafür SQL gelernt, Python-Pandas-Tutorials geschaut oder einen Analysten beauftragt. Heute lädst du die Daten in ein LLM und fragst.</p>
+<p>Aber <em>wie</em> du fragst, entscheidet über die Qualität der Antworten.</p>
+<h2 id="daten-vorbereiten">Daten vorbereiten</h2>
+<h3 id="der-daten-check-prompt">Der Daten-Check-Prompt</h3>
+<p>Bevor du analysierst, lass die KI deine Daten verstehen:</p>
+<div class="highlight"><pre><span></span><code>Hier sind meine Daten:
+&quot;&quot;&quot;[Erste 20 Zeilen deiner CSV/Tabelle einfügen]&quot;&quot;&quot;
+
+Analysiere die Datenstruktur:
+1. Wie viele Spalten gibt es und was bedeuten sie?
+2. Welche Datentypen hat jede Spalte (Text/Zahl/Datum/Kategorie)?
+3. Gibt es fehlende Werte? In welchen Spalten?
+4. Gibt es offensichtliche Ausreißer oder Fehler?
+5. Welche Spalten korrelieren vermutlich miteinander?
+6. Welche Analysen bieten sich bei diesen Daten an?
+</code></pre></div>
+
+<h3 id="daten-bereinigen">Daten bereinigen</h3>
+<div class="highlight"><pre><span></span><code>Meine Daten haben folgende Probleme:
+[z.B. fehlende Werte, inkonsistente Formate,
+Duplikate, Ausreißer]
+
+Schlage für jedes Problem vor:
+1. Wie identifiziere ich es? (Query/Code)
+2. Wie behebe ich es? (Strategie)
+3. Was könnte schiefgehen? (Risiken)
+
+Gib den Code in [Python/SQL/Excel-Formeln].
+</code></pre></div>
+
+<h2 id="explorative-analyse">Explorative Analyse</h2>
+<h3 id="der-uberblick-prompt">Der Überblick-Prompt</h3>
+<div class="highlight"><pre><span></span><code>Hier sind meine Daten:
+&quot;&quot;&quot;[Daten einfügen oder beschreiben]&quot;&quot;&quot;
+
+Erstelle eine explorative Analyse:
+
+1. ZUSAMMENFASSUNG
+   - Wie viele Datensätze?
+   - Zeitraum (wenn zeitliche Daten vorhanden)
+   - Wichtigste Kennzahlen (Min, Max, Durchschnitt, Median)
+
+2. VERTEILUNGEN
+   - Wie sind die wichtigsten Variablen verteilt?
+   - Gibt es Auffälligkeiten (Schiefe, Ausreißer)?
+
+3. TRENDS
+   - Gibt es zeitliche Trends?
+   - Saisonale Muster?
+
+4. ZUSAMMENHÄNGE
+   - Welche Variablen hängen zusammen?
+   - Gibt es überraschende Korrelationen?
+
+5. TOP-INSIGHTS
+   - Die 3 wichtigsten Erkenntnisse
+   - Was davon ist überraschend?
+   - Was sollte man als Nächstes untersuchen?
+</code></pre></div>
+
+<h3 id="segmentierung">Segmentierung</h3>
+<div class="highlight"><pre><span></span><code>Segmentiere meine Kundendaten nach [KRITERIUM].
+
+DATEN: [Beschreibung der Daten]
+SEGMENTIERUNGSZIEL: [z.B. Kundenwert, Kaufverhalten,
+Engagement, Churn-Risiko]
+
+FÜR JEDES SEGMENT:
+1. Name (beschreibend, z.B. &quot;Power-User&quot;, &quot;Gelegenheitskäufer&quot;)
+2. Größe (Anzahl und Prozent)
+3. Charakteristik (Was definiert dieses Segment?)
+4. Verhalten (Was tun sie? Was kaufen sie?)
+5. Potenzial (Wachstum? Risiko? Upselling?)
+6. Empfohlene Maßnahme (Was sollten wir tun?)
+</code></pre></div>
+
+<h2 id="visualisierungen-beschreiben">Visualisierungen beschreiben</h2>
+<p>KI kann (noch) nicht direkt Charts erstellen, aber sie kann dir den Code oder die Beschreibung liefern:</p>
+<h3 id="chart-empfehlung">Chart-Empfehlung</h3>
+<div class="highlight"><pre><span></span><code>Ich habe folgende Daten und möchte sie visualisieren:
+[Beschreibung der Daten]
+
+ZIEL der Visualisierung: [Vergleich/Trend/Verteilung/
+Zusammenhang/Proportion]
+ZIELGRUPPE: [Wer sieht die Grafik? Experten? Management?]
+
+Empfiehl:
+1. Den besten Charttyp (und warum)
+2. 2 Alternativen
+3. Was auf welche Achse gehört
+4. Farbempfehlung (farbenblind-freundlich)
+5. Titel und Beschriftungen
+
+Generiere den Code in [Python matplotlib/seaborn/plotly
+/ Excel-Anleitung / Google Sheets].
+</code></pre></div>
+
+<h3 id="dashboard-design">Dashboard-Design</h3>
+<div class="highlight"><pre><span></span><code>Erstelle ein Dashboard-Konzept für [ABTEILUNG/ZWECK].
+
+DATENQUELLEN: [Welche Daten fließen ein?]
+NUTZER: [Wer nutzt das Dashboard?]
+AKTUALISIERUNG: [Echtzeit/Täglich/Wöchentlich/Monatlich]
+
+DASHBOARD-LAYOUT (4-6 Karten):
+Für jede Karte:
+- KPI/Metrik
+- Charttyp
+- Benchmark/Vergleichswert
+- Drill-Down-Möglichkeit
+
+OBEN: Die 3-4 wichtigsten KPIs als Kennzahlen
+MITTE: Trend-Charts und Vergleiche
+UNTEN: Detail-Tabellen und Filter
+
+Warnschwellen: Ab welchen Werten wird ein KPI rot/gelb/grün?
+</code></pre></div>
+
+<h2 id="berichterstellung">Berichterstellung</h2>
+<h3 id="automatischer-bericht">Automatischer Bericht</h3>
+<div class="highlight"><pre><span></span><code>Erstelle einen [wöchentlichen/monatlichen] Bericht
+basierend auf folgenden Daten:
+
+&quot;&quot;&quot;[Daten einfügen]&quot;&quot;&quot;
+
+VERGLEICHSZEITRAUM: [Vorwoche/Vormonat/Vorjahr]
+ZIELGRUPPE: [Geschäftsführung/Team/Kunden]
+
+STRUKTUR:
+1. Executive Summary (3-5 Sätze, das Wichtigste)
+2. KPI-Übersicht (Tabelle: Ist vs. Soll vs. Vorperiode)
+3. Highlights (Was lief gut? 2-3 Punkte)
+4. Herausforderungen (Was lief nicht gut? 2-3 Punkte)
+5. Ursachenanalyse (Warum? Für die Top-Abweichung)
+6. Empfehlungen (Was tun wir? 2-3 konkrete Maßnahmen)
+7. Ausblick (Was erwarten wir für die nächste Periode?)
+
+TON: Sachlich, datengetrieben. Keine Floskeln wie
+&quot;positiver Trend&quot; ohne Zahlen dahinter.
+</code></pre></div>
+
+<h2 id="sql-und-datenbankabfragen">SQL und Datenbankabfragen</h2>
+<h3 id="sql-generieren">SQL generieren</h3>
+<div class="highlight"><pre><span></span><code>Ich habe folgende Datenbanktabellen:
+[Tabellenstruktur beschreiben oder Schema einfügen]
+
+Schreibe eine SQL-Abfrage für:
+[Was willst du wissen?]
+
+ANFORDERUNGEN:
+- [MySQL/PostgreSQL/SQLite/BigQuery]
+- Ergebnis sortiert nach [Kriterium]
+- Nur die Top [X] Ergebnisse
+- Zeitraum: [Von-Bis]
+
+Erkläre die Abfrage Zeile für Zeile.
+Gibt es Performance-Bedenken bei großen Datenmengen?
+</code></pre></div>
+
+<h3 id="datenmodell-erklaren">Datenmodell erklären</h3>
+<div class="highlight"><pre><span></span><code>Hier ist mein Datenbankschema:
+&quot;&quot;&quot;[Schema einfügen]&quot;&quot;&quot;
+
+Erkläre:
+1. Welche Entitäten gibt es?
+2. Wie hängen sie zusammen (Beziehungen)?
+3. Welche Abfragen sind typisch für dieses Schema?
+4. Wo sind potenzielle Performance-Engpässe?
+5. Welche Indizes würdest du empfehlen?
+</code></pre></div>
+
+<h2 id="statistik">Statistik</h2>
+<h3 id="statistische-analyse">Statistische Analyse</h3>
+<div class="highlight"><pre><span></span><code>Ich möchte folgende Hypothese testen:
+[Hypothese in natürlicher Sprache]
+
+DATEN: [Beschreibung]
+STICHPROBENGRÖSSE: [N]
+VARIABLEN: [Abhängig/Unabhängig]
+
+Beantworte:
+1. Welcher statistische Test ist geeignet? Warum?
+2. Welche Voraussetzungen müssen erfüllt sein?
+3. Wie interpretiere ich das Ergebnis?
+4. Was wäre die Nullhypothese?
+5. Welche Effektstärke wäre relevant?
+6. Generiere den Code in [Python/R] für den Test.
+
+WICHTIG: Erkläre alles so, dass jemand ohne
+Statistik-Studium es versteht.
+</code></pre></div>
+
+<h2 id="umfragen-analysieren">Umfragen analysieren</h2>
+<div class="highlight"><pre><span></span><code>Ich habe [ANZAHL] Antworten einer Umfrage.
+Hier sind die Ergebnisse:
+&quot;&quot;&quot;[Daten einfügen]&quot;&quot;&quot;
+
+ANALYSIERE:
+1. Quantitative Fragen:
+   - Verteilungen (Häufigkeiten, Prozente)
+   - Mittelwerte und Standardabweichungen
+   - Gruppenvergleiche (wenn demografische Daten vorhanden)
+
+2. Offene Fragen:
+   - Häufigste Themen (Kategorisierung)
+   - Sentiment (positiv/neutral/negativ)
+   - Auffällige Zitate (anonymisiert)
+
+3. Zusammenfassung:
+   - Top 5 Erkenntnisse
+   - Überraschungen
+   - Handlungsempfehlungen
+   - Methodische Einschränkungen
+</code></pre></div>
+
+<h2 id="best-practices-fur-datenanalyse-mit-ki">Best Practices für Datenanalyse mit KI</h2>
+<h3 id="1-daten-nie-komplett-hochladen">1. Daten nie komplett hochladen</h3>
+<p>Bei sensiblen Daten: Nur Struktur und anonymisierte Beispiele zeigen. Niemals echte Kundendaten, Personaldaten oder Finanzdaten in ein Cloud-LLM laden.</p>
+<h3 id="2-ergebnisse-verifizieren">2. Ergebnisse verifizieren</h3>
+<p>KI kann rechnen – aber sie macht Fehler. Besonders bei Prozentrechnungen und Aggregationen. Stichprobenartig nachprüfen.</p>
+<h3 id="3-kontext-geben">3. Kontext geben</h3>
+<p>&ldquo;Analysiere diese Daten&rdquo; ist zu wenig. Sag der KI, was du suchst, was du erwartest und was dich überraschen würde.</p>
+<h3 id="4-iterativ-arbeiten">4. Iterativ arbeiten</h3>
+<p>Erster Prompt → Überblick. Zweiter Prompt → Deep Dive in auffällige Bereiche. Dritter Prompt → Handlungsempfehlungen.</p>
+<hr />
+<h2 id="ubungen">Übungen</h2>
+<h3 id="ubung-1-explorative-analyse">Übung 1: Explorative Analyse</h3>
+<p>Nimm einen öffentlichen Datensatz (z.B. von Kaggle oder data.gov) und führe eine explorative Analyse mit KI durch. Stimmen die &ldquo;Top-Insights&rdquo; mit dem überein, was du selbst siehst?</p>
+<h3 id="ubung-2-visualisierung">Übung 2: Visualisierung</h3>
+<p>Beschreibe ein Datenset und lass dir Chart-Empfehlungen geben. Erstelle den Chart mit dem generierten Code. Stimmt die Empfehlung?</p>
+<h3 id="ubung-3-bericht">Übung 3: Bericht</h3>
+<p>Generiere einen Monatsbericht aus fiktiven Daten. Ist der Bericht präsentationsfähig oder muss er überarbeitet werden?</p>
+<h3 id="ubung-4-sql">Übung 4: SQL</h3>
+<p>Beschreibe ein Datenbankschema und lass SQL-Abfragen generieren. Teste sie (z.B. in einem Online-SQL-Editor). Sind sie korrekt?</p>
+</section>
+<section class="chapter" id="ch-4">
+<h1 id="kapitel-4-wissenschaft-und-forschung-ki-als-forschungsassistent">Kapitel 4: Wissenschaft und Forschung – KI als Forschungsassistent</h1>
+<p>Forschung ist Informationsarbeit. Literatur suchen, Quellen bewerten, Hypothesen formulieren, Daten interpretieren, Ergebnisse zusammenfassen. Alles Dinge, bei denen KI unterstützen kann – wenn du die Grenzen kennst.</p>
+<p>Und die Grenzen sind hier besonders wichtig.</p>
+<h2 id="die-groe-warnung-zuerst">Die große Warnung zuerst</h2>
+<p>KI halluziniert. Das weißt du aus Band 1. Aber in der Wissenschaft hat das besondere Konsequenzen:</p>
+<ul>
+<li><strong>KI erfindet Quellen.</strong> Sie generiert Autorennamen, Zeitschriftentitel und DOIs, die nicht existieren. Jede Quelle muss verifiziert werden.</li>
+<li><strong>KI zitiert falsch.</strong> Selbst wenn eine Quelle real ist, kann die Zusammenfassung falsch sein.</li>
+<li><strong>KI hat ein Wissens-Cutoff.</strong> Sie kennt keine Studien, die nach ihrem Training veröffentlicht wurden.</li>
+</ul>
+<p>Regel Nr. 1 für akademisches Arbeiten mit KI: <strong>Vertraue, aber verifiziere. Jede. Einzelne. Quelle.</strong></p>
+<h2 id="literaturrecherche">Literaturrecherche</h2>
+<h3 id="literatur-uberblick">Literatur-Überblick</h3>
+<div class="highlight"><pre><span></span><code>Ich schreibe eine Arbeit über [THEMA].
+
+Gib mir einen Überblick über den aktuellen
+Forschungsstand:
+1. Welche Teilbereiche gibt es?
+2. Welche Theorien/Modelle sind zentral?
+3. Wer sind die wichtigsten Forscher/Forschungsgruppen?
+4. Welche Debatten/Kontroversen gibt es?
+5. Welche Forschungslücken werden häufig genannt?
+
+WICHTIG: Nenne nur Quellen, bei denen du dir SICHER bist,
+dass sie existieren. Wenn du unsicher bist, sag es.
+Markiere vermutete Quellen mit [VERIFIZIEREN].
+</code></pre></div>
+
+<h3 id="suchstrategie-entwickeln">Suchstrategie entwickeln</h3>
+<div class="highlight"><pre><span></span><code>Ich suche Literatur zu [FORSCHUNGSFRAGE].
+
+Erstelle eine Suchstrategie für:
+- Google Scholar
+- PubMed (wenn medizinisch)
+- JSTOR/Web of Science (wenn geisteswissenschaftlich)
+
+Für jede Datenbank:
+1. Suchbegriffe (deutsch + englisch)
+2. Boolesche Operatoren (AND/OR/NOT)
+3. Synonyme und verwandte Begriffe
+4. Einschränkungen (Zeitraum, Sprache, Peer-Review)
+5. Vorgeschlagene Suchstrings
+
+Beispiel: (&quot;artificial intelligence&quot; OR &quot;machine learning&quot;)
+AND (&quot;education&quot; OR &quot;teaching&quot;) AND &quot;higher education&quot;
+</code></pre></div>
+
+<h3 id="paper-zusammenfassen">Paper zusammenfassen</h3>
+<div class="highlight"><pre><span></span><code>Fasse folgendes Paper zusammen:
+&quot;&quot;&quot;[Abstract oder Volltext einfügen]&quot;&quot;&quot;
+
+ZUSAMMENFASSUNG IM FORMAT:
+1. Forschungsfrage: Was wurde untersucht?
+2. Methode: Wie wurde untersucht? (Design, N, Instrumente)
+3. Ergebnisse: Was kam heraus? (Hauptbefunde, Effektstärken)
+4. Diskussion: Was bedeutet das? (Interpretation der Autoren)
+5. Limitationen: Was sind die Schwächen der Studie?
+6. Relevanz für meine Arbeit: [Kontext deiner Arbeit einfügen]
+
+Bewerte die methodische Qualität auf einer Skala:
+★☆☆☆☆ bis ★★★★★ mit kurzer Begründung.
+</code></pre></div>
+
+<h2 id="hypothesenbildung">Hypothesenbildung</h2>
+<div class="highlight"><pre><span></span><code>Mein Forschungsthema: [Thema]
+Bisherige Erkenntnisse: [Was weiß man bereits?]
+Meine Vermutung: [Was denkst du?]
+
+Hilf mir, daraus wissenschaftliche Hypothesen zu formulieren:
+
+1. Formuliere 3 überprüfbare Hypothesen (H1, H2, H3)
+   - Operational definiert (messbar)
+   - Gerichtet (welche Richtung erwartest du?)
+   - Falsifizierbar
+
+2. Für jede Hypothese:
+   - Passende Nullhypothese (H0)
+   - Welche Variablen sind beteiligt?
+   - Wie könnte man sie messen?
+   - Welches Forschungsdesign eignet sich?
+
+3. Welche Hypothese hat das meiste Potenzial für
+   einen Erkenntnisgewinn? Warum?
+</code></pre></div>
+
+<h2 id="methodik-beratung">Methodik-Beratung</h2>
+<h3 id="forschungsdesign">Forschungsdesign</h3>
+<div class="highlight"><pre><span></span><code>Meine Forschungsfrage: [Frage]
+Meine Ressourcen: [Zeit, Budget, Zugang zu Probanden]
+
+Welches Forschungsdesign eignet sich?
+
+Vergleiche:
+| Design | Eignung | Aufwand | Aussagekraft |
+|---|---|---|---|
+| Experiment | | | |
+| Quasi-Experiment | | | |
+| Korrelationsstudie | | | |
+| Fallstudie | | | |
+| Umfrage | | | |
+| Interview | | | |
+| Mixed Methods | | | |
+
+Empfehlung: Welches Design bei meinen Ressourcen?
+Begründung: Warum?
+Einschränkungen: Was kann ich mit diesem Design
+NICHT beantworten?
+</code></pre></div>
+
+<h3 id="fragebogen-erstellen">Fragebogen erstellen</h3>
+<div class="highlight"><pre><span></span><code>Erstelle einen Fragebogen für [FORSCHUNGSFRAGE].
+
+ZIELGRUPPE: [Wer wird befragt?]
+METHODE: [Online/Paper/Interview]
+DAUER: [Max. Bearbeitungszeit]
+
+STRUKTUR:
+1. Einleitung (Zweck, Anonymität, Dauer)
+2. Demografische Fragen (nur die nötigen)
+3. Hauptteil (thematisch geordnet)
+4. Abschluss (offene Frage, Danksagung)
+
+FRAGETYPEN:
+- Likert-Skalen (5- oder 7-stufig)
+- Multiple Choice
+- Offene Fragen (max. 2-3)
+
+QUALITÄTSKRITERIEN:
+- Keine doppelten Verneinungen
+- Keine Suggestivfragen
+- Keine Doppelfragen (&quot;Finden Sie X gut und Y schlecht?&quot;)
+- Eindeutige Skalenbeschriftung
+- Pilot-Test-Empfehlung
+</code></pre></div>
+
+<h2 id="schreiben-wissenschaftlicher-texte">Schreiben wissenschaftlicher Texte</h2>
+<h3 id="abstract-schreiben">Abstract schreiben</h3>
+<div class="highlight"><pre><span></span><code>Schreibe ein Abstract (250 Wörter) für folgende Arbeit:
+
+TITEL: [Titel]
+FORSCHUNGSFRAGE: [Frage]
+METHODE: [Kurzbeschreibung]
+ERGEBNISSE: [Hauptbefunde]
+SCHLUSSFOLGERUNG: [Was bedeutet das?]
+
+FORMAT: Strukturiertes Abstract
+(Background – Methods – Results – Conclusion)
+
+SPRACHE: [Deutsch/Englisch]
+STILNORM: [APA/DGPs/...]
+
+REGELN:
+- Jeder Satz muss Inhalt tragen
+- Keine Füllwörter (&quot;Es wurde festgestellt, dass...&quot;)
+- Ergebnisse mit Zahlen belegen
+- Schlussfolgerung muss über &quot;mehr Forschung nötig&quot; hinausgehen
+</code></pre></div>
+
+<h3 id="diskussion-schreiben">Diskussion schreiben</h3>
+<div class="highlight"><pre><span></span><code>Hier sind meine Ergebnisse:
+&quot;&quot;&quot;[Ergebnisse einfügen]&quot;&quot;&quot;
+
+Schreibe eine Diskussion (800 Wörter) mit folgender Struktur:
+
+1. ZUSAMMENFASSUNG der Hauptergebnisse (2-3 Sätze)
+2. EINORDNUNG in den Forschungsstand
+   - Welche Befunde bestätigen bisherige Studien?
+   - Welche widersprechen? Warum?
+3. THEORETISCHE IMPLIKATIONEN
+   - Was bedeuten die Ergebnisse für die Theorie?
+4. PRAKTISCHE IMPLIKATIONEN
+   - Was bedeuten sie für die Praxis?
+5. LIMITATIONEN (ehrlich, nicht pro forma)
+   - Was schränkt die Aussagekraft ein?
+   - Was hätte man besser machen können?
+6. AUSBLICK
+   - Welche Fragen bleiben offen?
+   - Was sollte als Nächstes untersucht werden?
+
+WICHTIG: Keine Überinterpretation. Korrelation ≠ Kausalität.
+Bei nicht-signifikanten Ergebnissen: Ehrlich berichten.
+</code></pre></div>
+
+<h3 id="peer-review-simulieren">Peer Review simulieren</h3>
+<div class="highlight"><pre><span></span><code>Hier ist mein Manuskript/Abstract:
+&quot;&quot;&quot;[Text einfügen]&quot;&quot;&quot;
+
+Simuliere ein Peer Review. Bewerte als strenger
+aber fairer Gutachter:
+
+1. STÄRKEN (2-3 Punkte)
+2. SCHWÄCHEN (2-3 Punkte)
+3. METHODISCHE KRITIK
+   - Ist das Design angemessen?
+   - Ist die Stichprobe groß genug?
+   - Sind die Analysen korrekt beschrieben?
+4. ARGUMENTATIONSLÜCKEN
+   - Wo fehlen Belege?
+   - Wo ist die Argumentation nicht schlüssig?
+5. FORMALE ASPEKTE
+   - Sprache, Struktur, Zitierweise
+6. EMPFEHLUNG
+   - Accept / Minor Revision / Major Revision / Reject
+   - Was müsste für eine Annahme geändert werden?
+</code></pre></div>
+
+<h2 id="zitierungen-und-quellenarbeit">Zitierungen und Quellenarbeit</h2>
+<h3 id="quellen-formatieren">Quellen formatieren</h3>
+<div class="highlight"><pre><span></span><code>Formatiere folgende Quellen nach [APA 7 / Harvard /
+DGPs / Chicago / MLA]:
+
+[Quellen-Informationen einfügen]
+
+Gib für jede Quelle:
+1. Literaturverzeichnis-Eintrag
+2. In-Text-Zitation (direkt + indirekt)
+3. Hinweis auf mögliche Fehler in den Angaben
+</code></pre></div>
+
+<h3 id="quellen-kritisch-bewerten">Quellen kritisch bewerten</h3>
+<div class="highlight"><pre><span></span><code>Ich habe folgende Quelle gefunden:
+[Autor, Titel, Journal, Jahr, Key Findings]
+
+Hilf mir bei der kritischen Bewertung:
+1. Ist das Journal peer-reviewed?
+2. Welchen Impact Factor hat es (ungefähr)?
+3. Wie oft wurde das Paper zitiert?
+4. Gibt es methodische Red Flags?
+5. Gibt es widersprüchliche Studien?
+6. Wie aktuell sind die Daten?
+7. Gibt es Interessenkonflikte?
+
+WICHTIG: Wenn du unsicher bist, sag es. Lieber
+&quot;Ich kann das nicht verifizieren&quot; als falsche Sicherheit.
+</code></pre></div>
+
+<hr />
+<h2 id="ubungen">Übungen</h2>
+<h3 id="ubung-1-literaturrecherche">Übung 1: Literaturrecherche</h3>
+<p>Wähle ein Thema, das dich interessiert. Lass KI eine Suchstrategie für Google Scholar erstellen. Führe die Suche durch. Wie gut waren die Suchbegriffe?</p>
+<h3 id="ubung-2-paper-zusammenfassung">Übung 2: Paper-Zusammenfassung</h3>
+<p>Nimm ein Open-Access-Paper und lass es zusammenfassen. Vergleiche mit dem Original: Stimmt die Zusammenfassung? Wurden wichtige Aspekte ausgelassen?</p>
+<h3 id="ubung-3-peer-review">Übung 3: Peer Review</h3>
+<p>Schreibe (oder nimm) einen kurzen akademischen Text und lass ihn &ldquo;reviewen&rdquo;. Sind die Kritikpunkte berechtigt?</p>
+<h3 id="ubung-4-hypothesen">Übung 4: Hypothesen</h3>
+<p>Formuliere eine Forschungsfrage und lass daraus Hypothesen generieren. Sind sie wirklich überprüfbar und falsifizierbar?</p>
+</section>
+<section class="chapter" id="ch-5">
+<h1 id="kapitel-5-recht-und-compliance-ki-als-juristischer-assistent">Kapitel 5: Recht und Compliance – KI als juristischer Assistent</h1>
+<p><strong>Disclaimer vorab:</strong> KI ist kein Anwalt. Sie darf keine Rechtsberatung erteilen. Was du in diesem Kapitel lernst, hilft dir, juristische Themen besser zu verstehen und vorzubereiten – aber es ersetzt nicht die Beratung durch einen Fachanwalt. Punkt.</p>
+<p>Das gesagt: KI kann dir in rechtlichen Fragen enorm helfen. Nicht als Entscheider, sondern als Vorarbeiter.</p>
+<h2 id="was-ki-in-der-rechtsarbeit-kann-und-was-nicht">Was KI in der Rechtsarbeit kann (und was nicht)</h2>
+<h3 id="gut-geeignet">Gut geeignet:</h3>
+<ul>
+<li>Juristische Begriffe erklären</li>
+<li>Vertragsentwürfe erstellen (als Ausgangspunkt)</li>
+<li>Verträge auf Klauseln prüfen und zusammenfassen</li>
+<li>Checklisten für Compliance erstellen</li>
+<li>Rechtliche Risiken identifizieren</li>
+<li>Gesetze und Verordnungen zusammenfassen</li>
+<li>Schriftsätze vorstrukturieren</li>
+</ul>
+<h3 id="nicht-geeignet">Nicht geeignet:</h3>
+<ul>
+<li>Verbindliche Rechtsauskunft geben</li>
+<li>Aktuelle Rechtsprechung zuverlässig zitieren (Halluzinationsgefahr!)</li>
+<li>Individuelle Fälle beurteilen</li>
+<li>Fristen berechnen (Fehlerrisiko zu hoch)</li>
+<li>Prozesstaktik empfehlen</li>
+</ul>
+<h2 id="vertrage-prufen">Verträge prüfen</h2>
+<h3 id="vertragsprufung">Vertragsprüfung</h3>
+<div class="highlight"><pre><span></span><code>Prüfe folgenden Vertrag und identifiziere potenzielle Risiken:
+
+&quot;&quot;&quot;[Vertrag einfügen]&quot;&quot;&quot;
+
+PRÜFE AUS DER PERSPEKTIVE VON: [Auftragnehmer/Auftraggeber/
+Mieter/Vermieter/Arbeitnehmer/Arbeitgeber]
+
+ANALYSIERE:
+1. ZUSAMMENFASSUNG: Worum geht es? Wer sind die Parteien?
+   Wesentliche Rechte und Pflichten?
+2. RISIKEN: Welche Klauseln sind für meine Seite nachteilig?
+3. FEHLENDE KLAUSELN: Was sollte drin stehen, fehlt aber?
+4. UNKLARE FORMULIERUNGEN: Welche Passagen sind mehrdeutig?
+5. HAFTUNG: Wie ist die Haftung geregelt? Gibt es Beschränkungen?
+6. KÜNDIGUNG: Wie kann der Vertrag beendet werden? Fristen?
+7. DATENSCHUTZ: Ist eine Datenschutzklausel vorhanden? Ausreichend?
+
+FORMAT: Bewerte jede Klausel mit:
+🟢 Unproblematisch
+🟡 Prüfenswert (erklären warum)
+🔴 Risiko (dringend anwaltlich prüfen lassen)
+
+WICHTIG: Dies ist keine Rechtsberatung. Markiere alle
+Punkte, die anwaltlich geprüft werden sollten.
+</code></pre></div>
+
+<h3 id="klauseln-erklaren">Klauseln erklären</h3>
+<div class="highlight"><pre><span></span><code>Erkläre folgende Vertragsklausel in einfacher Sprache:
+
+&quot;&quot;&quot;[Klausel einfügen]&quot;&quot;&quot;
+
+1. Was bedeutet das im Klartext?
+2. Wer profitiert von dieser Klausel?
+3. Was passiert, wenn diese Klausel greift? (Beispielszenario)
+4. Ist diese Klausel üblich oder ungewöhnlich?
+5. Gibt es AGB-rechtliche Bedenken (falls in AGB)?
+</code></pre></div>
+
+<h2 id="dsgvo-und-datenschutz">DSGVO und Datenschutz</h2>
+<h3 id="dsgvo-checkliste">DSGVO-Checkliste</h3>
+<div class="highlight"><pre><span></span><code>Erstelle eine DSGVO-Compliance-Checkliste für [PROJEKT/UNTERNEHMEN].
+
+KONTEXT: [Was macht das Unternehmen? Welche Daten
+werden verarbeitet?]
+
+CHECKLISTE:
+1. RECHTSGRUNDLAGE
+   - [ ] Ist eine Rechtsgrundlage für jede Verarbeitung identifiziert?
+   - [ ] Art. 6 Abs. 1 DSGVO: Welcher Buchstabe?
+
+2. INFORMATIONSPFLICHTEN
+   - [ ] Datenschutzerklärung vorhanden und aktuell?
+   - [ ] Werden Betroffene bei Datenerhebung informiert?
+
+3. BETROFFENENRECHTE
+   - [ ] Prozess für Auskunftsrecht (Art. 15)?
+   - [ ] Prozess für Löschung (Art. 17)?
+   - [ ] Prozess für Datenübertragbarkeit (Art. 20)?
+
+4. TECHNISCH-ORGANISATORISCHE MASSNAHMEN
+   - [ ] Verschlüsselung?
+   - [ ] Zugriffskontrolle?
+   - [ ] Backup-Konzept?
+   - [ ] Incident-Response-Plan?
+
+5. AUFTRAGSVERARBEITUNG
+   - [ ] Sind Auftragsverarbeitungsverträge mit allen
+         Dienstleistern geschlossen?
+   - [ ] Drittlandtransfers geprüft?
+
+6. VERZEICHNIS VON VERARBEITUNGSTÄTIGKEITEN
+   - [ ] Vollständig und aktuell?
+
+7. DATENSCHUTZ-FOLGENABSCHÄTZUNG
+   - [ ] Notwendig? (Risikoprüfung durchgeführt?)
+
+Für jeden fehlenden Punkt: Priorität (hoch/mittel/niedrig)
+und konkreter nächster Schritt.
+</code></pre></div>
+
+<h3 id="datenschutzerklarung-erstellen">Datenschutzerklärung erstellen</h3>
+<div class="highlight"><pre><span></span><code>Erstelle eine Datenschutzerklärung für [WEBSEITE/APP].
+
+DATENVERARBEITUNGEN:
+- [z.B. Kontaktformular, Newsletter, Analytics,
+  Cookies, Social Media, Payment]
+
+FÜR JEDE VERARBEITUNG:
+1. Welche Daten werden erhoben?
+2. Rechtsgrundlage (Art. 6 DSGVO)
+3. Zweck der Verarbeitung
+4. Empfänger/Auftragsverarbeiter
+5. Speicherdauer
+6. Drittlandtransfer?
+
+STRUKTUR: Nach DSGVO-Anforderungen gegliedert.
+SPRACHE: Verständlich, aber rechtlich korrekt.
+
+WICHTIG: Dies ist ein Entwurf. Vor Veröffentlichung
+durch einen Datenschutzbeauftragten prüfen lassen.
+</code></pre></div>
+
+<h2 id="eu-ai-act">EU AI Act</h2>
+<div class="highlight"><pre><span></span><code>Erkläre die Anforderungen des EU AI Act für [MEIN KI-SYSTEM].
+
+BESCHREIBUNG DES SYSTEMS: [Was tut dein KI-System?]
+EINSATZBEREICH: [Wo wird es eingesetzt?]
+NUTZER: [Wer nutzt es?]
+
+ANALYSIERE:
+1. RISIKOKLASSIFIZIERUNG
+   - In welche Kategorie fällt das System?
+   (Unannehmbares Risiko / Hoch / Begrenzt / Minimal)
+   - Begründung
+
+2. ANFORDERUNGEN
+   - Welche Pflichten ergeben sich aus der Risikoklasse?
+   - Dokumentationspflichten?
+   - Transparenzpflichten?
+   - Menschliche Aufsicht?
+
+3. ZEITPLAN
+   - Ab wann gelten die Anforderungen?
+
+4. HANDLUNGSEMPFEHLUNGEN
+   - Was sollte JETZT getan werden?
+   - Was kann warten?
+
+WICHTIG: Stand der Regulierung kann sich ändern.
+Rechtliche Beratung einholen.
+</code></pre></div>
+
+<h2 id="arbeitsrecht">Arbeitsrecht</h2>
+<h3 id="arbeitsvertrag-prufen">Arbeitsvertrag prüfen</h3>
+<div class="highlight"><pre><span></span><code>Prüfe folgenden Arbeitsvertrag aus Arbeitnehmersicht:
+
+&quot;&quot;&quot;[Vertrag einfügen]&quot;&quot;&quot;
+
+FOKUS AUF:
+1. Arbeitszeit und Überstunden: Klar geregelt? Fair?
+2. Vergütung: Grundgehalt, Boni, Sonderzahlungen?
+3. Urlaubsanspruch: Gesetzliches Minimum oder mehr?
+4. Kündigungsfristen: Symmetrisch? Angemessen?
+5. Wettbewerbsverbot: Vorhanden? Angemessen vergütet?
+6. Geheimhaltung: Wie weit reicht sie?
+7. Nebentätigkeit: Erlaubt? Genehmigungspflichtig?
+8. Probezeit: Dauer und Kündigungsfrist in der Probezeit?
+9. Geistiges Eigentum: Wem gehören Erfindungen/Werke?
+10. Homeoffice/Remote: Geregelt?
+
+Markiere alles, was vom üblichen Standard abweicht.
+</code></pre></div>
+
+<h2 id="vertragsvorlagen">Vertragsvorlagen</h2>
+<h3 id="freelancer-vertrag">Freelancer-Vertrag</h3>
+<div class="highlight"><pre><span></span><code>Erstelle einen Entwurf für einen Freelancer-Vertrag
+(Dienstvertrag / Werkvertrag).
+
+AUFTRAGGEBER: [Beschreibung]
+AUFTRAGNEHMER: [Beschreibung]
+LEISTUNG: [Was wird geliefert?]
+VERGÜTUNG: [Wie und wann wird bezahlt?]
+ZEITRAUM: [Projektdauer]
+
+KLAUSELN (mindestens):
+1. Leistungsbeschreibung
+2. Vergütung und Zahlungsbedingungen
+3. Nutzungsrechte / IP
+4. Geheimhaltung
+5. Haftung und Gewährleistung
+6. Kündigung
+7. Scheinselbstständigkeit vermeiden (Abgrenzungskriterien)
+
+WICHTIG: Dies ist ein Entwurf, keine Rechtsberatung.
+Vor Verwendung anwaltlich prüfen lassen.
+</code></pre></div>
+
+<h2 id="compliance-frameworks">Compliance-Frameworks</h2>
+<div class="highlight"><pre><span></span><code>Erstelle ein Compliance-Framework für [BEREICH].
+
+BEREICH: [z.B. Anti-Korruption, Geldwäsche, Kartellrecht,
+Exportkontrolle, Arbeitssicherheit]
+
+UNTERNEHMEN: [Branche, Größe, internationale Tätigkeit]
+
+FRAMEWORK:
+1. RISIKOANALYSE
+   - Welche Risiken bestehen?
+   - Wie wahrscheinlich sind sie?
+   - Was wären die Konsequenzen?
+
+2. RICHTLINIEN
+   - Welche internen Regeln brauche ich?
+   - Wer ist verantwortlich?
+
+3. PROZESSE
+   - Wie werden Risiken erkannt?
+   - Wie wird gemeldet (Whistleblower)?
+   - Wie wird untersucht?
+
+4. SCHULUNGEN
+   - Wer muss geschult werden?
+   - Wie oft?
+   - Welche Inhalte?
+
+5. MONITORING
+   - Wie prüfe ich die Wirksamkeit?
+   - Welche KPIs nutze ich?
+</code></pre></div>
+
+<hr />
+<h2 id="ubungen">Übungen</h2>
+<h3 id="ubung-1-vertragsklausel">Übung 1: Vertragsklausel</h3>
+<p>Nimm eine echte Vertragsklausel (z.B. aus deinem Handyvertrag oder Mietvertrag) und lass sie erklären. Verstehst du jetzt, was du unterschrieben hast?</p>
+<h3 id="ubung-2-dsgvo-check">Übung 2: DSGVO-Check</h3>
+<p>Erstelle eine DSGVO-Checkliste für eine einfache Webseite mit Kontaktformular und Google Analytics. Was fehlt typischerweise?</p>
+<h3 id="ubung-3-arbeitsvertrag">Übung 3: Arbeitsvertrag</h3>
+<p>Lass einen (fiktiven) Arbeitsvertrag aus Arbeitnehmersicht prüfen. Welche Punkte werden als &ldquo;prüfenswert&rdquo; markiert?</p>
+<h3 id="ubung-4-eu-ai-act">Übung 4: EU AI Act</h3>
+<p>Beschreibe ein einfaches KI-System (z.B. ein Chatbot für Kundenservice) und lass es nach dem EU AI Act klassifizieren. In welche Risikoklasse fällt es?</p>
+</section>
+<section class="chapter" id="ch-6">
+<h1 id="kapitel-6-medizin-und-gesundheit-ki-im-kittel">Kapitel 6: Medizin und Gesundheit – KI im Kittel</h1>
+<p><strong>Disclaimer:</strong> KI ist kein Arzt. Dieses Kapitel zeigt, wie medizinische Fachkräfte KI als Assistenten nutzen können – nicht als Ersatz für klinisches Urteil. KI darf keine Diagnosen stellen und keine Therapieentscheidungen treffen. Wenn du Patient bist: Besprich alles mit deinem Arzt.</p>
+<p>Klarer kann ich es nicht sagen. Jetzt zum Inhalt.</p>
+<h2 id="wo-ki-in-der-medizin-hilft">Wo KI in der Medizin hilft</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Aufgabe</th>
+<th>KI-Eignung</th>
+<th>Warum</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Medizinische Texte vereinfachen</td>
+<td>★★★★★</td>
+<td>Kernkompetenz von LLMs</td>
+</tr>
+<tr>
+<td>Differentialdiagnosen brainstormen</td>
+<td>★★★★☆</td>
+<td>Gut als Gedankenstütze, nicht als Entscheidung</td>
+</tr>
+<tr>
+<td>Patientenkommunikation formulieren</td>
+<td>★★★★★</td>
+<td>Sprache und Ton anpassen</td>
+</tr>
+<tr>
+<td>Fachliteratur zusammenfassen</td>
+<td>★★★★☆</td>
+<td>Mit Vorsicht (Halluzinationen prüfen)</td>
+</tr>
+<tr>
+<td>Leitlinien-Zusammenfassungen</td>
+<td>★★★☆☆</td>
+<td>Nur als Einstieg, immer Original prüfen</td>
+</tr>
+<tr>
+<td>Medikamenteninteraktionen prüfen</td>
+<td>★★☆☆☆</td>
+<td>Zu riskant für KI allein – Datenbanken nutzen</td>
+</tr>
+<tr>
+<td>Therapieentscheidungen treffen</td>
+<td>☆☆☆☆☆</td>
+<td>Nein. Nie. Punkt.</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="medizinische-texte-fur-patienten">Medizinische Texte für Patienten</h2>
+<h3 id="befund-ubersetzen">Befund übersetzen</h3>
+<div class="highlight"><pre><span></span><code>Übersetze folgenden medizinischen Befund in
+patientenverständliche Sprache:
+
+&quot;&quot;&quot;[Befund einfügen]&quot;&quot;&quot;
+
+REGELN:
+- Sprachniveau: B1 Deutsch (kein Fachjargon)
+- Jeder Fachbegriff wird beim ersten Auftreten in
+  Klammern einfach erklärt
+- Sätze max. 15 Wörter
+- Keine Verharmlosung, aber auch keine Panikmache
+- Sachlich, ruhig, klar
+- Am Ende: &quot;Was bedeutet das für mich?&quot; (2-3 Sätze)
+- Hinweis: &quot;Bitte besprechen Sie offene Fragen mit
+  Ihrem behandelnden Arzt.&quot;
+</code></pre></div>
+
+<h3 id="aufklarungsbogen-vereinfachen">Aufklärungsbogen vereinfachen</h3>
+<div class="highlight"><pre><span></span><code>Vereinfache folgenden Aufklärungsbogen für einen
+medizinischen Eingriff:
+
+&quot;&quot;&quot;[Aufklärungsbogen einfügen]&quot;&quot;&quot;
+
+ZIEL: Patienten sollen VERSTEHEN, was passiert.
+Nicht nur unterschreiben.
+
+FORMAT:
+1. WAS WIRD GEMACHT? (3-5 Sätze, einfache Sprache)
+2. WARUM? (Indikation, einfach erklärt)
+3. WIE LÄUFT ES AB? (Schritt für Schritt)
+4. WELCHE RISIKEN GIBT ES? (Häufigkeit in einfachen
+   Kategorien: häufig/selten/sehr selten)
+5. WAS PASSIERT, WENN ICH ES NICHT MACHE? (Alternativen)
+6. WAS MUSS ICH VORHER/NACHHER BEACHTEN?
+
+SPRACHE: Einfaches Deutsch. Leichte Sprache wenn möglich.
+Optional: Zweisprachig [Deutsch + andere Sprache].
+</code></pre></div>
+
+<h2 id="differentialdiagnosen-strukturieren">Differentialdiagnosen strukturieren</h2>
+<h3 id="dd-brainstorming-fur-arzte">DD-Brainstorming (für Ärzte)</h3>
+<div class="highlight"><pre><span></span><code>KONTEXT: Ich bin Arzt und nutze KI als Gedankenstütze.
+Dies ist keine klinische Entscheidung.
+
+Patient stellt sich vor mit:
+- Hauptbeschwerde: [Symptom]
+- Seit: [Dauer]
+- Begleitende Symptome: [Aufzählung]
+- Vorerkrankungen: [Aufzählung]
+- Medikation: [Aufzählung]
+- Alter/Geschlecht: [Angabe]
+
+Erstelle eine strukturierte Differentialdiagnose-Liste:
+
+WAHRSCHEINLICH (häufige Ursachen):
+1. [Diagnose] – Dafür spricht: / Dagegen spricht:
+2. ...
+
+WENIGER WAHRSCHEINLICH, ABER WICHTIG:
+1. [Diagnose] – Warum nicht ausschließen:
+2. ...
+
+RED FLAGS (sofort abklären):
+1. [Diagnose] – Warnsignale:
+
+EMPFOHLENE DIAGNOSTIK:
+1. [Untersuchung] – Was wird damit geprüft?
+2. ...
+
+WICHTIG: Dies ist ein Brainstorming-Tool, keine
+klinische Entscheidungsunterstützung. Die finale
+Beurteilung obliegt dem behandelnden Arzt.
+</code></pre></div>
+
+<h2 id="patientenkommunikation">Patientenkommunikation</h2>
+<h3 id="schwierige-gesprache-vorbereiten">Schwierige Gespräche vorbereiten</h3>
+<div class="highlight"><pre><span></span><code>Hilf mir, ein schwieriges Patientengespräch vorzubereiten.
+
+SITUATION: [z.B. Diagnosemitteilung, Therapieänderung,
+schlechte Prognose, Non-Compliance ansprechen]
+
+PATIENT: [Alter, Kontext, bisherige Kommunikation]
+
+Erstelle einen Gesprächsleitfaden nach dem
+SPIKES-Modell:
+1. SETTING: Wie bereite ich den Rahmen vor?
+2. PERCEPTION: Wie erfrage ich, was der Patient
+   bereits weiß?
+3. INVITATION: Wie frage ich, wie viel er wissen möchte?
+4. KNOWLEDGE: Wie vermittle ich die Information?
+   (Formulierungsvorschläge)
+5. EMOTIONS: Wie reagiere ich auf emotionale Reaktionen?
+   (Konkrete Sätze)
+6. STRATEGY: Wie bespreche ich das weitere Vorgehen?
+
+TON: Empathisch, ehrlich, nicht bevormundend.
+Formulierungsvorschläge für schwierige Sätze.
+</code></pre></div>
+
+<h3 id="arztbrief">Arztbrief</h3>
+<div class="highlight"><pre><span></span><code>Erstelle einen Arztbrief-Entwurf.
+
+VON: [Facharzt/Klinik]
+AN: [Hausarzt/Weiterbehandler]
+
+PATIENT: [Initialen, Alter, Geschlecht]
+DIAGNOSEN: [Aufzählung]
+AUFNAHMEGRUND: [Warum?]
+BEFUNDE: [Relevante Befunde]
+THERAPIE: [Was wurde gemacht?]
+EMPFEHLUNG: [Wie weiter?]
+
+FORMAT:
+- Standardisierter Arztbrief-Aufbau
+- Medizinische Fachsprache (Arzt-zu-Arzt)
+- Klar strukturiert
+- Medikamentenliste mit Dosierung am Ende
+
+WICHTIG: Dies ist ein ENTWURF. Der behandelnde
+Arzt prüft und unterschreibt.
+</code></pre></div>
+
+<h2 id="medizinische-fortbildung">Medizinische Fortbildung</h2>
+<h3 id="fallvorstellung-aufbereiten">Fallvorstellung aufbereiten</h3>
+<div class="highlight"><pre><span></span><code>Erstelle eine Fallvorstellung für eine klinische Fortbildung.
+
+FACHGEBIET: [z.B. Innere Medizin, Chirurgie, Pädiatrie]
+THEMA/DIAGNOSE: [Was soll gelernt werden?]
+SCHWIERIGKEITSGRAD: [PJ-Studierende/Assistenzärzte/Fachärzte]
+
+AUFBAU:
+1. VORSTELLUNG (Anonymisiert):
+   Alter, Geschlecht, Aufnahmegrund
+
+2. ANAMNESE (schrittweise enthüllt):
+   - Was fragt man zuerst?
+   - Was erfährt man?
+
+3. UNTERSUCHUNG:
+   - Relevante Befunde
+   - Nebenbefunde (Ablenkung)
+
+4. DIAGNOSTIK:
+   - Welche Untersuchungen anordnen?
+   - Ergebnisse
+
+5. DISKUSSIONSFRAGEN:
+   - &quot;Welche Differentialdiagnosen kommen in Frage?&quot;
+   - &quot;Welche Untersuchung hat die höchste Priorität?&quot;
+   - &quot;Wie würden Sie therapieren?&quot;
+
+6. AUFLÖSUNG:
+   - Diagnose + Begründung
+   - Therapie + Verlauf
+   - Take-Home-Messages (3 Lernpunkte)
+</code></pre></div>
+
+<h3 id="medizinische-konzepte-erklaren">Medizinische Konzepte erklären</h3>
+<div class="highlight"><pre><span></span><code>Erkläre [MEDIZINISCHES KONZEPT] für [ZIELGRUPPE].
+
+ZIELGRUPPE:
+- Medizinstudierende im [X]. Semester
+- ODER: Pflegekräfte
+- ODER: Patienten (Laiensprache)
+- ODER: Fachärzte eines anderen Fachgebiets
+
+ERKLÄRE:
+1. Pathophysiologie (Was passiert im Körper?)
+2. Klinisches Bild (Wie äußert sich das?)
+3. Diagnostik (Wie findet man es?)
+4. Therapie (Was tut man dagegen?)
+5. Prognose (Wie geht es aus?)
+
+NIVEAU: Anpassen an Zielgruppe.
+Für Studenten: Prüfungsrelevante Details markieren.
+Für Patienten: Analogien und einfache Sprache.
+</code></pre></div>
+
+<h2 id="gesundheitskommunikation">Gesundheitskommunikation</h2>
+<h3 id="gesundheitsinformation-erstellen">Gesundheitsinformation erstellen</h3>
+<div class="highlight"><pre><span></span><code>Erstelle eine Patienteninformation zu [ERKRANKUNG/THEMA].
+
+ZIELGRUPPE: Patienten und Angehörige
+SPRACHE: Einfaches Deutsch (B1)
+LÄNGE: Max. 2 Seiten
+
+STRUKTUR:
+1. Was ist [Erkrankung]? (3-4 Sätze)
+2. Wie erkennt man es? (Symptome, einfach)
+3. Was kann man tun? (Behandlung, Selbsthilfe)
+4. Wann zum Arzt? (Red Flags)
+5. Wo gibt es Hilfe? (Anlaufstellen, Hotlines)
+
+REGELN:
+- Keine Panikmache
+- Keine Verharmlosung
+- Quellenbasiert (auf Leitlinien verweisen)
+- Hinweis: &quot;Diese Information ersetzt nicht den
+  Arztbesuch&quot;
+</code></pre></div>
+
+<h2 id="ethik-und-grenzen">Ethik und Grenzen</h2>
+<p>Medizin-KI hat besondere ethische Anforderungen:</p>
+<h3 id="was-du-niemals-tun-solltest">Was du NIEMALS tun solltest:</h3>
+<ol>
+<li><strong>KI-Diagnosen als echte Diagnosen behandeln</strong> – Immer ärztlich validieren</li>
+<li><strong>Patientendaten in Cloud-LLMs eingeben</strong> – DSGVO-Verstoß, Vertraulichkeitsbruch</li>
+<li><strong>KI-generierte Medikamentenempfehlungen befolgen</strong> – Interaktionen, Kontraindikationen, Dosierungen immer in Fachdatenbanken prüfen</li>
+<li><strong>Patienten KI-generierte Texte ungeprüft geben</strong> – Jeder Text muss von einem Mediziner freigegeben werden</li>
+</ol>
+<h3 id="datenschutz-in-der-medizin">Datenschutz in der Medizin</h3>
+<ul>
+<li>Gesundheitsdaten sind besonders geschützt (Art. 9 DSGVO)</li>
+<li>Keine echten Patientendaten in KI-Tools eingeben</li>
+<li>Anonymisierung ist Pflicht – und &ldquo;Name entfernen&rdquo; reicht nicht (Kombination aus Alter, Diagnose, Ort kann identifizieren)</li>
+<li>Lokale LLMs (z.B. Ollama) oder zertifizierte medizinische KI-Plattformen nutzen</li>
+</ul>
+<hr />
+<h2 id="ubungen">Übungen</h2>
+<h3 id="ubung-1-befund-ubersetzen">Übung 1: Befund übersetzen</h3>
+<p>Nimm einen medizinischen Befund (aus dem Internet oder einen eigenen) und lass ihn in Patientensprache übersetzen. Ist das Ergebnis verständlich UND korrekt?</p>
+<h3 id="ubung-2-patienteninformation">Übung 2: Patienteninformation</h3>
+<p>Erstelle eine Patienteninformation zu einer häufigen Erkrankung (z.B. Diabetes Typ 2, Bluthochdruck, Depression). Prüfe sie gegen eine offizielle Quelle (z.B. gesundheitsinformation.de).</p>
+<h3 id="ubung-3-gesprachsleitfaden">Übung 3: Gesprächsleitfaden</h3>
+<p>Erstelle einen Gesprächsleitfaden für ein schwieriges Patientengespräch. Sind die Formulierungsvorschläge empathisch und professionell?</p>
+<h3 id="ubung-4-fallvorstellung">Übung 4: Fallvorstellung</h3>
+<p>Erstelle eine Fallvorstellung für ein Fachgebiet deiner Wahl. Sind die Diskussionsfragen lehrreich?</p>
+</section>
+<section class="chapter" id="ch-7">
+<h1 id="kapitel-7-personalwesen-und-recruiting-ki-als-hr-partner">Kapitel 7: Personalwesen und Recruiting – KI als HR-Partner</h1>
+<p>HR-Abteilungen ertrinken in Text. Stellenausschreibungen, Bewerbungen, Feedback-Gespräche, Onboarding-Materialien, Policies, E-Mails an Kandidaten. KI kann einen großen Teil dieser Textarbeit übernehmen – aber hier gelten besondere Regeln.</p>
+<p>Denn HR arbeitet mit Menschen. Und Fehler in HR betreffen Karrieren, Einkommen und Lebensumstände. Bias in einem KI-generierten Jobinserat kann ganze Bewerbergruppen ausschließen. Ein schlecht formuliertes Absageschreiben kann den Ruf deines Unternehmens ruinieren.</p>
+<h2 id="stellenausschreibungen">Stellenausschreibungen</h2>
+<h3 id="jobinserat-erstellen">Jobinserat erstellen</h3>
+<div class="highlight"><pre><span></span><code>Erstelle eine Stellenausschreibung für [POSITION].
+
+UNTERNEHMEN: [Name, Branche, Größe, Kultur]
+POSITION: [Titel, Abteilung, Berichtet an]
+STANDORT: [Ort / Remote / Hybrid]
+GEHALT: [Bereich, falls angegeben]
+
+STRUKTUR:
+1. HOOK (2-3 Sätze): Warum ist dieser Job spannend?
+   (Nicht: &quot;Wir suchen...&quot; sondern was den Job besonders macht)
+2. AUFGABEN (5-7 Punkte): Was macht man konkret?
+   (Verben am Anfang: &quot;Du entwickelst...&quot;, &quot;Du führst...&quot;)
+3. PROFIL – MUSS (4-5 Punkte): Ohne geht es nicht
+4. PROFIL – NICE TO HAVE (2-3 Punkte): Wäre toll
+5. WIR BIETEN (5-7 Punkte): Echte Benefits, keine Floskeln
+6. BEWERBUNGSPROZESS: Wie bewirbt man sich? Was passiert dann?
+
+REGELN:
+- Genderneutrale Sprache (oder m/w/d)
+- Keine übertriebenen Anforderungen (&quot;10 Jahre Erfahrung
+  in einer 3 Jahre alten Technologie&quot;)
+- Keine Buzzwords ohne Inhalt (&quot;dynamisches Team&quot;,
+  &quot;flache Hierarchien&quot; – nur wenn es stimmt)
+- Konkret statt vage (&quot;Budget von 500k€ verantworten&quot;
+  statt &quot;Budgetverantwortung&quot;)
+</code></pre></div>
+
+<h3 id="bias-check-fur-stellenausschreibungen">Bias-Check für Stellenausschreibungen</h3>
+<div class="highlight"><pre><span></span><code>Prüfe folgende Stellenausschreibung auf Bias:
+
+&quot;&quot;&quot;[Stellenausschreibung einfügen]&quot;&quot;&quot;
+
+PRÜFE AUF:
+1. GENDER-BIAS: Werden Formulierungen verwendet, die
+   ein Geschlecht bevorzugen? (z.B. &quot;durchsetzungsstark&quot;
+   → eher männlich konnotiert)
+2. ALTERS-BIAS: Schließen Formulierungen ältere oder
+   jüngere Bewerber aus? (z.B. &quot;Digital Native&quot;,
+   &quot;junges Team&quot;)
+3. ERFAHRUNGS-BIAS: Sind die Anforderungen realistisch
+   oder schließen sie Quereinsteiger unnötig aus?
+4. KULTUR-BIAS: Setzen Formulierungen bestimmte
+   kulturelle Hintergründe voraus?
+5. DISABILITY-BIAS: Ist die Ausschreibung inklusiv
+   formuliert?
+
+Für jeden gefundenen Bias: Originaltext → Verbesserungsvorschlag.
+</code></pre></div>
+
+<h2 id="bewerbermanagement">Bewerbermanagement</h2>
+<h3 id="absageschreiben">Absageschreiben</h3>
+<div class="highlight"><pre><span></span><code>Schreibe ein Absageschreiben für [SITUATION].
+
+SITUATION: [Nach Bewerbungseingang / Nach Erstgespräch /
+Nach finaler Runde / Position wurde gestrichen]
+BEWERBER/IN: [Kontext, z.B. &quot;sehr gute Bewerbung,
+knapp gescheitert&quot;]
+
+TON: Wertschätzend, ehrlich, professionell.
+Nicht: &quot;Leider müssen wir Ihnen mitteilen...&quot;
+Sondern: Direkt, respektvoll, mit konkretem Grund
+(wenn möglich).
+
+ENTHALTEN:
+1. Dank für die Bewerbung/das Gespräch
+2. Klare Absage (nicht drumherum reden)
+3. Wenn möglich: Konkreter Grund (nicht &quot;andere
+   Kandidaten passten besser&quot;)
+4. Positives Feedback (wenn ehrlich möglich)
+5. Ermutigung / Tür offen lassen (wenn aufrichtig)
+6. Zeitrahmen bis zur endgültigen Entscheidung
+   (falls noch nicht final)
+
+LÄNGE: Max. 150 Wörter. Kürzer = respektvoller.
+</code></pre></div>
+
+<h3 id="interview-fragen-generieren">Interview-Fragen generieren</h3>
+<div class="highlight"><pre><span></span><code>Erstelle Interviewfragen für [POSITION].
+
+INTERVIEW-RUNDE: [Erstgespräch / Fachgespräch / Kulturfit]
+DAUER: [30/45/60 Min]
+
+FRAGENKATEGORIEN:
+1. EINSTIEG (2 Fragen): Warm-up, Motivation
+2. FACHLICH (3-5 Fragen): Kompetenz prüfen
+3. SITUATIV (3 Fragen): &quot;Erzählen Sie von einer
+   Situation, in der Sie...&quot; (STAR-Methode)
+4. KULTUR (2 Fragen): Passt die Person zum Team?
+5. ABSCHLUSS (1-2 Fragen): Erwartungen, Fragen
+
+FÜR JEDE FRAGE:
+- Die Frage
+- Was sie prüft
+- Worauf in der Antwort achten (Grün-Flags / Red-Flags)
+- Follow-up-Frage (wenn die Antwort oberflächlich ist)
+
+VERMEIDE:
+- Illegale Fragen (Familienplanung, Religion, etc.)
+- Rätsel/Brainteaser (korrelieren nicht mit Leistung)
+- &quot;Wo sehen Sie sich in 5 Jahren?&quot; (sagt nichts aus)
+</code></pre></div>
+
+<h2 id="onboarding">Onboarding</h2>
+<h3 id="onboarding-plan">Onboarding-Plan</h3>
+<div class="highlight"><pre><span></span><code>Erstelle einen Onboarding-Plan für [POSITION].
+
+DAUER: [Erste Woche / Erster Monat / Erste 90 Tage]
+UNTERNEHMEN: [Kontext]
+TEAM: [Teamgröße, Arbeitsweise]
+
+WOCHE 1: &quot;Ankommen&quot;
+- Tag 1: [Begrüßung, Setup, Rundgang, Lunch mit Team]
+- Tag 2-3: [Einführungen, Systeme, erste Aufgabe]
+- Tag 4-5: [Erstes Mini-Projekt, Buddy-Gespräch]
+
+MONAT 1: &quot;Verstehen&quot;
+- Woche 2: [Prozesse kennenlernen]
+- Woche 3: [Erste eigenständige Aufgaben]
+- Woche 4: [Feedback-Gespräch, Zielvereinbarung]
+
+TAG 30-90: &quot;Beitragen&quot;
+- Monat 2: [Eigene Projekte übernehmen]
+- Monat 3: [Volle Produktivität, 90-Tage-Review]
+
+FÜR JEDEN MEILENSTEIN:
+- Was wird erwartet?
+- Wer ist Ansprechpartner?
+- Woran erkennt man, dass es gut läuft?
+- Was tun, wenn es nicht gut läuft?
+</code></pre></div>
+
+<h2 id="mitarbeiterfeedback">Mitarbeiterfeedback</h2>
+<h3 id="feedback-gesprach-vorbereiten">Feedback-Gespräch vorbereiten</h3>
+<div class="highlight"><pre><span></span><code>Hilf mir, ein Feedback-Gespräch vorzubereiten.
+
+MITARBEITER/IN: [Rolle, Seniorität, wie lange im Unternehmen]
+ANLASS: [Regelmäßig / Anlassbezogen / Jahresgespräch]
+POSITIVE ASPEKTE: [Was läuft gut? Konkrete Beispiele]
+VERBESSERUNGSBEDARF: [Was muss besser werden? Konkrete Beispiele]
+ZIEL: [Was soll nach dem Gespräch anders sein?]
+
+ERSTELLE:
+1. GESPRÄCHSLEITFADEN (Struktur, Zeitplan)
+2. FORMULIERUNGSHILFEN für schwierige Punkte
+   - Nicht: &quot;Sie sind zu langsam&quot;
+   - Sondern: &quot;Bei Projekt X lag die Deadline um 2 Wochen
+     zurück. Was hat dazu geführt?&quot;
+3. FRAGEN für den/die Mitarbeiter/in
+   (Selbsteinschätzung, Wünsche, Hindernisse)
+4. ZIELVEREINBARUNG (SMART formuliert)
+5. FOLLOW-UP-PLAN (Wann wird nachgehakt?)
+
+TON: Wertschätzend, konkret, zukunftsorientiert.
+Feedback nach der SBI-Methode:
+Situation → Behavior → Impact.
+</code></pre></div>
+
+<h3 id="zeugnis-erstellen">Zeugnis erstellen</h3>
+<div class="highlight"><pre><span></span><code>Erstelle ein qualifiziertes Arbeitszeugnis.
+
+MITARBEITER/IN: [Name, Position, Zeitraum]
+AUFGABEN: [Haupttätigkeiten]
+LEISTUNG: [Bewertung: sehr gut/gut/befriedigend/ausreichend]
+SOZIALVERHALTEN: [Bewertung]
+BEENDIGUNGSGRUND: [Auf eigenen Wunsch / Betriebsbedingt / ...]
+
+ERSTELLE ein Zeugnis nach deutschen Standards:
+1. Einleitung (Daten, Position)
+2. Unternehmensbeschreibung (1-2 Sätze)
+3. Aufgabenbeschreibung
+4. Leistungsbeurteilung
+5. Sozialverhalten (intern + extern)
+6. Beendigungsformel
+7. Schlussformel mit Zukunftswünschen
+
+WICHTIG: Deutsche Arbeitszeugnisse verwenden eine
+Codierte Sprache. Nutze die korrekte Zeugnis-Codierung
+für die gewünschte Note.
+Beispiel: &quot;stets zur vollsten Zufriedenheit&quot; = Note 1
+&quot;zur vollen Zufriedenheit&quot; = Note 2
+</code></pre></div>
+
+<h2 id="hr-policies">HR-Policies</h2>
+<div class="highlight"><pre><span></span><code>Erstelle eine Policy für [THEMA].
+
+THEMEN:
+[z.B. Remote Work / Social Media / Weiterbildung /
+Reisekosten / Anti-Diskriminierung / Whistleblowing]
+
+UNTERNEHMEN: [Branche, Größe, Kultur]
+GELTUNGSBEREICH: [Für wen gilt die Policy?]
+
+STRUKTUR:
+1. Zweck und Geltungsbereich
+2. Definitionen
+3. Regeln/Richtlinien (klar, nummeriert)
+4. Verantwortlichkeiten (Wer macht was?)
+5. Konsequenzen bei Verstoß
+6. Ansprechpartner
+7. Inkrafttreten und Revision
+
+SPRACHE: Klar, unmissverständlich, nicht juristisch
+überladen. Mitarbeiter müssen es verstehen.
+
+WICHTIG: Policy-Entwurf. Vor Einführung rechtlich und
+durch den Betriebsrat (falls vorhanden) prüfen lassen.
+</code></pre></div>
+
+<hr />
+<h2 id="ubungen">Übungen</h2>
+<h3 id="ubung-1-stellenausschreibung">Übung 1: Stellenausschreibung</h3>
+<p>Erstelle eine Stellenausschreibung für eine Position, die du kennst. Prüfe sie danach mit dem Bias-Check-Prompt. Findest du versteckte Biases?</p>
+<h3 id="ubung-2-interview-fragen">Übung 2: Interview-Fragen</h3>
+<p>Generiere Interviewfragen für eine Position deiner Wahl. Sind die STAR-Fragen konkret genug? Würden die Follow-ups helfen?</p>
+<h3 id="ubung-3-feedback-formulieren">Übung 3: Feedback formulieren</h3>
+<p>Bereite ein (fiktives) Feedback-Gespräch vor. Achte darauf, dass die SBI-Methode eingehalten wird. Klingt es wie ein echtes Gespräch?</p>
+<h3 id="ubung-4-arbeitszeugnis">Übung 4: Arbeitszeugnis</h3>
+<p>Lass ein Arbeitszeugnis für Note 2 erstellen. Prüfe die Zeugnis-Codierung – stimmen die Formulierungen mit der gewünschten Note überein?</p>
+</section>
+<section class="chapter" id="ch-8">
+<h1 id="kapitel-8-finanzen-und-buchhaltung-ki-rechnet-mit">Kapitel 8: Finanzen und Buchhaltung – KI rechnet mit</h1>
+<p><strong>Disclaimer:</strong> KI ist kein Steuerberater und kein Wirtschaftsprüfer. Finanzdaten sind sensibel – lade keine echten Kontodaten oder Steuerbescheide in Cloud-LLMs. Und: KI macht Rechenfehler. Jede Zahl nachprüfen.</p>
+<p>Trotzdem: Für Finanzanalyse, Berichtserstellung, Budgetplanung und das Verstehen komplexer Finanzdokumente ist KI ein starkes Werkzeug.</p>
+<h2 id="finanzberichte-analysieren">Finanzberichte analysieren</h2>
+<h3 id="jahresabschluss-verstehen">Jahresabschluss verstehen</h3>
+<div class="highlight"><pre><span></span><code>Analysiere folgenden Jahresabschluss:
+
+&quot;&quot;&quot;[GuV und/oder Bilanz einfügen]&quot;&quot;&quot;
+
+ERSTELLE:
+1. ZUSAMMENFASSUNG (3-5 Sätze für Nicht-Finanzler)
+2. KENNZAHLEN:
+   - Umsatzwachstum (YoY)
+   - Gewinnmarge (Brutto + Netto)
+   - EBITDA / EBIT
+   - Eigenkapitalquote
+   - Liquiditätsgrad
+   - Return on Equity
+3. STÄRKEN: Was läuft finanziell gut?
+4. RISIKEN: Was ist besorgniserregend?
+5. VERGLEICH: Wie stehen die Zahlen im Branchenvergleich?
+6. EMPFEHLUNG: Was sollte das Management beachten?
+
+Erkläre alle Kennzahlen so, dass ein Nicht-BWLer
+sie versteht.
+</code></pre></div>
+
+<h3 id="kennzahlen-erklaren">Kennzahlen erklären</h3>
+<div class="highlight"><pre><span></span><code>Erkläre folgende Finanzkennzahl für [ZIELGRUPPE]:
+
+KENNZAHL: [z.B. EBITDA, Quick Ratio, P/E Ratio,
+Debt-to-Equity, Working Capital]
+
+ERKLÄRE:
+1. Was misst diese Kennzahl? (1 Satz)
+2. Wie berechnet man sie? (Formel + Beispiel)
+3. Was ist ein &quot;guter&quot; Wert? (Branchenabhängig)
+4. Was passiert, wenn der Wert zu hoch/niedrig ist?
+5. Alltagsanalogie (z.B. &quot;EBITDA ist wie dein
+   Gehalt vor Steuern und Miete – was du verdienst,
+   bevor die Fixkosten kommen&quot;)
+
+ZIELGRUPPE: [Laie/Gründer/Investor/Student]
+</code></pre></div>
+
+<h2 id="budgetplanung">Budgetplanung</h2>
+<h3 id="budget-erstellen">Budget erstellen</h3>
+<div class="highlight"><pre><span></span><code>Erstelle ein Budgetplan-Template für [ZEITRAUM].
+
+UNTERNEHMEN/ABTEILUNG: [Kontext]
+ZEITRAUM: [Monat/Quartal/Jahr]
+VORJAHRESBUDGET: [Wenn vorhanden]
+
+STRUKTUR:
+| Kategorie | Budget | Ist | Abweichung | % |
+|---|---|---|---|---|
+| Personalkosten | | | | |
+| Marketing | | | | |
+| IT/Software | | | | |
+| Büro/Miete | | | | |
+| Reisekosten | | | | |
+| [Weitere Kategorien] | | | | |
+| **Gesamt** | | | | |
+
+ZUSÄTZLICH:
+1. Annahmen hinter dem Budget (Was wurde vorausgesetzt?)
+2. Risikopuffer (Empfohlener Prozentsatz)
+3. Szenario-Analyse: Best Case / Base Case / Worst Case
+4. Trigger-Punkte: Ab welcher Abweichung muss gehandelt werden?
+</code></pre></div>
+
+<h3 id="cashflow-prognose">Cashflow-Prognose</h3>
+<div class="highlight"><pre><span></span><code>Erstelle eine Cashflow-Prognose für [ZEITRAUM].
+
+AUSGANGSDATEN:
+- Aktueller Kontostand: [Betrag]
+- Erwartete Einnahmen: [Aufschlüsselung]
+- Fixkosten monatlich: [Aufschlüsselung]
+- Variable Kosten: [Aufschlüsselung]
+- Geplante Investitionen: [Aufschlüsselung]
+
+PROGNOSE (pro Monat):
+| Monat | Einnahmen | Ausgaben | Saldo | Kumuliert |
+|---|---|---|---|---|
+
+WARNSCHWELLEN:
+- Ab welchem Kontostand wird es kritisch?
+- Wann droht ein Liquiditätsengpass?
+- Welche Maßnahmen sind dann möglich?
+</code></pre></div>
+
+<h2 id="steuern-und-buchhaltung">Steuern und Buchhaltung</h2>
+<h3 id="steuerfrage-strukturieren">Steuerfrage strukturieren</h3>
+<div class="highlight"><pre><span></span><code>Ich habe eine Steuerfrage:
+[Frage in eigenen Worten]
+
+KONTEXT:
+- Rechtsform: [GmbH/Einzelunternehmen/Freiberufler/...]
+- Land: [Deutschland/Österreich/Schweiz]
+- Relevanter Zeitraum: [Jahr]
+
+HILF MIR, die Frage zu strukturieren:
+1. Welches Steuergesetz ist relevant?
+2. Was sind die Grundregeln?
+3. Welche Ausnahmen gibt es?
+4. Was muss ich dokumentieren?
+5. Welche Fristen gelten?
+6. Was sollte ich meinen Steuerberater fragen?
+   (Konkrete Fragen formulieren)
+
+WICHTIG: Dies ist keine Steuerberatung. Die
+Informationen dienen der Vorbereitung eines
+Gesprächs mit einem Steuerberater.
+</code></pre></div>
+
+<h3 id="belege-kategorisieren">Belege kategorisieren</h3>
+<div class="highlight"><pre><span></span><code>Kategorisiere folgende Ausgaben für die Buchhaltung:
+
+&quot;&quot;&quot;[Liste von Ausgaben einfügen]&quot;&quot;&quot;
+
+FÜR JEDE AUSGABE:
+1. Kategorie (SKR03/SKR04-Konto oder Oberkategorie)
+2. Vorsteuerabzug möglich? (Ja/Nein/Teilweise)
+3. Betriebsausgabe? (Voll/Anteilig/Nein)
+4. Besonderheiten (z.B. Bewirtung: 70% absetzbar)
+
+SORTIERE nach Kategorie und erstelle eine Übersicht.
+
+HINWEIS: Endgültige Zuordnung durch Steuerberater
+bestätigen lassen.
+</code></pre></div>
+
+<h2 id="investitionsanalyse">Investitionsanalyse</h2>
+<h3 id="investitionsbewertung">Investitionsbewertung</h3>
+<div class="highlight"><pre><span></span><code>Bewerte folgende Investitionsmöglichkeit:
+
+INVESTITION: [Was? z.B. neue Maschine, Software, Standort]
+KOSTEN: [Anschaffungskosten + laufende Kosten]
+ERWARTETER NUTZEN: [Einsparungen, Umsatzsteigerung]
+ZEITRAUM: [Über welchen Zeitraum?]
+ALTERNATIVE: [Was passiert, wenn wir NICHT investieren?]
+
+BERECHNE:
+1. ROI (Return on Investment)
+2. Amortisationszeit
+3. Kapitalwert (NPV) bei [X]% Diskontierungssatz
+4. Break-Even-Punkt
+
+SZENARIO-ANALYSE:
+- Best Case: [Annahmen]
+- Base Case: [Annahmen]
+- Worst Case: [Annahmen]
+
+EMPFEHLUNG: Investieren oder nicht? Begründung.
+
+WICHTIG: Alle Berechnungen nachprüfen. KI kann
+bei Finanzmathematik Fehler machen.
+</code></pre></div>
+
+<h2 id="finanzberichterstattung">Finanzberichterstattung</h2>
+<h3 id="management-bericht">Management-Bericht</h3>
+<div class="highlight"><pre><span></span><code>Erstelle einen monatlichen Management-Bericht
+basierend auf folgenden Zahlen:
+
+&quot;&quot;&quot;[Finanzdaten einfügen]&quot;&quot;&quot;
+
+VERGLEICH MIT: [Vormonat / Vorjahr / Budget]
+
+STRUKTUR:
+1. EXECUTIVE SUMMARY (5 Sätze, das Wichtigste)
+2. KPI-DASHBOARD (Tabelle: Ist vs. Plan vs. Vorjahr)
+3. UMSATZANALYSE (nach Produkt/Region/Kunde)
+4. KOSTENANALYSE (Wo sind die größten Abweichungen?)
+5. CASHFLOW-STATUS
+6. TOP-3-THEMEN (Was muss besprochen werden?)
+7. AUSBLICK (Was erwarten wir für den nächsten Monat?)
+
+TON: Sachlich, auf den Punkt. Geschäftsführer haben
+5 Minuten für diesen Bericht. Kein Wort zu viel.
+</code></pre></div>
+
+<h3 id="investor-pitch-vorbereiten">Investor-Pitch vorbereiten</h3>
+<div class="highlight"><pre><span></span><code>Erstelle die Finanzslides für einen Investor-Pitch.
+
+UNTERNEHMEN: [Name, Phase, Branche]
+BISHERIGE KENNZAHLEN: [Umsatz, Kosten, Wachstum]
+FUNDING-ZIEL: [Wie viel wird gesucht?]
+VERWENDUNG: [Wofür?]
+
+SLIDES:
+1. MARKTGRÖSSE (TAM/SAM/SOM mit Quellen)
+2. GESCHÄFTSMODELL (Wie verdient ihr Geld?)
+3. UNIT ECONOMICS (CAC, LTV, Marge pro Kunde)
+4. FINANZ-ÜBERSICHT (Ist-Zahlen + Projektion 3 Jahre)
+5. USE OF FUNDS (Wofür wird das Geld eingesetzt?)
+6. MILESTONES (Was wird mit dem Geld erreicht?)
+
+Für jede Slide: Die Kernaussage (1 Satz) und
+die unterstützenden Daten/Grafiken.
+</code></pre></div>
+
+<h2 id="personliche-finanzen">Persönliche Finanzen</h2>
+<h3 id="budget-check">Budget-Check</h3>
+<div class="highlight"><pre><span></span><code>Hilf mir, mein persönliches Budget zu analysieren.
+
+MONATLICHES NETTOEINKOMMEN: [Betrag]
+AUSGABEN:
+[Liste aller Ausgaben]
+
+ANALYSIERE:
+1. Wo liegt mein Geld? (Kategorien und Prozente)
+2. 50/30/20-Regel: Stimmt die Verteilung?
+   (50% Bedürfnisse / 30% Wünsche / 20% Sparen)
+3. Wo sind Einsparpotenziale?
+4. Welche Ausgaben sind überproportional?
+5. Sparrate: Ist sie ausreichend?
+6. 3 konkrete Tipps, die sofort umsetzbar sind
+
+WICHTIG: Keine Anlageberatung.
+</code></pre></div>
+
+<hr />
+<h2 id="ubungen">Übungen</h2>
+<h3 id="ubung-1-kennzahlen-verstehen">Übung 1: Kennzahlen verstehen</h3>
+<p>Nimm einen öffentlichen Jahresbericht eines Unternehmens (z.B. von der DAX-Website) und lass die wichtigsten Kennzahlen erklären. Verstehst du jetzt, wie es dem Unternehmen geht?</p>
+<h3 id="ubung-2-budget-erstellen">Übung 2: Budget erstellen</h3>
+<p>Erstelle ein Budget für ein (reales oder fiktives) Projekt. Sind die Szenario-Analysen realistisch?</p>
+<h3 id="ubung-3-steuerfrage">Übung 3: Steuerfrage</h3>
+<p>Formuliere eine Steuerfrage und lass sie strukturieren. Sind die generierten Fragen für den Steuerberater sinnvoll?</p>
+<h3 id="ubung-4-personliches-budget">Übung 4: Persönliches Budget</h3>
+<p>Analysiere dein eigenes monatliches Budget (oder ein fiktives). Sind die Einsparpotenziale realistisch?</p>
+</section>
+<section class="chapter" id="ch-9">
+<h1 id="kapitel-9-branchenubergreifende-prinzipien-was-uberall-gilt">Kapitel 9: Branchenübergreifende Prinzipien – Was überall gilt</h1>
+<p>Acht Branchen. Acht Kapitel. Hunderte spezifische Prompts. Aber unter der Oberfläche gelten überall dieselben Prinzipien.</p>
+<p>Dieses Kapitel destilliert die universellen Regeln für spezialisiertes Prompting – egal in welcher Branche du arbeitest.</p>
+<h2 id="prinzip-1-fachsprache-rein-fachsprache-raus">Prinzip 1: Fachsprache rein, Fachsprache raus</h2>
+<p>KI versteht Fachsprache. Und sie produziert bessere Ergebnisse, wenn du sie verwendest.</p>
+<div class="highlight"><pre><span></span><code>SCHLECHT:
+&quot;Erklär mir, was mit meinen Blutwerten los ist.&quot;
+
+GUT:
+&quot;Interpretiere folgende Laborwerte: Hb 11,2 g/dl,
+MCV 72 fl, Ferritin 8 ng/ml. Welche Differentialdiagnosen
+ergeben sich bei einer 35-jährigen Patientin?&quot;
+</code></pre></div>
+
+<p>Die Fachsprache signalisiert dem Modell: &ldquo;Ich bin vom Fach. Antworte auf meinem Niveau.&rdquo; Das reduziert generische Antworten und erhöht die Fachtiefe.</p>
+<h3 id="die-zwei-stufen-methode">Die Zwei-Stufen-Methode</h3>
+<p>Wenn du selbst kein Experte bist:</p>
+<div class="highlight"><pre><span></span><code>Stufe 1: &quot;Erkläre mir [Thema] in Fachsprache,
+als wäre ich ein [Berufsbezeichnung].&quot;
+
+Stufe 2: &quot;Jetzt übersetze das in einfache Sprache,
+die meine Kunden/Schüler/Patienten verstehen.&quot;
+</code></pre></div>
+
+<p>So bekommst du die fachliche Tiefe UND die verständliche Version.</p>
+<h2 id="prinzip-2-rollen-mit-fachexpertise">Prinzip 2: Rollen mit Fachexpertise</h2>
+<p>Du kennst Rollen aus Band 1. Im spezialisierten Prompting werden Rollen noch wichtiger:</p>
+<div class="highlight"><pre><span></span><code>Du bist ein erfahrener [BERUF] mit [X] Jahren
+Berufserfahrung in [SPEZIALGEBIET]. Du arbeitest
+für [ART VON UNTERNEHMEN/INSTITUTION].
+
+DEIN ANSATZ:
+- [Methodisch/Konservativ/Pragmatisch]
+- [Welche Standards befolgst du?]
+- [Welche Fehler vermeidest du besonders?]
+</code></pre></div>
+
+<h3 id="beispiele-fur-spezialisierte-rollen">Beispiele für spezialisierte Rollen</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Branche</th>
+<th>Rolle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bildung</td>
+<td>&ldquo;Gymnasiallehrerin, 15 Jahre, Mathe/Physik, NRW&rdquo;</td>
+</tr>
+<tr>
+<td>Marketing</td>
+<td>&ldquo;Performance Marketing Manager, B2B SaaS, 50k€ Monatsbudget&rdquo;</td>
+</tr>
+<tr>
+<td>Datenanalyse</td>
+<td>&ldquo;Senior Data Analyst, E-Commerce, Python/SQL, arbeitet mit nicht-technischem Management&rdquo;</td>
+</tr>
+<tr>
+<td>Wissenschaft</td>
+<td>&ldquo;Postdoc, Sozialpsychologie, quantitative Methoden, publiziert in Tier-1-Journals&rdquo;</td>
+</tr>
+<tr>
+<td>Recht</td>
+<td>&ldquo;Fachanwalt für Arbeitsrecht, mittelständische Unternehmen, 10 Jahre Erfahrung&rdquo;</td>
+</tr>
+<tr>
+<td>Medizin</td>
+<td>&ldquo;Hausarzt, Landarztpraxis, breites Patientenspektrum, pragmatischer Ansatz&rdquo;</td>
+</tr>
+<tr>
+<td>HR</td>
+<td>&ldquo;Head of People, Tech-Scale-up, 200 Mitarbeiter, remote-first&rdquo;</td>
+</tr>
+<tr>
+<td>Finanzen</td>
+<td>&ldquo;CFO eines Mittelständlers, produzierendes Gewerbe, Fokus auf Cashflow&rdquo;</td>
+</tr>
+</tbody>
+</table></div>
+<p>Je spezifischer die Rolle, desto spezifischer die Antworten.</p>
+<h2 id="prinzip-3-kontext-ist-konig-besonders-in-fachbereichen">Prinzip 3: Kontext ist König (besonders in Fachbereichen)</h2>
+<p>In Band 1 hast du gelernt, dass Kontext wichtig ist. In Fachbereichen ist er unverzichtbar.</p>
+<h3 id="der-kontext-stack">Der Kontext-Stack</h3>
+<div class="highlight"><pre><span></span><code>BRANCHE: [In welchem Feld arbeiten wir?]
+REGULIERUNG: [Welche Gesetze/Standards gelten?]
+UNTERNEHMEN: [Größe, Kultur, Branche]
+ZIELGRUPPE: [Wer soll das Ergebnis lesen/nutzen?]
+VORWISSEN: [Was weiß die Zielgruppe bereits?]
+FORMAT: [Welches Dokument wird erwartet?]
+EINSCHRÄNKUNGEN: [Was darf NICHT im Ergebnis stehen?]
+</code></pre></div>
+
+<h3 id="beispiel-derselbe-prompt-anderer-kontext">Beispiel: Derselbe Prompt, anderer Kontext</h3>
+<div class="highlight"><pre><span></span><code>&quot;Erstelle einen Bericht über unsere Quartalszahlen.&quot;
+
+Kontext A (Vorstand):
+→ Executive Summary, KPIs, Abweichungsanalyse, Empfehlungen. 2 Seiten.
+
+Kontext B (Investor):
+→ Wachstumsstory, Unit Economics, Marktposition, Projektion. 5 Slides.
+
+Kontext C (Team):
+→ Transparente Zahlen, Kontext zu Erfolgen und Herausforderungen, nächste Schritte. Lockerer Ton.
+
+Kontext D (Finanzamt):
+→ Formale Berichterstattung nach HGB/IFRS. Keine Interpretation.
+</code></pre></div>
+
+<p>Derselbe Datensatz, vier komplett verschiedene Dokumente. Der Kontext bestimmt alles.</p>
+<h2 id="prinzip-4-halluzinationen-sind-hier-gefahrlich">Prinzip 4: Halluzinationen sind hier gefährlich</h2>
+<p>In einem Blogpost ist eine falsche Zahl peinlich. In einem Rechtsgutachten ist sie ein Haftungsfall. In einer medizinischen Empfehlung potenziell lebensbedrohlich.</p>
+<h3 id="die-verifikations-checkliste">Die Verifikations-Checkliste</h3>
+<p>Für jeden fachlichen KI-Output:</p>
+<ul>
+<li>[ ] <strong>Zahlen prüfen.</strong> Jede Zahl, jede Berechnung, jede Statistik.</li>
+<li>[ ] <strong>Quellen prüfen.</strong> Existiert die zitierte Quelle? Sagt sie das, was behauptet wird?</li>
+<li>[ ] <strong>Gesetze prüfen.</strong> Ist die genannte Rechtsnorm aktuell? Korrekt zitiert?</li>
+<li>[ ] <strong>Fachbegriffe prüfen.</strong> Werden sie korrekt verwendet?</li>
+<li>[ ] <strong>Empfehlungen hinterfragen.</strong> Basiert die Empfehlung auf den Daten oder auf allgemeinem &ldquo;Gesundem Menschenverstand&rdquo;?</li>
+</ul>
+<h3 id="der-verifikations-prompt">Der Verifikations-Prompt</h3>
+<div class="highlight"><pre><span></span><code>Prüfe deine eigene Antwort:
+1. Welche Fakten hast du genannt, bei denen du dir
+   nicht 100% sicher bist? Markiere sie.
+2. Welche Quellen hast du implizit vorausgesetzt?
+   Nenne sie explizit.
+3. Gibt es alternative Interpretationen, die du
+   nicht erwähnt hast?
+4. Was könnte an deiner Antwort falsch sein?
+</code></pre></div>
+
+<h2 id="prinzip-5-disclaimer-sind-nicht-optional">Prinzip 5: Disclaimer sind nicht optional</h2>
+<p>In regulierten Bereichen gehört ein Disclaimer zum Output:</p>
+<div class="highlight"><pre><span></span><code>Füge am Ende jedes [rechtlichen/medizinischen/
+finanziellen] Outputs folgenden Hinweis hinzu:
+
+&quot;Hinweis: Diese Information wurde mit Unterstützung
+von KI erstellt und dient ausschließlich der Orientierung.
+Sie ersetzt keine [rechtliche Beratung / ärztliche
+Konsultation / professionelle Finanzberatung].
+Bitte konsultieren Sie einen [Fachanwalt / Arzt /
+Steuerberater] für Ihre individuelle Situation.&quot;
+</code></pre></div>
+
+<p>Das ist keine Formalität. Das ist Verantwortung.</p>
+<h2 id="prinzip-6-datenschutz-bei-fachlichen-daten">Prinzip 6: Datenschutz bei fachlichen Daten</h2>
+<h3 id="was-du-niemals-in-ein-cloud-llm-laden-solltest">Was du NIEMALS in ein Cloud-LLM laden solltest:</h3>
+<ul>
+<li>Echte Patientendaten</li>
+<li>Echte Mandantendaten</li>
+<li>Steuerunterlagen mit Klarnamen</li>
+<li>Personaldaten mit Klarnamen</li>
+<li>Unveröffentlichte Finanzzahlen</li>
+<li>Geschäftsgeheimnisse</li>
+</ul>
+<h3 id="alternativen">Alternativen:</h3>
+<ol>
+<li><strong>Anonymisieren</strong> – Namen, Adressen, Kontonummern durch Platzhalter ersetzen</li>
+<li><strong>Aggregieren</strong> – Statt Einzeldaten Zusammenfassungen verwenden</li>
+<li><strong>Lokale LLMs</strong> – Ollama, LM Studio oder andere lokale Modelle für sensible Daten</li>
+<li><strong>Enterprise-Versionen</strong> – ChatGPT Enterprise, Claude Pro mit Datenschutzgarantie</li>
+</ol>
+<h2 id="prinzip-7-vom-fachexperten-zum-prompt-experten">Prinzip 7: Vom Fachexperten zum Prompt-Experten</h2>
+<p>Du bist Experte in DEINEM Fach. KI ist das Werkzeug. Die besten Ergebnisse kommen von Menschen, die beides können – fachlich urteilen UND gut prompten.</p>
+<h3 id="der-experten-workflow">Der Experten-Workflow</h3>
+<div class="highlight"><pre><span></span><code>1. DU definierst die Frage (Fachexpertise)
+2. KI liefert einen Entwurf (Geschwindigkeit)
+3. DU prüfst auf Korrektheit (Fachexpertise)
+4. KI überarbeitet nach deinem Feedback (Iteration)
+5. DU gibt frei (Verantwortung)
+</code></pre></div>
+
+<p>Die Schritte 1, 3 und 5 sind DEINE. Die kann keine KI übernehmen. Nicht weil sie es nicht könnte, sondern weil die Verantwortung bei dir liegt.</p>
+<h2 id="prinzip-8-prompt-bibliothek-aufbauen">Prinzip 8: Prompt-Bibliothek aufbauen</h2>
+<p>Nach diesem Kapitel hast du dutzende Prompt-Templates gesehen. Die nützlichsten solltest du speichern.</p>
+<h3 id="aufbau-einer-fach-prompt-bibliothek">Aufbau einer Fach-Prompt-Bibliothek</h3>
+<div class="highlight"><pre><span></span><code>KATEGORIE: [z.B. Vertragsrecht, Patientenkommunikation]
+PROMPT-NAME: [z.B. &quot;Vertragsprüfung Standard&quot;]
+TEMPLATE: [Der Prompt mit [PLATZHALTERN]]
+VARIABLEN: [Was muss eingesetzt werden?]
+BEISPIEL: [Ein ausgefülltes Beispiel]
+QUALITÄTSCHECK: [Worauf achte ich beim Ergebnis?]
+LETZTE AKTUALISIERUNG: [Datum]
+</code></pre></div>
+
+<p>Speichere sie dort, wo du schnell darauf zugreifen kannst – Notion, Obsidian, ein Git-Repository, oder einfach eine Textdatei.</p>
+<hr />
+<h2 id="ubungen">Übungen</h2>
+<h3 id="ubung-1-fachsprache-testen">Übung 1: Fachsprache testen</h3>
+<p>Schreibe denselben Prompt einmal mit und einmal ohne Fachsprache. Vergleiche die Ergebnisse. Wie stark ist der Unterschied?</p>
+<h3 id="ubung-2-kontext-variation">Übung 2: Kontext-Variation</h3>
+<p>Nimm einen Prompt und variiere nur den Kontext (Zielgruppe, Format, Unternehmensgröße). Wie verändert sich das Ergebnis?</p>
+<h3 id="ubung-3-halluzinations-jagd">Übung 3: Halluzinations-Jagd</h3>
+<p>Generiere einen fachlichen Text und prüfe ihn systematisch auf Fehler. Findest du welche? Wie schwerwiegend sind sie?</p>
+<h3 id="ubung-4-prompt-bibliothek-starten">Übung 4: Prompt-Bibliothek starten</h3>
+<p>Erstelle die ersten 5 Einträge deiner persönlichen Fach-Prompt-Bibliothek. Für Prompts, die du regelmäßig nutzen würdest.</p>
+</section>
+<section class="chapter" id="ch-10">
+<h1 id="kapitel-10-zusammenfassung-und-ausblick">Kapitel 10: Zusammenfassung und Ausblick</h1>
+<p>Sechs Bände. Du bist über die Halbzeit hinaus. Und mit diesem Band hast du den Sprung vom Generalisten zum Spezialisten gemacht.</p>
+<h2 id="was-du-jetzt-kannst">Was du jetzt kannst</h2>
+<ol>
+<li>
+<p><strong>Bildung und E-Learning</strong> – Unterrichtsentwürfe, differenzierte Arbeitsblätter, automatisierte Quizzes, Schülerfeedback, Lernpfade und Karteikarten. KI als Lehrassistent, der Vorbereitungszeit halbiert.</p>
+</li>
+<li>
+<p><strong>Marketing und Kommunikation</strong> – Personas, Content-Kalender, SEO-Texte, E-Mail-Sequenzen, plattformspezifische Social-Media-Posts und A/B-Test-Varianten. KI als komplette Marketing-Abteilung für Solopreneure.</p>
+</li>
+<li>
+<p><strong>Datenanalyse</strong> – Explorative Analysen, Segmentierungen, Visualisierungsempfehlungen, automatische Berichte, SQL-Generierung und statistische Tests. KI als Data Analyst, der auch erklären kann.</p>
+</li>
+<li>
+<p><strong>Wissenschaft und Forschung</strong> – Suchstrategien, Paper-Zusammenfassungen, Hypothesenbildung, Fragebogenerstellung, wissenschaftliches Schreiben und simuliertes Peer Review. KI als Forschungsassistent – mit der Pflicht, jede Quelle zu verifizieren.</p>
+</li>
+<li>
+<p><strong>Recht und Compliance</strong> – Vertragsprüfung, Klauselerklärung, DSGVO-Checklisten, EU AI Act, Arbeitsrecht und Compliance-Frameworks. KI als juristischer Vorarbeiter – nie als Rechtsberater.</p>
+</li>
+<li>
+<p><strong>Medizin und Gesundheit</strong> – Patientenaufklärung, Befundübersetzung, Differentialdiagnose-Strukturierung, Arztbriefe und Gesundheitsinformation. KI als Kommunikationsbrücke – nie als Arzt.</p>
+</li>
+<li>
+<p><strong>Personalwesen und Recruiting</strong> – Stellenausschreibungen mit Bias-Check, Interviewfragen, Onboarding-Pläne, Feedback-Gespräche und Arbeitszeugnisse. KI als HR-Partner mit Fingerspitzengefühl.</p>
+</li>
+<li>
+<p><strong>Finanzen und Buchhaltung</strong> – Jahresabschlussanalyse, Budgetplanung, Cashflow-Prognosen, Investitionsbewertung und Management-Berichte. KI als Finanzassistent – mit der Pflicht, jede Zahl zu prüfen.</p>
+</li>
+<li>
+<p><strong>Branchenübergreifende Prinzipien</strong> – Fachsprache nutzen, Rollen spezifizieren, Kontext geben, Halluzinationen prüfen, Datenschutz wahren und Prompt-Bibliotheken aufbauen.</p>
+</li>
+</ol>
+<h2 id="checkliste-bin-ich-bereit-fur-band-7">Checkliste: Bin ich bereit für Band 7?</h2>
+<ul>
+<li>[ ] Ich habe mindestens 3 Kapitel aus meiner Branche durchgearbeitet</li>
+<li>[ ] Ich nutze Fachsprache gezielt in meinen Prompts</li>
+<li>[ ] Ich habe eine spezialisierte Rolle definiert und getestet</li>
+<li>[ ] Ich prüfe KI-Output auf Halluzinationen (besonders Quellen und Zahlen)</li>
+<li>[ ] Ich lade keine sensiblen Daten in Cloud-LLMs</li>
+<li>[ ] Ich füge Disclaimer bei rechtlichen/medizinischen/finanziellen Outputs hinzu</li>
+<li>[ ] Ich habe angefangen, eine Prompt-Bibliothek aufzubauen</li>
+<li>[ ] Ich verstehe, dass KI ein Assistent ist, kein Entscheider</li>
+<li>[ ] Ich kann denselben Inhalt für verschiedene Zielgruppen aufbereiten</li>
+<li>[ ] Ich nutze den Kontext-Stack (Branche, Regulierung, Unternehmen, Zielgruppe)</li>
+</ul>
+<p>Bei 7 von 10? Weiter zu Band 7.</p>
+<h2 id="was-dich-in-band-7-erwartet">Was dich in Band 7 erwartet</h2>
+<p>Band 7 heißt &ldquo;Prompting für Entwickler&rdquo; – und jetzt wird es technisch.</p>
+<h3 id="code-generierung">Code-Generierung</h3>
+<p>Wie du KI für Code-Erzeugung nutzt – nicht Copy-Paste, sondern durchdachte Architektur. Von &ldquo;Schreib mir eine Funktion&rdquo; zu &ldquo;Designe mir ein System&rdquo;.</p>
+<h3 id="api-integration">API-Integration</h3>
+<p>LLMs in eigene Anwendungen einbauen. API-Calls, Prompt-Templates, Antwortverarbeitung. Vom Endnutzer zum Entwickler.</p>
+<h3 id="rag-retrieval-augmented-generation">RAG (Retrieval Augmented Generation)</h3>
+<p>Wie du KI mit deinen eigenen Daten fütterst – Dokumente, Datenbanken, Wikis. Die Brücke zwischen allgemeinem Wissen und deinem spezifischen Kontext.</p>
+<h3 id="fine-tuning-vs-prompting">Fine-Tuning vs. Prompting</h3>
+<p>Wann reicht gutes Prompting? Wann lohnt sich Fine-Tuning? Die Entscheidungsmatrix für Entwickler.</p>
+<h3 id="agentische-systeme">Agentische Systeme</h3>
+<p>KI, die nicht nur antwortet, sondern handelt. Tools, Funktionen und Workflows, die KI autonom ausführen kann.</p>
+<h2 id="wie-die-reihe-weitergeht">Wie die Reihe weitergeht</h2>
+<p><strong>Anfänger (Band 1–3) ✓</strong>
+- Band 1: Grundlagen ✓
+- Band 2: Prompt-Frameworks ✓
+- Band 3: Fortgeschrittene Basics ✓</p>
+<p><strong>Fortgeschritten (Band 4–6) ✓</strong>
+- Band 4: Reasoning-Techniken ✓
+- Band 5: Kreatives Prompting ✓
+- Band 6: Spezialisiertes Prompting ✓ <em>(du bist hier)</em></p>
+<p><strong>Profi (Band 7–9)</strong>
+- Band 7: Prompting für Entwickler ← <em>als Nächstes</em>
+- Band 8: Business &amp; Produktivität
+- Band 9: Sicherheit &amp; Ethik</p>
+<p><strong>Experte (Band 10)</strong>
+- Band 10: Die Zukunft</p>
+<h2 id="ein-gedanke-zum-schluss">Ein Gedanke zum Schluss</h2>
+<p>In den ersten fünf Bänden hast du gelernt, WIE man promptet. In diesem Band hast du gelernt, WOFÜR.</p>
+<p>Und das ist der wichtigere Schritt. Denn die beste Prompt-Technik nützt nichts, wenn du nicht weißt, was du damit anfangen sollst. Jetzt weißt du es – für deine Branche, mit den spezifischen Anforderungen, Grenzen und Verantwortlichkeiten.</p>
+<p>Eine Sache noch: Jede Branche in diesem Buch hat Disclaimern. &ldquo;KI ist kein Anwalt. KI ist kein Arzt. KI ist kein Steuerberater.&rdquo; Das sind keine Floskeln. Das ist die wichtigste Lektion dieses Bandes.</p>
+<p>KI ist ein Werkzeug. Ein mächtiges, aber eines ohne Verantwortungsbewusstsein, ohne Berufsethos, ohne Konsequenzen für Fehler. Die Konsequenzen trägst du. Nutze das Werkzeug. Aber verlass dich nicht blind darauf.</p>
+<p>In Band 7 wechseln wir die Perspektive: Vom Endnutzer zum Entwickler. Wie baust du KI in deine eigenen Systeme ein? Wie gehst du über das Chat-Interface hinaus? Und was bedeutet es, KI nicht nur zu nutzen, sondern zu programmieren?</p>
+<p>Bis dahin.</p>
+<p><em>Belkis Aslani</em></p>
+</section>
+</article>
+</main>
+
+<button class="scroll-top" id="scrollTop" type="button" aria-label="Nach oben scrollen">
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4l-8 8h5v8h6v-8h5z"/></svg>
+</button>
+
+<div class="resume-banner" id="resumeBanner" role="dialog" aria-label="Lesezeichen">
+<div class="resume-top">
+<div class="resume-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 3H7c-1.1 0-2 .9-2 2v16l7-3 7 3V5c0-1.1-.9-2-2-2z"/></svg></div>
+<div class="resume-info">
+<div class="resume-label">Weiterlesen</div>
+<div class="resume-chapter" id="resumeChapter">Kapitel</div>
+</div>
+<button class="resume-close" id="resumeClose" type="button" aria-label="Schlie&szlig;en"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></button>
+</div>
+<div class="resume-progress"><div class="resume-progress-bar" id="resumeProgress"></div></div>
+<button class="resume-btn" id="resumeBtn" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>Weiterlesen</button>
+</div>
+
+<div class="update-toast" id="updateToast" role="alert" aria-live="polite">
+<div class="ver" id="toastVer"></div>
+<h3>Neues Update!</h3>
+<ul id="toastChanges"></ul>
+<button id="toastClose" type="button">Verstanden</button>
+</div>
+
+<button class="focus-exit" id="focusExit" type="button" aria-label="Lesemodus beenden">Lesemodus beenden <kbd>Esc</kbd></button>
+
+<script>
+(function(){
+var B=6,K='pe-band'+B;
+var html=document.documentElement;
+
+// Theme
+var stored=localStorage.getItem('theme');
+var dark=stored==='dark'||(!stored&&matchMedia('(prefers-color-scheme:dark)').matches);
+var themeInput=document.getElementById('themeInput');
+if(dark){html.dataset.theme='dark';themeInput.checked=true;}
+themeInput.addEventListener('change',function(){
+html.dataset.theme=this.checked?'dark':'light';
+localStorage.setItem('theme',html.dataset.theme);
+});
+
+// Mobile menu
+var menuBtn=document.getElementById('menuBtn');
+var sidebar=document.getElementById('sidebar');
+var overlay=document.getElementById('overlay');
+function closeSidebar(){sidebar.classList.remove('open');overlay.classList.remove('show');menuBtn.setAttribute('aria-expanded','false')}
+menuBtn.addEventListener('click',function(){
+var open=sidebar.classList.toggle('open');
+overlay.classList.toggle('show');
+menuBtn.setAttribute('aria-expanded',open?'true':'false');
+});
+overlay.addEventListener('click',closeSidebar);
+document.querySelectorAll('.toc-link').forEach(function(l){l.addEventListener('click',function(){if(innerWidth<=900)closeSidebar()})});
+
+// Progress bar + reading position save
+var prog=document.getElementById('progress');
+var saveTimer;
+function onScroll(){
+var h=document.documentElement.scrollHeight-innerHeight;
+var pct=h>0?scrollY/h:0;
+prog.style.width=(pct*100)+'%';
+// Scroll to top button
+scrollBtn.classList.toggle('show',scrollY>600);
+clearTimeout(saveTimer);
+saveTimer=setTimeout(function(){
+localStorage.setItem(K+'-scroll',scrollY);
+var chs=document.querySelectorAll('.chapter');
+for(var i=chs.length-1;i>=0;i--){
+if(chs[i].getBoundingClientRect().top<150){
+localStorage.setItem(K+'-chapter',chs[i].id);
+break;
+}
+}
+},300);
+}
+window.addEventListener('scroll',onScroll,{passive:true});
+
+// Resume reading position
+var savedScroll=parseInt(localStorage.getItem(K+'-scroll'),10);
+var savedChapter=localStorage.getItem(K+'-chapter');
+if(savedScroll>300&&savedChapter){
+var banner=document.getElementById('resumeBanner');
+var chEl=document.getElementById(savedChapter);
+var chapterName='Kapitel';
+if(chEl){
+var chTitle=chEl.querySelector('h1');
+if(chTitle)chapterName=chTitle.textContent;
+}
+document.getElementById('resumeChapter').textContent=chapterName;
+// Calculate reading progress percentage
+var docH=document.documentElement.scrollHeight-window.innerHeight;
+var pct=docH>0?Math.min(Math.round((savedScroll/docH)*100),100):0;
+document.getElementById('resumeProgress').style.width=pct+'%';
+banner.classList.add('show');
+function doResume(){scrollTo({top:savedScroll,behavior:'smooth'});banner.classList.remove('show')}
+function dismissBanner(){banner.classList.remove('show')}
+document.getElementById('resumeBtn').addEventListener('click',doResume);
+document.getElementById('resumeClose').addEventListener('click',dismissBanner);
+banner.addEventListener('keydown',function(e){if(e.key==='Enter')doResume();if(e.key==='Escape')dismissBanner()});
+setTimeout(dismissBanner,12000);
+}
+
+// Scroll to top
+var scrollBtn=document.getElementById('scrollTop');
+scrollBtn.addEventListener('click',function(){scrollTo({top:0,behavior:'smooth'})});
+
+// Active TOC tracking
+var chapters=document.querySelectorAll('.chapter');
+var links=document.querySelectorAll('.toc-link');
+var observer=new IntersectionObserver(function(entries){
+entries.forEach(function(e){
+if(e.isIntersecting){
+links.forEach(function(l){l.classList.remove('active')});
+var active=document.querySelector('.toc-link[data-target="'+e.target.id+'"]');
+if(active)active.classList.add('active');
+}
+});
+},{rootMargin:'-80px 0px -60% 0px'});
+chapters.forEach(function(ch){observer.observe(ch)});
+
+// Focus / Fullscreen reading mode
+var focusBtn=document.getElementById('focusBtn');
+var focusExit=document.getElementById('focusExit');
+function toggleFocus(on){
+var entering=typeof on==='boolean'?on:!document.body.classList.contains('focus-mode');
+document.body.classList.toggle('focus-mode',entering);
+if(entering)closeSidebar();
+}
+focusBtn.addEventListener('click',function(){toggleFocus(true)});
+focusExit.addEventListener('click',function(){toggleFocus(false)});
+document.addEventListener('keydown',function(e){
+if(e.key==='Escape'&&document.body.classList.contains('focus-mode'))toggleFocus(false);
+});
+
+// Service Worker + Version popup
+if('serviceWorker' in navigator){
+navigator.serviceWorker.register('../sw.js').then(function(){
+setTimeout(function(){
+var lastVer=localStorage.getItem('pe-app-version');
+fetch('../version.json?t='+Date.now()).then(function(r){return r.json()}).then(function(data){
+if(lastVer&&lastVer!==data.version){
+var toast=document.getElementById('updateToast');
+document.getElementById('toastVer').textContent='Version '+data.version;
+var ul=document.getElementById('toastChanges');ul.innerHTML='';
+data.changes.forEach(function(c){var li=document.createElement('li');li.textContent=c;ul.appendChild(li)});
+toast.classList.add('show');
+document.getElementById('toastClose').addEventListener('click',function(){toast.classList.remove('show');localStorage.setItem('pe-app-version',data.version)});
+}else{localStorage.setItem('pe-app-version',data.version)}
+}).catch(function(){});
+},1000);
+});
+}
+})();
+</script>
+</body>
+</html>
