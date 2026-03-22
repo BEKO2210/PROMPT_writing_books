@@ -13,246 +13,57 @@ Das gesagt: KI kann dir in rechtlichen Fragen enorm helfen. Nicht als Entscheide
 - Checklisten für Compliance erstellen
 - Rechtliche Risiken identifizieren
 - Gesetze und Verordnungen zusammenfassen
-- Schriftsätze vorstrukturieren
 
 ### Nicht geeignet:
 - Verbindliche Rechtsauskunft geben
 - Aktuelle Rechtsprechung zuverlässig zitieren (Halluzinationsgefahr!)
 - Individuelle Fälle beurteilen
 - Fristen berechnen (Fehlerrisiko zu hoch)
-- Prozesstaktik empfehlen
 
 ## Verträge prüfen
 
 ### Vertragsprüfung
 
+Die Perspektive ist entscheidend: *"Prüfe aus der Perspektive von [Auftragnehmer/Mieter/Arbeitnehmer]"*. Dann analysieren lassen: Zusammenfassung, Risiken, fehlende Klauseln, unklare Formulierungen, Haftung, Kündigung, Datenschutz.
+
+Das Ampel-System funktioniert am besten für die Bewertung:
+
 ```
-Prüfe folgenden Vertrag und identifiziere potenzielle Risiken:
-
-"""[Vertrag einfügen]"""
-
-PRÜFE AUS DER PERSPEKTIVE VON: [Auftragnehmer/Auftraggeber/
-Mieter/Vermieter/Arbeitnehmer/Arbeitgeber]
-
-ANALYSIERE:
-1. ZUSAMMENFASSUNG: Worum geht es? Wer sind die Parteien?
-   Wesentliche Rechte und Pflichten?
-2. RISIKEN: Welche Klauseln sind für meine Seite nachteilig?
-3. FEHLENDE KLAUSELN: Was sollte drin stehen, fehlt aber?
-4. UNKLARE FORMULIERUNGEN: Welche Passagen sind mehrdeutig?
-5. HAFTUNG: Wie ist die Haftung geregelt? Gibt es Beschränkungen?
-6. KÜNDIGUNG: Wie kann der Vertrag beendet werden? Fristen?
-7. DATENSCHUTZ: Ist eine Datenschutzklausel vorhanden? Ausreichend?
-
-FORMAT: Bewerte jede Klausel mit:
+Bewerte jede Klausel mit:
 🟢 Unproblematisch
 🟡 Prüfenswert (erklären warum)
 🔴 Risiko (dringend anwaltlich prüfen lassen)
 
-WICHTIG: Dies ist keine Rechtsberatung. Markiere alle
-Punkte, die anwaltlich geprüft werden sollten.
+WICHTIG: Dies ist keine Rechtsberatung.
 ```
 
-### Klauseln erklären
-
-```
-Erkläre folgende Vertragsklausel in einfacher Sprache:
-
-"""[Klausel einfügen]"""
-
-1. Was bedeutet das im Klartext?
-2. Wer profitiert von dieser Klausel?
-3. Was passiert, wenn diese Klausel greift? (Beispielszenario)
-4. Ist diese Klausel üblich oder ungewöhnlich?
-5. Gibt es AGB-rechtliche Bedenken (falls in AGB)?
-```
+**Klauseln erklären:** Eine Klausel einfügen und fünf Fragen stellen – Was bedeutet das im Klartext? Wer profitiert? Was passiert, wenn sie greift? Ist sie üblich oder ungewöhnlich? Gibt es AGB-rechtliche Bedenken?
 
 ## DSGVO und Datenschutz
 
 ### DSGVO-Checkliste
 
-```
-Erstelle eine DSGVO-Compliance-Checkliste für [PROJEKT/UNTERNEHMEN].
+Eine vollständige DSGVO-Checkliste deckt sieben Bereiche ab: Rechtsgrundlage (Art. 6 DSGVO), Informationspflichten, Betroffenenrechte (Auskunft, Löschung, Datenübertragbarkeit), technisch-organisatorische Maßnahmen (Verschlüsselung, Zugriffskontrolle, Backup, Incident Response), Auftragsverarbeitung, Verzeichnis von Verarbeitungstätigkeiten und Datenschutz-Folgenabschätzung.
 
-KONTEXT: [Was macht das Unternehmen? Welche Daten
-werden verarbeitet?]
+Für jeden fehlenden Punkt: Priorität und konkreter nächster Schritt anfordern.
 
-CHECKLISTE:
-1. RECHTSGRUNDLAGE
-   - [ ] Ist eine Rechtsgrundlage für jede Verarbeitung identifiziert?
-   - [ ] Art. 6 Abs. 1 DSGVO: Welcher Buchstabe?
+### Datenschutzerklärung
 
-2. INFORMATIONSPFLICHTEN
-   - [ ] Datenschutzerklärung vorhanden und aktuell?
-   - [ ] Werden Betroffene bei Datenerhebung informiert?
-
-3. BETROFFENENRECHTE
-   - [ ] Prozess für Auskunftsrecht (Art. 15)?
-   - [ ] Prozess für Löschung (Art. 17)?
-   - [ ] Prozess für Datenübertragbarkeit (Art. 20)?
-
-4. TECHNISCH-ORGANISATORISCHE MASSNAHMEN
-   - [ ] Verschlüsselung?
-   - [ ] Zugriffskontrolle?
-   - [ ] Backup-Konzept?
-   - [ ] Incident-Response-Plan?
-
-5. AUFTRAGSVERARBEITUNG
-   - [ ] Sind Auftragsverarbeitungsverträge mit allen
-         Dienstleistern geschlossen?
-   - [ ] Drittlandtransfers geprüft?
-
-6. VERZEICHNIS VON VERARBEITUNGSTÄTIGKEITEN
-   - [ ] Vollständig und aktuell?
-
-7. DATENSCHUTZ-FOLGENABSCHÄTZUNG
-   - [ ] Notwendig? (Risikoprüfung durchgeführt?)
-
-Für jeden fehlenden Punkt: Priorität (hoch/mittel/niedrig)
-und konkreter nächster Schritt.
-```
-
-### Datenschutzerklärung erstellen
-
-```
-Erstelle eine Datenschutzerklärung für [WEBSEITE/APP].
-
-DATENVERARBEITUNGEN:
-- [z.B. Kontaktformular, Newsletter, Analytics,
-  Cookies, Social Media, Payment]
-
-FÜR JEDE VERARBEITUNG:
-1. Welche Daten werden erhoben?
-2. Rechtsgrundlage (Art. 6 DSGVO)
-3. Zweck der Verarbeitung
-4. Empfänger/Auftragsverarbeiter
-5. Speicherdauer
-6. Drittlandtransfer?
-
-STRUKTUR: Nach DSGVO-Anforderungen gegliedert.
-SPRACHE: Verständlich, aber rechtlich korrekt.
-
-WICHTIG: Dies ist ein Entwurf. Vor Veröffentlichung
-durch einen Datenschutzbeauftragten prüfen lassen.
-```
+Für eine Datenschutzerklärung: Alle Datenverarbeitungen auflisten (Kontaktformular, Newsletter, Analytics, Cookies, Social Media, Payment). Für jede Verarbeitung sechs Punkte: Welche Daten, Rechtsgrundlage, Zweck, Empfänger, Speicherdauer, Drittlandtransfer. Immer mit: *"Dies ist ein Entwurf. Vor Veröffentlichung durch einen Datenschutzbeauftragten prüfen lassen."*
 
 ## EU AI Act
 
-```
-Erkläre die Anforderungen des EU AI Act für [MEIN KI-SYSTEM].
-
-BESCHREIBUNG DES SYSTEMS: [Was tut dein KI-System?]
-EINSATZBEREICH: [Wo wird es eingesetzt?]
-NUTZER: [Wer nutzt es?]
-
-ANALYSIERE:
-1. RISIKOKLASSIFIZIERUNG
-   - In welche Kategorie fällt das System?
-   (Unannehmbares Risiko / Hoch / Begrenzt / Minimal)
-   - Begründung
-
-2. ANFORDERUNGEN
-   - Welche Pflichten ergeben sich aus der Risikoklasse?
-   - Dokumentationspflichten?
-   - Transparenzpflichten?
-   - Menschliche Aufsicht?
-
-3. ZEITPLAN
-   - Ab wann gelten die Anforderungen?
-
-4. HANDLUNGSEMPFEHLUNGEN
-   - Was sollte JETZT getan werden?
-   - Was kann warten?
-
-WICHTIG: Stand der Regulierung kann sich ändern.
-Rechtliche Beratung einholen.
-```
+Für den EU AI Act brauchst du drei Angaben: Was tut dein KI-System, wo wird es eingesetzt, wer nutzt es. Dann analysieren lassen: Risikoklassifizierung (Unannehmbares Risiko / Hoch / Begrenzt / Minimal), daraus folgende Pflichten (Dokumentation, Transparenz, menschliche Aufsicht), Zeitplan und Handlungsempfehlungen.
 
 ## Arbeitsrecht
 
-### Arbeitsvertrag prüfen
+**Arbeitsvertrag prüfen** (aus Arbeitnehmersicht): Die zehn Prüfpunkte sind Arbeitszeit/Überstunden, Vergütung, Urlaubsanspruch, Kündigungsfristen, Wettbewerbsverbot, Geheimhaltung, Nebentätigkeit, Probezeit, geistiges Eigentum und Homeoffice/Remote. Alles markieren lassen, was vom üblichen Standard abweicht.
 
-```
-Prüfe folgenden Arbeitsvertrag aus Arbeitnehmersicht:
-
-"""[Vertrag einfügen]"""
-
-FOKUS AUF:
-1. Arbeitszeit und Überstunden: Klar geregelt? Fair?
-2. Vergütung: Grundgehalt, Boni, Sonderzahlungen?
-3. Urlaubsanspruch: Gesetzliches Minimum oder mehr?
-4. Kündigungsfristen: Symmetrisch? Angemessen?
-5. Wettbewerbsverbot: Vorhanden? Angemessen vergütet?
-6. Geheimhaltung: Wie weit reicht sie?
-7. Nebentätigkeit: Erlaubt? Genehmigungspflichtig?
-8. Probezeit: Dauer und Kündigungsfrist in der Probezeit?
-9. Geistiges Eigentum: Wem gehören Erfindungen/Werke?
-10. Homeoffice/Remote: Geregelt?
-
-Markiere alles, was vom üblichen Standard abweicht.
-```
-
-## Vertragsvorlagen
-
-### Freelancer-Vertrag
-
-```
-Erstelle einen Entwurf für einen Freelancer-Vertrag
-(Dienstvertrag / Werkvertrag).
-
-AUFTRAGGEBER: [Beschreibung]
-AUFTRAGNEHMER: [Beschreibung]
-LEISTUNG: [Was wird geliefert?]
-VERGÜTUNG: [Wie und wann wird bezahlt?]
-ZEITRAUM: [Projektdauer]
-
-KLAUSELN (mindestens):
-1. Leistungsbeschreibung
-2. Vergütung und Zahlungsbedingungen
-3. Nutzungsrechte / IP
-4. Geheimhaltung
-5. Haftung und Gewährleistung
-6. Kündigung
-7. Scheinselbstständigkeit vermeiden (Abgrenzungskriterien)
-
-WICHTIG: Dies ist ein Entwurf, keine Rechtsberatung.
-Vor Verwendung anwaltlich prüfen lassen.
-```
+**Freelancer-Vertrag:** Mindestens sieben Klauseln – Leistungsbeschreibung, Vergütung, Nutzungsrechte/IP, Geheimhaltung, Haftung, Kündigung und Abgrenzungskriterien zur Scheinselbstständigkeit.
 
 ## Compliance-Frameworks
 
-```
-Erstelle ein Compliance-Framework für [BEREICH].
-
-BEREICH: [z.B. Anti-Korruption, Geldwäsche, Kartellrecht,
-Exportkontrolle, Arbeitssicherheit]
-
-UNTERNEHMEN: [Branche, Größe, internationale Tätigkeit]
-
-FRAMEWORK:
-1. RISIKOANALYSE
-   - Welche Risiken bestehen?
-   - Wie wahrscheinlich sind sie?
-   - Was wären die Konsequenzen?
-
-2. RICHTLINIEN
-   - Welche internen Regeln brauche ich?
-   - Wer ist verantwortlich?
-
-3. PROZESSE
-   - Wie werden Risiken erkannt?
-   - Wie wird gemeldet (Whistleblower)?
-   - Wie wird untersucht?
-
-4. SCHULUNGEN
-   - Wer muss geschult werden?
-   - Wie oft?
-   - Welche Inhalte?
-
-5. MONITORING
-   - Wie prüfe ich die Wirksamkeit?
-   - Welche KPIs nutze ich?
-```
+Ein Compliance-Framework für jeden Bereich (Anti-Korruption, Geldwäsche, Kartellrecht, Exportkontrolle) folgt derselben Struktur: Risikoanalyse → Richtlinien → Prozesse (inkl. Whistleblower-Kanal) → Schulungen → Monitoring mit KPIs.
 
 ---
 

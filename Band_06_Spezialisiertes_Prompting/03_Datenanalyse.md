@@ -10,258 +10,70 @@ Aber *wie* du fragst, entscheidet über die Qualität der Antworten.
 
 ### Der Daten-Check-Prompt
 
-Bevor du analysierst, lass die KI deine Daten verstehen:
+Bevor du analysierst, lass die KI deine Daten verstehen. Füge die ersten 20 Zeilen deiner Tabelle ein und frage nach Datenstruktur, Datentypen, fehlenden Werten, Ausreißern, Korrelationen und möglichen Analysen.
 
 ```
 Hier sind meine Daten:
-"""[Erste 20 Zeilen deiner CSV/Tabelle einfügen]"""
+"""[Erste 20 Zeilen deiner CSV/Tabelle]"""
 
 Analysiere die Datenstruktur:
-1. Wie viele Spalten gibt es und was bedeuten sie?
-2. Welche Datentypen hat jede Spalte (Text/Zahl/Datum/Kategorie)?
-3. Gibt es fehlende Werte? In welchen Spalten?
-4. Gibt es offensichtliche Ausreißer oder Fehler?
-5. Welche Spalten korrelieren vermutlich miteinander?
-6. Welche Analysen bieten sich bei diesen Daten an?
+1. Spalten und ihre Bedeutung
+2. Datentypen (Text/Zahl/Datum/Kategorie)
+3. Fehlende Werte und Ausreißer
+4. Welche Analysen bieten sich an?
 ```
 
-### Daten bereinigen
-
-```
-Meine Daten haben folgende Probleme:
-[z.B. fehlende Werte, inkonsistente Formate,
-Duplikate, Ausreißer]
-
-Schlage für jedes Problem vor:
-1. Wie identifiziere ich es? (Query/Code)
-2. Wie behebe ich es? (Strategie)
-3. Was könnte schiefgehen? (Risiken)
-
-Gib den Code in [Python/SQL/Excel-Formeln].
-```
+**Daten bereinigen:** Beschreibe die Probleme (fehlende Werte, Duplikate, inkonsistente Formate) und frage für jedes Problem nach Identifikation, Behebung und Risiken. Wichtig: Zielsprache angeben – Python, SQL oder Excel-Formeln.
 
 ## Explorative Analyse
 
-### Der Überblick-Prompt
+Der Überblick-Prompt folgt einem festen Schema: Zusammenfassung (Kennzahlen wie Min, Max, Durchschnitt, Median), Verteilungen, Trends, Zusammenhänge und die **Top 3 Insights** – plus was davon überraschend ist und was man als Nächstes untersuchen sollte.
 
-```
-Hier sind meine Daten:
-"""[Daten einfügen oder beschreiben]"""
+**Segmentierung** funktioniert am besten, wenn du nicht nur das Kriterium nennst, sondern auch das Ziel (Kundenwert? Churn-Risiko? Kaufverhalten?). Für jedes Segment: Name, Größe, Charakteristik, Verhalten, Potenzial und empfohlene Maßnahme.
 
-Erstelle eine explorative Analyse:
+## Visualisierungen
 
-1. ZUSAMMENFASSUNG
-   - Wie viele Datensätze?
-   - Zeitraum (wenn zeitliche Daten vorhanden)
-   - Wichtigste Kennzahlen (Min, Max, Durchschnitt, Median)
+KI kann dir den perfekten Charttyp empfehlen – wenn du sagst, was du zeigen willst. Die fünf Visualisierungsziele: **Vergleich, Trend, Verteilung, Zusammenhang, Proportion**. Jedes Ziel hat einen idealen Charttyp.
 
-2. VERTEILUNGEN
-   - Wie sind die wichtigsten Variablen verteilt?
-   - Gibt es Auffälligkeiten (Schiefe, Ausreißer)?
+Gib immer an: Daten, Ziel, Zielgruppe (Experten vs. Management). Fordere den besten Charttyp plus zwei Alternativen an, mit Achsenbeschriftung und farbenblind-freundlicher Farbempfehlung.
 
-3. TRENDS
-   - Gibt es zeitliche Trends?
-   - Saisonale Muster?
-
-4. ZUSAMMENHÄNGE
-   - Welche Variablen hängen zusammen?
-   - Gibt es überraschende Korrelationen?
-
-5. TOP-INSIGHTS
-   - Die 3 wichtigsten Erkenntnisse
-   - Was davon ist überraschend?
-   - Was sollte man als Nächstes untersuchen?
-```
-
-### Segmentierung
-
-```
-Segmentiere meine Kundendaten nach [KRITERIUM].
-
-DATEN: [Beschreibung der Daten]
-SEGMENTIERUNGSZIEL: [z.B. Kundenwert, Kaufverhalten,
-Engagement, Churn-Risiko]
-
-FÜR JEDES SEGMENT:
-1. Name (beschreibend, z.B. "Power-User", "Gelegenheitskäufer")
-2. Größe (Anzahl und Prozent)
-3. Charakteristik (Was definiert dieses Segment?)
-4. Verhalten (Was tun sie? Was kaufen sie?)
-5. Potenzial (Wachstum? Risiko? Upselling?)
-6. Empfohlene Maßnahme (Was sollten wir tun?)
-```
-
-## Visualisierungen beschreiben
-
-KI kann (noch) nicht direkt Charts erstellen, aber sie kann dir den Code oder die Beschreibung liefern:
-
-### Chart-Empfehlung
-
-```
-Ich habe folgende Daten und möchte sie visualisieren:
-[Beschreibung der Daten]
-
-ZIEL der Visualisierung: [Vergleich/Trend/Verteilung/
-Zusammenhang/Proportion]
-ZIELGRUPPE: [Wer sieht die Grafik? Experten? Management?]
-
-Empfiehl:
-1. Den besten Charttyp (und warum)
-2. 2 Alternativen
-3. Was auf welche Achse gehört
-4. Farbempfehlung (farbenblind-freundlich)
-5. Titel und Beschriftungen
-
-Generiere den Code in [Python matplotlib/seaborn/plotly
-/ Excel-Anleitung / Google Sheets].
-```
-
-### Dashboard-Design
-
-```
-Erstelle ein Dashboard-Konzept für [ABTEILUNG/ZWECK].
-
-DATENQUELLEN: [Welche Daten fließen ein?]
-NUTZER: [Wer nutzt das Dashboard?]
-AKTUALISIERUNG: [Echtzeit/Täglich/Wöchentlich/Monatlich]
-
-DASHBOARD-LAYOUT (4-6 Karten):
-Für jede Karte:
-- KPI/Metrik
-- Charttyp
-- Benchmark/Vergleichswert
-- Drill-Down-Möglichkeit
-
-OBEN: Die 3-4 wichtigsten KPIs als Kennzahlen
-MITTE: Trend-Charts und Vergleiche
-UNTEN: Detail-Tabellen und Filter
-
-Warnschwellen: Ab welchen Werten wird ein KPI rot/gelb/grün?
-```
+**Dashboard-Design:** Oben die 3-4 wichtigsten KPIs als Zahlen, Mitte die Trend-Charts, unten Detail-Tabellen mit Filtern. Definiere Warnschwellen (rot/gelb/grün) für jeden KPI.
 
 ## Berichterstellung
 
-### Automatischer Bericht
+Die Berichtsstruktur, die für Management funktioniert:
 
-```
-Erstelle einen [wöchentlichen/monatlichen] Bericht
-basierend auf folgenden Daten:
+1. **Executive Summary** – 3-5 Sätze, das Wichtigste
+2. **KPI-Übersicht** – Tabelle: Ist vs. Soll vs. Vorperiode
+3. **Highlights** – Was lief gut? (2-3 Punkte)
+4. **Herausforderungen** – Was lief nicht gut? (2-3 Punkte)
+5. **Ursachenanalyse** – Warum? Für die Top-Abweichung
+6. **Empfehlungen** – Was tun wir? (2-3 konkrete Maßnahmen)
+7. **Ausblick** – Was erwarten wir nächste Periode?
 
-"""[Daten einfügen]"""
-
-VERGLEICHSZEITRAUM: [Vorwoche/Vormonat/Vorjahr]
-ZIELGRUPPE: [Geschäftsführung/Team/Kunden]
-
-STRUKTUR:
-1. Executive Summary (3-5 Sätze, das Wichtigste)
-2. KPI-Übersicht (Tabelle: Ist vs. Soll vs. Vorperiode)
-3. Highlights (Was lief gut? 2-3 Punkte)
-4. Herausforderungen (Was lief nicht gut? 2-3 Punkte)
-5. Ursachenanalyse (Warum? Für die Top-Abweichung)
-6. Empfehlungen (Was tun wir? 2-3 konkrete Maßnahmen)
-7. Ausblick (Was erwarten wir für die nächste Periode?)
-
-TON: Sachlich, datengetrieben. Keine Floskeln wie
-"positiver Trend" ohne Zahlen dahinter.
-```
+Der Schlüsselsatz: *"Sachlich, datengetrieben. Keine Floskeln wie 'positiver Trend' ohne Zahlen dahinter."*
 
 ## SQL und Datenbankabfragen
 
-### SQL generieren
+Für SQL-Generierung: Tabellenstruktur beschreiben, gewünschtes Ergebnis formulieren, Datenbank-Dialekt angeben (MySQL/PostgreSQL/BigQuery), und **Zeile-für-Zeile-Erklärung** anfordern plus Performance-Hinweise.
 
-```
-Ich habe folgende Datenbanktabellen:
-[Tabellenstruktur beschreiben oder Schema einfügen]
+Für bestehende Schemata: Lass dir Entitäten, Beziehungen, typische Abfragen, Performance-Engpässe und Index-Empfehlungen erklären.
 
-Schreibe eine SQL-Abfrage für:
-[Was willst du wissen?]
+## Statistik und Umfragen
 
-ANFORDERUNGEN:
-- [MySQL/PostgreSQL/SQLite/BigQuery]
-- Ergebnis sortiert nach [Kriterium]
-- Nur die Top [X] Ergebnisse
-- Zeitraum: [Von-Bis]
+**Statistische Analyse:** Formuliere deine Hypothese in natürlicher Sprache, beschreibe deine Daten und Stichprobengröße. Frage nach dem geeigneten Test, den Voraussetzungen, der Interpretation und dem Code. Der Zusatz *"Erkläre alles so, dass jemand ohne Statistik-Studium es versteht"* macht den Unterschied.
 
-Erkläre die Abfrage Zeile für Zeile.
-Gibt es Performance-Bedenken bei großen Datenmengen?
-```
-
-### Datenmodell erklären
-
-```
-Hier ist mein Datenbankschema:
-"""[Schema einfügen]"""
-
-Erkläre:
-1. Welche Entitäten gibt es?
-2. Wie hängen sie zusammen (Beziehungen)?
-3. Welche Abfragen sind typisch für dieses Schema?
-4. Wo sind potenzielle Performance-Engpässe?
-5. Welche Indizes würdest du empfehlen?
-```
-
-## Statistik
-
-### Statistische Analyse
-
-```
-Ich möchte folgende Hypothese testen:
-[Hypothese in natürlicher Sprache]
-
-DATEN: [Beschreibung]
-STICHPROBENGRÖSSE: [N]
-VARIABLEN: [Abhängig/Unabhängig]
-
-Beantworte:
-1. Welcher statistische Test ist geeignet? Warum?
-2. Welche Voraussetzungen müssen erfüllt sein?
-3. Wie interpretiere ich das Ergebnis?
-4. Was wäre die Nullhypothese?
-5. Welche Effektstärke wäre relevant?
-6. Generiere den Code in [Python/R] für den Test.
-
-WICHTIG: Erkläre alles so, dass jemand ohne
-Statistik-Studium es versteht.
-```
-
-## Umfragen analysieren
-
-```
-Ich habe [ANZAHL] Antworten einer Umfrage.
-Hier sind die Ergebnisse:
-"""[Daten einfügen]"""
-
-ANALYSIERE:
-1. Quantitative Fragen:
-   - Verteilungen (Häufigkeiten, Prozente)
-   - Mittelwerte und Standardabweichungen
-   - Gruppenvergleiche (wenn demografische Daten vorhanden)
-
-2. Offene Fragen:
-   - Häufigste Themen (Kategorisierung)
-   - Sentiment (positiv/neutral/negativ)
-   - Auffällige Zitate (anonymisiert)
-
-3. Zusammenfassung:
-   - Top 5 Erkenntnisse
-   - Überraschungen
-   - Handlungsempfehlungen
-   - Methodische Einschränkungen
-```
+**Umfragen analysieren:** Trenne quantitative Fragen (Verteilungen, Mittelwerte, Gruppenvergleiche) von offenen Fragen (Kategorisierung, Sentiment, auffällige Zitate). Am Ende: Top 5 Erkenntnisse, Überraschungen, Handlungsempfehlungen und methodische Einschränkungen.
 
 ## Best Practices für Datenanalyse mit KI
 
-### 1. Daten nie komplett hochladen
-Bei sensiblen Daten: Nur Struktur und anonymisierte Beispiele zeigen. Niemals echte Kundendaten, Personaldaten oder Finanzdaten in ein Cloud-LLM laden.
+**1. Daten nie komplett hochladen.** Bei sensiblen Daten: Nur Struktur und anonymisierte Beispiele zeigen. Niemals echte Kundendaten, Personaldaten oder Finanzdaten in ein Cloud-LLM laden.
 
-### 2. Ergebnisse verifizieren
-KI kann rechnen – aber sie macht Fehler. Besonders bei Prozentrechnungen und Aggregationen. Stichprobenartig nachprüfen.
+**2. Ergebnisse verifizieren.** KI kann rechnen – aber sie macht Fehler. Besonders bei Prozentrechnungen und Aggregationen. Stichprobenartig nachprüfen.
 
-### 3. Kontext geben
-"Analysiere diese Daten" ist zu wenig. Sag der KI, was du suchst, was du erwartest und was dich überraschen würde.
+**3. Kontext geben.** "Analysiere diese Daten" ist zu wenig. Sag der KI, was du suchst, was du erwartest und was dich überraschen würde.
 
-### 4. Iterativ arbeiten
-Erster Prompt → Überblick. Zweiter Prompt → Deep Dive in auffällige Bereiche. Dritter Prompt → Handlungsempfehlungen.
+**4. Iterativ arbeiten.** Erster Prompt → Überblick. Zweiter Prompt → Deep Dive in auffällige Bereiche. Dritter Prompt → Handlungsempfehlungen.
 
 ---
 

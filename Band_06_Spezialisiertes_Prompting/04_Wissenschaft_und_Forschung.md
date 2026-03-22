@@ -18,252 +18,49 @@ Regel Nr. 1 für akademisches Arbeiten mit KI: **Vertraue, aber verifiziere. Jed
 
 ### Literatur-Überblick
 
-```
-Ich schreibe eine Arbeit über [THEMA].
+Für einen Forschungsstand-Überblick fragst du nach Teilbereichen, zentralen Theorien, wichtigen Forschungsgruppen, aktuellen Debatten und Forschungslücken. Der entscheidende Zusatz: *"Nenne nur Quellen, bei denen du dir SICHER bist. Markiere vermutete Quellen mit [VERIFIZIEREN]."*
 
-Gib mir einen Überblick über den aktuellen
-Forschungsstand:
-1. Welche Teilbereiche gibt es?
-2. Welche Theorien/Modelle sind zentral?
-3. Wer sind die wichtigsten Forscher/Forschungsgruppen?
-4. Welche Debatten/Kontroversen gibt es?
-5. Welche Forschungslücken werden häufig genannt?
+### Suchstrategie
 
-WICHTIG: Nenne nur Quellen, bei denen du dir SICHER bist,
-dass sie existieren. Wenn du unsicher bist, sag es.
-Markiere vermutete Quellen mit [VERIFIZIEREN].
-```
-
-### Suchstrategie entwickeln
+Statt die KI nach Quellen zu fragen (die sie erfinden könnte), lass dir eine **Suchstrategie** erstellen: Suchbegriffe auf Deutsch und Englisch, Boolesche Operatoren, Synonyme, Einschränkungen und fertige Suchstrings für Google Scholar, PubMed oder JSTOR.
 
 ```
-Ich suche Literatur zu [FORSCHUNGSFRAGE].
+Erstelle eine Suchstrategie für [FORSCHUNGSFRAGE].
+Suchbegriffe (DE + EN), Boolesche Operatoren,
+Synonyme, Einschränkungen (Zeitraum, Peer-Review).
 
-Erstelle eine Suchstrategie für:
-- Google Scholar
-- PubMed (wenn medizinisch)
-- JSTOR/Web of Science (wenn geisteswissenschaftlich)
-
-Für jede Datenbank:
-1. Suchbegriffe (deutsch + englisch)
-2. Boolesche Operatoren (AND/OR/NOT)
-3. Synonyme und verwandte Begriffe
-4. Einschränkungen (Zeitraum, Sprache, Peer-Review)
-5. Vorgeschlagene Suchstrings
-
-Beispiel: ("artificial intelligence" OR "machine learning")
+Beispiel-Suchstring:
+("artificial intelligence" OR "machine learning")
 AND ("education" OR "teaching") AND "higher education"
 ```
 
+Das ist viel sicherer als KI-generierte Quellenangaben – du suchst selbst und findest echte Papers.
+
 ### Paper zusammenfassen
 
-```
-Fasse folgendes Paper zusammen:
-"""[Abstract oder Volltext einfügen]"""
+Für Paper-Zusammenfassungen nutze das Schema: Forschungsfrage → Methode → Ergebnisse → Diskussion → Limitationen → Relevanz für deine Arbeit. Plus eine methodische Qualitätsbewertung auf einer Skala von 1-5 mit Begründung.
 
-ZUSAMMENFASSUNG IM FORMAT:
-1. Forschungsfrage: Was wurde untersucht?
-2. Methode: Wie wurde untersucht? (Design, N, Instrumente)
-3. Ergebnisse: Was kam heraus? (Hauptbefunde, Effektstärken)
-4. Diskussion: Was bedeutet das? (Interpretation der Autoren)
-5. Limitationen: Was sind die Schwächen der Studie?
-6. Relevanz für meine Arbeit: [Kontext deiner Arbeit einfügen]
+## Hypothesenbildung und Methodik
 
-Bewerte die methodische Qualität auf einer Skala:
-★☆☆☆☆ bis ★★★★★ mit kurzer Begründung.
-```
+**Hypothesen formulieren:** Beschreibe dein Thema, bisherige Erkenntnisse und deine Vermutung. Fordere drei überprüfbare Hypothesen an – operational definiert, gerichtet und falsifizierbar. Für jede Hypothese: Nullhypothese, beteiligte Variablen, Messmethode und passendes Forschungsdesign.
 
-## Hypothesenbildung
+**Forschungsdesign:** Beschreibe deine Forschungsfrage und Ressourcen (Zeit, Budget, Zugang zu Probanden). Lass Experiment, Quasi-Experiment, Korrelationsstudie, Fallstudie, Umfrage, Interview und Mixed Methods nach Eignung, Aufwand und Aussagekraft vergleichen. Wichtig: *"Was kann ich mit diesem Design NICHT beantworten?"*
 
-```
-Mein Forschungsthema: [Thema]
-Bisherige Erkenntnisse: [Was weiß man bereits?]
-Meine Vermutung: [Was denkst du?]
+**Fragebogen erstellen:** Zielgruppe, Methode, Dauer. Qualitätskriterien explizit anfordern: Keine doppelten Verneinungen, keine Suggestivfragen, keine Doppelfragen, eindeutige Skalenbeschriftung, Pilot-Test-Empfehlung.
 
-Hilf mir, daraus wissenschaftliche Hypothesen zu formulieren:
+## Wissenschaftliche Texte schreiben
 
-1. Formuliere 3 überprüfbare Hypothesen (H1, H2, H3)
-   - Operational definiert (messbar)
-   - Gerichtet (welche Richtung erwartest du?)
-   - Falsifizierbar
+**Abstract:** Das Schema Background – Methods – Results – Conclusion. 250 Wörter, jeder Satz trägt Inhalt, Ergebnisse mit Zahlen belegen. Der Zusatz: *"Die Schlussfolgerung muss über 'mehr Forschung nötig' hinausgehen."*
 
-2. Für jede Hypothese:
-   - Passende Nullhypothese (H0)
-   - Welche Variablen sind beteiligt?
-   - Wie könnte man sie messen?
-   - Welches Forschungsdesign eignet sich?
+**Diskussion:** Die Struktur in sechs Teilen – Zusammenfassung der Hauptergebnisse, Einordnung in den Forschungsstand, theoretische Implikationen, praktische Implikationen, Limitationen (ehrlich, nicht pro forma) und Ausblick. Immer mit: *"Keine Überinterpretation. Korrelation ≠ Kausalität."*
 
-3. Welche Hypothese hat das meiste Potenzial für
-   einen Erkenntnisgewinn? Warum?
-```
-
-## Methodik-Beratung
-
-### Forschungsdesign
-
-```
-Meine Forschungsfrage: [Frage]
-Meine Ressourcen: [Zeit, Budget, Zugang zu Probanden]
-
-Welches Forschungsdesign eignet sich?
-
-Vergleiche:
-| Design | Eignung | Aufwand | Aussagekraft |
-|---|---|---|---|
-| Experiment | | | |
-| Quasi-Experiment | | | |
-| Korrelationsstudie | | | |
-| Fallstudie | | | |
-| Umfrage | | | |
-| Interview | | | |
-| Mixed Methods | | | |
-
-Empfehlung: Welches Design bei meinen Ressourcen?
-Begründung: Warum?
-Einschränkungen: Was kann ich mit diesem Design
-NICHT beantworten?
-```
-
-### Fragebogen erstellen
-
-```
-Erstelle einen Fragebogen für [FORSCHUNGSFRAGE].
-
-ZIELGRUPPE: [Wer wird befragt?]
-METHODE: [Online/Paper/Interview]
-DAUER: [Max. Bearbeitungszeit]
-
-STRUKTUR:
-1. Einleitung (Zweck, Anonymität, Dauer)
-2. Demografische Fragen (nur die nötigen)
-3. Hauptteil (thematisch geordnet)
-4. Abschluss (offene Frage, Danksagung)
-
-FRAGETYPEN:
-- Likert-Skalen (5- oder 7-stufig)
-- Multiple Choice
-- Offene Fragen (max. 2-3)
-
-QUALITÄTSKRITERIEN:
-- Keine doppelten Verneinungen
-- Keine Suggestivfragen
-- Keine Doppelfragen ("Finden Sie X gut und Y schlecht?")
-- Eindeutige Skalenbeschriftung
-- Pilot-Test-Empfehlung
-```
-
-## Schreiben wissenschaftlicher Texte
-
-### Abstract schreiben
-
-```
-Schreibe ein Abstract (250 Wörter) für folgende Arbeit:
-
-TITEL: [Titel]
-FORSCHUNGSFRAGE: [Frage]
-METHODE: [Kurzbeschreibung]
-ERGEBNISSE: [Hauptbefunde]
-SCHLUSSFOLGERUNG: [Was bedeutet das?]
-
-FORMAT: Strukturiertes Abstract
-(Background – Methods – Results – Conclusion)
-
-SPRACHE: [Deutsch/Englisch]
-STILNORM: [APA/DGPs/...]
-
-REGELN:
-- Jeder Satz muss Inhalt tragen
-- Keine Füllwörter ("Es wurde festgestellt, dass...")
-- Ergebnisse mit Zahlen belegen
-- Schlussfolgerung muss über "mehr Forschung nötig" hinausgehen
-```
-
-### Diskussion schreiben
-
-```
-Hier sind meine Ergebnisse:
-"""[Ergebnisse einfügen]"""
-
-Schreibe eine Diskussion (800 Wörter) mit folgender Struktur:
-
-1. ZUSAMMENFASSUNG der Hauptergebnisse (2-3 Sätze)
-2. EINORDNUNG in den Forschungsstand
-   - Welche Befunde bestätigen bisherige Studien?
-   - Welche widersprechen? Warum?
-3. THEORETISCHE IMPLIKATIONEN
-   - Was bedeuten die Ergebnisse für die Theorie?
-4. PRAKTISCHE IMPLIKATIONEN
-   - Was bedeuten sie für die Praxis?
-5. LIMITATIONEN (ehrlich, nicht pro forma)
-   - Was schränkt die Aussagekraft ein?
-   - Was hätte man besser machen können?
-6. AUSBLICK
-   - Welche Fragen bleiben offen?
-   - Was sollte als Nächstes untersucht werden?
-
-WICHTIG: Keine Überinterpretation. Korrelation ≠ Kausalität.
-Bei nicht-signifikanten Ergebnissen: Ehrlich berichten.
-```
-
-### Peer Review simulieren
-
-```
-Hier ist mein Manuskript/Abstract:
-"""[Text einfügen]"""
-
-Simuliere ein Peer Review. Bewerte als strenger
-aber fairer Gutachter:
-
-1. STÄRKEN (2-3 Punkte)
-2. SCHWÄCHEN (2-3 Punkte)
-3. METHODISCHE KRITIK
-   - Ist das Design angemessen?
-   - Ist die Stichprobe groß genug?
-   - Sind die Analysen korrekt beschrieben?
-4. ARGUMENTATIONSLÜCKEN
-   - Wo fehlen Belege?
-   - Wo ist die Argumentation nicht schlüssig?
-5. FORMALE ASPEKTE
-   - Sprache, Struktur, Zitierweise
-6. EMPFEHLUNG
-   - Accept / Minor Revision / Major Revision / Reject
-   - Was müsste für eine Annahme geändert werden?
-```
+**Peer Review simulieren:** Lass deinen Text als strenger aber fairer Gutachter bewerten – Stärken, Schwächen, methodische Kritik, Argumentationslücken, formale Aspekte und eine Empfehlung (Accept / Minor Revision / Major Revision / Reject).
 
 ## Zitierungen und Quellenarbeit
 
-### Quellen formatieren
+**Quellen formatieren:** Stil angeben (APA 7, Harvard, DGPs, Chicago), für jede Quelle Literaturverzeichnis-Eintrag und In-Text-Zitation anfordern. Plus: *"Hinweis auf mögliche Fehler in den Angaben."*
 
-```
-Formatiere folgende Quellen nach [APA 7 / Harvard /
-DGPs / Chicago / MLA]:
-
-[Quellen-Informationen einfügen]
-
-Gib für jede Quelle:
-1. Literaturverzeichnis-Eintrag
-2. In-Text-Zitation (direkt + indirekt)
-3. Hinweis auf mögliche Fehler in den Angaben
-```
-
-### Quellen kritisch bewerten
-
-```
-Ich habe folgende Quelle gefunden:
-[Autor, Titel, Journal, Jahr, Key Findings]
-
-Hilf mir bei der kritischen Bewertung:
-1. Ist das Journal peer-reviewed?
-2. Welchen Impact Factor hat es (ungefähr)?
-3. Wie oft wurde das Paper zitiert?
-4. Gibt es methodische Red Flags?
-5. Gibt es widersprüchliche Studien?
-6. Wie aktuell sind die Daten?
-7. Gibt es Interessenkonflikte?
-
-WICHTIG: Wenn du unsicher bist, sag es. Lieber
-"Ich kann das nicht verifizieren" als falsche Sicherheit.
-```
+**Quellen kritisch bewerten:** Sieben Prüfpunkte – Peer-Review-Status, Impact Factor, Zitierhäufigkeit, methodische Red Flags, widersprüchliche Studien, Aktualität und Interessenkonflikte. Der Schlüsselsatz: *"Lieber 'Ich kann das nicht verifizieren' als falsche Sicherheit."*
 
 ---
 

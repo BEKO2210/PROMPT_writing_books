@@ -155,9 +155,13 @@ background:linear-gradient(90deg,transparent,var(--border));
 .level-label::after{right:0;background:linear-gradient(270deg,transparent,var(--border))}
 
 /* Footer */
-footer{text-align:center;padding:60px 20px 40px;color:var(--text2);font-size:13px}
-footer a{color:var(--accent);text-decoration:none}
-footer a:hover{text-decoration:underline}
+footer{text-align:center;padding:60px 20px 40px;color:var(--text2);font-size:13px;max-width:800px;margin:0 auto}
+footer .footer-links{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 4px;margin-top:12px;line-height:1.8}
+footer .footer-links a,footer .footer-links span{font-size:12px;padding:3px 10px;border-radius:100px;border:1px solid var(--border);transition:all .3s;white-space:nowrap}
+footer .footer-links a{color:var(--accent);text-decoration:none}
+footer .footer-links a:hover{background:rgba(138,180,248,.1);border-color:rgba(138,180,248,.3)}
+footer .footer-links span{color:var(--text2);opacity:.6}
+footer .footer-copy{margin-bottom:12px}
 
 /* Update Toast */
 .update-toast{
@@ -303,11 +307,36 @@ padding:8px 20px;font-size:13px;font-weight:600;cursor:pointer;width:100%;
 
 </div>
 
+<div class="level-label" role="heading" aria-level="2">Bonus</div>
+<div class="grid">
+
+<div class="card coming" aria-label="Bonusband: Die ultimative Prompt-Sammlung – Kommt bald" style="border-color:rgba(78,205,196,.25);background:linear-gradient(135deg,rgba(78,205,196,.04),transparent 60%)">
+<div class="card-band" style="color:var(--accent2)">Bonusband</div>
+<div class="card-title">Die ultimative Prompt-Sammlung</div>
+<div class="card-desc">500+ fertige Prompts f&uuml;r jeden Bereich &ndash; Alltag, Business, Kreativ, Code, Bildung, Marketing &amp; mehr. Sofort einsetzbar.</div>
+<div class="card-status">Kommt bald</div>
+</div>
+
+</div>
+
 </nav>
 </div>
 
 <footer>
-&copy; 2026 Belkis Aslani &middot; <a href="band-01/">Band 1</a> &middot; <a href="band-02/">Band 2</a> &middot; <a href="band-03/">Band 3</a> &middot; <a href="band-04/">Band 4</a> &middot; <a href="band-05/">Band 5</a> &middot; <a href="band-06/">Band 6</a> &middot; <a href="band-07/">Band 7</a>
+<div class="footer-copy">&copy; 2026 Belkis Aslani</div>
+<div class="footer-links">
+<a href="band-01/">Band 1</a>
+<a href="band-02/">Band 2</a>
+<a href="band-03/">Band 3</a>
+<a href="band-04/">Band 4</a>
+<a href="band-05/">Band 5</a>
+<a href="band-06/">Band 6</a>
+<a href="band-07/">Band 7</a>
+<span>Band 8</span>
+<span>Band 9</span>
+<span>Band 10</span>
+<span>Bonus</span>
+</div>
 </footer>
 
 <div class="update-toast" id="updateToast" role="alert">
