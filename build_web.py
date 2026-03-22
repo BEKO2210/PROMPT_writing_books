@@ -126,6 +126,24 @@ BAND_CONFIG = {
             "10_Zusammenfassung_und_Ausblick.md",
         ],
     },
+    7: {
+        "ordner": "Band_07_Prompting_fuer_Entwickler",
+        "titel": "Prompting-fuer-Entwickler",
+        "untertitel": "Code, APIs und Automatisierung",
+        "dateien": [
+            "00_Vorwort.md",
+            "01_Code_Generierung.md",
+            "02_Agentic_Coding_Tools.md",
+            "03_Die_LLM_APIs.md",
+            "04_Programmatisches_Prompting.md",
+            "05_RAG.md",
+            "06_Tool_Use_und_Function_Calling.md",
+            "07_Agentische_Systeme.md",
+            "08_Fine_Tuning_vs_Prompting.md",
+            "09_Context_Engineering.md",
+            "10_Zusammenfassung_und_Ausblick.md",
+        ],
+    },
 }
 
 BASE_URL = "https://beko2210.github.io/PROMPT_writing_books"
