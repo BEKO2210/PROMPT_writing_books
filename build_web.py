@@ -56,7 +56,7 @@ BAND_CONFIG = {
     },
     3: {
         "ordner": "Band_03_Fortgeschrittene_Basics",
-        "titel": "Fortgeschrittene Basics",
+        "titel": "Fortgeschrittene-Basics",
         "untertitel": "Vom Anfänger zum sicheren Anwender",
         "dateien": [
             "00_Vorwort.md",
