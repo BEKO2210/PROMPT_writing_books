@@ -210,6 +210,26 @@ BAND_CONFIG = {
             "10_Zusammenfassung_und_Ausblick.md",
         ],
     },
+    10: {
+        "ordner": "Band_10_Die_Zukunft",
+        "titel": "Die-Zukunft",
+        "untertitel": "Agenten, Multimodal und darüber hinaus",
+        "farbe": "#0a2840",
+        "akzent": "#8ab4f8",
+        "dateien": [
+            "00_Vorwort.md",
+            "01_Agentic_AI.md",
+            "02_Autonome_Agenten_in_der_Praxis.md",
+            "03_Das_Agent_Oekosystem.md",
+            "04_Context_Engineering.md",
+            "05_Multimodales_Prompting.md",
+            "06_Automated_Prompt_Engineering.md",
+            "07_Die_neuen_Interfaces.md",
+            "08_KI_und_Gesellschaft.md",
+            "09_Deine_KI_Karriere.md",
+            "10_Abschluss_der_Reihe.md",
+        ],
+    },
 }
 
 AUTOR = "Belkis Aslani"

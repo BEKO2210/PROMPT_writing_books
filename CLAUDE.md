@@ -24,7 +24,7 @@ Deutschsprachige Sachbuchreihe zu Prompt Engineering fur Large Language Models.
 | 7 | **Prompting fur Entwickler** | Fertig | Code-Generierung, APIs, RAG, Fine-Tuning vs. Prompting |
 | 8 | **Business & Produktivitat** | Fertig | Workflow-Automatisierung, E-Mail/Berichte, Team-Standards, Entscheidungen, KI-Strategie |
 | 9 | **Sicherheit & Ethik** | Fertig | Prompt Injection, Jailbreaking, Halluzinationen, Bias, DSGVO, EU AI Act, Ethik, Red Teaming |
-| 10 | **Die Zukunft** | Geplant | Agentic AI, autonome Agenten, Context Engineering, Automated Prompt Engineering |
+| 10 | **Die Zukunft** | Fertig | Agentic AI, autonome Agenten, MCP/A2A, Context Engineering, Multimodal, APE, Interfaces, Gesellschaft, Karriere |
 
 ---
 
