@@ -4,12 +4,13 @@ PDF-Buchgenerator für die Reihe "Prompt Engineering Meistern"
 Erzeugt ein verkaufsfertiges PDF aus den Markdown-Kapiteln.
 
 Verwendung:
-    python3 build_pdf.py                    # Band 1 (Standard)
-    python3 build_pdf.py --band 2           # Band 2
-    python3 build_pdf.py --band 1 --draft   # Entwurfsmodus (mit Wasserzeichen)
+    python3 build_pdf.py                          # Band 1 hell (Standard)
+    python3 build_pdf.py --band 2                 # Band 2
+    python3 build_pdf.py --band 1 --theme dark    # Band 1 im Dark Mode
+    python3 build_pdf.py --band 1 --draft         # Entwurfsmodus (Wasserzeichen)
 
 Format: A5 (148mm x 210mm) – ideal für digitale Bücher und Print-on-Demand
-Autor: Belkis Aslani | Build-System v2.0
+Autor: Belkis Aslani | Build-System v3.0
 """
 
 import argparse
@@ -49,6 +50,26 @@ BAND_CONFIG = {
             "10_Zusammenfassung_und_Ausblick.md",
         ],
     },
+    2: {
+        "ordner": "Band_02_Prompt_Frameworks",
+        "titel": "Prompt-Frameworks",
+        "untertitel": "Strukturiert zum perfekten Prompt",
+        "farbe": "#2d4a7a",
+        "akzent": "#8ab4f8",
+        "dateien": [
+            "00_Vorwort.md",
+            "01_Warum_Frameworks.md",
+            "02_Zero_Shot_Prompting.md",
+            "03_One_Shot_Prompting.md",
+            "04_Few_Shot_Prompting.md",
+            "05_Das_CRAFT_Framework.md",
+            "06_Das_RTF_Framework.md",
+            "07_Das_RISEN_Framework.md",
+            "08_Frameworks_vergleichen.md",
+            "09_Template_Bibliothek.md",
+            "10_Zusammenfassung_und_Ausblick.md",
+        ],
+    },
 }
 
 AUTOR = "Belkis Aslani"
@@ -60,9 +81,67 @@ AUFLAGE = "1. Auflage"
 # CSS: Professionelles Buchdesign – A5
 # ─────────────────────────────────────────────────
 
-def get_book_css():
-    """CSS für ein verkaufsfertiges A5-Buchformat (148mm x 210mm)."""
+def get_dark_overrides():
+    """Zusätzliches CSS für den Dark-Mode des PDFs."""
     return """
+/* ============================================
+   DARK MODE OVERRIDES
+   ============================================ */
+
+body {
+    background: #0d1117;
+    color: #e4e8ef;
+}
+
+h1 { color: #8ab4f8; border-bottom-color: #8ab4f8; }
+h2 { color: #8ab4f8; }
+h3 { color: #a0c4ff; }
+h4 { color: #80b0e0; }
+strong { color: #e4e8ef; }
+
+.toc-page h2 { color: #8ab4f8; border-bottom-color: #8ab4f8; }
+.toc-list .toc-nummer { color: #8ab4f8; }
+.toc-list li { border-bottom-color: #2a3444; }
+.toc-list li.vorwort { color: #8899aa; }
+
+pre {
+    background: #161b22;
+    border-color: #2a3444;
+    border-left-color: #8ab4f8;
+}
+code {
+    background: #1c2333;
+    color: #8ab4f8;
+}
+pre code {
+    background: none;
+    color: #e4e8ef;
+}
+
+thead { background: #1c2333; }
+td { border-bottom-color: #2a3444; }
+tr:nth-child(even) { background: #161b22; }
+
+blockquote {
+    border-left-color: #8ab4f8;
+    background: #161b22;
+    color: #c0cee0;
+}
+
+hr { border-top-color: #2a3444; }
+a { color: #8ab4f8; }
+
+.copyright-page { color: #8899aa; }
+
+.title-page {
+    background: linear-gradient(180deg, #050a12 0%, #0d1117 40%, #1a2744 100%);
+}
+"""
+
+
+def get_book_css(theme="light"):
+    """CSS für ein verkaufsfertiges A5-Buchformat (148mm x 210mm)."""
+    base = """
 /* ============================================
    BUCHFORMAT: A5 (148mm × 210mm)
    Ränder: Innen 18mm (Bindung), Außen 14mm, Oben 16mm, Unten 18mm
@@ -511,6 +590,9 @@ a {
     pointer-events: none;
 }
 """
+    if theme == "dark":
+        return base + get_dark_overrides()
+    return base
 
 
 # ─────────────────────────────────────────────────
@@ -631,7 +713,7 @@ def build_chapter_html(md_text):
     return f'<div class="chapter-content">{html_content}</div>'
 
 
-def build_full_html(band_nr, config, band_ordner, draft=False):
+def build_full_html(band_nr, config, band_ordner, draft=False, theme="light"):
     """Baut das komplette HTML-Dokument zusammen."""
     title_page = build_title_page(band_nr, config)
     copyright_page = build_copyright_page(band_nr, config)
@@ -652,7 +734,7 @@ def build_full_html(band_nr, config, band_ordner, draft=False):
 
     watermark = '<div class="draft-watermark">ENTWURF</div>' if draft else ""
 
-    css = get_book_css()
+    css = get_book_css(theme)
     full_html = f"""<!DOCTYPE html>
 <html lang="de">
 <head>
@@ -676,7 +758,7 @@ def build_full_html(band_nr, config, band_ordner, draft=False):
 # PDF erzeugen
 # ─────────────────────────────────────────────────
 
-def generate_pdf(band_nr, draft=False):
+def generate_pdf(band_nr, draft=False, theme="light"):
     """Hauptfunktion: Erzeugt das PDF für einen Band."""
     if band_nr not in BAND_CONFIG:
         print(f"FEHLER: Band {band_nr} ist noch nicht konfiguriert.")
@@ -695,17 +777,19 @@ def generate_pdf(band_nr, draft=False):
     output_dir.mkdir(exist_ok=True)
 
     suffix = "_ENTWURF" if draft else ""
-    output_pdf = output_dir / f"Band_{band_nr:02d}_{config['titel']}{suffix}.pdf"
+    theme_suffix = "_dark" if theme == "dark" else ""
+    output_pdf = output_dir / f"Band_{band_nr:02d}_{config['titel']}{suffix}{theme_suffix}.pdf"
 
     print(f"\n{'='*60}")
-    print(f"  PDF-Buchgenerator v2.0 | {REIHE}")
+    print(f"  PDF-Buchgenerator v3.0 | {REIHE}")
     print(f"  Band {band_nr}: {config['titel']}")
     print(f"  Format: A5 (148mm × 210mm)")
+    print(f"  Theme: {theme.upper()}")
     print(f"  Modus: {'ENTWURF' if draft else 'VERKAUFSFERTIG'}")
     print(f"{'='*60}\n")
 
     print("Kapitel werden verarbeitet:")
-    full_html = build_full_html(band_nr, config, str(band_ordner), draft)
+    full_html = build_full_html(band_nr, config, str(band_ordner), draft, theme)
 
     print(f"\n  PDF wird generiert...")
     HTML(string=full_html, base_url=str(script_dir)).write_pdf(str(output_pdf))
@@ -748,6 +832,12 @@ if __name__ == "__main__":
         action="store_true",
         help="Entwurfsmodus mit Wasserzeichen",
     )
+    parser.add_argument(
+        "--theme",
+        choices=["light", "dark"],
+        default="light",
+        help="Farbmodus: light (Standard) oder dark",
+    )
     args = parser.parse_args()
 
-    generate_pdf(args.band, args.draft)
+    generate_pdf(args.band, args.draft, args.theme)

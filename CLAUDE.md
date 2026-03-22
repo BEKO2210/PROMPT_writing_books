@@ -16,7 +16,7 @@ Deutschsprachige Sachbuchreihe zu Prompt Engineering fur Large Language Models.
 | Band | Titel | Status | Themen |
 |------|-------|--------|--------|
 | 1 | **Grundlagen** | Fertig | KI-Grundlagen, LLMs, erste Prompts, 5 Bausteine, Fehler, Kontext, Rollen, Output-Formate, Iteration |
-| 2 | **Prompt-Frameworks** | Geplant | CRAFT, RTF, RISEN; Zero-Shot, Few-Shot, One-Shot; Template-Bibliothek |
+| 2 | **Prompt-Frameworks** | Fertig | CRAFT, RTF, RISEN; Zero-Shot, Few-Shot, One-Shot; Template-Bibliothek |
 | 3 | **Fortgeschrittene Basics** | Geplant | Prompt-Chaining, Delimiter, negative Prompts, Temperatur, System-Prompts |
 | 4 | **Reasoning-Techniken** | Geplant | Chain-of-Thought, Tree-of-Thought, Self-Consistency, ReAct, Meta-Prompting |
 | 5 | **Kreatives Prompting** | Geplant | Storytelling, Bild-Generierung, Musik/Audio, multimodales Prompting |
@@ -39,6 +39,8 @@ PROMPT_writing_books/
 ├── index.html                      # Webseite: Buchverzeichnis (alle Bande)
 ├── band-01/
 │   └── index.html                  # Webseite: Leseversion Band 1
+├── band-02/
+│   └── index.html                  # Webseite: Leseversion Band 2
 │
 ├── output/
 │   └── Band_01_Grundlagen.pdf      # Generiertes PDF (A5)
@@ -57,7 +59,7 @@ PROMPT_writing_books/
 │   ├── 09_Iteratives_Prompting.md
 │   └── 10_Zusammenfassung_und_Ausblick.md
 │
-├── Band_02_Prompt_Frameworks/      # (geplant)
+├── Band_02_Prompt_Frameworks/      # Quell-Markdown Band 2
 ├── Band_03_Fortgeschrittene_Basics/
 ├── Band_04_Chain_of_Thought/
 ├── Band_05_Kreatives_Prompting/
@@ -74,8 +76,10 @@ PROMPT_writing_books/
 
 ```bash
 # PDF generieren (A5-Format)
-python3 build_pdf.py                    # Band 1
-python3 build_pdf.py --band 1 --draft   # Mit Wasserzeichen
+python3 build_pdf.py                          # Band 1 (hell)
+python3 build_pdf.py --band 2                 # Band 2
+python3 build_pdf.py --band 1 --theme dark    # Dark-Mode-PDF
+python3 build_pdf.py --band 1 --draft         # Mit Wasserzeichen
 
 # Webseite generieren
 python3 build_web.py                    # Erzeugt band-XX/index.html

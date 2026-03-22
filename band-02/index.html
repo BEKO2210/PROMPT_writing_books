@@ -1,0 +1,2082 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Band 2: Prompt-Frameworks &ndash; Prompt Engineering Meistern</title>
+<meta name="description" content="Strukturiert zum perfekten Prompt &ndash; Band 2 der Buchreihe Prompt Engineering Meistern von Belkis Aslani.">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+--bg:#fff;--bg2:#f8f9fb;--card:#fff;
+--text:#1a1a1a;--text2:#555;--text3:#888;
+--accent:#2d4a7a;--accent-light:#8ab4f8;
+--border:#e5e7eb;--code-bg:#f5f7fa;
+--sidebar-bg:#fafbfc;
+--max-w:680px;
+--font:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+--font-reading:'Georgia','Liberation Serif',serif;
+--font-mono:'SF Mono','Liberation Mono','Cascadia Code',monospace;
+--toggle-bg:rgba(0,0,0,.06);
+--toggle-text:#555;
+--toggle-active-bg:linear-gradient(135deg,#2d4a7a,#4a7ab5);
+--toggle-active-shadow:0 0 14px rgba(45,74,122,.4),0 0 8px rgba(138,180,248,.3) inset;
+--toggle-active-text:#fff;
+}
+
+[data-theme="dark"]{
+--bg:#0d1117;--bg2:#161b22;--card:#1c2333;
+--text:#e4e8ef;--text2:#8899aa;--text3:#556677;
+--accent:#8ab4f8;--accent-light:#8ab4f8;
+--border:#2a3444;--code-bg:#161b22;
+--sidebar-bg:#0d1117;
+--toggle-bg:rgba(255,255,255,.06);
+--toggle-text:#8899aa;
+--toggle-active-bg:linear-gradient(135deg,#8ab4f855,#8ab4f8);
+--toggle-active-shadow:0 0 14px rgba(138,180,248,.4),0 0 8px rgba(200,230,255,.3) inset;
+--toggle-active-text:#fff;
+}
+
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{
+font-family:var(--font);
+background:var(--bg);
+color:var(--text);
+transition:background .3s,color .3s;
+}
+
+/* ===== PROGRESS BAR ===== */
+.progress{
+position:fixed;top:0;left:0;height:3px;
+background:linear-gradient(90deg,var(--accent),var(--accent-light));
+z-index:1000;width:0;transition:width .1s;
+}
+
+/* ===== TOP BAR ===== */
+.topbar{
+position:fixed;top:0;left:0;right:0;
+height:56px;
+background:var(--bg);
+border-bottom:1px solid var(--border);
+display:flex;align-items:center;
+padding:0 16px;
+z-index:100;
+transition:background .3s,border-color .3s;
+backdrop-filter:blur(12px);
+background:color-mix(in srgb,var(--bg) 85%,transparent);
+}
+.topbar-left{display:flex;align-items:center;gap:12px;flex:1;min-width:0}
+.menu-btn{
+background:none;border:none;cursor:pointer;
+padding:8px;color:var(--text);display:none;
+}
+@media(max-width:900px){.menu-btn{display:block}}
+.topbar-title{
+font-size:14px;font-weight:600;color:var(--text2);
+white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.topbar-title a{color:inherit;text-decoration:none}
+.topbar-title a:hover{color:var(--accent)}
+.topbar-actions{display:flex;align-items:center;gap:8px}
+.btn-sm{
+font-size:12px;font-weight:600;
+padding:7px 14px;border-radius:8px;
+border:1px solid var(--border);
+background:var(--bg2);color:var(--text);
+cursor:pointer;text-decoration:none;
+transition:all .2s;
+display:inline-flex;align-items:center;gap:6px;
+}
+.btn-sm:hover{border-color:var(--accent);color:var(--accent)}
+.btn-sm svg{width:14px;height:14px;fill:currentColor}
+
+/* ===== GLASS RADIO TOGGLE ===== */
+.glass-radio-group{
+display:flex;
+position:relative;
+background:var(--toggle-bg);
+border-radius:.6rem;
+backdrop-filter:blur(12px);
+box-shadow:inset 1px 1px 3px rgba(255,255,255,.12),inset -1px -1px 4px rgba(0,0,0,.15);
+overflow:hidden;
+width:fit-content;
+height:34px;
+}
+.glass-radio-group input{display:none}
+.glass-radio-group label{
+flex:1;display:flex;align-items:center;justify-content:center;
+font-size:12px;padding:0 14px;cursor:pointer;font-weight:600;
+letter-spacing:.3px;color:var(--toggle-text);
+position:relative;z-index:2;transition:color .3s ease-in-out;
+white-space:nowrap;
+}
+.glass-radio-group label:hover{color:var(--text)}
+.glass-radio-group input:checked+label{color:var(--toggle-active-text)}
+.glass-glider{
+position:absolute;top:0;bottom:0;width:50%;
+border-radius:.6rem;z-index:1;
+transition:transform .4s cubic-bezier(.37,1.95,.66,.56),background .3s,box-shadow .3s;
+}
+#theme-light:checked~.glass-glider{
+transform:translateX(0);
+background:var(--toggle-active-bg);
+box-shadow:var(--toggle-active-shadow);
+}
+#theme-dark:checked~.glass-glider{
+transform:translateX(100%);
+background:var(--toggle-active-bg);
+box-shadow:var(--toggle-active-shadow);
+}
+
+/* ===== SIDEBAR ===== */
+.sidebar{
+position:fixed;top:56px;left:0;bottom:0;
+width:280px;
+background:var(--sidebar-bg);
+border-right:1px solid var(--border);
+overflow-y:auto;
+padding:20px 0;
+z-index:90;
+transition:transform .3s,background .3s,border-color .3s;
+}
+@media(max-width:900px){
+.sidebar{transform:translateX(-100%);width:300px;z-index:200;box-shadow:4px 0 30px rgba(0,0,0,.2)}
+.sidebar.open{transform:translateX(0)}
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:150}
+.overlay.show{display:block}
+}
+
+.sidebar-header{
+padding:0 20px 16px;
+font-size:12px;
+text-transform:uppercase;
+letter-spacing:2px;
+color:var(--text3);
+font-weight:600;
+}
+.toc-link{
+display:block;
+padding:8px 20px 8px 24px;
+font-size:14px;
+color:var(--text2);
+text-decoration:none;
+border-left:2px solid transparent;
+transition:all .2s;
+line-height:1.4;
+}
+.toc-link:hover{color:var(--accent);background:var(--bg2)}
+.toc-link.active{
+color:var(--accent);
+border-left-color:var(--accent);
+background:var(--bg2);
+font-weight:600;
+}
+
+/* ===== MAIN CONTENT ===== */
+.main{
+margin-left:280px;
+padding:80px 24px 100px;
+transition:margin .3s;
+}
+@media(max-width:900px){
+.main{margin-left:0}
+}
+.content{
+max-width:var(--max-w);
+margin:0 auto;
+}
+
+/* ===== TYPOGRAPHY ===== */
+.chapter{
+padding-bottom:60px;
+margin-bottom:40px;
+border-bottom:1px solid var(--border);
+}
+.chapter:last-child{border-bottom:none}
+
+.chapter h1{
+font-family:var(--font);
+font-size:clamp(1.6rem,4vw,2.2rem);
+font-weight:800;
+color:var(--text);
+margin:0 0 24px;
+line-height:1.15;
+letter-spacing:-.02em;
+}
+.chapter h2{
+font-family:var(--font);
+font-size:clamp(1.2rem,3vw,1.5rem);
+font-weight:700;
+color:var(--text);
+margin:40px 0 16px;
+line-height:1.2;
+}
+.chapter h3{
+font-family:var(--font);
+font-size:1.1rem;
+font-weight:600;
+color:var(--text);
+margin:32px 0 12px;
+}
+.chapter h4{
+font-size:1rem;
+font-weight:600;
+color:var(--text2);
+margin:24px 0 8px;
+}
+
+.chapter p{
+font-family:var(--font-reading);
+font-size:17px;
+line-height:1.75;
+margin-bottom:18px;
+color:var(--text);
+}
+
+.chapter strong{font-weight:700}
+.chapter em{font-style:italic}
+
+.chapter ul,.chapter ol{
+font-family:var(--font-reading);
+font-size:17px;
+line-height:1.7;
+margin:12px 0 18px;
+padding-left:28px;
+}
+.chapter li{margin-bottom:8px}
+.chapter li > ul,.chapter li > ol{margin-top:6px}
+
+/* ===== CODE ===== */
+.chapter pre{
+background:var(--code-bg);
+border:1px solid var(--border);
+border-radius:10px;
+padding:18px 20px;
+margin:20px 0;
+overflow-x:auto;
+font-family:var(--font-mono);
+font-size:14px;
+line-height:1.55;
+}
+.chapter code{
+font-family:var(--font-mono);
+font-size:15px;
+background:var(--code-bg);
+padding:2px 6px;
+border-radius:5px;
+color:var(--accent);
+}
+.chapter pre code{
+background:none;padding:0;color:var(--text);font-size:14px;
+}
+
+/* ===== TABLES ===== */
+.chapter table{
+width:100%;border-collapse:collapse;
+margin:20px 0;font-size:15px;
+border-radius:8px;overflow:hidden;
+}
+.chapter thead{background:var(--accent);color:#fff}
+.chapter th{padding:10px 14px;text-align:left;font-size:13px;font-weight:600}
+.chapter td{
+padding:10px 14px;border-bottom:1px solid var(--border);
+font-family:var(--font-reading);
+}
+.chapter tr:nth-child(even){background:var(--bg2)}
+
+/* ===== BLOCKQUOTE ===== */
+.chapter blockquote{
+border-left:3px solid var(--accent-light);
+background:var(--bg2);
+padding:16px 20px;
+margin:20px 0;
+border-radius:0 8px 8px 0;
+font-style:italic;
+}
+.chapter blockquote p{margin-bottom:8px;font-size:16px}
+
+/* ===== HR ===== */
+.chapter hr{
+border:none;
+border-top:2px solid var(--border);
+margin:40px 60px;
+}
+
+/* ===== SCROLL TO TOP ===== */
+.scroll-top{
+position:fixed;bottom:24px;right:24px;
+width:44px;height:44px;border-radius:12px;
+background:var(--accent);color:#fff;
+border:none;cursor:pointer;
+display:none;align-items:center;justify-content:center;
+box-shadow:0 4px 20px rgba(0,0,0,.2);
+z-index:50;transition:all .3s;
+}
+.scroll-top:hover{transform:translateY(-2px)}
+.scroll-top.show{display:flex}
+.scroll-top svg{width:20px;height:20px;fill:currentColor}
+
+/* ===== RESUME BANNER ===== */
+.resume-banner{
+display:none;
+position:fixed;bottom:80px;left:50%;transform:translateX(-50%);
+background:var(--accent);color:#fff;
+padding:10px 20px;border-radius:12px;
+font-size:14px;font-weight:600;
+cursor:pointer;z-index:60;
+box-shadow:0 4px 24px rgba(0,0,0,.3);
+transition:all .3s;
+white-space:nowrap;
+}
+.resume-banner:hover{transform:translateX(-50%) translateY(-2px)}
+.resume-banner.show{display:block}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:600px){
+.chapter table{font-size:13px}
+.chapter th,.chapter td{padding:8px 10px}
+.chapter p{font-size:16px}
+.chapter pre{font-size:13px;padding:14px 16px}
+.topbar-actions .btn-sm span{display:none}
+}
+</style>
+</head>
+<body>
+
+<div class="progress" id="progress"></div>
+<div class="overlay" id="overlay"></div>
+
+<header class="topbar">
+<div class="topbar-left">
+<button class="menu-btn" id="menuBtn" aria-label="Menu">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+</button>
+<div class="topbar-title"><a href="../">Prompt Engineering Meistern</a> &middot; Band 2</div>
+</div>
+<div class="topbar-actions">
+<a href="../output/Band_02_Prompt_Frameworks.pdf" class="btn-sm" download>
+<svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+<span>PDF</span>
+</a>
+<div class="glass-radio-group" role="radiogroup" aria-label="Farbmodus">
+<input type="radio" name="theme" id="theme-light" value="light">
+<label for="theme-light">Hell</label>
+<input type="radio" name="theme" id="theme-dark" value="dark">
+<label for="theme-dark">Dunkel</label>
+<div class="glass-glider"></div>
+</div>
+</div>
+</header>
+
+<nav class="sidebar" id="sidebar">
+<div class="sidebar-header">Kapitel</div>
+<a href="#ch-0" class="toc-link" data-target="ch-0">Vorwort</a>
+<a href="#ch-1" class="toc-link" data-target="ch-1">Warum Frameworks?</a>
+<a href="#ch-2" class="toc-link" data-target="ch-2">Zero-Shot Prompting – Ohne Beispiel zum Ziel</a>
+<a href="#ch-3" class="toc-link" data-target="ch-3">One-Shot Prompting – Ein Beispiel sagt mehr als tausend Worte</a>
+<a href="#ch-4" class="toc-link" data-target="ch-4">Few-Shot Prompting – Muster erkennen durch mehrere Beispiele</a>
+<a href="#ch-5" class="toc-link" data-target="ch-5">Das CRAFT-Framework – Dein Allrounder</a>
+<a href="#ch-6" class="toc-link" data-target="ch-6">Das RTF-Framework – Schnell und effektiv</a>
+<a href="#ch-7" class="toc-link" data-target="ch-7">Das RISEN-Framework – Für die komplexen Fälle</a>
+<a href="#ch-8" class="toc-link" data-target="ch-8">Frameworks im Vergleich – Welches wann?</a>
+<a href="#ch-9" class="toc-link" data-target="ch-9">Deine persönliche Template-Bibliothek</a>
+<a href="#ch-10" class="toc-link" data-target="ch-10">Zusammenfassung und Ausblick</a>
+</nav>
+
+<main class="main">
+<div class="content">
+<section class="chapter" id="ch-0">
+<h1 id="vorwort">Vorwort</h1>
+<p>Willkommen zurück.</p>
+<p>Wenn du Band 1 gelesen hast, weißt du jetzt, was KI ist, wie LLMs funktionieren und wie du grundlegende Prompts schreibst. Du kennst die 5 Bausteine, du weißt, warum Kontext wichtig ist, und du hast hoffentlich dein erstes Prompt-Protokoll angefangen.</p>
+<p>Aber ich wette, du hast auch gemerkt: Manchmal sitzt du vor dem Eingabefeld und weißt nicht, wo du anfangen sollst. Du hast eine vage Idee, was du willst, aber der Weg von der Idee zum fertigen Prompt fühlt sich an wie Improvisieren.</p>
+<p>Genau da setzt Band 2 an.</p>
+<h2 id="was-sich-jetzt-andert">Was sich jetzt ändert</h2>
+<p>In Band 1 hast du gelernt, <em>was</em> ein guter Prompt braucht. In Band 2 lernst du, <em>wie</em> du ihn systematisch aufbaust. Der Unterschied? Stell dir vor, du kochst. Band 1 hat dir beigebracht, welche Zutaten gut zusammenpassen. Band 2 gibt dir jetzt die Rezepte.</p>
+<p>Diese Rezepte heißen Frameworks. Und bevor du denkst &ldquo;Oh nein, schon wieder so ein Buzzword&rdquo; – lass mich erklären, warum Frameworks keine Theorie-Spielerei sind, sondern echte Zeitersparnis.</p>
+<p>Ich habe Monate gebraucht, um meinen eigenen Workflow zu finden. Ich habe tausende Prompts geschrieben, die meisten davon mittelmäßig. Irgendwann habe ich angefangen, Muster zu erkennen. Die besten Prompts hatten alle eine ähnliche Struktur. Und als ich diese Struktur bewusst anwendete, wurden meine Ergebnisse sofort besser.</p>
+<p>Diese Strukturen – CRAFT, RTF, RISEN – teile ich in diesem Band mit dir.</p>
+<h2 id="was-dich-erwartet">Was dich erwartet</h2>
+<p>Drei große Themenblöcke:</p>
+<p><strong>Block 1: Die Shot-Typen (Kapitel 1–3)</strong>
+Zero-Shot, One-Shot, Few-Shot – klingt nach Kaffeebestellungen, ist aber die Grundlage für alles, was kommt. Du lernst, wann du dem Modell Beispiele gibst und wann nicht.</p>
+<p><strong>Block 2: Die Frameworks (Kapitel 4–7)</strong>
+CRAFT, RTF und RISEN im Detail. Jedes Framework mit Erklärung, Beispielen und Übungen. Plus ein Vergleich, damit du weißt, wann du welches nutzt.</p>
+<p><strong>Block 3: Deine Template-Bibliothek (Kapitel 8–9)</strong>
+Du baust dir eine persönliche Sammlung von Prompt-Vorlagen auf, die du immer wieder verwenden kannst. Wie ein Koch sein Rezeptbuch – nur für KI-Kommunikation.</p>
+<h2 id="wie-du-dieses-buch-nutzt">Wie du dieses Buch nutzt</h2>
+<p>Wie schon in Band 1: Lies es der Reihe nach. Die Kapitel bauen aufeinander auf. Und mach die Übungen. Ich kann das nicht oft genug sagen. Du lernst Prompting nicht durch Lesen. Du lernst es durch Machen.</p>
+<p>Noch was: Ab diesem Band wirst du merken, dass die Prompts länger werden. Das ist normal. Und es ist gut. Längere Prompts sind nicht automatisch bessere Prompts – aber strukturierte Prompts sind fast immer besser als unstrukturierte. Und Struktur braucht Platz.</p>
+<p>Also: Klapp den Laptop auf, öffne dein LLM deiner Wahl, und lass uns loslegen.</p>
+<p><em>Belkis Aslani, März 2026</em></p>
+</section>
+<section class="chapter" id="ch-1">
+<h1 id="kapitel-1-warum-frameworks">Kapitel 1: Warum Frameworks?</h1>
+<p>Bevor wir in die einzelnen Frameworks eintauchen, müssen wir eine grundlegende Frage klären: Warum braucht man überhaupt Frameworks für Prompts?</p>
+<p>Die ehrliche Antwort: Brauchst du nicht. Du kannst auch ohne Frameworks gute Prompts schreiben. Du hast die 5 Bausteine aus Band 1, du hast Erfahrung gesammelt, und manchmal reicht ein einfacher Satz, um genau das Ergebnis zu bekommen, das du willst.</p>
+<p>Aber.</p>
+<h2 id="das-problem-mit-der-intuition">Das Problem mit der Intuition</h2>
+<p>Kennst du das? Du schreibst einen Prompt, bekommst ein brauchbares Ergebnis und denkst dir: &ldquo;Läuft.&rdquo; Dann, drei Tage später, schreibst du einen ähnlichen Prompt für eine ähnliche Aufgabe – und das Ergebnis ist Müll. Du weißt nicht, was du beim ersten Mal anders gemacht hast. Du erinnerst dich nicht an die genaue Formulierung. Und dein Prompt-Protokoll? Hast du vielleicht doch nicht so konsequent geführt.</p>
+<p>Das ist das Problem mit Intuition. Sie funktioniert – manchmal. Aber sie ist nicht reproduzierbar. Und in dem Moment, wo du KI regelmäßig nutzt, brauchst du Reproduzierbarkeit.</p>
+<p>Frameworks lösen genau dieses Problem.</p>
+<h2 id="was-ein-framework-tut">Was ein Framework tut</h2>
+<p>Ein Prompt-Framework ist nichts anderes als eine Checkliste. Eine Vorlage, die dir sagt: &ldquo;Denk an diesen Punkt. Und an diesen. Und an diesen.&rdquo; Es zwingt dich, bestimmte Elemente in deinen Prompt einzubauen, die du sonst vielleicht vergessen würdest.</p>
+<p>Das klingt banal. Ist es auch. Aber die banalsten Dinge sind oft die effektivsten.</p>
+<p>Piloten benutzen Checklisten. Nicht weil sie dumm sind, sondern weil Checklisten Fehler verhindern. Chirurgen benutzen Checklisten. Nicht weil sie ihr Handwerk nicht können, sondern weil in Stresssituationen selbst Profis Dinge vergessen.</p>
+<p>Prompt-Frameworks sind deine Checklisten.</p>
+<h2 id="die-drei-ebenen">Die drei Ebenen</h2>
+<p>Es gibt verschiedene Ebenen, auf denen Frameworks arbeiten:</p>
+<h3 id="ebene-1-shot-typen">Ebene 1: Shot-Typen</h3>
+<p>Die grundlegendste Ebene. Hier geht es um eine einzige Frage: Gibst du dem Modell Beispiele oder nicht?</p>
+<ul>
+<li><strong>Zero-Shot:</strong> Keine Beispiele. Du beschreibst nur die Aufgabe.</li>
+<li><strong>One-Shot:</strong> Ein Beispiel.</li>
+<li><strong>Few-Shot:</strong> Mehrere Beispiele.</li>
+</ul>
+<p>Das klingt simpel, und das ist es auch. Aber die Wirkung ist enorm. Wir behandeln das ausführlich in den Kapiteln 2–4.</p>
+<h3 id="ebene-2-struktur-frameworks">Ebene 2: Struktur-Frameworks</h3>
+<p>Hier wird es interessanter. Struktur-Frameworks geben dir eine feste Reihenfolge vor, in der du deinen Prompt aufbaust:</p>
+<ul>
+<li><strong>CRAFT:</strong> Context, Role, Action, Format, Tone</li>
+<li><strong>RTF:</strong> Role, Task, Format</li>
+<li><strong>RISEN:</strong> Role, Instructions, Steps, End goal, Narrowing</li>
+</ul>
+<p>Jedes Framework hat seine Stärken. CRAFT ist am universellsten, RTF ist am schnellsten, RISEN ist am detailliertesten. In den Kapiteln 5–8 lernst du alle drei kennen und erfährst, wann du welches nutzen solltest.</p>
+<h3 id="ebene-3-template-bibliothek">Ebene 3: Template-Bibliothek</h3>
+<p>Die dritte Ebene ist deine persönliche Sammlung. Du nimmst die Frameworks, wendest sie auf wiederkehrende Aufgaben an und speicherst die besten Prompts als Vorlagen. Kapitel 9 zeigt dir, wie du das aufbaust.</p>
+<h2 id="frameworks-sind-keine-zwangsjacke">Frameworks sind keine Zwangsjacke</h2>
+<p>Ich muss das betonen, weil ich es in jeder Diskussion über Frameworks höre: &ldquo;Aber dann wird doch alles so starr und formelhaft!&rdquo;</p>
+<p>Nein. Wird es nicht.</p>
+<p>Ein Framework ist ein Startpunkt, kein Korsett. Du benutzt es als Grundlage und passt es an deine Bedürfnisse an. Manchmal lässt du Teile weg. Manchmal fügst du Elemente hinzu. Das ist nicht nur erlaubt, das ist gewünscht.</p>
+<p>Denk an Musik. Professionelle Musiker lernen jahrelang Musiktheorie. Tonleitern, Harmonielehre, Rhythmik. Macht sie das steif und formelhaft? Nein. Es gibt ihnen das Fundament, auf dem sie improvisieren können.</p>
+<p>Prompt-Frameworks funktionieren genauso. Sie geben dir Struktur, damit deine Kreativität nicht ins Leere läuft.</p>
+<h2 id="der-vorher-nachher-effekt">Der Vorher-Nachher-Effekt</h2>
+<p>Lass mich dir ein konkretes Beispiel zeigen.</p>
+<p><strong>Ohne Framework:</strong></p>
+<div class="highlight"><pre><span></span><code>Schreib mir einen Blogartikel über gesunde Ernährung.
+</code></pre></div>
+
+<p>Das Ergebnis? Generisch. Langweilig. Austauschbar. Könnte von jedem geschrieben worden sein, für niemand bestimmtes.</p>
+<p><strong>Mit CRAFT-Framework:</strong></p>
+<div class="highlight"><pre><span></span><code>Context: Ich betreibe einen Blog über alltagstaugliche Gesundheitstipps
+für berufstätige Eltern. Meine Leser haben wenig Zeit und wollen
+praktische, sofort umsetzbare Ratschläge.
+
+Role: Du bist ein erfahrener Ernährungsberater, der sich auf
+Familienernährung spezialisiert hat. Du kommunizierst locker und
+praxisnah, ohne erhobenen Zeigefinger.
+
+Action: Schreibe einen Blogartikel über 5 einfache Wege, wie
+berufstätige Eltern die Ernährung ihrer Familie verbessern können,
+ohne stundenlang in der Küche zu stehen.
+
+Format: 800-1000 Wörter. Einleitung, 5 nummerierte Tipps mit jeweils
+einer konkreten Umsetzungsidee, Fazit. Verwende Zwischenüberschriften.
+
+Tone: Locker, ermutigend, realistisch. Kein Schuldgefühl-Machen.
+Kein &quot;Du musst&quot; – sondern &quot;Du kannst&quot;.
+</code></pre></div>
+
+<p>Der Unterschied im Ergebnis ist dramatisch. Und das Beste: Du musst nicht jedes Mal von Null anfangen. Wenn du nächste Woche einen weiteren Blogartikel brauchst, nimmst du diesen Prompt, änderst das Thema, und fertig.</p>
+<p>Das ist die Kraft von Frameworks.</p>
+<h2 id="ein-wort-der-warnung">Ein Wort der Warnung</h2>
+<p>Frameworks machen dich nicht automatisch besser. Sie sind Werkzeuge, keine Wundermittel. Wenn dein Verständnis der Grundlagen fehlt – wenn du nicht weißt, warum Kontext wichtig ist oder wie Rollen funktionieren –, dann helfen dir auch die schicksten Frameworks nicht weiter.</p>
+<p>Deshalb war Band 1 so wichtig. Und deshalb sage ich: Wenn du Band 1 übersprungen hast, geh zurück und lies ihn. Die Frameworks in diesem Band setzen voraus, dass du die Grundlagen draufhast.</p>
+<p>Für alle anderen: Auf geht&rsquo;s.</p>
+<hr />
+<h2 id="ubung">Übung</h2>
+<p><strong>Framework-Reflexion</strong></p>
+<p>Nimm drei Prompts, die du in den letzten Tagen geschrieben hast (oder schreib drei neue für alltägliche Aufgaben). Für jeden Prompt:</p>
+<ol>
+<li>Identifiziere, welche der 5 Bausteine (Aufgabe, Kontext, Format, Ton, Einschränkungen) du verwendet hast</li>
+<li>Notiere, welche du vergessen hast</li>
+<li>Überlege, ob ein vergessener Baustein das Ergebnis verbessert hätte</li>
+</ol>
+<p>Du wirst merken: Die meisten Leute vergessen konsistent dieselben Bausteine. Das ist genau der Punkt, an dem Frameworks helfen.</p>
+</section>
+<section class="chapter" id="ch-2">
+<h1 id="kapitel-2-zero-shot-prompting-ohne-beispiel-zum-ziel">Kapitel 2: Zero-Shot Prompting – Ohne Beispiel zum Ziel</h1>
+<p>Zero-Shot Prompting ist das, was du bisher die ganze Zeit gemacht hast. Du gibst dem Modell eine Aufgabe – ohne Beispiel, ohne Vorlage, ohne &ldquo;So soll das Ergebnis aussehen&rdquo;. Einfach: Aufgabe rein, Ergebnis raus.</p>
+<p>Klingt unspektakulär? Ist es auch. Aber es lohnt sich, bewusst darüber nachzudenken, weil Zero-Shot die Basis für alles Weitere ist.</p>
+<h2 id="was-zero-shot-bedeutet">Was Zero-Shot bedeutet</h2>
+<p>&ldquo;Shot&rdquo; kommt aus dem Englischen und bedeutet hier so viel wie &ldquo;Beispiel&rdquo;. &ldquo;Zero Shots&rdquo; heißt: null Beispiele.</p>
+<p>Du sagst dem Modell, <em>was</em> es tun soll. Aber du zeigst ihm nicht, <em>wie</em> das Ergebnis aussehen soll.</p>
+<p><strong>Beispiel für Zero-Shot:</strong></p>
+<div class="highlight"><pre><span></span><code>Fasse den folgenden Text in drei Sätzen zusammen:
+
+[Text hier einfügen]
+</code></pre></div>
+
+<p>Du gibst keine Beispiel-Zusammenfassung. Du vertraust darauf, dass das Modell weiß, was &ldquo;zusammenfassen&rdquo; bedeutet und wie eine gute Zusammenfassung aussieht.</p>
+<p>Und meistens klappt das. Erstaunlich gut sogar.</p>
+<h2 id="warum-zero-shot-oft-reicht">Warum Zero-Shot oft reicht</h2>
+<p>Moderne LLMs wie GPT-4, Claude 4 oder Gemini sind so gut vortrainiert, dass sie die meisten Standardaufgaben ohne Beispiele bewältigen. Sie haben während ihres Trainings Millionen von Zusammenfassungen, Übersetzungen, Analysen und Texten gesehen. Sie &ldquo;wissen&rdquo;, wie diese Formate aussehen.</p>
+<p>Zero-Shot ist ideal, wenn:</p>
+<ul>
+<li>Die Aufgabe klar und eindeutig ist</li>
+<li>Du ein Standardformat erwartest (Liste, Zusammenfassung, Übersetzung)</li>
+<li>Du schnell ein Ergebnis brauchst und keine Zeit für aufwendige Prompts hast</li>
+<li>Das Thema zum Allgemeinwissen gehört</li>
+</ul>
+<p><strong>Gute Zero-Shot-Aufgaben:</strong>
+- &ldquo;Übersetze diesen Text ins Englische&rdquo;
+- &ldquo;Schreibe eine Betreffzeile für eine E-Mail über Projektverzögerung&rdquo;
+- &ldquo;Erkläre Photosynthese für einen 10-Jährigen&rdquo;
+- &ldquo;Liste 5 Vorteile von Remote-Arbeit auf&rdquo;</p>
+<h2 id="wann-zero-shot-nicht-reicht">Wann Zero-Shot nicht reicht</h2>
+<p>Es gibt Situationen, in denen Zero-Shot an seine Grenzen stößt:</p>
+<h3 id="1-ungewohnliche-formate">1. Ungewöhnliche Formate</h3>
+<p>Wenn du ein sehr spezifisches Format brauchst, das nicht zum Standard gehört, wird Zero-Shot unpräzise.</p>
+<div class="highlight"><pre><span></span><code>Schreib eine Produktbeschreibung im Stil einer Weinverkostungs-Notiz
+für ein Softwareprodukt.
+</code></pre></div>
+
+<p>Das Modell wird etwas produzieren, aber ob es deinem Geschmack entspricht? Unwahrscheinlich. Hier wäre ein Beispiel (One-Shot) hilfreicher.</p>
+<h3 id="2-konsistente-ausgaben">2. Konsistente Ausgaben</h3>
+<p>Wenn du mehrere Texte brauchst, die alle gleich aufgebaut sein sollen, ist Zero-Shot riskant. Jedes Mal entscheidet das Modell neu, wie es die Aufgabe angeht. Mal ist die Zusammenfassung 2 Sätze lang, mal 5. Mal benutzt es Aufzählungszeichen, mal nicht.</p>
+<h3 id="3-fachspezifische-aufgaben">3. Fachspezifische Aufgaben</h3>
+<p>Bei sehr spezialisierten Aufgaben – juristisches Schreiben, medizinische Dokumentation, technische Spezifikationen – fehlt dem Modell manchmal der genaue Kontext, wie das Ergebnis in <em>deinem</em> Fachgebiet aussehen soll.</p>
+<h3 id="4-subjektive-qualitat">4. Subjektive Qualität</h3>
+<p>Wenn &ldquo;gut&rdquo; eine Frage des persönlichen Geschmacks ist, kann das Modell nicht erraten, was du meinst. Soll der Blogartikel witzig sein oder seriös? Kurze Sätze oder verschachtelte? Ohne Beispiel ist das Glückssache.</p>
+<h2 id="zero-shot-mit-guter-struktur">Zero-Shot mit guter Struktur</h2>
+<p>Nur weil du keine Beispiele gibst, heißt das nicht, dass dein Prompt kurz sein muss. Du kannst Zero-Shot-Prompts trotzdem strukturiert aufbauen. Tatsächlich sind die besten Zero-Shot-Prompts sehr detailliert – nur eben ohne Beispiel-Output.</p>
+<p><strong>Schwacher Zero-Shot:</strong></p>
+<div class="highlight"><pre><span></span><code>Schreib eine E-Mail an einen Kunden.
+</code></pre></div>
+
+<p><strong>Starker Zero-Shot:</strong></p>
+<div class="highlight"><pre><span></span><code>Schreibe eine professionelle E-Mail an einen Bestandskunden, der sich
+über eine verspätete Lieferung beschwert hat.
+
+Inhalt: Entschuldigung, Erklärung (Lieferketten-Problem), konkrete
+Lösung (Expresslieferung auf unsere Kosten + 10% Gutschein).
+
+Ton: Verständnisvoll, lösungsorientiert, nicht unterwürfig.
+Länge: 150-200 Wörter.
+Absender: Kundenservice-Team der Firma TechShop.
+</code></pre></div>
+
+<p>Das ist immer noch Zero-Shot – kein Beispiel einer fertigen E-Mail. Aber der Prompt gibt dem Modell genug Information, um ein brauchbares Ergebnis zu produzieren.</p>
+<h2 id="die-zero-shot-faustregel">Die Zero-Shot-Faustregel</h2>
+<p>Je klarer deine Aufgabenbeschreibung, desto weniger brauchst du Beispiele. Umgekehrt: Je vager dein Prompt, desto mehr brauchst du Beispiele, um die Lücke zu füllen.</p>
+<p>Das lässt sich als Formel ausdrücken:</p>
+<div class="highlight"><pre><span></span><code>Prompt-Qualität = Klarheit der Anweisung + Qualität der Beispiele
+</code></pre></div>
+
+<p>Bei Zero-Shot muss die Klarheit der Anweisung die ganze Arbeit machen. Und das geht – wenn du die Grundlagen aus Band 1 anwendest.</p>
+<h2 id="zero-shot-in-der-praxis-5-templates">Zero-Shot in der Praxis: 5 Templates</h2>
+<p>Hier sind fünf Zero-Shot-Templates, die du sofort verwenden kannst:</p>
+<h3 id="template-1-zusammenfassung">Template 1: Zusammenfassung</h3>
+<div class="highlight"><pre><span></span><code>Fasse den folgenden Text zusammen.
+Maximal [X] Sätze.
+Fokus auf: [Hauptthema/Aspekt].
+Zielgruppe: [Wer soll das lesen?].
+
+Text:
+[Text einfügen]
+</code></pre></div>
+
+<h3 id="template-2-analyse">Template 2: Analyse</h3>
+<div class="highlight"><pre><span></span><code>Analysiere den folgenden [Text/Datensatz/Sachverhalt].
+Fokussiere dich auf: [Aspekte].
+Strukturiere deine Analyse in:
+1. Zusammenfassung (2-3 Sätze)
+2. Haupterkenntnisse (Aufzählung)
+3. Empfehlung (1-2 Sätze)
+
+[Inhalt einfügen]
+</code></pre></div>
+
+<h3 id="template-3-umschreiben">Template 3: Umschreiben</h3>
+<div class="highlight"><pre><span></span><code>Schreibe den folgenden Text um.
+Zielgruppe: [Wer?]
+Ton: [Welcher Stil?]
+Länge: [Ungefähr wie lang?]
+Behalte bei: [Was soll gleich bleiben?]
+
+Originaltext:
+[Text einfügen]
+</code></pre></div>
+
+<h3 id="template-4-brainstorming">Template 4: Brainstorming</h3>
+<div class="highlight"><pre><span></span><code>Generiere [X] Ideen für [Thema].
+Kontext: [Wofür brauchst du die Ideen?]
+Einschränkungen: [Budget, Zeitrahmen, Ressourcen]
+Format: Nummerierte Liste mit jeweils 1-2 Sätzen Erklärung.
+</code></pre></div>
+
+<h3 id="template-5-erklarung">Template 5: Erklärung</h3>
+<div class="highlight"><pre><span></span><code>Erkläre [Konzept] so, dass [Zielgruppe] es versteht.
+Verwende [Analogien/Beispiele/keine Fachbegriffe].
+Länge: [X] Wörter.
+Beginne mit dem wichtigsten Punkt.
+</code></pre></div>
+
+<h2 id="zusammenfassung">Zusammenfassung</h2>
+<ul>
+<li>Zero-Shot = Aufgabe ohne Beispiel</li>
+<li>Funktioniert gut bei Standardaufgaben und klaren Anweisungen</li>
+<li>Schwächen bei ungewöhnlichen Formaten und subjektiver Qualität</li>
+<li>Je klarer dein Prompt, desto besser das Ergebnis ohne Beispiele</li>
+<li>Die meisten deiner Alltagsprompts werden Zero-Shot sein – und das ist völlig okay</li>
+</ul>
+<hr />
+<h2 id="ubung">Übung</h2>
+<p><strong>Zero-Shot Challenge</strong></p>
+<p>Schreibe drei Zero-Shot-Prompts für folgende Aufgaben. Nutze dabei mindestens 3 der 5 Bausteine aus Band 1 (Aufgabe, Kontext, Format, Ton, Einschränkungen):</p>
+<ol>
+<li>Eine LinkedIn-Post-Idee für dein Fachgebiet</li>
+<li>Eine Erklärung von Blockchain für deine Großmutter</li>
+<li>Drei Verbesserungsvorschläge für eine Teammeeting-Kultur</li>
+</ol>
+<p>Teste die Prompts in einem LLM deiner Wahl. Bewerte die Ergebnisse auf einer Skala von 1-10. Merke dir die Bewertung – in den nächsten Kapiteln vergleichst du sie mit One-Shot und Few-Shot Varianten derselben Aufgaben.</p>
+</section>
+<section class="chapter" id="ch-3">
+<h1 id="kapitel-3-one-shot-prompting-ein-beispiel-sagt-mehr-als-tausend-worte">Kapitel 3: One-Shot Prompting – Ein Beispiel sagt mehr als tausend Worte</h1>
+<p>Du kennst das Sprichwort. Und bei Prompting stimmt es ganz besonders.</p>
+<p>One-Shot Prompting bedeutet: Du gibst dem Modell genau ein Beispiel, bevor du die eigentliche Aufgabe stellst. Ein einziges Beispiel, das zeigt: &ldquo;So soll das Ergebnis aussehen.&rdquo;</p>
+<h2 id="warum-ein-einziges-beispiel-so-viel-bewirkt">Warum ein einziges Beispiel so viel bewirkt</h2>
+<p>Stell dir vor, jemand bittet dich: &ldquo;Schreib eine Produktbewertung.&rdquo; Du würdest wahrscheinlich fragen: &ldquo;Wie soll die aussehen? Lang? Kurz? Mit Sternen? Formal?&rdquo;</p>
+<p>Aber wenn jemand sagt: &ldquo;Schreib eine Produktbewertung. Hier ist ein Beispiel: <em>&lsquo;Der Akku hält ewig, die Kamera ist solide, aber die App stürzt regelmäßig ab. 3,5/5 Sterne.&rsquo;</em> Jetzt schreib eine für Kopfhörer.&rdquo; – dann weißt du sofort, was gemeint ist. Länge, Stil, Struktur – alles klar.</p>
+<p>Genau so funktioniert One-Shot bei LLMs. Das Modell erkennt das Muster im Beispiel und repliziert es.</p>
+<h2 id="die-anatomie-eines-one-shot-prompts">Die Anatomie eines One-Shot-Prompts</h2>
+<p>Ein One-Shot-Prompt hat drei Teile:</p>
+<ol>
+<li><strong>Aufgabenbeschreibung</strong> – Was soll das Modell tun?</li>
+<li><strong>Beispiel</strong> – Ein konkretes Input-Output-Paar</li>
+<li><strong>Eigentliche Aufgabe</strong> – Die Aufgabe, die das Modell lösen soll</li>
+</ol>
+<p><strong>Struktur:</strong></p>
+<div class="highlight"><pre><span></span><code>[Aufgabenbeschreibung]
+
+Beispiel:
+Input: [Beispiel-Eingabe]
+Output: [Beispiel-Ausgabe]
+
+Aufgabe:
+Input: [Deine tatsächliche Eingabe]
+Output:
+</code></pre></div>
+
+<h2 id="one-shot-in-aktion">One-Shot in Aktion</h2>
+<h3 id="beispiel-1-produktbeschreibungen">Beispiel 1: Produktbeschreibungen</h3>
+<div class="highlight"><pre><span></span><code>Schreibe kurze, ansprechende Produktbeschreibungen für einen
+Online-Shop.
+
+Beispiel:
+Produkt: Thermobecher 500ml, Edelstahl, doppelwandig
+Beschreibung: Dein Kaffee bleibt heiß, deine Hand bleibt kühl.
+Der doppelwandige Edelstahl-Thermobecher hält Getränke bis zu
+6 Stunden warm – perfekt für lange Meetings und Pendler-Morgen.
+BPA-frei und spülmaschinengeeignet.
+
+Aufgabe:
+Produkt: Bluetooth-Kopfhörer, Over-Ear, Active Noise Cancelling, 30h Akku
+Beschreibung:
+</code></pre></div>
+
+<p>Das Modell versteht sofort: Es soll eine ähnlich lange, ähnlich aufgebaute Beschreibung schreiben. Mit Benefit-Sprache. Mit konkreten Details.</p>
+<h3 id="beispiel-2-daten-extrahieren">Beispiel 2: Daten extrahieren</h3>
+<div class="highlight"><pre><span></span><code>Extrahiere strukturierte Daten aus Kundenbewertungen.
+
+Beispiel:
+Bewertung: &quot;Super schnelle Lieferung, aber die Verpackung war
+beschädigt. Das Produkt selbst funktioniert einwandfrei. Würde
+wieder bestellen.&quot;
+Extraktion:
+- Lieferung: positiv (schnell)
+- Verpackung: negativ (beschädigt)
+- Produkt: positiv (funktioniert)
+- Wiederkauf: ja
+
+Aufgabe:
+Bewertung: &quot;Habe den Artikel nach 2 Wochen zurückgeschickt. Die
+Farbe war komplett anders als auf dem Foto. Der Kundenservice war
+allerdings sehr hilfsbereit und hat sofort erstattet.&quot;
+Extraktion:
+</code></pre></div>
+
+<p>Ohne das Beispiel hätte das Modell die Daten vielleicht als Fließtext ausgegeben, oder mit anderen Kategorien, oder in einem völlig anderen Format. Das Beispiel definiert das Schema.</p>
+<h3 id="beispiel-3-tonalitat-treffen">Beispiel 3: Tonalität treffen</h3>
+<div class="highlight"><pre><span></span><code>Schreibe Social-Media-Posts im Stil unserer Marke.
+
+Beispiel:
+Thema: Neues Feature – Dark Mode
+Post: Dark Mode ist da. Endlich. Eure Augen können uns danken.
+Ab sofort in der App. Update und ausprobieren. 🌙
+
+Aufgabe:
+Thema: Neues Feature – Offline-Modus
+Post:
+</code></pre></div>
+
+<p>Hier zeigt das Beispiel nicht nur das Format, sondern den Ton. Kurze Sätze. Frech. Direkt. Das Modell übernimmt diesen Stil.</p>
+<h2 id="wann-one-shot-besser-ist-als-zero-shot">Wann One-Shot besser ist als Zero-Shot</h2>
+<p>One-Shot lohnt sich besonders in diesen Situationen:</p>
+<h3 id="ungewohnliche-formate">Ungewöhnliche Formate</h3>
+<p>Wenn du ein Format brauchst, das nicht zum Standard gehört. Statt es umständlich zu beschreiben, zeigst du es einfach.</p>
+<h3 id="konsistenz">Konsistenz</h3>
+<p>Wenn du mehrere ähnliche Texte brauchst, die alle gleich aufgebaut sein sollen. Das Beispiel definiert den Standard.</p>
+<h3 id="subjektive-qualitat">Subjektive Qualität</h3>
+<p>Wenn &ldquo;gut&rdquo; eine Geschmacksfrage ist. Statt zu beschreiben, wie der Text klingen soll, zeigst du es.</p>
+<h3 id="komplexe-transformationen">Komplexe Transformationen</h3>
+<p>Wenn du Daten von einem Format in ein anderes umwandeln willst. Ein Beispiel ist klarer als jede Beschreibung.</p>
+<h2 id="die-qualitat-des-beispiels-entscheidet">Die Qualität des Beispiels entscheidet</h2>
+<p>Das ist der wichtigste Punkt in diesem Kapitel: Dein Beispiel muss gut sein. Wenn du ein mittelmäßiges Beispiel gibst, bekommst du mittelmäßige Ergebnisse. Das Modell repliziert, was es sieht – inklusive der Schwächen.</p>
+<p><strong>Kriterien für ein gutes Beispiel:</strong></p>
+<ol>
+<li><strong>Repräsentativ</strong> – Es sollte typisch für die Aufgabe sein, nicht ein Sonderfall</li>
+<li><strong>Hochwertig</strong> – Es sollte das Qualitätsniveau zeigen, das du erwartest</li>
+<li><strong>Vollständig</strong> – Es sollte alle Elemente enthalten, die du im Output willst</li>
+<li><strong>Eindeutig</strong> – Es sollte kein Rauschen oder irrelevante Elemente enthalten</li>
+</ol>
+<p><strong>Schlechtes Beispiel:</strong></p>
+<div class="highlight"><pre><span></span><code>Beispiel:
+Eingabe: Hund
+Ausgabe: Ein Hund ist ein Tier das bellt und als haustier gehalten wird es gibt viele Rassen zum beispiel Pudel oder Schäferhund
+</code></pre></div>
+
+<p><strong>Gutes Beispiel:</strong></p>
+<div class="highlight"><pre><span></span><code>Beispiel:
+Eingabe: Hund
+Ausgabe: Ein Hund (Canis lupus familiaris) ist ein domestiziertes
+Säugetier aus der Familie der Canidae. Als eines der ältesten
+Haustiere des Menschen gibt es heute über 350 anerkannte Rassen,
+von kleinen Chihuahuas bis zu großen Deutschen Doggen.
+</code></pre></div>
+
+<p>Du siehst den Unterschied. Das erste Beispiel hat keine Satzzeichen, keine Struktur und keine Tiefe. Wenn du das als Vorlage gibst, wundere dich nicht über schlampige Ergebnisse.</p>
+<h2 id="one-shot-vs-langere-anweisungen">One-Shot vs. Längere Anweisungen</h2>
+<p>Manchmal fragen sich Leute: &ldquo;Soll ich lieber ein Beispiel geben oder lieber genauer beschreiben, was ich will?&rdquo;</p>
+<p>Die Antwort: Es kommt drauf an.</p>
+<table>
+<thead>
+<tr>
+<th>Situation</th>
+<th>Besserer Ansatz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Format ist schwer zu beschreiben</td>
+<td>One-Shot (zeigen statt erklären)</td>
+</tr>
+<tr>
+<td>Stil/Ton soll getroffen werden</td>
+<td>One-Shot (Beispiel definiert den Ton)</td>
+</tr>
+<tr>
+<td>Logik/Regeln sollen befolgt werden</td>
+<td>Anweisung (klare Regeln formulieren)</td>
+</tr>
+<tr>
+<td>Beides nötig</td>
+<td>Kombination (Regeln + Beispiel)</td>
+</tr>
+</tbody>
+</table>
+<p>Und ja, du kannst beides kombinieren. Ein Prompt mit klaren Anweisungen UND einem Beispiel ist oft die beste Lösung.</p>
+<h2 id="zusammenfassung">Zusammenfassung</h2>
+<ul>
+<li>One-Shot = Eine Aufgabe mit genau einem Beispiel</li>
+<li>Das Beispiel definiert Format, Stil, Struktur und Qualitätsniveau</li>
+<li>Funktioniert besser als Zero-Shot bei ungewöhnlichen Formaten und subjektiver Qualität</li>
+<li>Die Qualität des Beispiels bestimmt die Qualität des Ergebnisses</li>
+<li>Kann mit Anweisungen kombiniert werden</li>
+</ul>
+<hr />
+<h2 id="ubung">Übung</h2>
+<p><strong>One-Shot Upgrade</strong></p>
+<p>Nimm die drei Zero-Shot-Prompts aus der Übung des letzten Kapitels und mache daraus One-Shot-Prompts:</p>
+<ol>
+<li>Schreibe zuerst selbst ein Beispiel für das gewünschte Ergebnis</li>
+<li>Füge es in den Prompt ein</li>
+<li>Teste den neuen Prompt im selben LLM</li>
+<li>Bewerte das Ergebnis auf der gleichen 1-10 Skala</li>
+<li>Vergleiche: Hat sich die Qualität verbessert?</li>
+</ol>
+<p>Besonders spannend: Teste den gleichen One-Shot-Prompt mit verschiedenen LLMs (ChatGPT, Claude, Gemini). Wo macht das Beispiel den größten Unterschied?</p>
+</section>
+<section class="chapter" id="ch-4">
+<h1 id="kapitel-4-few-shot-prompting-muster-erkennen-durch-mehrere-beispiele">Kapitel 4: Few-Shot Prompting – Muster erkennen durch mehrere Beispiele</h1>
+<p>Wenn ein Beispiel gut ist, sind mehrere besser. Zumindest meistens.</p>
+<p>Few-Shot Prompting ist die natürliche Weiterentwicklung von One-Shot. Statt einem Beispiel gibst du dem Modell zwei, drei oder mehr. Das Modell erkennt das Muster zwischen den Beispielen und wendet es auf die neue Aufgabe an.</p>
+<h2 id="wie-few-shot-funktioniert">Wie Few-Shot funktioniert</h2>
+<p>Das Prinzip ist simpel: Je mehr Beispiele du gibst, desto besser versteht das Modell, was du willst. Nicht weil es &ldquo;klüger&rdquo; wird, sondern weil es mehr Datenpunkte hat, aus denen es Muster ableiten kann.</p>
+<p>Stell dir vor, ich sage dir: &ldquo;Übersetze &lsquo;Haus&rsquo; ins Klingonische.&rdquo; Du hast keine Ahnung. Aber wenn ich dir sage:</p>
+<ul>
+<li>Wasser → bIQ</li>
+<li>Feuer → qul</li>
+<li>Erde → tera&rsquo;</li>
+</ul>
+<p>Dann hast du zumindest ein Gefühl für die Sprache. Du kennst die Schreibweise, die Länge, den Stil. Du könntest raten. Und LLMs sind verdammt gut im Raten.</p>
+<h2 id="die-struktur-eines-few-shot-prompts">Die Struktur eines Few-Shot-Prompts</h2>
+<div class="highlight"><pre><span></span><code>[Aufgabenbeschreibung]
+
+Beispiel 1:
+Input: [Eingabe 1]
+Output: [Ausgabe 1]
+
+Beispiel 2:
+Input: [Eingabe 2]
+Output: [Ausgabe 2]
+
+Beispiel 3:
+Input: [Eingabe 3]
+Output: [Ausgabe 3]
+
+Aufgabe:
+Input: [Deine Eingabe]
+Output:
+</code></pre></div>
+
+<h2 id="few-shot-in-aktion">Few-Shot in Aktion</h2>
+<h3 id="beispiel-1-sentiment-analyse">Beispiel 1: Sentiment-Analyse</h3>
+<div class="highlight"><pre><span></span><code>Klassifiziere Kundenbewertungen als positiv, neutral oder negativ.
+
+Beispiel 1:
+Bewertung: &quot;Absolut klasse! Schnelle Lieferung und top Qualität.&quot;
+Sentiment: positiv
+
+Beispiel 2:
+Bewertung: &quot;Ist okay, nichts Besonderes. Erfüllt seinen Zweck.&quot;
+Sentiment: neutral
+
+Beispiel 3:
+Bewertung: &quot;Totaler Reinfall. Nach einer Woche kaputt gegangen.&quot;
+Sentiment: negativ
+
+Beispiel 4:
+Bewertung: &quot;Die Lieferung hat ewig gedauert, aber das Produkt
+selbst ist wirklich gut.&quot;
+Sentiment: neutral
+
+Aufgabe:
+Bewertung: &quot;Hatte Bedenken wegen der vielen negativen Bewertungen,
+aber bei mir funktioniert alles einwandfrei. Preis-Leistung top.&quot;
+Sentiment:
+</code></pre></div>
+
+<p>Beachte Beispiel 4 – eine gemischte Bewertung. Durch dieses Beispiel zeigst du dem Modell, wie es mit Ambiguität umgehen soll. Ohne dieses Beispiel hätte es vielleicht &ldquo;positiv&rdquo; gesagt, weil das Produkt gelobt wird. Oder &ldquo;negativ&rdquo;, weil die Lieferung kritisiert wird. Das Beispiel kalibriert die Erwartung.</p>
+<h3 id="beispiel-2-formatierung">Beispiel 2: Formatierung</h3>
+<div class="highlight"><pre><span></span><code>Wandle informelle Notizen in strukturierte Meeting-Protokoll-Einträge um.
+
+Beispiel 1:
+Notiz: &quot;müssen das budget für q3 nochmal besprechen, sarah kümmert
+sich um die zahlen bis freitag&quot;
+Protokoll:
+**Thema:** Q3-Budget-Review
+**Beschluss:** Erneute Besprechung erforderlich
+**Verantwortlich:** Sarah
+**Deadline:** Freitag
+**Status:** Offen
+
+Beispiel 2:
+Notiz: &quot;website relaunch wird auf januar verschoben wegen
+personalengpass, tom informiert den kunden&quot;
+Protokoll:
+**Thema:** Website-Relaunch Terminverschiebung
+**Beschluss:** Verschiebung auf Januar (Grund: Personalengpass)
+**Verantwortlich:** Tom (Kundenkommunikation)
+**Deadline:** Januar
+**Status:** Verschoben
+
+Aufgabe:
+Notiz: &quot;neue social media strategie steht, lisa und markus setzen
+die erste kampagne bis ende des monats um, budget ist genehmigt&quot;
+Protokoll:
+</code></pre></div>
+
+<p>Hier arbeiten die Beispiele zusammen: Beispiel 1 zeigt eine offene Aufgabe, Beispiel 2 zeigt eine Verschiebung. Zusammen definieren sie das Schema vollständig.</p>
+<h3 id="beispiel-3-kreative-konsistenz">Beispiel 3: Kreative Konsistenz</h3>
+<div class="highlight"><pre><span></span><code>Schreibe Kurzbeschreibungen für Podcast-Episoden in unserem Stil.
+
+Beispiel 1:
+Titel: &quot;Warum Meetings meistens Zeitverschwendung sind&quot;
+Beschreibung: 47 Minuten über die Meeting-Kultur in deutschen
+Unternehmen. Warum die meisten Meetings E-Mails sein sollten,
+welche Meetings tatsächlich Sinn machen, und wie du deinen Chef
+überzeugst, dass &quot;kurz synchronisieren&quot; kein Synonym für &quot;eine
+Stunde quatschen&quot; ist.
+
+Beispiel 2:
+Titel: &quot;Remote Work – zwei Jahre später&quot;
+Beschreibung: 52 Minuten ehrliche Bilanz. Was funktioniert hat,
+was nicht, und warum die &quot;Zurück-ins-Büro&quot;-Debatte an der
+Realität vorbeigeht. Mit echten Zahlen statt Bauchgefühl.
+
+Aufgabe:
+Titel: &quot;KI im Arbeitsalltag – zwischen Hype und Realität&quot;
+Beschreibung:
+</code></pre></div>
+
+<p>Durch zwei Beispiele versteht das Modell: Dauer erwähnen, provokante Tonlage, konkret statt vage, kritisch aber nicht negativ.</p>
+<h2 id="wie-viele-beispiele-sind-genug">Wie viele Beispiele sind genug?</h2>
+<p>Die kurze Antwort: Zwischen 2 und 5.</p>
+<p>Die längere Antwort:</p>
+<table>
+<thead>
+<tr>
+<th>Anzahl</th>
+<th>Wann sinnvoll</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2 Beispiele</td>
+<td>Einfache Aufgaben, klares Muster</td>
+</tr>
+<tr>
+<td>3 Beispiele</td>
+<td>Standardfall, reicht für die meisten Aufgaben</td>
+</tr>
+<tr>
+<td>4-5 Beispiele</td>
+<td>Komplexe Aufgaben, Grenzfälle zeigen</td>
+</tr>
+<tr>
+<td>6+ Beispiele</td>
+<td>Selten nötig, kann sogar kontraproduktiv sein</td>
+</tr>
+</tbody>
+</table>
+<p>Warum nicht mehr? Zwei Gründe:</p>
+<ol>
+<li>
+<p><strong>Kontextfenster:</strong> Jedes Beispiel verbraucht Token. Bei 10 langen Beispielen ist der halbe Kontext aufgebraucht, bevor die eigentliche Aufgabe kommt.</p>
+</li>
+<li>
+<p><strong>Abnehmender Grenznutzen:</strong> Der Sprung von 0 auf 1 Beispiel ist riesig. Von 1 auf 3 ist merkbar. Von 3 auf 5 ist minimal. Von 5 auf 10 ist oft Null.</p>
+</li>
+</ol>
+<h2 id="die-kunst-der-beispielauswahl">Die Kunst der Beispielauswahl</h2>
+<p>Nicht alle Beispiele sind gleich wertvoll. Die besten Few-Shot-Sets folgen diesen Regeln:</p>
+<h3 id="regel-1-vielfalt">Regel 1: Vielfalt</h3>
+<p>Deine Beispiele sollten verschiedene Varianten der Aufgabe zeigen, nicht dreimal dasselbe.</p>
+<p><strong>Schlecht:</strong> Drei Beispiele, die alle positives Sentiment zeigen.
+<strong>Gut:</strong> Ein positives, ein negatives, ein gemischtes Beispiel.</p>
+<h3 id="regel-2-grenzfalle-einschlieen">Regel 2: Grenzfälle einschließen</h3>
+<p>Zeige nicht nur die einfachen Fälle. Zeige auch die schwierigen.</p>
+<p><strong>Schlecht:</strong> Nur eindeutige Beispiele.
+<strong>Gut:</strong> Auch ein Beispiel, das ambig ist, um zu zeigen, wie das Modell damit umgehen soll.</p>
+<h3 id="regel-3-reihenfolge-beachten">Regel 3: Reihenfolge beachten</h3>
+<p>Forschungen zeigen, dass die Reihenfolge der Beispiele das Ergebnis beeinflusst. Als Faustregel: Setze das Beispiel, das der aktuellen Aufgabe am ähnlichsten ist, an die letzte Position – direkt vor deine eigentliche Aufgabe.</p>
+<h3 id="regel-4-konsistente-formatierung">Regel 4: Konsistente Formatierung</h3>
+<p>Alle Beispiele müssen gleich formatiert sein. Wenn Beispiel 1 Bullet Points hat und Beispiel 2 nummerierte Listen, verwirrt das das Modell.</p>
+<h2 id="few-shot-vs-fine-tuning">Few-Shot vs. Fine-Tuning</h2>
+<p>Kurzer Ausblick für Neugierige: Few-Shot Prompting ist eine Art &ldquo;Mini-Training&rdquo; im Prompt selbst. Du gibst dem Modell Beispiele, es lernt daraus – aber nur für diese eine Anfrage. Beim nächsten Prompt ist alles vergessen.</p>
+<p>Fine-Tuning dagegen verändert das Modell dauerhaft. Du trainierst es mit hunderten oder tausenden Beispielen, und es behält das Gelernte. Das ist mächtiger, aber auch aufwendiger und teurer.</p>
+<p>Für die meisten Anwendungen reicht Few-Shot völlig aus. Fine-Tuning ist etwas für Band 7, wenn wir über Entwickler-Themen sprechen.</p>
+<h2 id="zusammenfassung">Zusammenfassung</h2>
+<ul>
+<li>Few-Shot = Aufgabe mit mehreren Beispielen (typischerweise 2-5)</li>
+<li>Ideal für Klassifikation, Formatierung und konsistente Outputs</li>
+<li>Die Qualität und Vielfalt der Beispiele ist entscheidend</li>
+<li>3 gute Beispiele schlagen 10 mittelmäßige</li>
+<li>Grenzfälle in den Beispielen verbessern die Ergebnisse deutlich</li>
+</ul>
+<hr />
+<h2 id="ubung">Übung</h2>
+<p><strong>Few-Shot Meisterklasse</strong></p>
+<p>Erstelle einen Few-Shot-Prompt für folgende Aufgabe: Du willst, dass die KI aus unstrukturierten Tagebuch-Einträgen strukturierte Stimmungs-Logs erstellt.</p>
+<ol>
+<li>Schreibe mindestens 3 Beispiel-Paare (Tagebuch-Eintrag → Stimmungs-Log)</li>
+<li>Einer der Einträge sollte gemischte Stimmungen enthalten</li>
+<li>Definiere das Format des Stimmungs-Logs selbst</li>
+<li>Teste den Prompt mit einem echten (oder ausgedachten) Tagebuch-Eintrag</li>
+<li>Vergleiche: Wie wäre das Ergebnis ohne Beispiele ausgefallen?</li>
+</ol>
+<p>Bonus: Teste denselben Prompt einmal mit 2 Beispielen und einmal mit 4. Merkst du einen Unterschied?</p>
+</section>
+<section class="chapter" id="ch-5">
+<h1 id="kapitel-5-das-craft-framework-dein-allrounder">Kapitel 5: Das CRAFT-Framework – Dein Allrounder</h1>
+<p>Jetzt wird&rsquo;s ernst. Wir verlassen die Shot-Typen und steigen in die Struktur-Frameworks ein. Und wir fangen mit dem vielseitigsten an: CRAFT.</p>
+<p>CRAFT steht für:</p>
+<ul>
+<li><strong>C</strong> – Context (Kontext)</li>
+<li><strong>R</strong> – Role (Rolle)</li>
+<li><strong>A</strong> – Action (Aufgabe/Aktion)</li>
+<li><strong>F</strong> – Format (Ausgabeformat)</li>
+<li><strong>T</strong> – Tone (Tonalität)</li>
+</ul>
+<p>Kommt dir bekannt vor? Sollte es. Das sind im Grunde die 5 Bausteine aus Band 1, nur anders sortiert und unter einem einprägsamen Namen verpackt.</p>
+<h2 id="warum-craft">Warum CRAFT?</h2>
+<p>Weil es funktioniert. Und weil es leicht zu merken ist.</p>
+<p>Ich habe dutzende Frameworks getestet. Manche hatten 8 Buchstaben, manche 3. CRAFT ist der Sweet Spot. Es ist detailliert genug, um fast jede Aufgabe abzudecken, und kompakt genug, um es sich tatsächlich zu merken.</p>
+<p>Außerdem passt der Name: CRAFT bedeutet auf Englisch &ldquo;Handwerk&rdquo;. Und genau das ist Prompting – ein Handwerk.</p>
+<h2 id="die-funf-elemente-im-detail">Die fünf Elemente im Detail</h2>
+<h3 id="c-context-kontext">C – Context (Kontext)</h3>
+<p>Der Kontext beantwortet die Frage: Was ist die Ausgangssituation?</p>
+<p>Hier gibst du dem Modell alle Hintergrundinformationen, die es braucht, um deine Aufgabe zu verstehen. Wer bist du? Wofür brauchst du das Ergebnis? Welche Rahmenbedingungen gibt es?</p>
+<p><strong>Beispiele:</strong>
+- &ldquo;Ich bin Teamleiterin in einem mittelständischen IT-Unternehmen mit 50 Mitarbeitern.&rdquo;
+- &ldquo;Wir planen ein Webinar zum Thema Datenschutz für kleine Unternehmen.&rdquo;
+- &ldquo;Der Kunde hat sich dreimal beschwert und droht mit Kündigung.&rdquo;</p>
+<h3 id="r-role-rolle">R – Role (Rolle)</h3>
+<p>Die Rolle beantwortet die Frage: Wer soll das Modell sein?</p>
+<p>In Band 1 hast du gelernt, dass Rollen die Qualität der Antwort massiv beeinflussen. In CRAFT ist die Rolle fest im Framework verankert – du vergisst sie nicht mehr.</p>
+<p><strong>Beispiele:</strong>
+- &ldquo;Du bist ein erfahrener HR-Manager mit 15 Jahren Erfahrung.&rdquo;
+- &ldquo;Du bist eine Marketingexpertin, die sich auf B2B-SaaS spezialisiert hat.&rdquo;
+- &ldquo;Du bist ein geduldiger Nachhilfelehrer für Mathematik.&rdquo;</p>
+<h3 id="a-action-aktion">A – Action (Aktion)</h3>
+<p>Die Aktion beantwortet die Frage: Was genau soll das Modell tun?</p>
+<p>Das ist der Kern deines Prompts. Klare, eindeutige Anweisung. Kein &ldquo;Hilf mir mal&rdquo; oder &ldquo;Mach was Schönes&rdquo;. Sondern: &ldquo;Schreibe&rdquo;, &ldquo;Analysiere&rdquo;, &ldquo;Erstelle&rdquo;, &ldquo;Vergleiche&rdquo;.</p>
+<p><strong>Beispiele:</strong>
+- &ldquo;Schreibe eine Einladungs-E-Mail für das Webinar.&rdquo;
+- &ldquo;Erstelle eine Pro-Contra-Liste für die Einführung von Remote Work.&rdquo;
+- &ldquo;Analysiere diese drei Bewerbungen und erstelle eine Ranking-Liste.&rdquo;</p>
+<h3 id="f-format-format">F – Format (Format)</h3>
+<p>Das Format beantwortet die Frage: Wie soll das Ergebnis aussehen?</p>
+<p>Ohne Format-Vorgabe entscheidet das Modell selbst – und die Entscheidung ist selten optimal. Mit Format-Vorgabe bekommst du genau das, was du brauchst.</p>
+<p><strong>Beispiele:</strong>
+- &ldquo;Bullet-Point-Liste mit maximal 7 Punkten&rdquo;
+- &ldquo;Tabelle mit Spalten: Name, Stärken, Schwächen, Gesamtbewertung&rdquo;
+- &ldquo;Fließtext, 300-400 Wörter, mit Zwischenüberschriften&rdquo;
+- &ldquo;JSON-Objekt mit den Feldern: Titel, Zusammenfassung, Keywords&rdquo;</p>
+<h3 id="t-tone-tonalitat">T – Tone (Tonalität)</h3>
+<p>Der Ton beantwortet die Frage: Wie soll es klingen?</p>
+<p>Der am meisten unterschätzte Baustein. Viele Leute denken, der Ton sei egal, weil es &ldquo;nur eine KI&rdquo; ist. Aber der Ton bestimmt, ob dein Ergebnis nach Pressemitteilung klingt oder nach Gespräch unter Freunden.</p>
+<p><strong>Beispiele:</strong>
+- &ldquo;Professionell aber zugänglich, keine Fachsprache&rdquo;
+- &ldquo;Freundlich und ermutigend, wie ein guter Coach&rdquo;
+- &ldquo;Direkt und sachlich, ohne Floskeln&rdquo;
+- &ldquo;Humorvoll und leicht, wie ein Podcast-Gespräch&rdquo;</p>
+<h2 id="craft-in-der-praxis-vollstandige-beispiele">CRAFT in der Praxis: Vollständige Beispiele</h2>
+<h3 id="beispiel-1-blog-artikel">Beispiel 1: Blog-Artikel</h3>
+<div class="highlight"><pre><span></span><code>Context: Ich betreibe einen Karriere-Blog für Young Professionals
+(25-35 Jahre) in der DACH-Region. Der Blog hat monatlich ca.
+15.000 Leser. Thema dieses Monats: Gehaltsverhandlung.
+
+Role: Du bist ein erfahrener Karrierecoach, der seit 10 Jahren
+Young Professionals bei Gehaltsverhandlungen berät. Du kennst die
+typischen Fehler und hast ein Händchen für praxisnahe Tipps.
+
+Action: Schreibe einen Blogartikel über die 5 größten Fehler bei
+der ersten Gehaltsverhandlung und wie man sie vermeidet.
+
+Format: 1200-1500 Wörter. Einleitung (Hook + Problemstellung),
+5 Fehler als nummerierte Abschnitte (je mit Beispielsituation und
+konkretem Tipp), Fazit mit Ermutigung. Verwende Zwischenüberschriften
+(H2 für jeden Fehler).
+
+Tone: Locker aber kompetent. Du-Ansprache. Konkrete Beispiele statt
+abstrakte Ratschläge. Kein &quot;Sei einfach selbstbewusst&quot;-Gelaber.
+</code></pre></div>
+
+<h3 id="beispiel-2-kundenservice-antwort">Beispiel 2: Kundenservice-Antwort</h3>
+<div class="highlight"><pre><span></span><code>Context: Ich arbeite im Kundenservice eines Online-Möbelhauses.
+Ein Kunde hat einen Schreibtisch bestellt, der mit einer verkratzten
+Oberfläche ankam. Es ist sein zweiter Reklamationsfall in 3 Monaten.
+
+Role: Du bist ein erfahrener Kundenservice-Mitarbeiter, der
+Eskalationen mit Empathie und konkreten Lösungen entschärft.
+
+Action: Verfasse eine Antwort-E-Mail, die das Problem anerkennt,
+sich entschuldigt und eine Lösung anbietet (Austauschlieferung +
+15% Gutschein auf die nächste Bestellung als Wiedergutmachung).
+
+Format: Maximal 200 Wörter. Anrede, 3-4 kurze Absätze, Grußformel.
+Keine Standard-Textbausteine wie &quot;Ihr Anliegen ist uns wichtig&quot;.
+
+Tone: Aufrichtig entschuldigend, ohne übertrieben unterwürfig zu sein.
+Lösungsorientiert. Der Kunde soll das Gefühl haben, gehört zu werden.
+</code></pre></div>
+
+<h3 id="beispiel-3-technische-dokumentation">Beispiel 3: Technische Dokumentation</h3>
+<div class="highlight"><pre><span></span><code>Context: Wir haben gerade eine neue REST-API für unser
+Projektmanagement-Tool gelauncht. Die Dokumentation soll
+Entwicklern helfen, die API schnell zu integrieren.
+
+Role: Du bist ein Technical Writer mit Erfahrung in API-Dokumentation.
+Du schreibst für Entwickler, die wenig Zeit haben und schnell
+funktionierende Beispiele brauchen.
+
+Action: Schreibe die Dokumentation für den Endpunkt
+POST /api/v1/projects. Decke ab: Beschreibung, Authentifizierung,
+Request-Parameter, Beispiel-Request, Beispiel-Response, Fehlercodes.
+
+Format: Markdown. Klare Überschriften, Code-Blöcke für Beispiele
+(curl + Python), Tabelle für Parameter und Fehlercodes.
+
+Tone: Sachlich und präzise. Kein Marketing-Sprech. Direkt und
+technisch korrekt, aber nicht trocken.
+</code></pre></div>
+
+<h2 id="craft-muss-nicht-immer-vollstandig-sein">CRAFT muss nicht immer vollständig sein</h2>
+<p>Wichtiger Punkt: Du musst nicht immer alle fünf Elemente verwenden. CRAFT ist eine Checkliste, kein Formular, das komplett ausgefüllt werden muss.</p>
+<ul>
+<li>Schnelle Frage an die KI? Vielleicht reicht A + F.</li>
+<li>Kreativer Text? C + R + A + T ist wichtiger als F.</li>
+<li>Datenaufgabe? C + A + F, ohne R und T.</li>
+</ul>
+<p>Die Faustregel: Je komplexer die Aufgabe, desto mehr CRAFT-Elemente brauchst du.</p>
+<table>
+<thead>
+<tr>
+<th>Komplexität</th>
+<th>Empfohlene Elemente</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Einfach (Übersetzung, Zusammenfassung)</td>
+<td>A, F</td>
+</tr>
+<tr>
+<td>Mittel (E-Mail, Blogartikel)</td>
+<td>C, R, A, F, T</td>
+</tr>
+<tr>
+<td>Komplex (Strategie, Analyse)</td>
+<td>Alle + Einschränkungen</td>
+</tr>
+</tbody>
+</table>
+<h2 id="craft-kombiniert-mit-shot-typen">CRAFT kombiniert mit Shot-Typen</h2>
+<p>Und hier wird&rsquo;s richtig mächtig: Du kannst CRAFT mit Zero-Shot, One-Shot oder Few-Shot kombinieren.</p>
+<p><strong>CRAFT + Zero-Shot:</strong> Der Prompt oben. Klare Struktur, keine Beispiele.</p>
+<p><strong>CRAFT + One-Shot:</strong> Du fügst nach der CRAFT-Beschreibung ein Beispiel hinzu.</p>
+<div class="highlight"><pre><span></span><code>[CRAFT-Prompt wie oben]
+
+Hier ist ein Beispiel für den gewünschten Stil:
+[Beispiel einfügen]
+
+Jetzt schreibe den Text für das neue Thema:
+[Thema]
+</code></pre></div>
+
+<p><strong>CRAFT + Few-Shot:</strong> Mehrere Beispiele nach dem CRAFT-Block.</p>
+<p>Das ist die Profi-Variante. Und ja, die Prompts werden dabei lang. Das ist okay. Ein langer, strukturierter Prompt schlägt einen kurzen, vagen Prompt jedes Mal.</p>
+<h2 id="zusammenfassung">Zusammenfassung</h2>
+<ul>
+<li>CRAFT = Context, Role, Action, Format, Tone</li>
+<li>Das vielseitigste Framework – funktioniert für fast jede Aufgabe</li>
+<li>Nicht immer alle 5 Elemente nötig – anpassen je nach Komplexität</li>
+<li>Kombinierbar mit Shot-Typen für maximale Kontrolle</li>
+<li>CRAFT ist der logische nächste Schritt nach den 5 Bausteinen aus Band 1</li>
+</ul>
+<hr />
+<h2 id="ubung">Übung</h2>
+<p><strong>CRAFT-Marathon</strong></p>
+<p>Schreibe drei vollständige CRAFT-Prompts für folgende Szenarien:</p>
+<ol>
+<li><strong>Bewerbung:</strong> Du willst ein Motivationsschreiben für deinen Traumjob erstellen lassen</li>
+<li><strong>Präsentation:</strong> Du brauchst eine Gliederung für einen Vortrag vor dem Management</li>
+<li><strong>Social Media:</strong> Du willst eine Woche Instagram-Posts für ein kleines Café planen</li>
+</ol>
+<p>Für jeden Prompt: Fülle alle 5 CRAFT-Elemente aus. Teste sie. Bewerte die Ergebnisse. Welches Element hat den größten Einfluss auf die Qualität?</p>
+</section>
+<section class="chapter" id="ch-6">
+<h1 id="kapitel-6-das-rtf-framework-schnell-und-effektiv">Kapitel 6: Das RTF-Framework – Schnell und effektiv</h1>
+<p>Nicht jeder Prompt braucht ein fünfteiliges Framework. Manchmal willst du einfach schnell ein gutes Ergebnis, ohne jedes Mal einen halben Aufsatz zu schreiben.</p>
+<p>Dafür gibt es RTF.</p>
+<h2 id="was-ist-rtf">Was ist RTF?</h2>
+<p>RTF steht für:</p>
+<ul>
+<li><strong>R</strong> – Role (Rolle)</li>
+<li><strong>T</strong> – Task (Aufgabe)</li>
+<li><strong>F</strong> – Format (Format)</li>
+</ul>
+<p>Drei Elemente. Mehr nicht. RTF ist das Taschenmesser unter den Frameworks – kompakt, praktisch, immer dabei.</p>
+<h2 id="warum-nur-drei-elemente">Warum nur drei Elemente?</h2>
+<p>Weil drei oft reichen.</p>
+<p>Denk mal drüber nach: Wenn du einem Kollegen eine Aufgabe gibst, sagst du meistens drei Dinge: Wer soll was machen und wie soll das Ergebnis aussehen. Du sagst nicht jedes Mal den kompletten Kontext deines Unternehmens und die gewünschte emotionale Tonalität dazu.</p>
+<p>RTF basiert auf derselben Logik. Es deckt die drei wichtigsten Entscheidungen ab:</p>
+<ol>
+<li>Aus welcher Perspektive soll geantwortet werden? (Role)</li>
+<li>Was genau soll getan werden? (Task)</li>
+<li>Wie soll das Ergebnis aussehen? (Format)</li>
+</ol>
+<p>Kontext und Ton? Kannst du in die Task-Beschreibung einbauen, wenn nötig. Oder weglassen, wenn es auch ohne geht.</p>
+<h2 id="rtf-in-aktion">RTF in Aktion</h2>
+<h3 id="beispiel-1-schnelle-e-mail">Beispiel 1: Schnelle E-Mail</h3>
+<div class="highlight"><pre><span></span><code>Role: Professioneller Business-Kommunikator
+Task: Schreibe eine kurze E-Mail an das Team, die über die
+Verschiebung des Projekt-Deadlines von Freitag auf nächsten
+Mittwoch informiert. Grund: Feedback vom Kunden kam verspätet.
+Format: 3-4 Sätze, Betreff + E-Mail-Text
+</code></pre></div>
+
+<p>Kein langer Kontext über die Firma. Kein ausführlicher Ton-Guide. Reicht trotzdem für eine brauchbare E-Mail.</p>
+<h3 id="beispiel-2-code-hilfe">Beispiel 2: Code-Hilfe</h3>
+<div class="highlight"><pre><span></span><code>Role: Senior Python-Entwickler
+Task: Schreibe eine Funktion, die eine CSV-Datei einliest und
+alle Zeilen zurückgibt, in denen der Wert in Spalte &quot;Status&quot;
+gleich &quot;aktiv&quot; ist.
+Format: Python-Code mit Docstring und Typ-Hints
+</code></pre></div>
+
+<h3 id="beispiel-3-lernhilfe">Beispiel 3: Lernhilfe</h3>
+<div class="highlight"><pre><span></span><code>Role: Geduldiger Mathe-Nachhilfelehrer für Oberstufenschüler
+Task: Erkläre den Satz des Pythagoras mit einem Alltagsbeispiel.
+Format: Maximal 5 Sätze, dann ein konkretes Rechenbeispiel
+</code></pre></div>
+
+<h3 id="beispiel-4-content-ideen">Beispiel 4: Content-Ideen</h3>
+<div class="highlight"><pre><span></span><code>Role: Social-Media-Strategin für kleine Unternehmen
+Task: Generiere 10 Instagram-Post-Ideen für eine lokale Bäckerei
+im Frühling.
+Format: Nummerierte Liste, jeweils: Post-Idee (1 Satz) +
+empfohlenes Format (Reel/Karussell/Einzelbild)
+</code></pre></div>
+
+<h2 id="rtf-vs-craft-wann-was">RTF vs. CRAFT: Wann was?</h2>
+<p>Die ehrliche Antwort: RTF ist CRAFT ohne Kontext und Ton. Das macht es schneller, aber auch weniger präzise.</p>
+<table>
+<thead>
+<tr>
+<th>Kriterium</th>
+<th>RTF</th>
+<th>CRAFT</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Geschwindigkeit</td>
+<td>Schneller zu schreiben</td>
+<td>Braucht mehr Denkarbeit</td>
+</tr>
+<tr>
+<td>Präzision</td>
+<td>Gut für Standardaufgaben</td>
+<td>Besser für komplexe Aufgaben</td>
+</tr>
+<tr>
+<td>Reproduzierbarkeit</td>
+<td>Mittel</td>
+<td>Hoch</td>
+</tr>
+<tr>
+<td>Lernkurve</td>
+<td>Niedrig</td>
+<td>Mittel</td>
+</tr>
+<tr>
+<td>Ideal für</td>
+<td>Quick Tasks, tägliche Aufgaben</td>
+<td>Wichtige Texte, wiederkehrende Workflows</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Nutze RTF, wenn:</strong>
+- Du schnell ein Ergebnis brauchst
+- Die Aufgabe eindeutig ist
+- Der Kontext offensichtlich ist
+- Du den Output sowieso noch bearbeitest</p>
+<p><strong>Nutze CRAFT, wenn:</strong>
+- Das Ergebnis direkt verwendbar sein soll
+- Der Kontext komplex ist
+- Der Ton entscheidend ist (Kundenanschreiben, Marketing)
+- Du den Prompt wiederverwenden willst</p>
+<h2 id="rtf-als-einstieg">RTF als Einstieg</h2>
+<p>RTF ist auch ein guter Einstieg in die Welt der Frameworks. Wenn dir CRAFT zu viel ist – fang mit RTF an. Du wirst schnell merken, wann drei Elemente reichen und wann du mehr brauchst. Und dann erweiterst du schrittweise.</p>
+<p>Ich benutze RTF für geschätzt 60% meiner täglichen Prompts. Die sind nicht für die Ewigkeit. Sie müssen funktionieren, nicht perfekt sein. Für die anderen 40% – die wichtigen, die wiederverwendbaren, die, bei denen die Qualität stimmen muss – nehme ich CRAFT oder RISEN.</p>
+<h2 id="rtf-mit-erweiterungen">RTF mit Erweiterungen</h2>
+<p>Du kannst RTF auch schrittweise erweitern, wenn du merkst, dass etwas fehlt:</p>
+<p><strong>RTF + Kontext:</strong></p>
+<div class="highlight"><pre><span></span><code>Kontext: Startup mit 12 Mitarbeitern, informelle Kultur
+Role: HR-Managerin
+Task: Schreibe eine Stellenausschreibung für einen Frontend-Entwickler
+Format: Maximal 300 Wörter, mit Bullet Points für Anforderungen
+</code></pre></div>
+
+<p><strong>RTF + Ton:</strong></p>
+<div class="highlight"><pre><span></span><code>Role: Tech-Journalist
+Task: Schreibe eine Kurzkritik des neuen iPhone
+Format: 150 Wörter, ein Absatz
+Ton: Ehrlich, leicht sarkastisch, kein Fanboy-Sprech
+</code></pre></div>
+
+<p><strong>RTF + Einschränkungen:</strong></p>
+<div class="highlight"><pre><span></span><code>Role: Ernährungsberaterin
+Task: Erstelle einen 7-Tage-Essensplan für eine vierköpfige Familie
+Format: Tabelle (Tag | Frühstück | Mittagessen | Abendessen)
+Einschränkungen: Vegetarisch, Budget max. 80€ pro Woche, keine Nüsse
+</code></pre></div>
+
+<p>Siehst du? RTF ist flexibel. Du startest mit drei Elementen und baust bei Bedarf aus. Das ist kein Verstoß gegen das Framework – das ist die richtige Art, es zu benutzen.</p>
+<h2 id="zusammenfassung">Zusammenfassung</h2>
+<ul>
+<li>RTF = Role, Task, Format – das Minimal-Framework</li>
+<li>Ideal für schnelle, alltägliche Prompts</li>
+<li>Nicht für alles geeignet – bei komplexen Aufgaben fehlen Kontext und Ton</li>
+<li>Flexibel erweiterbar bei Bedarf</li>
+<li>Perfekt als Einstieg in Framework-basiertes Prompting</li>
+</ul>
+<hr />
+<h2 id="ubung">Übung</h2>
+<p><strong>RTF-Sprint</strong></p>
+<p>Stelle eine Stoppuhr auf 10 Minuten. Schreibe in dieser Zeit so viele RTF-Prompts wie möglich für verschiedene Alltagsaufgaben:</p>
+<ul>
+<li>Eine E-Mail schreiben</li>
+<li>Ein Rezept finden</li>
+<li>Etwas erklären lassen</li>
+<li>Eine Entscheidung vorbereiten</li>
+<li>Einen Text übersetzen</li>
+</ul>
+<p>Ziel: Mindestens 5 Prompts in 10 Minuten. Teste danach die zwei besten und bewerte: Reicht RTF, oder hättest du mehr Kontext gebraucht?</p>
+</section>
+<section class="chapter" id="ch-7">
+<h1 id="kapitel-7-das-risen-framework-fur-die-komplexen-falle">Kapitel 7: Das RISEN-Framework – Für die komplexen Fälle</h1>
+<p>Manchmal reicht &ldquo;Schreib mir einen Text&rdquo; nicht aus. Manchmal hast du eine Aufgabe, die mehrere Schritte hat, ein klares Ziel verfolgt und Grenzen braucht. Für genau solche Fälle gibt es RISEN.</p>
+<h2 id="was-ist-risen">Was ist RISEN?</h2>
+<p>RISEN steht für:</p>
+<ul>
+<li><strong>R</strong> – Role (Rolle)</li>
+<li><strong>I</strong> – Instructions (Anweisungen)</li>
+<li><strong>S</strong> – Steps (Schritte)</li>
+<li><strong>E</strong> – End Goal (Endziel)</li>
+<li><strong>N</strong> – Narrowing (Eingrenzung)</li>
+</ul>
+<p>Fünf Elemente, wie CRAFT. Aber mit einem anderen Fokus. Wo CRAFT den <em>Output</em> strukturiert (Format, Ton), strukturiert RISEN den <em>Prozess</em> (Schritte, Ziel, Grenzen).</p>
+<h2 id="wann-risen-statt-craft">Wann RISEN statt CRAFT?</h2>
+<p>RISEN ist dein Framework für Aufgaben, die:</p>
+<ul>
+<li><strong>Mehrstufig</strong> sind – es gibt nicht nur ein &ldquo;Mach das&rdquo;, sondern eine Abfolge</li>
+<li><strong>Zielorientiert</strong> – du weißt genau, wo du hinwillst</li>
+<li><strong>Begrenzt</strong> werden müssen – das Modell soll nicht abschweifen</li>
+</ul>
+<p>Typische RISEN-Aufgaben:
+- Strategische Analysen
+- Schritt-für-Schritt-Anleitungen
+- Recherche mit klarem Ergebnis
+- Komplexe Texte mit Struktur-Vorgaben
+- Problemlösung mit definierten Rahmenbedingungen</p>
+<h2 id="die-funf-elemente-im-detail">Die fünf Elemente im Detail</h2>
+<h3 id="r-role-rolle">R – Role (Rolle)</h3>
+<p>Wie bei CRAFT und RTF: Wer soll das Modell sein? Bei RISEN ist die Rolle oft spezifischer, weil die Aufgabe komplexer ist.</p>
+<div class="highlight"><pre><span></span><code>Role: Du bist ein erfahrener Unternehmensberater mit Spezialisierung
+auf digitale Transformation im Mittelstand. Du hast in den letzten
+5 Jahren über 30 Projekte in der DACH-Region begleitet.
+</code></pre></div>
+
+<h3 id="i-instructions-anweisungen">I – Instructions (Anweisungen)</h3>
+<p>Die Anweisungen sind der Kern: Was soll das Modell tun? Aber im Gegensatz zu CRAFTs &ldquo;Action&rdquo; sind die Instructions bei RISEN ausführlicher und können mehrere Teilaufgaben umfassen.</p>
+<div class="highlight"><pre><span></span><code>Instructions: Analysiere die folgende Geschäftssituation und
+entwickle eine Digitalstrategie. Berücksichtige dabei die aktuelle
+Marktposition, vorhandene Ressourcen und die Wettbewerbslandschaft.
+Identifiziere Quick Wins (umsetzbar in 3 Monaten) und langfristige
+Maßnahmen (6-12 Monate).
+</code></pre></div>
+
+<h3 id="s-steps-schritte">S – Steps (Schritte)</h3>
+<p>Hier wird RISEN einzigartig. Du gibst dem Modell eine explizite Schrittfolge vor. Das verhindert, dass das Modell Abkürzungen nimmt oder wichtige Aspekte überspringt.</p>
+<div class="highlight"><pre><span></span><code>Steps:
+1. Fasse die aktuelle Situation in 3-4 Sätzen zusammen
+2. Identifiziere die 3 größten Herausforderungen
+3. Entwickle für jede Herausforderung mindestens 2 Lösungsansätze
+4. Priorisiere die Ansätze nach Aufwand und Wirkung
+5. Erstelle einen konkreten Maßnahmenplan mit Zeitrahmen
+</code></pre></div>
+
+<h3 id="e-end-goal-endziel">E – End Goal (Endziel)</h3>
+<p>Das Endziel sagt dem Modell, wo es ankommen soll. Klingt redundant? Ist es nicht. Die Instructions sagen, <em>was</em> zu tun ist. Das End Goal sagt, <em>wozu</em>.</p>
+<div class="highlight"><pre><span></span><code>End Goal: Am Ende soll ein konkreter Maßnahmenplan stehen, den
+der Geschäftsführer in der nächsten Vorstandssitzung präsentieren
+kann. Der Plan muss ohne zusätzliche Erklärung verständlich und
+umsetzbar sein.
+</code></pre></div>
+
+<p>Warum das wichtig ist: Es zwingt das Modell, ergebnisorientiert zu arbeiten. Ohne End Goal produziert es vielleicht eine tolle Analyse, die aber nicht die Frage beantwortet, die der Geschäftsführer hat.</p>
+<h3 id="n-narrowing-eingrenzung">N – Narrowing (Eingrenzung)</h3>
+<p>Narrowing ist das, was ich in Band 1 &ldquo;Einschränkungen&rdquo; genannt habe – aber in RISEN hat es einen prominenteren Platz. Hier definierst du, was das Modell NICHT tun soll, welche Grenzen gelten und welche Annahmen es treffen soll.</p>
+<div class="highlight"><pre><span></span><code>Narrowing:
+- Budget für alle Maßnahmen zusammen: maximal 200.000€
+- Kein zusätzliches Personal (nur vorhandene Ressourcen)
+- Fokus auf B2B, nicht B2C
+- Keine Blockchain- oder KI-Hype-Vorschläge ohne konkreten ROI
+- Branche: Maschinenbau, Mittelstand (200 Mitarbeiter)
+</code></pre></div>
+
+<h2 id="risen-in-der-praxis-vollstandiges-beispiel">RISEN in der Praxis: Vollständiges Beispiel</h2>
+<div class="highlight"><pre><span></span><code>Role: Du bist ein erfahrener Content-Stratege, der für mittelständische
+B2B-Unternehmen Content-Marketing-Strategien entwickelt. Du denkst
+datengetrieben und fokussierst dich auf messbaren ROI.
+
+Instructions: Entwickle eine Content-Strategie für das kommende
+Quartal für ein Unternehmen, das Industriefilter herstellt und bisher
+kein Content-Marketing betrieben hat. Die Website hat monatlich 2.000
+Besucher, hauptsächlich über Direktzugriffe.
+
+Steps:
+1. Analysiere die Ausgangssituation und identifiziere die Zielgruppen
+   (Einkäufer, Ingenieure, Geschäftsführer)
+2. Definiere 3-5 Content-Säulen (Themen, die regelmäßig bespielt werden)
+3. Erstelle einen Redaktionsplan für 12 Wochen mit konkreten Themen
+4. Schlage für jedes Thema das beste Format vor (Blog, Whitepaper,
+   Video, LinkedIn-Post)
+5. Definiere KPIs und Meilensteine für die Erfolgsmessung
+
+End Goal: Ein sofort umsetzbarer Redaktionsplan, den ein Marketing-
+Mitarbeiter ohne Content-Erfahrung abarbeiten kann. Inklusive
+Erfolgskennzahlen, die nach 3 Monaten ausgewertet werden können.
+
+Narrowing:
+- Budget: 3.000€ pro Monat (inkl. freie Texter)
+- Kein Video-Equipment vorhanden (nur Smartphone)
+- Keine Social-Media-Kanäle außer LinkedIn (Firmenprofil mit 500 Followern)
+- Sprache: Deutsch (Zielmarkt DACH)
+- Keine Inhalte, die technische Zeichnungen oder geschützte Daten enthalten
+</code></pre></div>
+
+<p>Das ist ein langer Prompt. Aber schau dir an, wie klar die Aufgabe definiert ist. Das Modell weiß genau:
+- Aus welcher Perspektive es antwortet
+- Was es tun soll
+- In welcher Reihenfolge
+- Wo es ankommen soll
+- Welche Grenzen gelten</p>
+<p>Die Ergebnisse solcher Prompts sind regelmäßig so gut, dass sie mit minimalem Aufwand direkt verwendbar sind.</p>
+<h2 id="risen-vs-craft-der-direkte-vergleich">RISEN vs. CRAFT: Der direkte Vergleich</h2>
+<table>
+<thead>
+<tr>
+<th>Aspekt</th>
+<th>CRAFT</th>
+<th>RISEN</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fokus</td>
+<td>Output-Qualität</td>
+<td>Prozess-Steuerung</td>
+</tr>
+<tr>
+<td>Stärke</td>
+<td>Ton und Format</td>
+<td>Schrittfolge und Ziel</td>
+</tr>
+<tr>
+<td>Typische Aufgabe</td>
+<td>Texte schreiben</td>
+<td>Strategien entwickeln</td>
+</tr>
+<tr>
+<td>Prompt-Länge</td>
+<td>Mittel</td>
+<td>Lang</td>
+</tr>
+<tr>
+<td>Reproduzierbarkeit</td>
+<td>Hoch</td>
+<td>Sehr hoch</td>
+</tr>
+<tr>
+<td>Einarbeitungszeit</td>
+<td>Niedrig</td>
+<td>Mittel</td>
+</tr>
+</tbody>
+</table>
+<h2 id="wann-du-risen-brauchst-und-wann-nicht">Wann du RISEN brauchst – und wann nicht</h2>
+<p><strong>RISEN ist zu viel für:</strong>
+- Einfache Texte (E-Mails, kurze Beschreibungen)
+- Kreative Aufgaben ohne klaren Prozess
+- Schnelle Fragen
+- Übersetzungen, Zusammenfassungen</p>
+<p><strong>RISEN ist perfekt für:</strong>
+- Strategien und Pläne
+- Analysen mit mehreren Dimensionen
+- Aufgaben, die du delegieren würdest und eine klare Briefing-Struktur brauchen
+- Alles, wo du denkst: &ldquo;Ich muss dem Modell erklären, in welcher Reihenfolge es denken soll&rdquo;</p>
+<h2 id="die-steps-sind-der-schlussel">Die Steps sind der Schlüssel</h2>
+<p>Lass mich den wichtigsten Punkt nochmal betonen: Die Steps machen RISEN einzigartig. Ohne Steps ist RISEN nur ein umständliches CRAFT.</p>
+<p>Warum sind Steps so mächtig?</p>
+<ol>
+<li>
+<p><strong>Sie verhindern Abkürzungen.</strong> Ohne Steps springt das Modell gerne direkt zur Lösung, ohne die Situation richtig zu analysieren.</p>
+</li>
+<li>
+<p><strong>Sie erzwingen Tiefe.</strong> Wenn Step 2 &ldquo;Identifiziere die 3 größten Herausforderungen&rdquo; lautet, muss das Modell tatsächlich analysieren, statt sofort Lösungen vorzuschlagen.</p>
+</li>
+<li>
+<p><strong>Sie strukturieren den Output.</strong> Der Leser (also du) kann die Antwort Step für Step nachvollziehen und prüfen.</p>
+</li>
+<li>
+<p><strong>Sie ermöglichen Iteration.</strong> Wenn Step 3 nicht passt, kannst du gezielt sagen: &ldquo;Überarbeite Step 3 mit folgendem Fokus: &hellip;&rdquo;</p>
+</li>
+</ol>
+<h2 id="zusammenfassung">Zusammenfassung</h2>
+<ul>
+<li>RISEN = Role, Instructions, Steps, End Goal, Narrowing</li>
+<li>Das Framework für komplexe, mehrstufige Aufgaben</li>
+<li>Steps sind das Herzstück – sie steuern den Denkprozess des Modells</li>
+<li>End Goal sorgt für Ergebnisorientierung</li>
+<li>Narrowing verhindert Abschweifen</li>
+<li>Nicht für einfache Aufgaben – dafür gibt es RTF und CRAFT</li>
+</ul>
+<hr />
+<h2 id="ubung">Übung</h2>
+<p><strong>RISEN Deep Dive</strong></p>
+<p>Wähle eine der folgenden komplexen Aufgaben und erstelle einen vollständigen RISEN-Prompt:</p>
+<ol>
+<li><strong>Marktanalyse:</strong> Analysiere den Markt für nachhaltige Verpackungen in Deutschland</li>
+<li><strong>Lernplan:</strong> Erstelle einen 8-Wochen-Lernplan für jemanden, der Python lernen will</li>
+<li><strong>Event-Planung:</strong> Plane ein Team-Offsite für 25 Personen mit 5.000€ Budget</li>
+</ol>
+<p>Wichtig: Die Steps müssen mindestens 4 Punkte umfassen. Das End Goal muss konkret und messbar sein. Und die Narrowing-Elemente müssen mindestens 3 Einschränkungen enthalten.</p>
+<p>Teste den Prompt und vergleiche das Ergebnis mit dem, was du bei einem einfachen &ldquo;Mach mir eine Marktanalyse&rdquo; (Zero-Shot) bekommen würdest.</p>
+</section>
+<section class="chapter" id="ch-8">
+<h1 id="kapitel-8-frameworks-im-vergleich-welches-wann">Kapitel 8: Frameworks im Vergleich – Welches wann?</h1>
+<p>Du kennst jetzt drei Frameworks: RTF, CRAFT und RISEN. Die Frage, die sich jeder stellt: Welches soll ich benutzen?</p>
+<p>Die Antwort ist einfacher, als du denkst.</p>
+<h2 id="die-entscheidungsmatrix">Die Entscheidungsmatrix</h2>
+<p>Frag dich bei jeder Aufgabe drei Fragen:</p>
+<p><strong>Frage 1: Wie komplex ist die Aufgabe?</strong>
+- Einfach → RTF
+- Mittel → CRAFT
+- Komplex → RISEN</p>
+<p><strong>Frage 2: Wie wichtig ist die Qualität beim ersten Versuch?</strong>
+- Egal, ich überarbeite sowieso → RTF
+- Sollte gut sein → CRAFT
+- Muss direkt verwendbar sein → RISEN</p>
+<p><strong>Frage 3: Gibt es einen klaren Prozess mit mehreren Schritten?</strong>
+- Nein → RTF oder CRAFT
+- Ja → RISEN</p>
+<p>Wenn du dir unsicher bist, nimm CRAFT. Es ist der beste Kompromiss.</p>
+<h2 id="alle-drei-frameworks-an-einem-beispiel">Alle drei Frameworks an einem Beispiel</h2>
+<p>Aufgabe: Du willst einen Newsletter-Text über ein neues Produkt schreiben lassen.</p>
+<h3 id="rtf-version">RTF-Version</h3>
+<div class="highlight"><pre><span></span><code>Role: Marketing-Texter
+Task: Schreibe einen Newsletter-Text, der unser neues
+Projektmanagement-Tool &quot;FlowBoard&quot; vorstellt. Hauptfeatures:
+KI-gestützte Aufgabenverteilung, Echtzeit-Kollaboration,
+Integration mit Slack und Teams.
+Format: 200-250 Wörter, mit einem Call-to-Action am Ende
+</code></pre></div>
+
+<p>Dauer: 30 Sekunden. Ergebnis: Brauchbar, aber generisch.</p>
+<h3 id="craft-version">CRAFT-Version</h3>
+<div class="highlight"><pre><span></span><code>Context: Wir sind ein B2B-SaaS-Startup mit 500 Newsletter-Abonnenten,
+hauptsächlich Teamleiter und Projektmanager in Unternehmen mit
+20-100 Mitarbeitern. Unser letzter Newsletter hatte eine Öffnungsrate
+von 35%.
+
+Role: Erfahrener SaaS-Marketing-Texter, der sich auf Launch-
+Kommunikation spezialisiert hat.
+
+Action: Schreibe einen Newsletter-Text, der unser neues
+Projektmanagement-Tool &quot;FlowBoard&quot; vorstellt. Hauptfeatures:
+KI-gestützte Aufgabenverteilung, Echtzeit-Kollaboration,
+Integration mit Slack und Teams.
+
+Format: 200-250 Wörter. Struktur: Aufmerksamkeitsstarker Einstieg
+(Problem, das FlowBoard löst), 3 Features als kurze Absätze,
+Call-to-Action (kostenlose 14-Tage-Testversion).
+
+Tone: Enthusiastisch aber nicht übertrieben. Nutzen-orientiert
+statt Feature-orientiert. &quot;Das kann FlowBoard für dich tun&quot; statt
+&quot;FlowBoard hat diese Features&quot;.
+</code></pre></div>
+
+<p>Dauer: 2 Minuten. Ergebnis: Deutlich besser. Passt zur Zielgruppe.</p>
+<h3 id="risen-version">RISEN-Version</h3>
+<div class="highlight"><pre><span></span><code>Role: Senior Content-Strategin mit 8 Jahren Erfahrung in B2B-SaaS-
+Launches. Du hast Newsletter für Unternehmen wie Asana und Monday
+geschrieben.
+
+Instructions: Erstelle einen Newsletter-Text für den Launch unseres
+neuen Projektmanagement-Tools &quot;FlowBoard&quot;. Der Newsletter soll
+informieren und zur Anmeldung für die kostenlose Testversion
+motivieren.
+
+Steps:
+1. Beginne mit einem konkreten Schmerzpunkt, den Projektmanager
+   täglich erleben (z.B. manuelle Aufgabenverteilung, Tool-Chaos)
+2. Stelle FlowBoard als Lösung vor (1-2 Sätze, keine Feature-Liste)
+3. Hebe die 3 Hauptvorteile hervor (KI-Aufgabenverteilung,
+   Echtzeit-Kollaboration, Slack/Teams-Integration) – jeweils mit
+   einem konkreten Nutzen-Satz
+4. Füge einen Social Proof ein (z.B. &quot;Bereits 200 Teams in der
+   Beta-Phase&quot;)
+5. Schließe mit einem klaren Call-to-Action
+
+End Goal: Der Newsletter soll eine Klickrate von mindestens 5%
+auf den CTA-Button erzielen. Jeder Leser soll nach dem Lesen
+genau wissen, was FlowBoard ist und warum er es ausprobieren sollte.
+
+Narrowing:
+- Maximal 250 Wörter
+- Keine technischen Details (API, Infrastruktur)
+- Nicht &quot;revolutionär&quot;, &quot;bahnbrechend&quot; oder ähnliche Hyperbeln
+- Zielgruppe: Teamleiter, nicht C-Level
+- Kein Vergleich mit Wettbewerbern
+</code></pre></div>
+
+<p>Dauer: 5 Minuten. Ergebnis: Exzellent. Direkt verwendbar.</p>
+<h2 id="der-zeitaufwand-qualitat-tradeoff">Der Zeitaufwand-Qualität-Tradeoff</h2>
+<p>Ich habe das gerade angedeutet, und es ist der wichtigste Punkt dieses Kapitels:</p>
+<table>
+<thead>
+<tr>
+<th>Framework</th>
+<th>Schreibzeit</th>
+<th>Ergebnis-Qualität</th>
+<th>Nachbearbeitungszeit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RTF</td>
+<td>30 Sekunden</td>
+<td>60-70%</td>
+<td>10-15 Minuten</td>
+</tr>
+<tr>
+<td>CRAFT</td>
+<td>2-3 Minuten</td>
+<td>80-90%</td>
+<td>3-5 Minuten</td>
+</tr>
+<tr>
+<td>RISEN</td>
+<td>5-10 Minuten</td>
+<td>90-95%</td>
+<td>0-2 Minuten</td>
+</tr>
+</tbody>
+</table>
+<p>Wenn du rechnest: RTF braucht insgesamt ~15 Minuten (30 Sek. schreiben + 15 Min. überarbeiten). RISEN braucht insgesamt ~10 Minuten (7 Min. schreiben + 2 Min. überarbeiten). RISEN ist also oft <em>schneller</em>, obwohl der Prompt länger dauert.</p>
+<p>Aber das gilt nur für komplexe Aufgaben. Für eine einfache Übersetzung wäre ein RISEN-Prompt absurder Overkill.</p>
+<h2 id="frameworks-mischen">Frameworks mischen</h2>
+<p>Noch ein Geheimnis: Du musst dich nicht für ein Framework entscheiden. In der Praxis mische ich ständig.</p>
+<p>Mein typischer Workflow:</p>
+<ol>
+<li><strong>Anfang:</strong> RTF für die erste Idee</li>
+<li><strong>Verfeinerung:</strong> CRAFT für den finalen Prompt</li>
+<li><strong>Komplexe Projekte:</strong> RISEN für die Strategie, CRAFT für die Einzeltexte</li>
+</ol>
+<p>Das ist kein Betrug. Das ist Pragmatismus.</p>
+<h2 id="andere-frameworks-die-du-kennen-solltest">Andere Frameworks, die du kennen solltest</h2>
+<p>RTF, CRAFT und RISEN sind nicht die einzigen Frameworks. Hier sind drei weitere, die du vielleicht mal antreffen wirst:</p>
+<h3 id="race">RACE</h3>
+<ul>
+<li><strong>R</strong>ole, <strong>A</strong>ction, <strong>C</strong>ontext, <strong>E</strong>xpectation</li>
+<li>Ähnlich wie CRAFT, mit &ldquo;Expectation&rdquo; statt &ldquo;Tone&rdquo; und &ldquo;Format&rdquo;</li>
+<li>Gut, wenn du klare Erwartungen an das Ergebnis formulieren willst</li>
+</ul>
+<h3 id="crispe">CRISPE</h3>
+<ul>
+<li><strong>C</strong>apacity, <strong>R</strong>ole, <strong>I</strong>nsight, <strong>S</strong>tatement, <strong>P</strong>ersonality, <strong>E</strong>xperiment</li>
+<li>Sechs Elemente – das detaillierteste Framework</li>
+<li>Gut für kreative Aufgaben, wo Persönlichkeit wichtig ist</li>
+<li>Für meinen Geschmack zu umständlich für den Alltag</li>
+</ul>
+<h3 id="co-star">CO-STAR</h3>
+<ul>
+<li><strong>C</strong>ontext, <strong>O</strong>bjective, <strong>S</strong>tyle, <strong>T</strong>one, <strong>A</strong>udience, <strong>R</strong>esponse</li>
+<li>Sechs Elemente mit starkem Fokus auf Zielgruppe</li>
+<li>Gut für Marketing und Kommunikation</li>
+</ul>
+<p>Mein Rat: Lerne RTF, CRAFT und RISEN. Die decken 95% aller Fälle ab. Die anderen Frameworks sind Varianten, die du kennen solltest, aber nicht brauchen wirst.</p>
+<h2 id="die-framework-entscheidung-auf-einen-blick">Die Framework-Entscheidung auf einen Blick</h2>
+<div class="highlight"><pre><span></span><code>Aufgabe kommt rein
+    │
+    ├── Einfach? → RTF
+    │
+    ├── Mittel? → CRAFT
+    │
+    └── Komplex?
+         │
+         ├── Klarer Prozess? → RISEN
+         │
+         └── Kein klarer Prozess? → CRAFT + mehr Kontext
+</code></pre></div>
+
+<h2 id="zusammenfassung">Zusammenfassung</h2>
+<ul>
+<li>Es gibt kein &ldquo;bestes&rdquo; Framework – nur das richtige für die Aufgabe</li>
+<li>RTF für Speed, CRAFT für Qualität, RISEN für Komplexität</li>
+<li>Mehr Aufwand beim Prompt = weniger Aufwand bei der Nachbearbeitung</li>
+<li>Frameworks können gemischt werden</li>
+<li>Drei Frameworks reichen für den Alltag</li>
+</ul>
+<hr />
+<h2 id="ubung">Übung</h2>
+<p><strong>Framework-Battle</strong></p>
+<p>Nimm eine Aufgabe deiner Wahl (am besten eine echte aus deinem Arbeitsalltag) und schreibe sie in allen drei Frameworks:</p>
+<ol>
+<li>RTF-Version</li>
+<li>CRAFT-Version</li>
+<li>RISEN-Version</li>
+</ol>
+<p>Teste alle drei im selben LLM. Bewerte:
+- Welches Ergebnis ist am besten?
+- Welcher Prompt hat am längsten gedauert?
+- Bei welchem Framework war der Zeitaufwand insgesamt (Prompt + Nachbearbeitung) am niedrigsten?
+- Gibt es einen klaren Gewinner?</p>
+<p>Dokumentiere deine Ergebnisse. Das ist wertvolles Wissen für deinen persönlichen Prompt-Workflow.</p>
+</section>
+<section class="chapter" id="ch-9">
+<h1 id="kapitel-9-deine-personliche-template-bibliothek">Kapitel 9: Deine persönliche Template-Bibliothek</h1>
+<p>Du hast jetzt alle Werkzeuge. Shot-Typen, drei Frameworks, Vergleichswissen. Jetzt kommt der Schritt, der dich von einem guten Prompter zu einem effizienten Prompter macht: Du baust dir eine Template-Bibliothek auf.</p>
+<h2 id="was-ist-eine-template-bibliothek">Was ist eine Template-Bibliothek?</h2>
+<p>Eine Sammlung von Prompt-Vorlagen, die du immer wieder verwenden kannst. Stell dir ein Kochbuch vor, aber statt Rezepten stehen da deine besten Prompts drin.</p>
+<p>Jedes Template ist ein erprobter Prompt, bei dem du nur noch die variablen Teile ausfüllen musst. Alles andere – Rolle, Format, Ton, Struktur – ist fest definiert und bewährt.</p>
+<h2 id="warum-templates-der-entscheidende-vorteil-sind">Warum Templates der entscheidende Vorteil sind</h2>
+<p>Drei Gründe:</p>
+<h3 id="1-zeitersparnis">1. Zeitersparnis</h3>
+<p>Ohne Template schreibst du jeden Prompt von Grund auf. Das dauert bei CRAFT 2-3 Minuten, bei RISEN 5-10 Minuten. Bei 20 Prompts am Tag ist das eine Stunde nur für Prompt-Schreiben.</p>
+<p>Mit Templates füllst du nur die Lücken aus. Das dauert 30 Sekunden. Rechne das hoch auf eine Woche.</p>
+<h3 id="2-konsistente-qualitat">2. Konsistente Qualität</h3>
+<p>Deine Templates basieren auf Prompts, die funktioniert haben. Du weißt, dass sie gute Ergebnisse liefern. Ohne Template improvisierst du jedes Mal – und mal ist es gut, mal weniger.</p>
+<h3 id="3-wissenstransfer">3. Wissenstransfer</h3>
+<p>Wenn du deine Templates dokumentierst, können auch Kollegen oder Teammitglieder sie nutzen. Das ist besonders in Unternehmen Gold wert, wo verschiedene Leute mit KI arbeiten, aber nicht alle gleich erfahren sind.</p>
+<h2 id="so-baust-du-deine-bibliothek-auf">So baust du deine Bibliothek auf</h2>
+<h3 id="schritt-1-sammle-deine-wiederkehrenden-aufgaben">Schritt 1: Sammle deine wiederkehrenden Aufgaben</h3>
+<p>Geh eine typische Arbeitswoche durch und notiere jede Aufgabe, bei der du ein LLM benutzt oder benutzen könntest:</p>
+<ul>
+<li>E-Mails schreiben</li>
+<li>Texte zusammenfassen</li>
+<li>Präsentationen erstellen</li>
+<li>Berichte formulieren</li>
+<li>Social-Media-Posts erstellen</li>
+<li>Code überprüfen</li>
+<li>Brainstorming</li>
+<li>Recherche</li>
+<li>Übersetzungen</li>
+<li>Feedback formulieren</li>
+</ul>
+<h3 id="schritt-2-priorisiere">Schritt 2: Priorisiere</h3>
+<p>Welche Aufgaben machst du am häufigsten? Die kommen zuerst. Du brauchst nicht 50 Templates. Fang mit 5-10 an.</p>
+<h3 id="schritt-3-wahle-das-passende-framework">Schritt 3: Wähle das passende Framework</h3>
+<p>Für jede Aufgabe: Ist RTF genug? Braucht es CRAFT? Oder RISEN? Nutze die Entscheidungsmatrix aus Kapitel 8.</p>
+<h3 id="schritt-4-schreibe-das-template">Schritt 4: Schreibe das Template</h3>
+<p>Jedes Template hat feste und variable Teile. Die festen Teile bleiben immer gleich. Die variablen Teile markierst du mit Platzhaltern.</p>
+<h3 id="schritt-5-teste-und-verbessere">Schritt 5: Teste und verbessere</h3>
+<p>Benutze jedes Template mindestens 3-5 Mal, bevor du es als &ldquo;fertig&rdquo; betrachtest. Passe es nach jedem Einsatz an, wenn nötig.</p>
+<h2 id="template-beispiele">Template-Beispiele</h2>
+<h3 id="template-1-professionelle-e-mail-rtf">Template 1: Professionelle E-Mail (RTF)</h3>
+<div class="highlight"><pre><span></span><code>Role: Professioneller Business-Kommunikator mit Erfahrung in
+[BRANCHE]
+
+Task: Schreibe eine E-Mail an [EMPFÄNGER] zum Thema [THEMA].
+Kernbotschaft: [KERNBOTSCHAFT].
+Gewünschte Reaktion: [WAS SOLL DER EMPFÄNGER TUN?]
+
+Format: Betreffzeile + E-Mail-Text. Maximal [LÄNGE] Wörter.
+[ANZAHL] Absätze.
+</code></pre></div>
+
+<p><strong>Anwendung:</strong></p>
+<div class="highlight"><pre><span></span><code>Role: Professioneller Business-Kommunikator mit Erfahrung in
+der IT-Branche
+
+Task: Schreibe eine E-Mail an den Projektleiter zum Thema
+Budgetüberschreitung. Kernbotschaft: Wir brauchen 15% mehr
+Budget für Phase 3. Gewünschte Reaktion: Termin für Budget-
+Meeting vereinbaren.
+
+Format: Betreffzeile + E-Mail-Text. Maximal 150 Wörter.
+3 Absätze.
+</code></pre></div>
+
+<h3 id="template-2-blog-artikel-craft">Template 2: Blog-Artikel (CRAFT)</h3>
+<div class="highlight"><pre><span></span><code>Context: Blog über [THEMA] für [ZIELGRUPPE]. [ZUSÄTZLICHER KONTEXT].
+
+Role: [EXPERTEN-ROLLE] mit [ERFAHRUNG/SPEZIALISIERUNG].
+
+Action: Schreibe einen Blogartikel über [ARTIKELTHEMA].
+Hauptpunkte: [PUNKT 1], [PUNKT 2], [PUNKT 3].
+
+Format: [WORTANZAHL] Wörter. Struktur: Einleitung (Hook +
+Problem), [ANZAHL] Hauptteile mit Zwischenüberschriften, Fazit
+mit [CTA/ZUSAMMENFASSUNG]. Verwende [FORMATIERUNGSWÜNSCHE].
+
+Tone: [TONBESCHREIBUNG]. [STIL-DETAILS].
+</code></pre></div>
+
+<h3 id="template-3-strategische-analyse-risen">Template 3: Strategische Analyse (RISEN)</h3>
+<div class="highlight"><pre><span></span><code>Role: [EXPERTEN-ROLLE] mit Spezialisierung auf [FACHGEBIET].
+
+Instructions: Analysiere [ANALYSEOBJEKT] und entwickle
+[GEWÜNSCHTES ERGEBNIS]. Berücksichtige [RAHMENBEDINGUNGEN].
+
+Steps:
+1. Fasse die Ausgangssituation zusammen
+2. Identifiziere die [ANZAHL] wichtigsten [CHANCEN/PROBLEME/TRENDS]
+3. Entwickle für jede/s [CHANCE/PROBLEM/TREND] konkrete
+   Handlungsempfehlungen
+4. Priorisiere nach [KRITERIEN]
+5. Erstelle einen Maßnahmenplan mit Zeitrahmen
+
+End Goal: [KONKRETES ERGEBNIS], das [WER] für [ZWECK] verwenden kann.
+
+Narrowing:
+- [EINSCHRÄNKUNG 1]
+- [EINSCHRÄNKUNG 2]
+- [EINSCHRÄNKUNG 3]
+</code></pre></div>
+
+<h3 id="template-4-social-media-post-craft-one-shot">Template 4: Social-Media-Post (CRAFT + One-Shot)</h3>
+<div class="highlight"><pre><span></span><code>Context: [PLATTFORM]-Account für [UNTERNEHMEN/PERSON].
+Zielgruppe: [ZIELGRUPPE]. Bisherige Tonalität: [STIL].
+
+Role: Social-Media-Manager mit Erfahrung in [BRANCHE].
+
+Action: Erstelle [ANZAHL] Posts zum Thema [THEMA].
+
+Format: Jeweils: Post-Text (max. [ZEICHENLIMIT] Zeichen) +
+Hashtag-Vorschläge (max. [ANZAHL]) + Bild-Beschreibung
+(1 Satz).
+
+Tone: [TONBESCHREIBUNG].
+
+Beispiel für unseren Stil:
+[BEISPIEL-POST EINFÜGEN]
+</code></pre></div>
+
+<h3 id="template-5-feedback-geben-rtf">Template 5: Feedback geben (RTF)</h3>
+<div class="highlight"><pre><span></span><code>Role: Empathischer aber ehrlicher Kommunikationsberater
+
+Task: Formuliere konstruktives Feedback für [PERSON/ROLLE] zum
+Thema [FEEDBACK-THEMA]. Positiv: [WAS GUT WAR]. Verbesserung:
+[WAS BESSER WERDEN SOLL]. Konkreter Vorschlag: [IDEE].
+
+Format: 3 Absätze (Positives – Verbesserungspotenzial – nächste
+Schritte). Maximal [LÄNGE] Wörter. Direkte Ansprache.
+</code></pre></div>
+
+<h2 id="wo-speicherst-du-deine-templates">Wo speicherst du deine Templates?</h2>
+<p>Es gibt keine perfekte Lösung, aber hier sind die gängigsten:</p>
+<h3 id="option-1-notion-obsidian-evernote">Option 1: Notion / Obsidian / Evernote</h3>
+<p>Flexibel, durchsuchbar, mit Tags organisierbar. Mein persönlicher Favorit ist Notion, weil ich Templates in Datenbanken organisieren kann.</p>
+<h3 id="option-2-google-docs-word">Option 2: Google Docs / Word</h3>
+<p>Einfach, überall zugänglich. Ein Dokument pro Kategorie (Marketing, Kommunikation, Analyse, etc.)</p>
+<h3 id="option-3-github-gitlab">Option 3: GitHub / GitLab</h3>
+<p>Für die Technisch-Affinen. Versionierung inklusive – du siehst, wie sich deine Templates über die Zeit verbessert haben.</p>
+<h3 id="option-4-direkt-im-llm">Option 4: Direkt im LLM</h3>
+<p>Manche Tools wie ChatGPT bieten &ldquo;Custom Instructions&rdquo; oder gespeicherte Prompts. Praktisch, aber an ein Tool gebunden.</p>
+<h2 id="template-organisation">Template-Organisation</h2>
+<p>Egal wo du speicherst – organisiere deine Templates so, dass du sie in unter 10 Sekunden findest:</p>
+<p><strong>Kategorien (Vorschlag):</strong>
+- Kommunikation (E-Mails, Nachrichten, Feedback)
+- Content (Blog, Social Media, Newsletter)
+- Analyse (Marktanalyse, Wettbewerb, Daten)
+- Kreativ (Brainstorming, Texte, Ideen)
+- Technisch (Code, Dokumentation, Debugging)</p>
+<p><strong>Für jedes Template dokumentiere:</strong>
+- Name (kurz und beschreibend)
+- Kategorie
+- Framework (RTF/CRAFT/RISEN)
+- Wann verwenden (1 Satz)
+- Letzte Änderung
+- Bewertung (funktioniert gut / muss verbessert werden)</p>
+<h2 id="die-8020-regel-der-templates">Die 80/20-Regel der Templates</h2>
+<p>Du wirst feststellen: 20% deiner Templates benutzt du 80% der Zeit. Das ist normal. Konzentriere deine Energie auf diese 20%. Mach sie perfekt. Die anderen Templates? Gut genug reicht.</p>
+<p>Und noch was: Templates sind lebende Dokumente. Wenn ein Prompt nicht mehr funktioniert – weil das LLM aktualisiert wurde, weil sich deine Anforderungen geändert haben, weil du was Besseres gefunden hast –, dann aktualisiere das Template. Lösche alte, die du nicht mehr brauchst.</p>
+<h2 id="zusammenfassung">Zusammenfassung</h2>
+<ul>
+<li>Eine Template-Bibliothek spart Zeit und sichert Qualität</li>
+<li>Starte mit 5-10 Templates für deine häufigsten Aufgaben</li>
+<li>Markiere variable Teile als Platzhalter [IN GROSSBUCHSTABEN]</li>
+<li>Teste jedes Template 3-5 Mal bevor du es als fertig betrachtest</li>
+<li>Organisiere nach Kategorien und halte Templates aktuell</li>
+<li>20% deiner Templates decken 80% deiner Aufgaben ab</li>
+</ul>
+<hr />
+<h2 id="ubung">Übung</h2>
+<p><strong>Dein Starter-Kit</strong></p>
+<p>Erstelle deine ersten 5 Templates:</p>
+<ol>
+<li>Identifiziere 5 Aufgaben, die du regelmäßig mit KI erledigst (oder erledigen könntest)</li>
+<li>Wähle für jede Aufgabe das passende Framework</li>
+<li>Schreibe das Template mit Platzhaltern</li>
+<li>Teste jedes Template einmal</li>
+<li>Speichere sie an einem Ort, wo du sie schnell wiederfindest</li>
+</ol>
+<p>Du hast damit den Grundstein für dein persönliches Prompt-System gelegt. Ab jetzt baust du es Stück für Stück aus.</p>
+</section>
+<section class="chapter" id="ch-10">
+<h1 id="kapitel-10-zusammenfassung-und-ausblick">Kapitel 10: Zusammenfassung und Ausblick</h1>
+<p>Zwei Bände. Du bist jetzt offiziell kein Anfänger mehr.</p>
+<p>Lass mich zusammenfassen, was du in Band 2 gelernt hast – und wohin es in Band 3 geht.</p>
+<h2 id="was-du-jetzt-kannst">Was du jetzt kannst</h2>
+<ol>
+<li>
+<p><strong>Shot-Typen anwenden</strong> – Du weißt, wann Zero-Shot reicht, wann ein Beispiel hilft (One-Shot) und wann du mehrere brauchst (Few-Shot).</p>
+</li>
+<li>
+<p><strong>CRAFT nutzen</strong> – Context, Role, Action, Format, Tone. Dein Allrounder-Framework für die meisten Aufgaben.</p>
+</li>
+<li>
+<p><strong>RTF für Speed</strong> – Role, Task, Format. Drei Elemente, 30 Sekunden, brauchbares Ergebnis.</p>
+</li>
+<li>
+<p><strong>RISEN für Komplexität</strong> – Role, Instructions, Steps, End Goal, Narrowing. Das Framework, wenn es wirklich drauf ankommt.</p>
+</li>
+<li>
+<p><strong>Frameworks vergleichen und wählen</strong> – Du hast eine Entscheidungsmatrix und weißt, wann welches Framework passt.</p>
+</li>
+<li>
+<p><strong>Templates erstellen</strong> – Du kannst Prompt-Vorlagen bauen, die du immer wieder verwenden kannst.</p>
+</li>
+</ol>
+<h2 id="checkliste-bin-ich-bereit-fur-band-3">Checkliste: Bin ich bereit für Band 3?</h2>
+<ul>
+<li>[ ] Ich kann Zero-Shot, One-Shot und Few-Shot erklären und anwenden</li>
+<li>[ ] Ich habe CRAFT mindestens 5 Mal in der Praxis benutzt</li>
+<li>[ ] Ich kenne den Unterschied zwischen RTF, CRAFT und RISEN</li>
+<li>[ ] Ich habe mindestens einen RISEN-Prompt geschrieben und getestet</li>
+<li>[ ] Ich habe angefangen, eine Template-Bibliothek aufzubauen</li>
+<li>[ ] Ich kann entscheiden, welches Framework für eine Aufgabe passt</li>
+<li>[ ] Ich habe Few-Shot mit mindestens 3 Beispielen ausprobiert</li>
+<li>[ ] Ich verstehe, warum die Qualität der Beispiele entscheidend ist</li>
+<li>[ ] Ich habe mindestens 3 Templates erstellt und getestet</li>
+<li>[ ] Ich merke, dass meine Prompts besser werden</li>
+</ul>
+<p>Bei 7 von 10? Weiter zu Band 3.</p>
+<h2 id="was-dich-in-band-3-erwartet">Was dich in Band 3 erwartet</h2>
+<p>Band 3 heißt &ldquo;Fortgeschrittene Basics&rdquo; – und ja, das klingt wie ein Widerspruch. Ist es aber nicht. Es sind Techniken, die über die Grundlagen hinausgehen, aber noch nicht in die Experten-Ecke gehören.</p>
+<p>Konkret:</p>
+<h3 id="prompt-chaining">Prompt-Chaining</h3>
+<p>Statt einem einzelnen Mega-Prompt: Eine Kette von Prompts, bei der jeder auf dem Ergebnis des vorherigen aufbaut. Das Ergebnis ist besser als alles, was ein einzelner Prompt schaffen könnte.</p>
+<h3 id="delimiter-und-strukturierung">Delimiter und Strukturierung</h3>
+<p>Wie du mit Trennzeichen (<code>---</code>, <code>###</code>, <code>"""</code>) deine Prompts so strukturierst, dass das Modell verschiedene Teile klar unterscheiden kann. Besonders wichtig bei langen Prompts.</p>
+<h3 id="negative-prompts">Negative Prompts</h3>
+<p>Was das Modell NICHT tun soll. Klingt simpel, ist aber eine eigene Kunst. &ldquo;Kein Marketing-Sprech&rdquo; ist ein negatives Prompt. Und manchmal ist es effektiver als zu sagen, was du willst.</p>
+<h3 id="temperatur-und-parameter">Temperatur und Parameter</h3>
+<p>In Band 1 habe ich Temperatur kurz erklärt. In Band 3 gehen wir tiefer: Wie du Temperatur, Top-P und andere Parameter bewusst einsetzt – und warum das nur über die API geht.</p>
+<h3 id="system-prompts">System-Prompts</h3>
+<p>Das mächtigste Werkzeug, das die meisten Leute nicht kennen. System-Prompts definieren das Grundverhalten des Modells und werden vor deinem eigentlichen Prompt ausgeführt. Wir schauen uns an, was das bedeutet und wie du es nutzen kannst.</p>
+<h2 id="wie-die-reihe-weitergeht">Wie die Reihe weitergeht</h2>
+<p>Zur Erinnerung:</p>
+<p><strong>Anfänger (Band 1-3)</strong>
+- Band 1: Grundlagen ✓
+- Band 2: Prompt-Frameworks ✓ <em>(du bist hier)</em>
+- Band 3: Fortgeschrittene Basics</p>
+<p><strong>Fortgeschritten (Band 4-6)</strong>
+- Band 4: Reasoning-Techniken
+- Band 5: Kreatives Prompting
+- Band 6: Spezialisiertes Prompting</p>
+<p><strong>Profi (Band 7-9)</strong>
+- Band 7: Prompting für Entwickler
+- Band 8: Business &amp; Produktivität
+- Band 9: Sicherheit &amp; Ethik</p>
+<p><strong>Experte (Band 10)</strong>
+- Band 10: Die Zukunft</p>
+<h2 id="ein-gedanke-zum-schluss">Ein Gedanke zum Schluss</h2>
+<p>Frameworks sind Werkzeuge. Nicht mehr, nicht weniger. Sie helfen dir, systematisch zu denken und konsistente Ergebnisse zu produzieren. Aber sie ersetzen nicht dein eigenes Urteil.</p>
+<p>Der beste Prompt der Welt nutzt nichts, wenn du nicht weißt, ob das Ergebnis gut ist. Wenn du nicht merkst, dass die KI Unsinn erzählt. Wenn du nicht die Erfahrung hast, das Ergebnis einzuordnen.</p>
+<p>Frameworks geben dir Struktur. Erfahrung gibt dir Qualität. Und Erfahrung bekommst du nur durch eines: Machen.</p>
+<p>Also mach. Prompt. Experimentiere. Feile an deinen Templates. Und wenn du bereit bist, schnapp dir Band 3.</p>
+<p>Wir sehen uns dort.</p>
+<p><em>Belkis Aslani</em></p>
+<hr />
+<h2 id="ressourcen-und-weiterfuhrende-links">Ressourcen und weiterführende Links</h2>
+<p><strong>Frameworks vertiefen:</strong>
+- Prompt Engineering Guide (promptingguide.ai) – Shot-Typen im Detail
+- Learn Prompting (learnprompting.org) – Interaktive Framework-Übungen
+- DAIR.AI Prompt Engineering Guide – Akademisch fundiert</p>
+<p><strong>Templates finden:</strong>
+- PromptBase – Marktplatz für Prompt-Templates
+- awesome-chatgpt-prompts (GitHub) – Kostenlose Community-Prompts
+- FlowGPT – Prompt-Sharing-Plattform</p>
+<p><strong>Zum Ausprobieren:</strong>
+- ChatGPT Custom Instructions – Für gespeicherte System-Prompts
+- Claude Projects – Für projektbezogene Prompt-Sammlungen
+- Google AI Studio – Für Parameter-Experimente (Temperatur, Top-P)</p>
+<p><strong>Wissenschaftlich:</strong>
+- &ldquo;Language Models are Few-Shot Learners&rdquo; (Brown et al., 2020) – Das Paper, das Few-Shot Prompting populär gemacht hat
+- &ldquo;A Survey on In-context Learning&rdquo; (Dong et al., 2024) – Umfassende Übersicht über Shot-Typen und ihre Wirkung</p>
+</section>
+</div>
+</main>
+
+<button class="scroll-top" id="scrollTop" aria-label="Nach oben">
+<svg viewBox="0 0 24 24"><path d="M12 4l-8 8h5v8h6v-8h5z"/></svg>
+</button>
+
+<div class="resume-banner" id="resumeBanner">Weiterlesen &rarr;</div>
+
+<script>
+(function(){
+var B=2,K='pe-band'+B;
+var html=document.documentElement;
+
+// Theme
+var stored=localStorage.getItem('theme');
+var dark=stored==='dark'||(!stored&&matchMedia('(prefers-color-scheme:dark)').matches);
+if(dark)html.dataset.theme='dark';
+document.getElementById(dark?'theme-dark':'theme-light').checked=true;
+
+document.querySelectorAll('.glass-radio-group input').forEach(function(r){
+r.addEventListener('change',function(){
+html.dataset.theme=this.value==='dark'?'dark':'light';
+localStorage.setItem('theme',html.dataset.theme);
+});
+});
+
+// Mobile menu
+var menuBtn=document.getElementById('menuBtn');
+var sidebar=document.getElementById('sidebar');
+var overlay=document.getElementById('overlay');
+function closeSidebar(){sidebar.classList.remove('open');overlay.classList.remove('show')}
+menuBtn.addEventListener('click',function(){sidebar.classList.toggle('open');overlay.classList.toggle('show')});
+overlay.addEventListener('click',closeSidebar);
+document.querySelectorAll('.toc-link').forEach(function(l){l.addEventListener('click',function(){if(innerWidth<=900)closeSidebar()})});
+
+// Progress bar + reading position save
+var prog=document.getElementById('progress');
+var saveTimer;
+window.addEventListener('scroll',function(){
+var h=document.documentElement.scrollHeight-innerHeight;
+var pct=h>0?scrollY/h:0;
+prog.style.width=(pct*100)+'%';
+clearTimeout(saveTimer);
+saveTimer=setTimeout(function(){
+localStorage.setItem(K+'-scroll',scrollY);
+// Save active chapter
+var chs=document.querySelectorAll('.chapter');
+for(var i=chs.length-1;i>=0;i--){
+if(chs[i].getBoundingClientRect().top<150){
+localStorage.setItem(K+'-chapter',chs[i].id);
+break;
+}
+}
+},300);
+});
+
+// Resume reading position
+var savedScroll=parseInt(localStorage.getItem(K+'-scroll'),10);
+var savedChapter=localStorage.getItem(K+'-chapter');
+if(savedScroll>300&&savedChapter){
+var banner=document.getElementById('resumeBanner');
+var chEl=document.getElementById(savedChapter);
+if(chEl){
+var chTitle=chEl.querySelector('h1');
+banner.textContent=(chTitle?chTitle.textContent:'Weiterlesen')+' →';
+}
+banner.classList.add('show');
+banner.addEventListener('click',function(){
+scrollTo({top:savedScroll,behavior:'smooth'});
+banner.classList.remove('show');
+});
+setTimeout(function(){banner.classList.remove('show')},8000);
+}
+
+// Scroll to top
+var scrollBtn=document.getElementById('scrollTop');
+window.addEventListener('scroll',function(){scrollBtn.classList.toggle('show',scrollY>600)});
+scrollBtn.addEventListener('click',function(){scrollTo({top:0,behavior:'smooth'})});
+
+// Active TOC
+var chapters=document.querySelectorAll('.chapter');
+var links=document.querySelectorAll('.toc-link');
+var observer=new IntersectionObserver(function(entries){
+entries.forEach(function(e){
+if(e.isIntersecting){
+links.forEach(function(l){l.classList.remove('active')});
+var active=document.querySelector('.toc-link[data-target="'+e.target.id+'"]');
+if(active)active.classList.add('active');
+}
+});
+},{rootMargin:'-80px 0px -60% 0px'});
+chapters.forEach(function(ch){observer.observe(ch)});
+})();
+</script>
+</body>
+</html>

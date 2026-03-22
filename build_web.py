@@ -4,9 +4,9 @@ Web-Generator für die Reihe "Prompt Engineering Meistern"
 Erzeugt eine mobile-first Lese-Webseite aus den Markdown-Kapiteln.
 
 Verwendung:
-    python3 build_web.py          # Generiert docs/band-01/index.html
+    python3 build_web.py          # Generiert band-01/ und band-02/index.html
 
-Autor: Belkis Aslani | Build-System v2.0
+Autor: Belkis Aslani | Build-System v3.0
 """
 
 import os
@@ -34,6 +34,24 @@ BAND_CONFIG = {
             "07_Rollen_und_Personas.md",
             "08_Output_Formate_steuern.md",
             "09_Iteratives_Prompting.md",
+            "10_Zusammenfassung_und_Ausblick.md",
+        ],
+    },
+    2: {
+        "ordner": "Band_02_Prompt_Frameworks",
+        "titel": "Prompt-Frameworks",
+        "untertitel": "Strukturiert zum perfekten Prompt",
+        "dateien": [
+            "00_Vorwort.md",
+            "01_Warum_Frameworks.md",
+            "02_Zero_Shot_Prompting.md",
+            "03_One_Shot_Prompting.md",
+            "04_Few_Shot_Prompting.md",
+            "05_Das_CRAFT_Framework.md",
+            "06_Das_RTF_Framework.md",
+            "07_Das_RISEN_Framework.md",
+            "08_Frameworks_vergleichen.md",
+            "09_Template_Bibliothek.md",
             "10_Zusammenfassung_und_Ausblick.md",
         ],
     },
@@ -92,17 +110,20 @@ def build_band_page(band_nr, config):
         for ch in chapters
     )
 
+    pdf_name = f"Band_{band_nr:02d}_{config['ordner'].split('_', 2)[-1]}"
+
     return f"""<!DOCTYPE html>
 <html lang="de">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Band {band_nr}: {config['titel']} – Prompt Engineering Meistern</title>
+<title>Band {band_nr}: {config['titel']} &ndash; Prompt Engineering Meistern</title>
+<meta name="description" content="{config['untertitel']} &ndash; Band {band_nr} der Buchreihe Prompt Engineering Meistern von Belkis Aslani.">
 <style>
 *,*::before,*::after{{box-sizing:border-box;margin:0;padding:0}}
 
 :root{{
---bg:#ffffff;--bg2:#f8f9fb;--card:#fff;
+--bg:#fff;--bg2:#f8f9fb;--card:#fff;
 --text:#1a1a1a;--text2:#555;--text3:#888;
 --accent:#2d4a7a;--accent-light:#8ab4f8;
 --border:#e5e7eb;--code-bg:#f5f7fa;
@@ -111,6 +132,11 @@ def build_band_page(band_nr, config):
 --font:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
 --font-reading:'Georgia','Liberation Serif',serif;
 --font-mono:'SF Mono','Liberation Mono','Cascadia Code',monospace;
+--toggle-bg:rgba(0,0,0,.06);
+--toggle-text:#555;
+--toggle-active-bg:linear-gradient(135deg,#2d4a7a,#4a7ab5);
+--toggle-active-shadow:0 0 14px rgba(45,74,122,.4),0 0 8px rgba(138,180,248,.3) inset;
+--toggle-active-text:#fff;
 }}
 
 [data-theme="dark"]{{
@@ -119,6 +145,11 @@ def build_band_page(band_nr, config):
 --accent:#8ab4f8;--accent-light:#8ab4f8;
 --border:#2a3444;--code-bg:#161b22;
 --sidebar-bg:#0d1117;
+--toggle-bg:rgba(255,255,255,.06);
+--toggle-text:#8899aa;
+--toggle-active-bg:linear-gradient(135deg,#8ab4f855,#8ab4f8);
+--toggle-active-shadow:0 0 14px rgba(138,180,248,.4),0 0 8px rgba(200,230,255,.3) inset;
+--toggle-active-text:#fff;
 }}
 
 html{{scroll-behavior:smooth;scroll-padding-top:70px}}
@@ -173,15 +204,44 @@ display:inline-flex;align-items:center;gap:6px;
 }}
 .btn-sm:hover{{border-color:var(--accent);color:var(--accent)}}
 .btn-sm svg{{width:14px;height:14px;fill:currentColor}}
-.theme-toggle{{
-background:none;border:1px solid var(--border);
-width:34px;height:34px;border-radius:8px;
-cursor:pointer;color:var(--text);
-display:flex;align-items:center;justify-content:center;
-transition:all .2s;
+
+/* ===== GLASS RADIO TOGGLE ===== */
+.glass-radio-group{{
+display:flex;
+position:relative;
+background:var(--toggle-bg);
+border-radius:.6rem;
+backdrop-filter:blur(12px);
+box-shadow:inset 1px 1px 3px rgba(255,255,255,.12),inset -1px -1px 4px rgba(0,0,0,.15);
+overflow:hidden;
+width:fit-content;
+height:34px;
 }}
-.theme-toggle:hover{{border-color:var(--accent)}}
-.theme-toggle svg{{width:16px;height:16px;fill:currentColor}}
+.glass-radio-group input{{display:none}}
+.glass-radio-group label{{
+flex:1;display:flex;align-items:center;justify-content:center;
+font-size:12px;padding:0 14px;cursor:pointer;font-weight:600;
+letter-spacing:.3px;color:var(--toggle-text);
+position:relative;z-index:2;transition:color .3s ease-in-out;
+white-space:nowrap;
+}}
+.glass-radio-group label:hover{{color:var(--text)}}
+.glass-radio-group input:checked+label{{color:var(--toggle-active-text)}}
+.glass-glider{{
+position:absolute;top:0;bottom:0;width:50%;
+border-radius:.6rem;z-index:1;
+transition:transform .4s cubic-bezier(.37,1.95,.66,.56),background .3s,box-shadow .3s;
+}}
+#theme-light:checked~.glass-glider{{
+transform:translateX(0);
+background:var(--toggle-active-bg);
+box-shadow:var(--toggle-active-shadow);
+}}
+#theme-dark:checked~.glass-glider{{
+transform:translateX(100%);
+background:var(--toggle-active-bg);
+box-shadow:var(--toggle-active-shadow);
+}}
 
 /* ===== SIDEBAR ===== */
 .sidebar{{
@@ -371,19 +431,34 @@ z-index:50;transition:all .3s;
 .scroll-top.show{{display:flex}}
 .scroll-top svg{{width:20px;height:20px;fill:currentColor}}
 
-/* ===== RESPONSIVE TABLE ===== */
+/* ===== RESUME BANNER ===== */
+.resume-banner{{
+display:none;
+position:fixed;bottom:80px;left:50%;transform:translateX(-50%);
+background:var(--accent);color:#fff;
+padding:10px 20px;border-radius:12px;
+font-size:14px;font-weight:600;
+cursor:pointer;z-index:60;
+box-shadow:0 4px 24px rgba(0,0,0,.3);
+transition:all .3s;
+white-space:nowrap;
+}}
+.resume-banner:hover{{transform:translateX(-50%) translateY(-2px)}}
+.resume-banner.show{{display:block}}
+
+/* ===== RESPONSIVE ===== */
 @media(max-width:600px){{
 .chapter table{{font-size:13px}}
 .chapter th,.chapter td{{padding:8px 10px}}
 .chapter p{{font-size:16px}}
 .chapter pre{{font-size:13px;padding:14px 16px}}
+.topbar-actions .btn-sm span{{display:none}}
 }}
 </style>
 </head>
 <body>
 
 <div class="progress" id="progress"></div>
-
 <div class="overlay" id="overlay"></div>
 
 <header class="topbar">
@@ -394,13 +469,17 @@ z-index:50;transition:all .3s;
 <div class="topbar-title"><a href="../">Prompt Engineering Meistern</a> &middot; Band {band_nr}</div>
 </div>
 <div class="topbar-actions">
-<a href="../output/Band_01_{config['titel']}.pdf" class="btn-sm" download>
+<a href="../output/{pdf_name}.pdf" class="btn-sm" download>
 <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
-PDF
+<span>PDF</span>
 </a>
-<button class="theme-toggle" id="themeToggle" aria-label="Theme umschalten">
-<svg id="sunIcon" viewBox="0 0 24 24"><path d="M12 7a5 5 0 100 10 5 5 0 000-10zm0-3a1 1 0 01-1-1V1a1 1 0 112 0v2a1 1 0 01-1 1zm0 18a1 1 0 01-1-1v-2a1 1 0 112 0v2a1 1 0 01-1 1zm9-9a1 1 0 01-1 1h-2a1 1 0 110-2h2a1 1 0 011 1zM6 12a1 1 0 01-1 1H3a1 1 0 110-2h2a1 1 0 011 1zm11.07-6.07a1 1 0 010 1.41l-1.41 1.42a1 1 0 11-1.42-1.42l1.42-1.41a1 1 0 011.41 0zM8.76 15.24a1 1 0 010 1.42l-1.42 1.41a1 1 0 11-1.41-1.41l1.41-1.42a1 1 0 011.42 0zm8.48 0a1 1 0 011.42 0l1.41 1.42a1 1 0 01-1.41 1.41l-1.42-1.41a1 1 0 010-1.42zM8.76 8.76a1 1 0 01-1.42 0L5.93 7.34A1 1 0 017.34 5.93l1.42 1.41a1 1 0 010 1.42z"/></svg>
-</button>
+<div class="glass-radio-group" role="radiogroup" aria-label="Farbmodus">
+<input type="radio" name="theme" id="theme-light" value="light">
+<label for="theme-light">Hell</label>
+<input type="radio" name="theme" id="theme-dark" value="dark">
+<label for="theme-dark">Dunkel</label>
+<div class="glass-glider"></div>
+</div>
 </div>
 </header>
 
@@ -419,51 +498,93 @@ PDF
 <svg viewBox="0 0 24 24"><path d="M12 4l-8 8h5v8h6v-8h5z"/></svg>
 </button>
 
+<div class="resume-banner" id="resumeBanner">Weiterlesen &rarr;</div>
+
 <script>
+(function(){{
+var B={band_nr},K='pe-band'+B;
+var html=document.documentElement;
+
 // Theme
-const html=document.documentElement;
-const toggle=document.getElementById('themeToggle');
-const stored=localStorage.getItem('theme');
-if(stored==='dark'||(! stored&&matchMedia('(prefers-color-scheme:dark)').matches))html.dataset.theme='dark';
-toggle.addEventListener('click',()=>{{
-html.dataset.theme=html.dataset.theme==='dark'?'light':'dark';
+var stored=localStorage.getItem('theme');
+var dark=stored==='dark'||(!stored&&matchMedia('(prefers-color-scheme:dark)').matches);
+if(dark)html.dataset.theme='dark';
+document.getElementById(dark?'theme-dark':'theme-light').checked=true;
+
+document.querySelectorAll('.glass-radio-group input').forEach(function(r){{
+r.addEventListener('change',function(){{
+html.dataset.theme=this.value==='dark'?'dark':'light';
 localStorage.setItem('theme',html.dataset.theme);
+}});
 }});
 
 // Mobile menu
-const menuBtn=document.getElementById('menuBtn');
-const sidebar=document.getElementById('sidebar');
-const overlay=document.getElementById('overlay');
+var menuBtn=document.getElementById('menuBtn');
+var sidebar=document.getElementById('sidebar');
+var overlay=document.getElementById('overlay');
 function closeSidebar(){{sidebar.classList.remove('open');overlay.classList.remove('show')}}
-menuBtn.addEventListener('click',()=>{{sidebar.classList.toggle('open');overlay.classList.toggle('show')}});
+menuBtn.addEventListener('click',function(){{sidebar.classList.toggle('open');overlay.classList.toggle('show')}});
 overlay.addEventListener('click',closeSidebar);
-document.querySelectorAll('.toc-link').forEach(l=>l.addEventListener('click',()=>{{if(innerWidth<=900)closeSidebar()}}));
+document.querySelectorAll('.toc-link').forEach(function(l){{l.addEventListener('click',function(){{if(innerWidth<=900)closeSidebar()}})}});
 
-// Progress bar
-const prog=document.getElementById('progress');
-window.addEventListener('scroll',()=>{{
-const h=document.documentElement.scrollHeight-innerHeight;
-prog.style.width=h>0?(scrollY/h*100)+'%':'0';
+// Progress bar + reading position save
+var prog=document.getElementById('progress');
+var saveTimer;
+window.addEventListener('scroll',function(){{
+var h=document.documentElement.scrollHeight-innerHeight;
+var pct=h>0?scrollY/h:0;
+prog.style.width=(pct*100)+'%';
+clearTimeout(saveTimer);
+saveTimer=setTimeout(function(){{
+localStorage.setItem(K+'-scroll',scrollY);
+// Save active chapter
+var chs=document.querySelectorAll('.chapter');
+for(var i=chs.length-1;i>=0;i--){{
+if(chs[i].getBoundingClientRect().top<150){{
+localStorage.setItem(K+'-chapter',chs[i].id);
+break;
+}}
+}}
+}},300);
 }});
 
+// Resume reading position
+var savedScroll=parseInt(localStorage.getItem(K+'-scroll'),10);
+var savedChapter=localStorage.getItem(K+'-chapter');
+if(savedScroll>300&&savedChapter){{
+var banner=document.getElementById('resumeBanner');
+var chEl=document.getElementById(savedChapter);
+if(chEl){{
+var chTitle=chEl.querySelector('h1');
+banner.textContent=(chTitle?chTitle.textContent:'Weiterlesen')+' \u2192';
+}}
+banner.classList.add('show');
+banner.addEventListener('click',function(){{
+scrollTo({{top:savedScroll,behavior:'smooth'}});
+banner.classList.remove('show');
+}});
+setTimeout(function(){{banner.classList.remove('show')}},8000);
+}}
+
 // Scroll to top
-const scrollBtn=document.getElementById('scrollTop');
-window.addEventListener('scroll',()=>{{scrollBtn.classList.toggle('show',scrollY>600)}});
-scrollBtn.addEventListener('click',()=>scrollTo({{top:0,behavior:'smooth'}}));
+var scrollBtn=document.getElementById('scrollTop');
+window.addEventListener('scroll',function(){{scrollBtn.classList.toggle('show',scrollY>600)}});
+scrollBtn.addEventListener('click',function(){{scrollTo({{top:0,behavior:'smooth'}})}});
 
 // Active TOC
-const chapters=document.querySelectorAll('.chapter');
-const links=document.querySelectorAll('.toc-link');
-const observer=new IntersectionObserver(entries=>{{
-entries.forEach(e=>{{
+var chapters=document.querySelectorAll('.chapter');
+var links=document.querySelectorAll('.toc-link');
+var observer=new IntersectionObserver(function(entries){{
+entries.forEach(function(e){{
 if(e.isIntersecting){{
-links.forEach(l=>l.classList.remove('active'));
-const active=document.querySelector(`.toc-link[data-target="${{e.target.id}}"]`);
+links.forEach(function(l){{l.classList.remove('active')}});
+var active=document.querySelector('.toc-link[data-target="'+e.target.id+'"]');
 if(active)active.classList.add('active');
 }}
 }});
 }},{{rootMargin:'-80px 0px -60% 0px'}});
-chapters.forEach(ch=>observer.observe(ch));
+chapters.forEach(function(ch){{observer.observe(ch)}});
+}})();
 </script>
 </body>
 </html>"""
