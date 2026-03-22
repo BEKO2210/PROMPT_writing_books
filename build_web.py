@@ -72,6 +72,24 @@ BAND_CONFIG = {
             "10_Zusammenfassung_und_Ausblick.md",
         ],
     },
+    4: {
+        "ordner": "Band_04_Chain_of_Thought",
+        "titel": "Reasoning-Techniken",
+        "untertitel": "KI zum Denken bringen",
+        "dateien": [
+            "00_Vorwort.md",
+            "01_Was_ist_Reasoning.md",
+            "02_Chain_of_Thought.md",
+            "03_Zero_Shot_CoT.md",
+            "04_Tree_of_Thought.md",
+            "05_Self_Consistency.md",
+            "06_ReAct.md",
+            "07_Meta_Prompting.md",
+            "08_Reflexion_und_Selbstkorrektur.md",
+            "09_Techniken_kombinieren.md",
+            "10_Zusammenfassung_und_Ausblick.md",
+        ],
+    },
 }
 
 BASE_URL = "https://beko2210.github.io/PROMPT_writing_books"
