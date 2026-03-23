@@ -148,7 +148,7 @@ text-decoration:none;border-left:2px solid transparent;transition:all .2s;line-h
 
 /* Code */
 .chapter pre{background:var(--code-bg);border:1px solid var(--border);border-radius:10px;padding:18px 20px;margin:20px 0;overflow-x:auto;font-family:var(--font-mono);font-size:14px;line-height:1.55;max-width:100%;white-space:pre-wrap;word-wrap:break-word;position:relative}
-.copy-btn{position:absolute;top:8px;right:8px;background:var(--accent);color:#fff;border:none;border-radius:6px;padding:4px 12px;font-size:12px;cursor:pointer;opacity:0;transition:opacity .2s;font-family:var(--font-sans);z-index:2}
+.copy-btn{position:absolute;top:8px;right:8px;background:var(--accent);color:#fff;border:none;border-radius:6px;padding:4px 12px;font-size:12px;cursor:pointer;opacity:0;transition:opacity .2s;font-family:var(--font);z-index:2}
 .chapter pre:hover .copy-btn{opacity:1}
 .copy-btn.copied{background:#4ecdc4}
 .chapter code{font-family:var(--font-mono);font-size:15px;background:var(--code-bg);padding:2px 6px;border-radius:5px;color:var(--accent)}
@@ -192,7 +192,7 @@ display:inline-flex;align-items:center;justify-content:center;transition:all .2s
 body.focus-mode .topbar{transform:translateY(-100%)}
 body.focus-mode .sidebar{transform:translateX(-100%)}
 body.focus-mode .main{margin-left:0;padding-top:40px}
-body.focus-mode .scroll-top,.body.focus-mode .resume-banner{display:none!important}
+body.focus-mode .scroll-top,body.focus-mode .resume-banner{display:none!important}
 body.focus-mode .progress{opacity:0}
 body.focus-mode .focus-exit{display:flex}
 .focus-exit{
@@ -3721,12 +3721,12 @@ document.querySelectorAll('.chapter pre').forEach(function(pre){
 });
 </script>
 
-<footer style="text-align:center;padding:40px 20px 30px;font-size:12px;color:#8b949e;border-top:1px solid #21262d;margin-top:60px">
+<footer style="text-align:center;padding:40px 20px 30px;font-size:12px;color:var(--text3);border-top:1px solid var(--border);margin-top:60px">
 <div style="margin-bottom:10px">&copy; 2026 Belkis Aslani</div>
 <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:4px">
-<a href="../impressum.html" style="color:#8ab4f8;text-decoration:none;padding:3px 10px;border:1px solid #21262d;border-radius:100px">Impressum</a>
-<a href="../agb.html" style="color:#8ab4f8;text-decoration:none;padding:3px 10px;border:1px solid #21262d;border-radius:100px">Nutzungsbedingungen</a>
-<a href="../datenschutz.html" style="color:#8ab4f8;text-decoration:none;padding:3px 10px;border:1px solid #21262d;border-radius:100px">Datenschutz</a>
+<a href="../impressum.html" style="color:var(--accent);text-decoration:none;padding:3px 10px;border:1px solid var(--border);border-radius:100px">Impressum</a>
+<a href="../agb.html" style="color:var(--accent);text-decoration:none;padding:3px 10px;border:1px solid var(--border);border-radius:100px">Nutzungsbedingungen</a>
+<a href="../datenschutz.html" style="color:var(--accent);text-decoration:none;padding:3px 10px;border:1px solid var(--border);border-radius:100px">Datenschutz</a>
 </div>
 </footer>
 
