@@ -1,5 +1,5 @@
 // Service Worker – Prompt Engineering Meistern PWA
-const CACHE_NAME = 'pe-meistern-v2.0.0';
+const CACHE_NAME = 'pe-meistern-v2.1.0';
 const ASSETS = [
   './',
   './index.html',
@@ -9,6 +9,15 @@ const ASSETS = [
   './icon-512.png',
   './band-01/index.html',
   './band-02/index.html',
+  './band-03/index.html',
+  './band-04/index.html',
+  './band-05/index.html',
+  './band-06/index.html',
+  './band-07/index.html',
+  './band-08/index.html',
+  './band-09/index.html',
+  './band-10/index.html',
+  './band-bonus/index.html',
   './version.json'
 ];
 
