@@ -68,7 +68,7 @@ Für jedes Template:
 
 ### Wo speichern?
 
-- **Notion-Datenbank** – Filterable, durchsuchbar, Tags
+- **Notion-Datenbank** – Filterbar, durchsuchbar, Tags
 - **Google Sheets** – Einfach, kollaborativ, niedrige Einstiegshürde
 - **Confluence/Wiki** – Für größere Teams mit bestehender Doku-Infrastruktur
 - **Dedizierte Tools** – PromptLayer, Promptbase, eigene Lösungen

@@ -74,7 +74,7 @@ Wir haben in Band 8 gesehen, wie mächtig KI im Business sein kann. Band 9 zeigt
 - **Claude** (claude.ai) – Anthropics KI-Assistent, Projects-Feature für Business
 - **ChatGPT** (chatgpt.com) – OpenAIs KI, Custom GPTs für Workflows
 - **Gemini** (gemini.google.com) – Googles KI, Integration in Workspace
-- **Microsoft Copilot** – In Office 365, Teams, Outlook integriert
+- **Microsoft Copilot** – In Microsoft 365, Teams, Outlook integriert
 - **Notion AI** – KI direkt in Notion für Dokumentation und Planung
 
 ### Weiterführende Lektüre
