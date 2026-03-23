@@ -56,7 +56,7 @@ In der Zwischenzeit: Nutze die Werkzeuge verantwortungsvoll. Und wenn du von der
 Jetzt zum praktischen Teil. Wo glänzt KI in der Kreativität?
 
 ### 1. Ideenfindung und Brainstorming
-KI hat keine Hemmungen. Sie sagt nicht "Das ist eine dumme Idee." Sie produziert zehn Ideen in fünf Sekunden. Neun davon sind Müll, aber die zehnte ist Gold. Das ist ein besserer Hit-Rate als bei den meisten Brainstorming-Sessions.
+KI hat keine Hemmungen. Sie sagt nicht "Das ist eine dumme Idee." Sie produziert zehn Ideen in fünf Sekunden. Neun davon sind Müll, aber die zehnte ist Gold. Das ist eine bessere Trefferquote als bei den meisten Brainstorming-Sessions.
 
 ### 2. Erste Entwürfe
 Der leere Bildschirm ist der Feind jedes Kreativen. KI füllt ihn. Nicht mit dem perfekten Text, aber mit einem Ausgangspunkt. Etwas, das du bearbeiten, verbessern und zu deinem machen kannst. Bearbeiten ist immer einfacher als neu erstellen.
@@ -156,7 +156,7 @@ Die wichtigste Verschiebung: Bei analytischen Aufgaben willst du Kontrolle. Bei 
 
 ## Ein erstes Experiment
 
-Bevor wir in die einzelnen Kapitel eintauchen, probier Folgendes:
+Bevor wir mit den einzelnen Kapiteln starten, probier Folgendes:
 
 **Prompt 1 – Zu kontrolliert:**
 ```

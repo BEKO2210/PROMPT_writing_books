@@ -6,7 +6,7 @@ Multimodales Prompting bedeutet: Du arbeitest mit mehreren Modalitäten gleichze
 
 ## Was ist Multimodalität?
 
-Modelle wie GPT-4o, Claude 3.5 und Gemini 2.0 sind multimodal – sie können mehrere Arten von Input verstehen und teilweise auch mehrere Arten von Output erzeugen.
+Modelle wie GPT-4o, Claude und Gemini sind multimodal – sie können mehrere Arten von Input verstehen und teilweise auch mehrere Arten von Output erzeugen.
 
 ### Input-Modalitäten (was das Modell versteht)
 - **Text** → Alle großen Modelle

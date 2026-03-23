@@ -1,6 +1,6 @@
 # Kapitel 5: Musik und Audio – KI hören lassen
 
-Von Text zu Bildern zu... Musik? Ja. Und es ist weiter, als du denkst.
+Von Text zu Bildern zu... Musik? Ja. Und es ist weiter fortgeschritten, als du denkst.
 
 2024 hat KI-generierte Musik einen Wendepunkt erreicht. Tools wie Suno und Udio produzieren Songs, die klingen, als kämen sie aus einem professionellen Studio. Nicht perfekt, aber gut genug, um auf Spotify nicht sofort als KI erkannt zu werden.
 
@@ -16,7 +16,7 @@ In diesem Kapitel lernst du, wie du KI-Musik, Soundeffekte und Sprache promptest
 | **ElevenLabs** | Text-to-Speech, Voice Cloning | Text + Stimme | Abo |
 | **AIVA** | Klassische Musik, Filmmusik | Parameter + Text | Freemium |
 | **Soundraw** | Lizenzfreie Hintergrundmusik | GUI + Parameter | Abo |
-| **MusicLM** (Google) | Musik aus Beschreibungen | Text-Prompt | Research |
+| **MusicFX** (Google) | Musik aus Beschreibungen | Text-Prompt | Kostenlos |
 
 ## Musik-Prompts schreiben
 
