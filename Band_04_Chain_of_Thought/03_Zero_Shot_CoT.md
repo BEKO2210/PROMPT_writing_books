@@ -6,7 +6,7 @@ Zero-Shot CoT macht das überflüssig. Stattdessen brauchst du nur einen einzige
 
 ## Die Entdeckung
 
-2022 veröffentlichten Kojma et al. ein Paper mit dem Titel "Large Language Models are Zero-Shot Reasoners". Ihre Entdeckung war verblüffend einfach:
+2022 veröffentlichten Kojima et al. ein Paper mit dem Titel "Large Language Models are Zero-Shot Reasoners". Ihre Entdeckung war verblüffend einfach:
 
 Wenn du an das Ende deines Prompts die Worte **"Let's think step by step"** anfügst – oder auf Deutsch: **"Denke Schritt für Schritt"** – verbessern sich die Ergebnisse bei Reasoning-Aufgaben dramatisch. Ohne ein einziges Beispiel. Ohne vorgegebene Schritte. Nur durch diesen einen Satz.
 
@@ -14,7 +14,7 @@ Die Forscher testeten es auf zwölf verschiedenen Benchmarks. Bei manchen stieg 
 
 ## Warum funktioniert das?
 
-Erinnere dich an Band 2, Kapitel über Zero-Shot Prompting: Zero-Shot bedeutet, dass du dem Modell keine Beispiele gibst. Das Modell muss aus seiner Trainingsdata und deiner Anweisung allein die richtige Antwort finden.
+Erinnere dich an Band 2, Kapitel über Zero-Shot Prompting: Zero-Shot bedeutet, dass du dem Modell keine Beispiele gibst. Das Modell muss aus seinen Trainingsdaten und deiner Anweisung allein die richtige Antwort finden.
 
 "Denke Schritt für Schritt" aktiviert einen bestimmten "Modus" im Modell. Während des Trainings hat das Modell Millionen von Texten gesehen, in denen Probleme Schritt für Schritt gelöst werden – Lehrbücher, Tutorials, Forenbeiträge, wissenschaftliche Arbeiten. Diese Phrase triggert das Modell, ein ähnliches Muster zu reproduzieren.
 

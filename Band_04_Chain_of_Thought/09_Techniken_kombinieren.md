@@ -289,7 +289,7 @@ Nächste Schritte:
 3. UG als Einstieg erwägen, wenn Haftung das Hauptthema ist
 
 Confidence: 70%
-Offener Punkt: Individuelle Steuerberatung eineholen,
+Offener Punkt: Individuelle Steuerberatung einholen,
 da persönliche Faktoren den Break-Even verschieben können.
 
 === PIPELINE ENDE ===

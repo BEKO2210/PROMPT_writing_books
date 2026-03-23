@@ -10,7 +10,7 @@ Hier kommt ReAct ins Spiel.
 
 ## Die Idee
 
-ReAct steht für **Re**asoning + **Act**ing. Das Paper von Yao et al. (2023) – ja, derselbe Yao, der auch Tree-of-Thought erfunden hat – kombinierte zwei Fähigkeiten, die vorher getrennt betrachtet wurden:
+ReAct steht für **Re**asoning + **Act**ing. Das Paper von Yao et al. (2022) – ja, derselbe Yao, der auch Tree-of-Thought erfunden hat – kombinierte zwei Fähigkeiten, die vorher getrennt betrachtet wurden:
 
 1. **Reasoning:** Das Modell denkt nach (wie bei CoT)
 2. **Acting:** Das Modell führt Aktionen aus (suchen, berechnen, nachschlagen)
@@ -375,7 +375,7 @@ In der simulierten Variante "erfindet" das Modell die Beobachtungen aus seinem T
 
 ### Übung 1: ReAct-Recherche
 Nutze den ReAct-Ansatz für eine Recherche-Frage:
-"Welches Programmiersprache sollte ein Anfänger 2026 als Erstes lernen?"
+"Welche Programmiersprache sollte ein Anfänger 2026 als Erstes lernen?"
 Führe mindestens 3 Denken-Handeln-Beobachten-Zyklen durch.
 
 ### Übung 2: ReAct-Debugging

@@ -94,7 +94,7 @@ Reasoning in LLMs ist kein neues Konzept, aber es hat sich rasant entwickelt:
 Google-Forscher Jason Wei und sein Team veröffentlichten das Paper "Chain-of-Thought Prompting Elicits Reasoning in Large Language Models". Die Kernidee: Wenn man dem Modell Beispiele mit Zwischenschritten zeigt, produziert es selbst Zwischenschritte – und liefert bessere Ergebnisse. Das Paper hat das Feld verändert.
 
 **2022 – Zero-Shot CoT**
-Kojma et al. zeigten, dass manchmal ein einziger Satz reicht: "Let's think step by step." Keine Beispiele nötig. Das Modell aktiviert seinen "Reasoning-Modus" allein durch diese Anweisung. Einfach, aber wirkungsvoll.
+Kojima et al. zeigten, dass manchmal ein einziger Satz reicht: "Let's think step by step." Keine Beispiele nötig. Das Modell aktiviert seinen "Reasoning-Modus" allein durch diese Anweisung. Einfach, aber wirkungsvoll.
 
 **2023 – Tree-of-Thought**
 Yao et al. erweiterten CoT zu einem Baum. Statt einem linearen Denkpfad erkundet das Modell mehrere Pfade, bewertet sie und wählt den besten. Besonders nützlich bei Problemen mit mehreren möglichen Lösungen.

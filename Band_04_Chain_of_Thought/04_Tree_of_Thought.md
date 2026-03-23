@@ -177,7 +177,7 @@ Risiken:
 Sollte ich einen anderen Ansatz gewählt haben?
 Strategie B (Upmarket) wäre der sicherere Weg. Aber bei
 200.000 Euro Runway und 3% Wachstum brauchen wir einen
-Hebel, nicht einen linearen Verbesserung. Nische dominieren
+Hebel, nicht eine lineare Verbesserung. Nische dominieren
 bietet diesen Hebel.
 ```
 
