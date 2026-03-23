@@ -6,7 +6,7 @@ OK, jetzt wird's ein bisschen technischer. Aber keine Sorge – ich erkläre das
 
 LLM steht für "Large Language Model" – großes Sprachmodell. Der Name sagt eigentlich schon alles:
 
-- **Large:** Diese Modelle sind riesig. Sie haben Milliarden von Parametern. GPT-4 hat geschätzte 1,8 Billionen Parameter. Claude und Gemini spielen in ähnlichen Größenordnungen. Das sind Zahlen, die sich kein Mensch mehr vorstellen kann.
+- **Large:** Diese Modelle sind riesig. Sie haben Milliarden von Parametern. GPT-4 hat laut inoffiziellen Quellen geschätzte 1,76 Billionen Parameter. Claude und Gemini spielen in ähnlichen Größenordnungen. Das sind Zahlen, die sich kein Mensch mehr vorstellen kann.
 - **Language:** Sie arbeiten mit Sprache. Text rein, Text raus. Manche können inzwischen auch Bilder und Audio verarbeiten, aber im Kern sind es Sprachmodelle.
 - **Model:** Es sind mathematische Modelle. Keine Programme im klassischen Sinn, die Regeln abarbeiten. Sondern statistische Modelle, die Muster gelernt haben.
 
@@ -55,7 +55,7 @@ Warum ist das wichtig? Weil LLMs ein Limit haben, wie viele Token sie auf einmal
 Das Context Window (Kontextfenster) ist die maximale Menge an Text, die ein LLM gleichzeitig "sehen" kann. Das umfasst sowohl deinen Prompt als auch die Antwort des Modells.
 
 - GPT-4: bis zu 128.000 Token (~100 Buchseiten)
-- Claude 3.5/4: bis zu 200.000 Token (~150 Buchseiten)
+- Claude 4: bis zu 200.000 Token (~150 Buchseiten)
 - Gemini 1.5/2: bis zu 1.000.000 Token (~750 Buchseiten)
 
 Das klingt nach viel, und meistens reicht es auch. Aber bei sehr langen Dokumenten oder komplexen Gesprächen kann es eng werden. Dann "vergisst" das Modell ältere Teile des Gesprächs.

@@ -130,7 +130,7 @@ Ein Eintrag in meinem Protokoll sieht so aus:
 ```
 Datum: 15.03.2026
 Zweck: LinkedIn-Post über KI im Bildungswesen
-Modell: Claude 3.5 Sonnet
+Modell: Claude 4 Sonnet
 Iterationen: 5
 
 Finaler Prompt:
