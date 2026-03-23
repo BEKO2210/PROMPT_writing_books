@@ -179,7 +179,7 @@ Deadlines verpasst. Sein vorheriges Arbeitszeugnis war sehr gut.
 Er hat kürzlich ein Kind bekommen.
 
 ### Aufgabe
-Entwirf ein Gesprächsleitfaden für ein Mitarbeitergespräch.
+Entwirf einen Gesprächsleitfaden für ein Mitarbeitergespräch.
 Berücksichtige die persönliche Situation sensibel.
 
 ### Format

@@ -15,7 +15,7 @@ Das Kontext-Fenster ist die maximale Menge an Text (gemessen in Tokens), die ein
 | Modell | Kontext-Fenster | Ungefähr in Wörtern |
 |--------|----------------|---------------------|
 | GPT-4o | 128.000 Tokens | ~96.000 Wörter |
-| Claude 3.5 Sonnet | 200.000 Tokens | ~150.000 Wörter |
+| Claude 4 | 200.000 Tokens | ~150.000 Wörter |
 | Gemini 2.0 | 1.000.000 Tokens | ~750.000 Wörter |
 | Llama 3.3 | 128.000 Tokens | ~96.000 Wörter |
 
