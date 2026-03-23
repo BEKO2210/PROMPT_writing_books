@@ -1,0 +1,43 @@
+# Netlify Konfiguration – Prompt Engineering Meistern
+# Deployment: GitHub → Netlify (automatisch)
+
+[build]
+  publish = "."
+  # Kein Build-Befehl nötig – statische HTML-Dateien
+
+# Performance & Sicherheit Headers
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+# Cache für statische Assets (CSS/JS/Bilder)
+[[headers]]
+  for = "*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+[[headers]]
+  for = "*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+[[headers]]
+  for = "*.pdf"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
+# Redirect: /band-01 → /band-01/ (trailing slash)
+[[redirects]]
+  from = "/band-:num"
+  to = "/band-:num/"
+  status = 301
+
+# 404-Seite
+# [[redirects]]
+#   from = "/*"
+#   to = "/404.html"
+#   status = 404
