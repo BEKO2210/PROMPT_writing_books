@@ -1,6 +1,6 @@
 # Kapitel 10: Abschluss der Reihe – Was wir gelernt haben, was kommt
 
-Zehn Bände. Über 100.000 Wörter. Hunderte Beispiele, Übungen, Techniken und Perspektiven. Von "Was ist KI?" bis "Wie designst du autonome Agenten-Systeme?" – eine Reise, die vor einem Jahr begonnen hat und jetzt ihren Abschluss findet.
+Zehn Bände. Über 100.000 Wörter. Hunderte Beispiele, Übungen, Techniken und Perspektiven. Von "Was ist KI?" bis "Wie designst du autonome Agenten-Systeme?" – ein Projekt, das vor einem Jahr begonnen hat und jetzt seinen Abschluss findet.
 
 Aber kein Ende. Denn das Wichtigste, was du aus dieser Reihe mitnehmen solltest, ist nicht eine bestimmte Technik oder ein bestimmtes Framework. Es ist die Fähigkeit, dich anzupassen.
 
@@ -24,7 +24,7 @@ Aber kein Ende. Denn das Wichtigste, was du aus dieser Reihe mitnehmen solltest,
 
 **Band 9: Sicherheit & Ethik** – Prompt Injection, Halluzinationen, Bias, DSGVO, EU AI Act, Red Teaming. Die Verantwortung, die mit der Macht kommt.
 
-**Band 10: Die Zukunft** – Agentic AI, Context Engineering, multimodales Prompting, neue Interfaces, Gesellschaft, Karriere. Wohin die Reise geht.
+**Band 10: Die Zukunft** – Agentic AI, Context Engineering, multimodales Prompting, neue Interfaces, Gesellschaft, Karriere. Was als Nächstes kommt.
 
 ## Die drei Kern-Prinzipien
 
@@ -60,7 +60,7 @@ Die Menschen, die KI am besten nutzen, sind nicht die technisch versiertesten. E
 
 ## Was bleibt, wenn sich alles ändert
 
-Die Modelle werden sich ändern. GPT-7 wird GPT-5 ablösen. Claude wird neue Versionen haben. Neue Unternehmen werden aufsteigen, andere werden verschwinden. Die Tools von heute werden die Legacy-Systeme von morgen sein.
+Die Modelle werden sich ändern. Neue GPT-Versionen werden GPT-5 ablösen. Claude wird neue Versionen haben. Neue Unternehmen werden aufsteigen, andere werden verschwinden. Die Tools von heute werden die Legacy-Systeme von morgen sein.
 
 Aber einige Dinge bleiben:
 
@@ -80,7 +80,7 @@ Aber hier sind wir. Band 10. Letztes Kapitel. Letzte Seite.
 
 Ich bin stolz auf das, was wir zusammen geschafft haben – ja, zusammen, denn ohne dich als Leser wäre dieses Buch nur Text. Es lebt erst, wenn jemand die Übungen macht, die Templates anpasst, die Techniken in den Alltag integriert.
 
-Danke, dass du diese Reise mitgemacht hast.
+Danke, dass du bis hierher dabei warst.
 
 Und jetzt: Geh raus und mach was draus.
 

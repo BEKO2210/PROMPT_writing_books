@@ -49,13 +49,13 @@ Nutzt Gradientinformation (ähnlich wie beim Training neuronaler Netze) um Text-
 - **Modell-Migration** – Prompts automatisch an ein neues Modell anpassen
 
 ### Noch nicht:
-- **Kreative Prompts optimieren** – "Schreibe einen besseren Blogpost" hat kein klares Metrik
+- **Kreative Prompts optimieren** – "Schreibe einen besseren Blogpost" hat keine klare Metrik
 - **Komplexe Systeme** – System-Prompts mit 50.000 Tokens, RAG-Pipelines, Multi-Agent-Systeme
 - **Nuancierte Qualität** – "Klingt menschlich" ist schwer zu messen und zu optimieren
 
 ## Die Zukunft: Prompt-freie KI?
 
-Manche Forscher argumentieren, dass Prompts ein Übergangssphänomen sind. Die Vision:
+Manche Forscher argumentieren, dass Prompts ein Übergangsphänomen sind. Die Vision:
 
 1. **Heute:** Du schreibst Prompts in natürlicher Sprache
 2. **Morgen:** Du definierst Ziele und Metriken, APE optimiert den Prompt

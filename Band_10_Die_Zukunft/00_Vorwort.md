@@ -14,7 +14,7 @@ In zwei Jahren hat sich mehr verändert als in den zehn Jahren davor. Und die n�
 
 ## Für wen ist dieser Band?
 
-Für alle, die nicht nur wissen wollen, was KI heute kann – sondern wohin die Reise geht. Besonders wertvoll, wenn du:
+Für alle, die nicht nur wissen wollen, was KI heute kann – sondern was als Nächstes kommt. Besonders wertvoll, wenn du:
 
 - Technologieentscheidungen für ein Unternehmen triffst
 - Deine Karriere zukunftssicher machen willst
