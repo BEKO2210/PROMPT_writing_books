@@ -22,13 +22,13 @@ Diese Strukturen – CRAFT, RTF, RISEN – teile ich in diesem Band mit dir.
 
 Drei große Themenblöcke:
 
-**Block 1: Die Shot-Typen (Kapitel 1–3)**
+**Block 1: Die Shot-Typen (Kapitel 2–4)**
 Zero-Shot, One-Shot, Few-Shot – klingt nach Kaffeebestellungen, ist aber die Grundlage für alles, was kommt. Du lernst, wann du dem Modell Beispiele gibst und wann nicht.
 
-**Block 2: Die Frameworks (Kapitel 4–7)**
+**Block 2: Die Frameworks (Kapitel 5–8)**
 CRAFT, RTF und RISEN im Detail. Jedes Framework mit Erklärung, Beispielen und Übungen. Plus ein Vergleich, damit du weißt, wann du welches nutzt.
 
-**Block 3: Deine Template-Bibliothek (Kapitel 8–9)**
+**Block 3: Deine Template-Bibliothek (Kapitel 9)**
 Du baust dir eine persönliche Sammlung von Prompt-Vorlagen auf, die du immer wieder verwenden kannst. Wie ein Koch sein Rezeptbuch – nur für KI-Kommunikation.
 
 ## Wie du dieses Buch nutzt
@@ -37,6 +37,6 @@ Wie schon in Band 1: Lies es der Reihe nach. Die Kapitel bauen aufeinander auf. 
 
 Noch was: Ab diesem Band wirst du merken, dass die Prompts länger werden. Das ist normal. Und es ist gut. Längere Prompts sind nicht automatisch bessere Prompts – aber strukturierte Prompts sind fast immer besser als unstrukturierte. Und Struktur braucht Platz.
 
-Also: Klapp den Laptop auf, öffne dein LLM deiner Wahl, und lass uns loslegen.
+Also: Klapp den Laptop auf, öffne ein LLM deiner Wahl, und lass uns loslegen.
 
 *Belkis Aslani, März 2026*

@@ -6,7 +6,7 @@ Klingt unspektakulär? Ist es auch. Aber es lohnt sich, bewusst darüber nachzud
 
 ## Was Zero-Shot bedeutet
 
-"Shot" kommt aus dem Englischen und bedeutet hier so viel wie "Beispiel". "Zero Shots" heißt: null Beispiele.
+"Shot" kommt aus dem Machine-Learning-Jargon und bezieht sich auf die Anzahl der Beispiele, die dem Modell gezeigt werden. "Zero Shots" heißt: null Beispiele.
 
 Du sagst dem Modell, *was* es tun soll. Aber du zeigst ihm nicht, *wie* das Ergebnis aussehen soll.
 
