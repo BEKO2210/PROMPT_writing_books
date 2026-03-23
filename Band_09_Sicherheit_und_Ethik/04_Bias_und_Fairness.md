@@ -16,7 +16,7 @@ LLMs werden mit Texten aus dem Internet trainiert. Das Internet spiegelt die Ges
 
 Das ist kein Fehler im Training. Es ist eine korrekte Abbildung der Daten. Aber korrekte Abbildung ungerechter Realität führt zu ungerechten Ergebnissen.
 
-**2. Reprsentations-Bias**
+**2. Repräsentations-Bias**
 
 Manche Gruppen sind in den Trainingsdaten überrepräsentiert, andere unterrepräsentiert. Englischsprachige, westliche, gut vernetzte Communities produzieren mehr Text im Internet. Folge: Das Modell "versteht" diese Perspektiven besser als andere.
 

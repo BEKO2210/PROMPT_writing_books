@@ -10,7 +10,7 @@ Das ist Prompt Injection. Und es ist das größte Sicherheitsproblem von LLM-bas
 
 ## Was ist Prompt Injection?
 
-Prompt Injection ist ein Angriff, bei dem ein Nutzer die Anweisungen des Systems überschreibt, indem er eigene Anweisungen in seinen Input einschleust. Es ist das LLM-Äquivalent von SQL Injection – nur dass es viel schwerer zu verhindern ist. OWASP listet Prompt Injection seit 2025 als **#1 Schwachstelle** in den Top 10 für LLM-Anwendungen.
+Prompt Injection ist ein Angriff, bei dem ein Nutzer die Anweisungen des Systems überschreibt, indem er eigene Anweisungen in seinen Input einschleust. Es ist das LLM-Äquivalent von SQL Injection – nur dass es viel schwerer zu verhindern ist. OWASP listet Prompt Injection seit 2023 als **#1 Schwachstelle** in den Top 10 für LLM-Anwendungen.
 
 Der Grund: LLMs unterscheiden nicht grundsätzlich zwischen System-Prompt (den Anweisungen des Entwicklers) und User-Input (dem Text des Nutzers). Beides sind Tokens im Kontextfenster. Ein cleverer Angriff nutzt diese fehlende Trennung aus.
 

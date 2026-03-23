@@ -37,7 +37,7 @@ LLMs sind Muster-Vervollständiger, keine Wissensdatenbanken. Sie generieren die
 
 ### Halluzinationsraten (Vectara-Benchmark, Stand 2026)
 
-Vectara, ein auf Retrieval spezialisiertes Unternehmen, misst Halluzinationsraten bei Zusammenfassungsaufgaben. Die Raten sind über die Jahre dramatisch gesunken – von 21,8% (2021) auf unter 1% bei den besten Modellen (2025):
+Vectara, ein auf Retrieval spezialisiertes Unternehmen, misst Halluzinationsraten bei Zusammenfassungsaufgaben. Die Raten sind über die Jahre dramatisch gesunken – von über 20% (2023) auf unter 1% bei den besten Modellen (2025):
 
 | Modell | Halluzinationsrate |
 |--------|-------------------|
