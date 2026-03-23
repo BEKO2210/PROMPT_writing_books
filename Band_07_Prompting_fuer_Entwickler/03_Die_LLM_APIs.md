@@ -8,7 +8,7 @@ Bisher hast du KI über Chat-Interfaces genutzt. Jetzt nutzt du sie programmatis
 
 | Modell | Kontext | Stärke | Input / Output (pro 1M Token) |
 |---|---|---|---|
-| Claude Opus 4.6 | 200K (1M beta) | #1 Reasoning, 80.8% SWE-bench, Code | $5 / $25 |
+| Claude Opus 4.6 | 200K (1M beta) | #1 Reasoning, 80.8% SWE-bench, Code | $15 / $75 |
 | Claude Sonnet 4.5 | 200K | Bestes Preis-Leistung, 77-82% SWE-bench | $3 / $15 |
 | Claude Haiku 4.5 | 200K | Schnell, günstig, agentic Loops | $0.25 / $1.25 |
 
@@ -136,7 +136,7 @@ Fünf Strategien, die zusammen bis zu 95% sparen:
 4. **Token-Budget:** `max_tokens` auf das Minimum setzen
 5. **Prompt-Optimierung:** Kürzere Prompts = weniger Input-Tokens
 
-**Preisentwicklung:** LLM-API-Preise sind zwischen Anfang 2025 und Anfang 2026 um ca. 80% gefallen. Claude Opus 4.6 kostet 67% weniger als sein Vorgänger.
+**Preisentwicklung:** LLM-API-Preise sind zwischen Anfang 2025 und Anfang 2026 um ca. 80% gefallen. Die Preise pro Token sinken kontinuierlich.
 
 ---
 
