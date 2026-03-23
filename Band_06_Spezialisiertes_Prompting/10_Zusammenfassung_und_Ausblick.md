@@ -24,7 +24,7 @@ Sechs Bände. Du bist über die Halbzeit hinaus. Und mit diesem Band hast du den
 
 ## Checkliste: Bin ich bereit für Band 7?
 
-- [ ] Ich habe mindestens 3 Kapitel aus meiner Branche durchgearbeitet
+- [ ] Ich habe mindestens 3 Branchenkapitel durchgearbeitet
 - [ ] Ich nutze Fachsprache gezielt in meinen Prompts
 - [ ] Ich habe eine spezialisierte Rolle definiert und getestet
 - [ ] Ich prüfe KI-Output auf Halluzinationen (besonders Quellen und Zahlen)
@@ -82,7 +82,7 @@ In den ersten fünf Bänden hast du gelernt, WIE man promptet. In diesem Band ha
 
 Und das ist der wichtigere Schritt. Denn die beste Prompt-Technik nützt nichts, wenn du nicht weißt, was du damit anfangen sollst. Jetzt weißt du es – für deine Branche, mit den spezifischen Anforderungen, Grenzen und Verantwortlichkeiten.
 
-Eine Sache noch: Jede Branche in diesem Buch hat Disclaimern. "KI ist kein Anwalt. KI ist kein Arzt. KI ist kein Steuerberater." Das sind keine Floskeln. Das ist die wichtigste Lektion dieses Bandes.
+Eine Sache noch: Jede Branche in diesem Buch hat Disclaimer. "KI ist kein Anwalt. KI ist kein Arzt. KI ist kein Steuerberater." Das sind keine Floskeln. Das ist die wichtigste Lektion dieses Bandes.
 
 KI ist ein Werkzeug. Ein mächtiges, aber eines ohne Verantwortungsbewusstsein, ohne Berufsethos, ohne Konsequenzen für Fehler. Die Konsequenzen trägst du. Nutze das Werkzeug. Aber verlass dich nicht blind darauf.
 
