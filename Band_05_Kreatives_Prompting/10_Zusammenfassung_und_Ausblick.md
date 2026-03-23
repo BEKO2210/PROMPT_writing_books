@@ -6,7 +6,7 @@ Fünf Bände. Du bist zur Halbzeit angekommen. Und in diesem Band hast du eine k
 
 1. **Kreativität und KI verstehen** – Du kennst die Debatte, die Chancen und die Grenzen. Du weißt, wo KI als Ideengeber, Handwerker und Sparringspartner funktioniert. Und du hast einen eigenen Standpunkt zum Urheberrecht.
 
-2. **Storytelling** – Du schreibst Prompts, die Geschichten mit Tiefe erzeugen: Protagonisten mit Tiefe, echte Konflikte, überraschende Perspektiven und lebendige Dialoge. Du kennst Genre-spezifische Techniken und weißt, wie du den KI-Sound loswirst.
+2. **Storytelling** – Du schreibst Prompts, die Geschichten mit Tiefe erzeugen: glaubwürdige Protagonisten, echte Konflikte, überraschende Perspektiven und lebendige Dialoge. Du kennst Genre-spezifische Techniken und weißt, wie du den KI-Sound loswirst.
 
 3. **Kreatives Schreiben** – Lyrik, Satire, Werbetexte, Reden, Essays und experimentelle Formate. Du kontrollierst Ton und Stimme und hast Methoden, um deinen eigenen Schreibstil in die KI einzuspeisen.
 

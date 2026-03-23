@@ -40,7 +40,7 @@ Nicht nur "Das ist eine Katze." Sondern:
 
 ### Vision-Prompt-Techniken
 
-**Sei spezifisch über was du sehen willst:**
+**Sei spezifisch darin, was du sehen willst:**
 - Schlecht: *"Was ist auf diesem Bild?"*
 - Gut: *"Analysiere dieses Dashboard-Screenshot. Welche KPIs sind im roten Bereich? Welche Trends erkennst du?"*
 

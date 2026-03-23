@@ -1,6 +1,6 @@
 # Kapitel 1: Warum Frameworks?
 
-Bevor wir in die einzelnen Frameworks eintauchen, müssen wir eine grundlegende Frage klären: Warum braucht man überhaupt Frameworks für Prompts?
+Bevor wir uns die einzelnen Frameworks anschauen, müssen wir eine grundlegende Frage klären: Warum braucht man überhaupt Frameworks für Prompts?
 
 Die ehrliche Antwort: Brauchst du nicht. Du kannst auch ohne Frameworks gute Prompts schreiben. Du hast die 5 Bausteine aus Band 1, du hast Erfahrung gesammelt, und manchmal reicht ein einfacher Satz, um genau das Ergebnis zu bekommen, das du willst.
 
@@ -46,7 +46,7 @@ Hier wird es interessanter. Struktur-Frameworks geben dir eine feste Reihenfolge
 - **RTF:** Role, Task, Format
 - **RISEN:** Role, Instructions, Steps, End goal, Narrowing
 
-Jedes Framework hat seine Stärken. CRAFT ist am universellsten, RTF ist am schnellsten, RISEN ist am detailliertesten. In den Kapiteln 5–8 lernst du alle drei kennen und erfährst, wann du welches nutzen solltest.
+Jedes Framework hat seine Stärken. CRAFT ist am universellsten, RTF ist am schnellsten, RISEN ist am detailliertesten. In den Kapiteln 5–7 lernst du alle drei kennen, und Kapitel 8 zeigt dir, wann du welches nutzen solltest.
 
 ### Ebene 3: Template-Bibliothek
 
@@ -73,7 +73,7 @@ Lass mich dir ein konkretes Beispiel zeigen.
 Schreib mir einen Blogartikel über gesunde Ernährung.
 ```
 
-Das Ergebnis? Generisch. Langweilig. Austauschbar. Könnte von jedem geschrieben worden sein, für niemand bestimmtes.
+Das Ergebnis? Generisch. Langweilig. Austauschbar. Könnte von jedem geschrieben worden sein, für niemanden bestimmt.
 
 **Mit CRAFT-Framework:**
 ```

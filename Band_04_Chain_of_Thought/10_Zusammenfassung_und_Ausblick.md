@@ -148,7 +148,7 @@ Dann los.
 
 **Chain-of-Thought:**
 - "Chain-of-Thought Prompting Elicits Reasoning in Large Language Models" (Wei et al., 2022) – Das Original-Paper
-- "Large Language Models are Zero-Shot Reasoners" (Kojma et al., 2022) – Zero-Shot CoT
+- "Large Language Models are Zero-Shot Reasoners" (Kojima et al., 2022) – Zero-Shot CoT
 
 **Tree-of-Thought:**
 - "Tree of Thoughts: Deliberate Problem Solving with Large Language Models" (Yao et al., 2023) – ToT-Paper

@@ -159,7 +159,7 @@ Das ist keine Formalität. Das ist Verantwortung.
 1. **Anonymisieren** – Namen, Adressen, Kontonummern durch Platzhalter ersetzen
 2. **Aggregieren** – Statt Einzeldaten Zusammenfassungen verwenden
 3. **Lokale LLMs** – Ollama, LM Studio oder andere lokale Modelle für sensible Daten
-4. **Enterprise-Versionen** – ChatGPT Enterprise, Claude Pro mit Datenschutzgarantie
+4. **Enterprise-Versionen** – ChatGPT Enterprise, Claude Team/Enterprise mit Datenschutzgarantie
 
 ## Prinzip 7: Vom Fachexperten zum Prompt-Experten
 
@@ -172,7 +172,7 @@ Du bist Experte in DEINEM Fach. KI ist das Werkzeug. Die besten Ergebnisse komme
 2. KI liefert einen Entwurf (Geschwindigkeit)
 3. DU prüfst auf Korrektheit (Fachexpertise)
 4. KI überarbeitet nach deinem Feedback (Iteration)
-5. DU gibt frei (Verantwortung)
+5. DU gibst frei (Verantwortung)
 ```
 
 Die Schritte 1, 3 und 5 sind DEINE. Die kann keine KI übernehmen. Nicht weil sie es nicht könnte, sondern weil die Verantwortung bei dir liegt.

@@ -66,7 +66,7 @@ GPT-4o ist nicht Claude ist nicht Gemini ist nicht Llama. Jedes Modell hat Stär
 **Schwächen:**
 - Erfordert technisches Know-how für lokale Installation
 - Leistung hinter GPT-4o und Claude bei komplexen Aufgaben
-- Kein eingebautes Web-Zugriff
+- Kein eingebauter Web-Zugriff
 - Weniger "poliert" in der Ausgabe
 
 **Am besten für:** Datenschutz-sensible Aufgaben, Experimente, Entwickler, die ein Modell anpassen wollen.

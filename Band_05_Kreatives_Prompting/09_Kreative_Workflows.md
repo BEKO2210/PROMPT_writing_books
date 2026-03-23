@@ -35,7 +35,7 @@ DIENSTAG/MITTWOCH – Produktion
 DONNERSTAG – Feinschliff
 ├── KI: Varianten für Headlines testen
 ├── DU: Finale Auswahl und Freigabe
-└── KI: Social-Media-Versionen (Twitter, LinkedIn, Instagram)
+└── KI: Social-Media-Versionen (X, LinkedIn, Instagram)
 
 FREITAG – Scheduling
 ├── DU: Alles planen und einplanen
@@ -50,7 +50,7 @@ Hier ist mein Blogartikel:
 
 Erstelle daraus:
 1. Einen LinkedIn-Post (max. 300 Wörter, professionell)
-2. Einen Twitter-Thread (5 Tweets, zugespitzt)
+2. Einen X-Thread (5 Posts, zugespitzt)
 3. Einen Instagram-Caption (locker, mit Hashtags)
 4. Eine Newsletter-Einleitung (3 Sätze, Teaser)
 5. Einen YouTube-Video-Titel + Beschreibung
@@ -222,7 +222,7 @@ PHASE 3: Interaktive Elemente
 └── DU: Praxisbezug sicherstellen
 ```
 
-## Der persönliche Workflow finden
+## Den persönlichen Workflow finden
 
 Nicht jeder dieser Workflows passt zu dir. Hier ist mein Framework, um deinen eigenen zu entwickeln:
 

@@ -10,7 +10,7 @@ Aber KI kann mehr als analysieren. Sie kann erschaffen.
 
 ## Warum ein Band über Kreativität?
 
-Ich war skeptisch. Ehrlich. Als ich angefangen habe, diese Reihe zu planen, stand "Kreatives Prompting" ganz unten auf meiner Prioritätenliste. Ich dachte: KI-generierte Kunst ist seellos. KI-geschriebene Texte klingen generisch. KI-Musik ist Fahrstuhlmusik.
+Ich war skeptisch. Ehrlich. Als ich angefangen habe, diese Reihe zu planen, stand "Kreatives Prompting" ganz unten auf meiner Prioritätenliste. Ich dachte: KI-generierte Kunst ist seelenlos. KI-geschriebene Texte klingen generisch. KI-Musik ist Fahrstuhlmusik.
 
 Dann habe ich angefangen, damit herumzuspielen. Nicht mit der Erwartung, ein Meisterwerk zu schaffen, sondern aus Neugier. Und etwas Seltsames ist passiert: Die KI hat mich nicht ersetzt – sie hat mich inspiriert.
 
@@ -48,7 +48,7 @@ Du brauchst keine künstlerische Vorbildung. Aber du brauchst die Bereitschaft, 
 
 ## Ein Wort zur Kontroverse
 
-KI-generierte Kunst ist umstritten. Zu Recht. Es gibt echte Fragen zu Urheberrecht, zu Trainingsdaten, zu der Existenz von Künstlern, deren Arbeit ohne Zustimmung zum Training verwendet wurde. Ich werde diese Fragen nicht unter den Teppich kehren.
+KI-generierte Kunst ist umstritten. Zu Recht. Es gibt echte Fragen zu Urheberrecht, zu Trainingsdaten, zur Existenz von Künstlern, deren Arbeit ohne Zustimmung zum Training verwendet wurde. Ich werde diese Fragen nicht unter den Teppich kehren.
 
 In Kapitel 1 sprechen wir offen darüber. Ich sage dir, was ich denke – und du bildest dir deine eigene Meinung. Aber eins vorweg: "KI-Kunst ignorieren, weil sie kontrovers ist" ist keine Option. Sie existiert. Sie wird besser. Und wer versteht, wie sie funktioniert, kann besser mitreden als jemand, der sie aus Prinzip ablehnt.
 

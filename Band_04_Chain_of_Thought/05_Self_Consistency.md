@@ -6,7 +6,7 @@ Self-Consistency gibt dir die Antwort: Beide könnten stimmen. Aber wenn du zehn
 
 ## Die Idee
 
-Self-Consistency (SC) wurde 2023 von Wang et al. in dem Paper "Self-Consistency Improves Chain of Thought Reasoning in Language Models" vorgestellt. Die Kernidee ist bestechend einfach:
+Self-Consistency (SC) wurde 2022 von Wang et al. in dem Paper "Self-Consistency Improves Chain of Thought Reasoning in Language Models" vorgestellt. Die Kernidee ist bestechend einfach:
 
 1. Stelle dieselbe Frage mehrfach (mit leicht unterschiedlicher Temperatur oder Formulierung)
 2. Lass das Modell jedes Mal mit Chain-of-Thought antworten

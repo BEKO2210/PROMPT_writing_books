@@ -89,7 +89,7 @@ Was soll es NICHT tun?
 
 ```
 Du gibst keine Rechtsberatung.
-Du erfindet keine Fakten.
+Du erfindest keine Fakten.
 Wenn du dir unsicher bist, sagst du das offen.
 Du behauptest nie, Emotionen zu haben.
 ```

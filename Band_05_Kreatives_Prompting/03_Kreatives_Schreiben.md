@@ -244,7 +244,7 @@ Format:
 Wort (Wortart): Definition. Beispielsatz.
 
 Beispiel:
-Vorfreudeschmerz (m.): Das bitterbittersüße Wissen, dass
+Vorfreudeschmerz (m.): Das bittersüße Wissen, dass
 ein schöner Moment, den man gerade erlebt, bald vorbei
 sein wird. "Sie sah ihrem Kind beim Spielen zu und
 spürte den Vorfreudeschmerz – es würde so schnell

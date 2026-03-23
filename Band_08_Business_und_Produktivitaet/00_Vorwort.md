@@ -22,7 +22,7 @@ Dieser Band macht dich zu Typ 2.
 
 Für alle, die im Büro arbeiten – egal ob Einzelunternehmer, Teamleiter, Manager oder Angestellter. Die Beispiele kommen aus verschiedenen Branchen und Unternehmensgrößen. Die Prinzipien sind universell.
 
-Du brauchst die Grundlagen aus Band 1-3. Die fortgeschrittenen Techniken aus Band 4 helfen, sind aber kein Muss. Entwickler-Wissen (Band 7) brauchst du nicht – dieses Band ist bewusst nicht-technisch.
+Du brauchst die Grundlagen aus Band 1-3. Die fortgeschrittenen Techniken aus Band 4 helfen, sind aber kein Muss. Entwickler-Wissen (Band 7) brauchst du nicht – dieser Band ist bewusst nicht-technisch.
 
 ## Wie du diesen Band nutzt
 

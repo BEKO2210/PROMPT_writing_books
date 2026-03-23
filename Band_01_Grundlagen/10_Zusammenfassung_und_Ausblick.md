@@ -2,7 +2,7 @@
 
 Du hast es geschafft. Band 1 ist durch.
 
-Lass mich kurz zusammenfassen, was du in den letzten neun Kapiteln gelernt hast – und dann zeige ich dir, wohin die Reise in Band 2 geht.
+Lass mich kurz zusammenfassen, was du in den letzten neun Kapiteln gelernt hast – und dann zeige ich dir, was dich in Band 2 erwartet.
 
 ## Was du jetzt kannst
 

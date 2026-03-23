@@ -76,7 +76,7 @@ Für Textvereinfachung: Zielniveau angeben (B1 Deutsch, 6. Klasse, Einfache Spra
 
 ## E-Learning und digitale Formate
 
-**Lernpfade** strukturierst du modular: Einführungstext → Kerninhalt → interaktive Elemente → Zusammenfassung → Übergang. Vier Module vom Grundlagen bis zum Abschlusstest, mit Zeitangabe pro Modul.
+**Lernpfade** strukturierst du modular: Einführungstext → Kerninhalt → interaktive Elemente → Zusammenfassung → Übergang. Vier Module von den Grundlagen bis zum Abschlusstest, mit Zeitangabe pro Modul.
 
 **Karteikarten** generierst du mit einer Verteilung: 40% Definitionen, 30% Verständnisfragen, 20% Anwendungsfragen, 10% Vergleiche. Tipp: *"Formatiere als CSV, kompatibel mit Anki"* – dann kannst du direkt importieren.
 

@@ -36,7 +36,7 @@ tools = [{
 }]
 ```
 
-Bei OpenAI heißt das `functions` statt `tools`, die Struktur ist fast identisch. Bei Google `function_declarations`.
+Bei OpenAI heißt es ebenfalls `tools` (seit Ende 2023, vorher `functions`). Bei Google `function_declarations`.
 
 ## Der Tool-Use-Loop
 

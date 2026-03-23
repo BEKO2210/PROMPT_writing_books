@@ -31,7 +31,7 @@ Und dann ging es schnell:
 
 In der Wissenschaft unterscheidet man zwei Arten von KI:
 
-**Schwache KI (Narrow AI):** Kann eine bestimmte Aufgabe richtig gut. Schach spielen. Texte schreiben. Bilder erkennen. Aber nur das. Ein Schach-KI kann keine Gedichte schreiben. Ein Textgenerator kann kein Schach spielen. Alles, was du heute benutzen kannst, ist schwache KI.
+**Schwache KI (Narrow AI):** Kann eine bestimmte Aufgabe richtig gut. Schach spielen. Texte schreiben. Bilder erkennen. Aber nur das. Eine Schach-KI kann keine Gedichte schreiben. Ein Textgenerator kann kein Schach spielen. Alles, was du heute benutzen kannst, ist schwache KI.
 
 **Starke KI (AGI – Artificial General Intelligence):** Könnte alles, was ein Mensch kann. Und mehr. Gibt es noch nicht. Ob es sie jemals geben wird – darüber streiten sich die Experten. Manche sagen, wir sind nah dran. Andere sagen, wir sind Jahrzehnte entfernt. Für dieses Buch ist das egal, denn wir arbeiten mit dem, was es gibt. Und das ist schon mehr als genug.
 

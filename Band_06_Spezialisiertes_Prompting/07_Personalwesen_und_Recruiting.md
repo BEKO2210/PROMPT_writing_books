@@ -54,9 +54,9 @@ Zusätzlich: Fragen für Selbsteinschätzung, SMART-Zielvereinbarung und Follow-
 ### Arbeitszeugnis
 
 Deutsche Arbeitszeugnisse verwenden eine codierte Sprache. Die wichtigste Unterscheidung:
-- *"stets zur vollsten Zufriedenheit"* = Note 1
-- *"zur vollen Zufriedenheit"* = Note 2
-- *"zur Zufriedenheit"* = Note 3
+- *"stets zu unserer vollsten Zufriedenheit"* = Note 1
+- *"stets zu unserer vollen Zufriedenheit"* = Note 2
+- *"zu unserer Zufriedenheit"* = Note 3
 
 Struktur: Einleitung → Unternehmensbeschreibung → Aufgaben → Leistungsbeurteilung → Sozialverhalten → Beendigungsformel → Schlussformel mit Zukunftswünschen.
 

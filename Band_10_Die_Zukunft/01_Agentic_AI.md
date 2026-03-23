@@ -8,7 +8,7 @@ Das ist Agentic AI. Und es verändert alles.
 
 ## Was ist ein Agent?
 
-In Band 7 hast du den ReAct-Loop kennengelernt: Planen → Handeln → Beobachten → Bewerten → Wiederholen. Ein Agent ist ein LLM mit Zugang zu Tools und einem Ziel, das diesen Loop autonom durchläuft.
+In Band 4 hast du den ReAct-Loop kennengelernt: Planen → Handeln → Beobachten → Bewerten → Wiederholen. Ein Agent ist ein LLM mit Zugang zu Tools und einem Ziel, das diesen Loop autonom durchläuft.
 
 Der entscheidende Unterschied zum Chatbot:
 
@@ -23,7 +23,7 @@ Der entscheidende Unterschied zum Chatbot:
 
 ## Warum 2026 das Jahr der Agenten ist
 
-Stanford's HAI Institute nennt 2026 das "Mainstream-Adoptionsjahr" für Agentic AI. 67% der Fortune-500-Unternehmen haben mindestens einen KI-Agenten in Produktion (34% waren es noch 2025). 88% der Führungskräfte pilotieren oder skalieren autonome Agenten.
+Stanfords HAI Institute nennt 2026 das "Mainstream-Adoptionsjahr" für Agentic AI. 67% der Fortune-500-Unternehmen haben mindestens einen KI-Agenten in Produktion (34% waren es noch 2025). 88% der Führungskräfte pilotieren oder skalieren autonome Agenten.
 
 Drei Entwicklungen kamen zusammen:
 

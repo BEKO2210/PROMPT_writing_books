@@ -99,7 +99,7 @@ Bis dahin: Bau etwas. Der beste Weg, Context Engineering zu lernen, ist Context 
 - Anthropic API Docs: docs.anthropic.com
 - OpenAI API Docs: platform.openai.com/docs
 - Google AI Studio: ai.google.dev
-- Claude Agent SDK: github.com/anthropics/claude-code
+- Claude Code CLI: github.com/anthropics/claude-code
 
 **Coding-Tools:**
 - Cursor: cursor.com

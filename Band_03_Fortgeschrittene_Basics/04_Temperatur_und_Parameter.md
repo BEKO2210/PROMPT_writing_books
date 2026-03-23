@@ -93,13 +93,13 @@ Top-P (auch "Nucleus Sampling" genannt) ist ein anderer Weg, die Kreativität zu
 
 ### Wie es funktioniert
 
-Top-P = 0.1 bedeutet: Das Modell wählt nur aus den Wörtern, die zusammen 10% der Wahrscheinlichkeit ausmachen. Bei unserem Beispiel:
+Top-P = 0.1 bedeutet: Das Modell wählt aus den wahrscheinlichsten Wörtern, bis deren kumulative Wahrscheinlichkeit 10% erreicht. Bei unserem Beispiel:
 
 ```
 "Die Hauptstadt von Frankreich ist ___"
 
-Top-P 0.1 → Nur "Paris" zur Auswahl (92% > 10%)
-Top-P 0.5 → "Paris" (92%)
+Top-P 0.1 → Nur "Paris" zur Auswahl (es ist das wahrscheinlichste Token)
+Top-P 0.5 → Immer noch nur "Paris" (allein schon 92%)
 Top-P 0.95 → "Paris", "Lyon", "Marseille" (zusammen ~97%)
 ```
 

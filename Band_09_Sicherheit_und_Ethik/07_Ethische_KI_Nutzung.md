@@ -54,7 +54,7 @@ Meine Meinung: Transparenz ist der Schlüssel. Wer KI als Werkzeug nutzt (wie ei
 
 ### Die UNESCO-Empfehlung (2021)
 
-Die UNESCO hat als erste internationale Organisation Ethik-Richtlinien für KI verabschiedet, unterzeichnet von 193 Mitgliedstaaten. Die Kernprinzipien:
+Die UNESCO hat als erste internationale Organisation Ethik-Richtlinien für KI verabschiedet, angenommen von allen 193 Mitgliedstaaten. Die Kernprinzipien:
 
 1. **Menschenrechte und Menschenwürde achten**
 2. **Friedlich, gerecht und vernetzt leben**
@@ -76,7 +76,7 @@ Anthropic (die Macher von Claude) verfolgen einen Ansatz namens "Constitutional 
 
 Bemerkenswert: Anthropic ist das erste große KI-Unternehmen, das in einem offiziellen Dokument die Möglichkeit von KI-Bewusstsein und moralischem Status anerkennt.
 
-Die ursprünglichen Prinzipien basieren auf der UN-Menschenrechtserklärung, Apples Terms of Service und nicht-westlichen kulturellen Werten.
+Die ursprünglichen Prinzipien basieren auf der UN-Menschenrechtserklärung, verschiedenen ethischen Richtlinien und nicht-westlichen kulturellen Werten.
 
 ### Dein eigenes ethisches Framework
 
@@ -94,7 +94,7 @@ Wenn du bei einer dieser Fragen zögerst – überdenke den Einsatz.
 
 Ein Thema, das oft vergessen wird: KI hat einen CO₂-Fußabdruck. Das Training großer Modelle verbraucht enorme Mengen Energie. Auch die Inferenz (jeder API-Call) verbraucht Strom.
 
-Schätzungen: Ein einzelner ChatGPT-Request verbraucht etwa 10x so viel Energie wie eine Google-Suche. Bei Milliarden Anfragen pro Tag summiert sich das.
+Schätzungen: Ein einzelner ChatGPT-Request verbraucht schätzungsweise 3-10x so viel Energie wie eine Google-Suche. Bei Milliarden Anfragen pro Tag summiert sich das.
 
 Was du tun kannst:
 - **Das kleinste ausreichende Modell nutzen.** Haiku statt Opus, wenn Haiku reicht.

@@ -32,7 +32,7 @@ Falls du noch keinen Account hast, hier die schnellste Route:
 ### Option B: Claude (Anthropic)
 1. Geh auf claude.ai
 2. Registriere dich mit E-Mail oder Google-Account
-3. Die kostenlose Version gibt dir Zugang zu Claude 3.5 Sonnet
+3. Die kostenlose Version gibt dir Zugang zum aktuellen Standard-Modell
 
 ### Option C: Gemini (Google)
 1. Geh auf gemini.google.com

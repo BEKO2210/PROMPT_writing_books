@@ -288,7 +288,7 @@ du sehen möchtest]
 Beleuchtung ist der wichtigste Faktor für die Stimmung. Ohne Angabe wählt das Modell generisches "Studio-Licht".
 
 ### Fehler 4: Text im Bild
-KI kann (noch) keinen sauberen Text rendern. Wenn du Text im Bild brauchst, füge ihn nachträglich mit Canva oder Photoshop ein.
+KI hat oft Schwierigkeiten mit längerem Text im Bild. Kurze Wörter klappen inzwischen, aber bei ganzen Sätzen füge den Text besser nachträglich mit Canva oder Photoshop ein.
 
 ---
 

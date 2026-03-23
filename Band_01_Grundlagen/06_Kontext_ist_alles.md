@@ -90,7 +90,7 @@ Wenn das Modell weiß, was nicht funktioniert hat, kann es dir bessere Alternati
 
 ### 5. Was ist das Ziel?
 
-Was willst du mit dem Ergebnis machen? Wohin soll die Reise gehen?
+Was willst du mit dem Ergebnis machen? Was ist das große Ziel dahinter?
 
 ```
 Ich brauche den Text für eine Bewerbung bei einem DAX-Konzern.

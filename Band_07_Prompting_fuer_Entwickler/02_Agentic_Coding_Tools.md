@@ -157,7 +157,7 @@ implementiere, teste und erstelle einen PR.
 
 ### Cline (Open Source)
 
-Cline ist der Open-Source-Champion: Volle Kontrolle, jedes Modell, keine Vendor-Lock-in.
+Cline ist der Open-Source-Champion: Volle Kontrolle, jedes Modell, kein Vendor-Lock-in.
 
 ```
 # In Cline (VS Code Extension):
