@@ -30,6 +30,12 @@
   [headers.values]
     Cache-Control = "public, max-age=2592000"
 
+# Redirect: alter GitHub Pages Pfad → Netlify Root
+[[redirects]]
+  from = "/PROMPT_writing_books/*"
+  to = "/:splat"
+  status = 301
+
 # Redirect: /band-01 → /band-01/ (trailing slash)
 [[redirects]]
   from = "/band-:num"
